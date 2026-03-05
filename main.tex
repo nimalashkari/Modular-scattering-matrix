@@ -1,0 +1,2409 @@
+%\documentclass[aps,prl,singlecolumn,superscriptaddress]{revtex4-2}
+
+
+\documentclass[a4paper,11pt]{article}
+\usepackage{jheppub}
+\setcounter{secnumdepth}{3}
+% Useful packages
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+%\usepackage{showlabels}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{prop}{Conjecture}
+\newtheorem{cor}{Corollary}
+%-------------------packages-------------------------
+\usepackage{enumerate}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb,amsbsy,mathtools,amsmath}
+\usepackage{braket}
+\usepackage{graphicx}
+\usepackage{xcolor}
+%\usepackage{multirow}
+\usepackage{hyperref}
+%\usepackage{caption}
+%\usepackage{subcaption}
+%\captionsetup{compatibility=false}
+\usepackage{natbib}
+%\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{soul}
+\usepackage{showlabels}
+
+%Includes "References" in the table of contents
+\usepackage[nottoc]{tocbibind}
+
+\usepackage{bbm}
+\usepackage{amsthm}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{corollary}[theorem]{Corollary}
+%\theoremstyle{definition}
+%\newtheorem{definition}{Definition}[section]
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{braket}
+\usepackage{quantikz}
+\usepackage{graphicx}
+\usepackage{caption}
+\newcommand{\mA}{\mathcal{A}}
+\newcommand{\mB}{\mathcal{B}}
+\newcommand{\nn}{\nonumber}
+\newcommand{\mL}{\mathcal{L}}
+\newcommand{\lb}{\left(}
+\newcommand{\rb}{\right)}
+\newcommand{\mH}{\mathcal{H}}
+\usepackage{subcaption}
+\newcommand{\tOO}{\tilde{\mathcal{O}}}
+\newcommand{\mO}{\mathcal{O}}
+\newcommand{\mK}{\mathcal{K}}
+\newcommand{\ep}{\epsilon}
+\newcommand{\mbR}{\mathbb{R}}
+\newcommand{\mM}{\mathcal{M}}
+\newcommand{\mT}{\mathcal{T}}
+\newcommand{\NL}[1]{\textcolor{blue}{#1}}
+\newcommand{\p}{\partial}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\tT}{\tilde{T}}
+
+\newcommand{\SO}[1]{\textcolor{purple}{#1}}
+%\newcommand{\MM}[1]{\textcolor{red}{#1}}
+\newcommand{\KL}[1]{\textcolor{brown}{#1}}
+\newcommand{\YC}[1]{\textcolor{teal}{#1}}
+
+\begin{document}
+
+% Title
+\title{Modular Scattering Matrix}
+
+\author{Yidong Chen$^1$,}
+\affiliation{$^1$Department of Mathematics, University of Illinois at Urbana-Champaign, Illinois, IL 61801, USA}
+\author{Nima Lashkari$^2$,}
+\author{Kwing Lam Leung$^2$}
+\affiliation{$^2$Department of Physics and Astronomy, Purdue University, West Lafayette, IN 47907, USA}
+\emailAdd{yidongc2@illinois.edu}
+\emailAdd{nima@purdue.edu}
+\emailAdd{leung60@purdue.edu}
+
+% Date
+%\date{\today}
+
+% Abstract
+\abstract{We propose a local definition of scattering matrix constructed out of the reduced state of a ball-shaped region. In the limit of a large region size, it asymptotes to the standard definition, thereby providing an infrared-regulated scattering matrix motivated by local algebras. We prove a chaos bound for this local scattering matrix, and comment on its implications for a local definition of late-time chaos.}
+
+% Keywords (optional but recommended)
+%\pacs{00.00.00, 11.11.11}  % Replace with appropriate PACS codes
+
+\maketitle
+
+% Main text
+
+
+
+
+\section{Introduction}
+
+\NL{Slogan or title for the longer paper: Modular S-matrix is local approximation of global Hamiltonian}
+
+
+
+
+\section{Modular Scattering matrix}
+
+In scattering theory, we start with an interacting Hamiltonian that splits as 
+\begin{eqnarray}
+H=H_0+V
+\end{eqnarray}
+where $H_0$ is some reference (free) Hamiltonian with multi-particle states $\ket{\Phi_\alpha}$ and eigen-energies $E_\alpha$:
+\begin{eqnarray}
+H_0\ket{\Phi_\alpha}=E_\alpha \ket{\Phi_\alpha}\ .
+\end{eqnarray}
+The asymptotic states of the interacting theory are defined as two sets of eigenstates of the interacting Hamiltonian $H$ with the same eigenvalues $E_\alpha$ as those of $H_0$:
+\begin{eqnarray}
+H\ket{\Psi_\alpha^\pm}=E_\alpha \ket{\Psi_\alpha^\pm}
+\end{eqnarray}
+with the property that coarse-grained multi-particle states $\ket{\Phi_\alpha^\pm}$ behave like free multi-particle eigenstates $\ket{\Phi_\alpha}$. To make this coarse-graining rigorous, we consider states of the interacting theory that belong to a microcanonical ensemble of small width $\Delta E$ with a smooth wave-packet $g(\alpha)$ and evolve them for long times $t\gg 1/(\Delta E)$. Then, the requirement is that 
+\begin{eqnarray}
+\|\int e^{-i E_\alpha t}g_\alpha (\ket{\Psi^\pm_\alpha}-\ket{\Phi_\alpha})\|
+\end{eqnarray}
+can be made arbitrarily small for large $t$. The intuition is that while the free multi-particle wave-packet $\ket{\Phi_\alpha}$ can never be an eigenket of the interacting theory, as we separate excitations by a large amount, the interaction falls off so fast that they can be approximated arbitrarily well by suitably coarse-grained eigenkets $\ket{\Psi_\alpha^\pm}$. The asymptotic states can be defined as 
+\begin{eqnarray}
+&&\ket{\Psi_\alpha^\pm}=\Omega(\mp \infty)\ket{\Phi_\alpha}\nn\\
+&&\Omega(t)=e^{i Ht}e^{-i H_0t}\ .
+\end{eqnarray}
+Of course, this is only meaningful after coarse-graining, and not as an exact equality. The S-matrix is defined to be the overlap of the in and out asymptotic states
+\begin{eqnarray}
+\braket{\Phi_\beta|S \Phi_\alpha}&&=\braket{\Psi_\beta^+|\Psi_\alpha^-}=\lim_{t\to \infty}\braket{\Phi_\beta|\Omega(t)^\dagger \Omega(-t)|\Phi_\alpha}\ .
+\end{eqnarray}
+In other words, we have
+\begin{eqnarray}
+S=\lim_{t\to \infty} e^{i H_0t} e^{-2i Ht}e^{i H_0t}\ .
+\end{eqnarray} 
+
+In direct analogy, we define a modular S-matrix for any pair of modular Hamiltonians $K$ and $K_0$ as 
+\begin{eqnarray}
+S=\lim_{t\to \infty} e^{i K_0t} e^{-2i Kt} e^{i K_0t}\ .
+\end{eqnarray}
+There are two obvious choices: 
+\begin{enumerate}
+\item {\bf Two algebras and one state:} For a general pair of algebras $\mA$ and $\mB$ and a single state $\ket{\Omega}$, we define the modular S-matrix as 
+\begin{eqnarray}
+S_{A,B}(z)&&=e^{2\pi i z K_B }e^{-4\pi i z K_A}e^{2\pi i z K_B}\nn\\
+&&=\Delta_B^{-iz}\Delta_A^{2iz}\Delta_B^{-iz}\ .
+\end{eqnarray}
+In the special case, $\mA\subset \mB$ the operator $T(z)$ and admits an analytic in the complex $z$-domain $\Im(z)\in (0,1/2)$: 
+\begin{eqnarray}
+    S_{A\subset B}(z)=T(z)T(-z)^{-1}\ .
+\end{eqnarray}
+% In particular, for imaginary values of $z=i\alpha$, the modular S-matrix is the norm of the characteristic function
+% \begin{eqnarray}
+%     S(i\alpha)=|\Delta^{\alpha}\Delta^{-\alpha}|\ .
+% \end{eqnarray}
+In the remainder of this work, we focus on the case of inclusion, because this analyticity allows us to prove a modular chaos bound \NL{cite Maldacena et al, Simon, Faulkner}. In the special case of a common cyclic and separating vector for the inclusion of algebras, $T(z)$ is a characteristic function which involves more conditions than just analyticity such as unitarity on the other boundary (see appendix \ref{}).
+
+\item {\bf One algebra and two states:} For a pair of states $\psi$ and $\phi$ of the algebra $\mA$ we define
+\begin{eqnarray}
+S_{\psi,\phi}(z)=e^{i z K_\phi} e^{-2i z K_\psi}e^{i z K_\phi}=u_{\psi|\phi}(z)u_{\psi|\phi}(-z)^{-1}
+\end{eqnarray}
+where $u_{\psi|\phi}$ is a cycle which is analytic in the complex $z$-domain $\Im(z)\in (0,1/2)$. In the special case, $\phi$ majorizes $\psi$ we obtain further properties on the boundaries.
+
+\NL{cite de Boer et al.} \NL{Is there a chaos bound here?}
+\end{enumerate}
+
+When the modular S-matrix admits an analytic extension to the complex $z$ strip, for imaginary values $z=i\alpha$, the modular S-matrix is the norm of the characteristic function or the cocycle:
+\begin{eqnarray}
+&&S_{A\subset B}(z)=|T(z)|^2\nn\\
+&&S_{\psi,\phi}(z)=|u_{\psi|\phi}(i\alpha)|^2\ .
+\end{eqnarray}
+
+The modular S-matrix expressions can be viewed as an operator algebraic regulator for modular Hamiltonian. In the previous section, we regulated by the operator using the intuition of Euclidean path-integrals and the geometric action of $P$ and $H$ we introduced the regulator 
+\begin{eqnarray}
+&&\Delta^{1/2+it}\to e^{i \ep Ht} \Delta^{1/2+it}e^{i \ep Ht}\nn\\
+&&\Delta^{1/2+it}\to e^{i \ep Pt}\Delta^{1/2+it} e^{-i \ep Pt}\ .
+\end{eqnarray}
+Our modular $S-matrix$ can be interpreted as a regulator procedure in the absence of operators $P$ and $H$. However, in the absence of Euclidean path-integral picture, it is not apriori clear that the modular S-matrix has discrete spectrum. The assumption of nuclearity is the operator algebraic avatar of our intuition of locality coming from the Euclidean path-integrals. In the case of inclusion of algebras $\mA\subset \mB$, $L^2$-nuclearity posits that for purely the analytic continuation of the modular S-matrix to purely imaginary $z=i\alpha$ is trace-class for all $\alpha\in (0,1/2)$:
+\begin{eqnarray}
+&&\forall \alpha\in (0,1/2):\quad \tr(Z(i\alpha)) <\infty\ .
+\end{eqnarray}
+In analogy with scattering theory, we define the scattering amplitude operator $M$ using
+\begin{eqnarray}
+S=1+i M\ .
+\end{eqnarray}
+Consider a sequence of interpolating algebras $\mA\subset \mA_{n-1}\subset \mA_n\subset \mB$ such that $\lim_{n\to -\infty}\mA_n=\mA$ and $\lim_{n\to \infty}\mA_n=\mB$. Then,  we have
+\begin{eqnarray}
+&&\lim_{n\to \infty} K_{\mA_n}=K_B\nn\\
+&&\lim_{n\to -\infty} K_{\mA_n}=K_A\ .
+\end{eqnarray}
+For the characteristic function we find
+\begin{eqnarray}
+&&T_{A\subset B}=T_{A_n\subset B}T_{A\subset A_n}\nn\\
+&&\lim_{n\to \infty}T_{A_n\subset B}=1\nn\\
+&&\lim_{n\to -\infty}T_{A\subset A_n}=1\ .
+\end{eqnarray}
+Therefore, we can intuit that the relative size of the inclusion $A\subset B$ controls the size of the regulator, and we should keep it small.   
+If the inclusion of algebras has finite index, one can use it as a measure of relative size of an inclusion. In our application to QFT, we will be interested in inclusion of type III$_1$ algebras with infinite index that split. In these cases, we will use the space volume of regions to define a measure of relative size. For instance, in the inclusion of Rindler wedges, we need to take the proper distance between entangling surfaces to be small, whereas for the inclusion of balls, we take the conformal cross ratio as a measure of relative size.
+
+We often refer to the relative size of inclusion as the cut-off parameter $\ep$. We first expand the S-martix in small $\ep$ to obtain non-trivial scattering:
+\begin{eqnarray}
+S(t)=1+\ep i \tilde{M}(t)+O(\ep^2)
+\end{eqnarray}
+Then, take the large $t$ limit. Analyticity of $S(t)$ results in a modular chaos bound 
+\begin{eqnarray}
+\lim_{t\to \infty}\frac{\log |M(t)|}{2\pi}\leq 1\ .
+\end{eqnarray}
+Therefore, we will have to work in the approximation $\ep\ll 1$ and $1\gg 1$ but $\ep e^{2\pi t}\ll 1$. In the standard chaos bound of \cite{}, the gravitational constant $G_N$ or $\hbar$ plays the role of $\ep$, and the interpretation is that we are quantizing a classical theory corresponding to $G_N=0$ and $\hbar=0$. In contrast, our definition of chaos is genuinely quantum, and there is no clear classical limit.\NL{make a milder statement}
+
+
+\section{Comparison with regular scattering matrix}
+
+
+
+
+\subsection{Optical theorem}
+
+Unitarity of $S$ implies the optical theorem 
+\begin{eqnarray}
+i (M^\dagger- M)=M^\dagger M\ .
+\end{eqnarray}
+
+
+\subsection{Dispersion relations}
+
+The dispersion relations follow from the Titchmarsh theorem; see Appendix \ref{app:titchmarsh}. 
+
+\subsection{Regge limit in Scattering}
+In defining the scattering amplitude, we take the $z\to \infty$ limit so that $\mathcal{M}$ is only a function of the kinematics of the incoming and outgoing asymptotic states. In particular, for $2\to 2$ scattering it is a function of Mandelstam variables $s$ and $t$\footnote{We warn the readers not to confuse $t$ with time $\Re(z)$ in our modular scattering matrix.}. 
+
+In $2\to 2$ scattering of same particles with incoming momenta $p,k$ and outgoing momenta $p',k'$ the Mandelstam variables are $s=-(p+k)^2$ and $t=-(k'-k)^2$. In the center of mass coordinates $\vec{p}=-\vec{k}$, $s=4(m^2+\vec{p}^2)$ has the interpretation of the center of mass energy squared and positive and $t=-2\vec{p}^2(1-\cos\theta)\leq 0$ has the interpretation of the momentum transfer squared and neagtive \footnote{Note that we are using the  metric signature $(-,+,\cdots , +)$. For the mostly negative signature, often we defines $s=(p+k)^2$ and $t=(k'-k)$ so that in the physical regime $s>0$ and $t<0$.}. Similarly, we have the variable $u=-(p'-k)^2$ which in the center of mass frame is $u=-2\vec{p}^2(1+\cos\theta)<0$. At very high energies $|s|\gg 1$ we can ignore the masses and obtain relations
+\begin{eqnarray}
+    t\simeq -s \sin^2(\theta/2), \qquad u\simeq -s \cos^2(\theta/2)\ .
+\end{eqnarray}
+The forward scattering limit is the limit of $\theta\simeq 0$. The analyticity often discussed in dispersion relations is in the ``forward scattering limit" of large $s$ and fixed $t$. The assumption is that the scattering amplitude is analytic in the upper half-plane of $s$ and we can write $\mathcal{M}_{phys}(s,t)=\lim_{\ep\to 0}\mathcal{M}(s+i\ep, t)$. Here, the idea can be summarized as follows: the physical scattering amplitude is the boundary value of an analytic function.
+
+
+
+In the Regge limit $s\to \infty$ and $t$ fixed, the scattering amplitude is expected to behave as 
+\begin{eqnarray}
+    \mM(s,t)\sim s^{\alpha(t)}
+\end{eqnarray}
+where $\alpha(t)$ are called Regge trajectories.
+In Regge theory, one views the $2\to 2$ scattering matrix as a function of energy ($E\sim \sqrt{s}$) and scattering angle $\theta$ expanded in angular momentum basis
+\begin{eqnarray}
+    \mM(E,x=\cos\theta)=\sum_{l=0}^\infty(2l+1)P_l(x)\mM_l(E) 
+\end{eqnarray}
+where $P_l(x)$ are Legendre polynomials. 
+Regge's insight was to study $\mM_l(E)$ in terms of a continuous and complex variable angular momentum variable $l$. He established that the scattering amplitude is analytic in the complex $z$ plane, except for potential cuts aong the real axis.
+
+
+\subsection{Conformal Regge limit}
+
+{\bf Inclusion of algebras:} Another Regge limit discussed in the literature is the Regge limit defined in \cite{chandrasekaran2022scattering} (see eq 1.11, 6.11 and 6.12). The correlator of interest is \footnote{Note the definition above differ from the notation of \cite{chandrasekaran2022scattering} by $z\to z/(2\pi)$.}
+\begin{eqnarray}
+    \mathcal{F}(t_L,t_R,z)&&=\braket{\mO_L(t_L)|\Delta_{LI}^{-iz}\Delta_L^{iz}|\mO_R(t_R)}
+\end{eqnarray}
+where $\mO_L\in \mA_L$ and $\mO_R\in \mA_{L'}=\mA_R$, and the operators are evolved with modular flows
+\begin{eqnarray}
+    &&\mO_L(2\pi t)\equiv \rho_L^{it}\mO_L \rho_L^{-it}=\Delta_L^{it}\mO_L \Delta_L^{-it}\nn\\
+    &&\mO_R(2\pi t)\equiv \rho_R^{it}\mO_R \rho_R^{-it}=\Delta_L^{-it}\mO_R \Delta_L^{it}\ .
+\end{eqnarray}
+In this geometric setup, $L$ and $I$ are disjoint, and we have the causal complements $L'=R$ and $(LI)'=r$. Since $\Delta_A^{iz}=\Delta_{A'}^{-iz}$ we can rewrite the measure $(\ref{})$ in terms of the inclusion $r\subset R=r I$, where now, the relative commutant is $I$; i.e. $R=r I$, but there is no split between $r$ and $I$:
+\begin{eqnarray}
+    \mathcal{F}(2\pi t_L,2\pi t_R,z)&&=\braket{\mO_L| \Delta_L^{-i t_L}\Delta_{LI}^{-iz}\Delta_L^{i(z-t_R)}|\mO_R}\nn\\
+    &&=\braket{\mO_L|\Delta_R^{it_L}\Delta_r^{iz}\Delta_R^{-i(z-t_R)}|\mO_R}\nn\\
+    &&=\braket{\mO_L|\Delta_R^{i(t_L+z/2)} S(-z/2)\Delta_R^{-i(z/2-t_R)}|\mO_R}
+\end{eqnarray}
+where $T_{r\subset R}(z)$ and $S_{r\subset R}(z)$ are the characteristic function and modular scattering matrix of the inclusion $r\subset R$, respectively:
+\begin{eqnarray}
+    &&T_{r\subset R}(z)=\Delta_R^{iz}\Delta_r^{-iz}\nn\\
+    &&S_{r\subset R}(z)=T(z)T(-z)^{-1}\ .
+\end{eqnarray}
+ The authors in \cite{chandrasekaran2022scattering} call the limit of large $t_L-t_R$ the Regge limit. We consider two particular limits of the above expression:
+\begin{eqnarray}\label{cases}
+    &&\mathcal{F}(t-z/2,-t+z/2,z)=\braket{\mO_L|\Delta_R^{it}S(-z/2)\Delta_R^{-it}|\mO_R}=\braket{\mO_L(t)|S(-z/2)|\mO_R(-t)}\nn\\
+    &&\mathcal{F}(t,z-t,z)=\braket{\mO_L|\Delta_R^{it}\Delta_r^{iz}\Delta_R^{-it}|\mO_R}=\braket{\mO_L(t)|\Delta_r^{iz}|\mO_R(-t)}\ .
+\end{eqnarray}
+The first case computes various matrix elements of the modular scattering matrix, whereas the second case computes matrix elements of the modular flow $\Delta_r^{iz}$. This is simply a consequence of 
+\begin{eqnarray}
+    S(-z/2)=\Delta^{-iz/2}_R \Delta_r^{iz}\Delta_R^{-iz/2}
+\end{eqnarray}
+which can be interpreted as looking at matrix elements of $\Delta_r^{iz}$ in a basis where we are evolving both times $t_L$ and $t_R$ upwards, stretching the wormhole! Note that in both cases in (\ref{cases}) $t_L-t_R=2t-z$ and the Regge limit is the large $t$ for fixed $z$. \NL{Maybe this can be interpreted as exploring the action of $S(-z/2)$ and $\Delta_r^{iz}$ from the point of view of operators that are boosted to the area near the entangling surface of $R$. See figure 2 in \cite{chandrasekaran2022scattering}.}
+
+
+
+% In other words, this correlator can be written as 
+% \begin{eqnarray}
+%     \mathcal{F}(t_L, t_R, z)&&=\braket{\mO_L| \Delta_L^{-i t_L}\Delta_{LI}^{-iz}\Delta_L^{i(z+t_R)}|\mO_R}\nn\\
+%     &&=\braket{\mO_L|\Delta_L^{-i(z+t_L/\pi)/2}T(z/2)^{-1}T(-z/2)\Delta_L^{i(z-t_R/\pi)/2}|\mO_R}
+% \end{eqnarray}\ .
+
+
+
+
+
+we consider a one-parameter family of (inner or outer) automorphisms of the smaller algebra $\alpha_t:\mA\to \mA$ realized as $U(t)$ and consider 
+\begin{eqnarray}
+    U(t)^\dagger T_{A\subset B}(z)U(t)\ .
+\end{eqnarray}
+The Regge limit is defined to be the limit where the relative size of the inclusion $s\ll 1$ and $t$ is large such that $s e^{2\pi t}\ll 1$. 
+
+Two such cases of such Regge limits are discussed in the literature:
+In \cite{chandrasekaran2022scattering} (see eq 1.11, 6.11 and 6.12), the authors consider the case where $U(t)=\Delta_A^{it}$ and $\mB=\mA \otimes \mA_I$. This is a standard split inclusion, and we can take the size of the relative commutant $|I|$ to be small.
+
+In this case, what we obtain is
+\begin{eqnarray}
+ U(t)^\dagger T_{A\subset B}(z)U(t)=\Delta_A^{-it}\Delta_B^{iz}\Delta_A^{-iz}\Delta_A^{it}\ .
+\end{eqnarray}
+Equation 6.12 of \cite{chandrasekaran2022scattering} establishes that this correlator can be viewed as a regulator 
+
+
+
+
+
+\begin{eqnarray}
+\braket{\Phi_L(0)| T_{A\subset B}(z)|\Phi_R(T)}
+\end{eqnarray}
+where the relative size of the inclusion is small $s\ll 1$, and we look at large $T\gg 1$ such that $s e^{2\pi T}\ll 1$. 
+
+
+
+{\bf Inclusion of algebras (standard splits):} Consider the inclusion of algebras $\mA\subset \mB$ that is standard; the relative commutant $\mB\cap \mA'$ is cyclic. Then, we can consider the inclusion $\mA\in \mA\otimes \mB'$ that is a standard split. We consider the characteristic function 
+\begin{eqnarray}
+    T_{A\subset A\otimes B'}(z)=\Delta_{A\otimes B'}^{iz}\Delta_A^{-iz}\ .
+\end{eqnarray}
+The relative size of the inclusion is $|B'|$. The Regge limit is defined to be the limit where $|B'|\ll 1$, and $z\gg 1$ such that $|B'| e^{2\pi z}\ll 1$.
+
+
+
+
+
+To see the physics of this limit, consider the 
+
+
+
+\subsection{Modular asymptotic states}
+
+The S-matrix 
+
+
+
+\section{Modular chaos bound}
+
+We consider the modular chaos bound condition studied in \cite{}. We define
+\begin{eqnarray}
+    f_\mO(u)&&=\frac{\bra{\mO}\Delta_A^{1/2+iu}\Delta_B^{-iu}\ket{\mO}}{\sqrt{\braket{a|\Delta_A^{1/2}a}\braket{b|\Delta_B^{1/2}b}}}\\
+    &&=\frac{\bra{\Delta_A^{1/4}\mO} T_{B\subset A}(-i/4+u)\ket{\Delta_B^{1/4} \mO}}{\sqrt{\braket{\mO|\Delta_A^{1/2}\mO}\braket{\mO|\Delta_B^{1/2}\mO}}}\nn\\
+    &&=1+i \mathcal{M}_{\mO}(u)
+\end{eqnarray}
+First, we find that 
+\begin{eqnarray}
+    1-\Im(\mathcal{M}_\mO(u))=\Re(f_\mO(u))\leq |f_\mO(u)|\leq 1
+\end{eqnarray}
+which implies that 
+\begin{eqnarray}
+    \Im\mathcal{M}_\mO(u)\geq 0\ .
+\end{eqnarray}
+Using the change of variables $E=ie^{-2\pi u}$ sends the function above to the upper half-plane. Therefore, we can view $\mM(E)$ as an analytic map from the upper half-plane $H$ to itself. Then, writing $E=v+iw$ the Schwarz-Pick lemma becomes
+\begin{eqnarray}
+    \frac{|w \p_w \mM(v+iw)|}{\Im \mM(v+iw)}\leq 1\ . 
+\end{eqnarray}
+Since we have $|\p_w \Im\mM(v+i\omega)|\leq |\p_w \mM(v+i\omega)|$ we find
+\begin{eqnarray}
+    |w\p_w \log \Im \mM(v+iw)| \stackrel{(1)}{\leq} \frac{|w \p_w \mM(v+iw)|}{\Im \mM(v+iw)} \stackrel{(2)}{\leq} 1\ .
+\end{eqnarray}
+This is the modular chaos bound. To saturate this bound, first we need to take the equality condition $(2)$ in the lemma above, which fixes $\mM(E)=\frac{a E+b}{c E+d}$ to be a $PSL(2,\mathbb{R})$ transformation. Next, we require the saturation of the first inequality $(1)$
+\begin{eqnarray}
+    \forall v+iw\in H:\qquad \p_w \Re \mM(v+iw)=0\ .
+\end{eqnarray}
+This is satisfied if and only if $c=0$, i.e.
+\begin{eqnarray}
+    \mM(E)=\frac{a E+b}{d}\ .
+\end{eqnarray}
+\KL{*****} However, this inequality is not tight, i.e. $|w\p_w \log \Im \mM(v+iw)| < 1$. It is like a supremum rather than a maximum.
+\begin{lemma}
+    Consider a function $\mM(E)$ that is analytic in the upper half-plane ($\Im E > 0$). If it can be written as $f(E) = 1+i\mM(E)$ for some function $f(E)$ that is bounded by 1 in the upper half-plane, then the modular chaos bound cannot be saturated. In other words,
+    \begin{align}
+        |w\p_w \log \Im \mM(v+iw)| < 1.
+    \end{align}
+\end{lemma}
+We can write $\mM = -i(f-1)$. The image of $\mM$ is within the unit disk centered at $i$ in $\mathbb{C}$. Inequality $(2)$ is saturated if and only if the function is a M\"obius transformation with real coefficients. These M\"obius transformations are bijetive functions mapping from the upper half-plane to itself. The image of $\mM$ is by definition a strict subset of the upper half-plane, whereas the domain is the entire upper half-plane. The inequality can never exactly saturate. Instead, we can look for an asymptotic saturation under suitable limits. The modular chaos bound is proposed as the following\cite{}. Consider $\mM = i\varepsilon p e^{\lambda u} + O(\varepsilon^2)$ for some small $\varepsilon \ll 1$, $\varepsilon e^{\lambda u} \ll 1$, and $p>0$. The above inequality gives $\lambda \leq 2\pi$. This is the modular chaos bound. This chaos bound is only meaningful in a proper range of time scales. 
+
+We now consider a $0+1$d GFF example.
+
+\KL{======== 0+1d GFF ==================================}
+\subsection{$0+1$D GFF Example}
+\KL{=====================1. Checking $\Delta_1^{1/4}\Delta_2^{-is}\Delta_1^{-1/4} = e^{-2\pi s L_0}$ ===============}\\
+We consider the following $0+1$D generalized free field theory on $\mathbb{R}$. There is a point-like primary field $\phi(t)$ with conformal dimension $h \geq 1$. The state $\omega$ is the vacuum state such that
+\begin{align}
+    \omega(\phi(t)\phi(t')) = \frac{e^{-i\pi h}}{2\pi(t-t'-i\epsilon)^{2h}}.
+\end{align}
+In the GNS construction, there is a cyclic and separating vector $\ket{\Omega}$ corresponding to the state. In terms of the mode expansion, we have
+\begin{gather}
+    \phi(t) = C\int_0^\infty \omega^{h-1/2} (e^{-i\omega t}a_\omega + e^{i\omega t}a_\omega^\dagger) d\omega,\\
+    [a_\omega^\dagger,a_{\omega'}] = \delta(\omega-\omega'),\\
+    a_\omega\ket{\Omega} = 0,
+\end{gather}
+where $C$ is a normalization factor. This factor is not important to the illustration, so we will drop it unless it is needed. It was studied in \cite{} that there is a time-interval algebra associated to any interval $I \subset \mathbb{R}$. And they computed and studied the modular flow of such algebra. For $h=1$, this algebra (and the state) is the same as the $U(1)$-current algebra. One can compactify the real line into a circle so that we have a conformal net on the circle through a conformal transformation. The net is (global) M\"obius covariant. By picking $I_1$, $I_2$ be the upper-half circle and right-half circle respectively, it is known that
+\begin{align}
+    \Delta_1^{1/4}\Delta_2^{-is}\Delta_1^{-1/4} = e^{-2\pi s L_0},
+\end{align}
+where $L_0$ is the generator of the rotation of the circle. The above argument cannot be directly applied to general $h\notin\mathbb{Z}_{\geq 1}$. For non-integer $h$, the real line cannot be compactified into a circle. The net is not M\"obius covariant. Instead, the previous conformal transformation will map the real line to the subset $(-\pi,\pi)$ of the universal cover of the circle, which is another real line. The action of the modular flow is in general non-local as well. It is interesting to understand how $\Delta_1^{1/4}\Delta_2^{is}\Delta_1^{-1/4}$ behaves in this setup.
+
+We consider the matrix element $\braket{\phi(x)\Delta_1^{it}\Delta_2^{-is}\Delta_1^{-it}\phi(y)}$
+\begin{align}
+    \braket{\phi(x)\Delta_1^{it}\Delta_2^{-is}\Delta_1^{-it}\phi(y)} &= \braket{\phi(x)\Delta_1^{it}\Delta_2^{-is}\Delta_1^{-it}\phi(y)\Delta_1^{-it}\Delta_2^{is}\Delta_1^{it}},\\
+    &= \braket{\phi(x) \sigma_1^{-t} \circ \sigma_2^s\circ\sigma_1^t(\phi(y)},
+\end{align}
+where $I_1 = (0,\infty)$ and $I_2 = (-1,1)$. The action of $\sigma_1^s$ and $\sigma_2^s$ are as follow:
+\begin{gather}
+    \sigma_1^s(\phi_\pm(x_0)) = e^{2\pi sh} \phi_\pm(e^{2\pi s}x_0), \\
+    \sigma_2^s(\phi_\pm(x_0\mp i\epsilon)) = \left[\sinh(\pi s)(x_0\mp i\epsilon)+\cosh(\pi s)\right]^{-2h} \phi_\pm\left(\frac{\cosh(\pi s)(x_0\mp i\epsilon)+\sinh(\pi s)}{\sinh(\pi s) (x_0\mp i\epsilon) + \cosh(\pi s)}\right),    
+\end{gather}
+with 
+\begin{align}
+    \phi_+(t) &= C\int_0^\infty \omega^{h-1/2} e^{-i\omega t}a_\omega  d\omega,\\
+    \phi_-(t) &= C\int_0^\infty \omega^{h-1/2} e^{i\omega t}a_\omega^\dagger d\omega.
+\end{align}
+With these expressions, we can evaluate 
+\begin{gather}
+    \braket{\phi(x)\Delta_1^{it}\Delta_2^{-is}\Delta_1^{-it}\phi(y)} = \left[\sinh(\pi s)e^{2\pi t}(y\mp i\epsilon)+\cosh(\pi s)\right]^{-2h} \frac{e^{-i\pi h}}{2\pi(x-y_{s,t}-i\epsilon)^{2h}},\\
+    y_{s,t} = \frac{\cosh(\pi s)y+e^{-2\pi t}\sinh(\pi s)}{\sinh(\pi s) e^{2\pi t}y + \cosh(\pi s)}.
+\end{gather}
+Considering the analytic continuation with $t\to -i/4$, $s\to is$ for a some range of $s$, we have
+\begin{gather}
+    \braket{\phi(x)\Delta_1^{1/4}\Delta_2^{s}\Delta_1^{-1/4}\phi(y)} = \left[\sin(\pi s)(y\mp i\epsilon)+\cos(\pi s)\right]^{-2h} \frac{e^{-i\pi h}}{2\pi(x-y_{is,-i/4}-i\epsilon)^{2h}},\\
+    y_{is,-i/4} = \frac{\cos(\pi s) y-\sin(\pi s)}{\sin(\pi s)y + \cos(\pi s)}.
+\end{gather}
+Thus,
+\begin{gather}
+    \braket{\phi(x)\Delta_1^{1/4}\Delta_2^{s}\Delta_1^{-1/4}\phi(y)} = \braket{\phi(x) \alpha^s(\phi(y))},
+\end{gather}
+where $\alpha^s$ is the $PSL(2,\mathbb{R)}$ transformation corresponds to  
+\begin{align}
+\begin{pmatrix}
+    \cos(\pi s) &-\sin(\pi s) \\
+    \sin(\pi s) & \cos(\pi s)
+\end{pmatrix} \in PSL(2,\mathbb{R)}.
+\end{align}
+It is the time evolution on the decompactified circle. The analytic continuation is valid for $Im(s) \in(-1,1)$. We can therefore write $\Delta_1^{1/4}\Delta_2^{-is}\Delta_1^{-1/4} = e^{-2\pi s \tilde{L}_0}$, with $\tilde{L}_0$ the generator of the global time evolution on the decompactified circle.
+
+\KL{=======================2. The Modular Chaos bound in GFF ============}\\
+\KL{Not typed yet.}
+
+
+
+
+2) mention characteristic function as a regulator, connection to the double cone, and modular quasi-normal modes
+
+Nuclearity cuts off the effective size of the Hilbert space the local algebra can access. This allows for the definition of Ruelle resonances where we do either $e^{-\epsilon P} \Delta e^{\epsilon P}$ or equivalently $K+i \epsilon H$.
+
+Fully non-perturbatively, we can study our characteristic function using the analytic function $\Im(u)\in (-1/2,0)$
+\begin{eqnarray}
+    f_\mO(u)&&=\frac{\bra{\mO}\Delta_A^{1/2+iu}\Delta_B^{-iu}\ket{\mO}}{\sqrt{\braket{a|\Delta_A^{1/2}a}\braket{b|\Delta_B^{1/2}b}}}\\
+    &&=\frac{\bra{\Delta_A^{1/4}\mO} T_{B\subset A}(-i/4+u)\ket{\Delta_B^{1/4} \mO}}{\sqrt{\braket{\mO|\Delta_A^{1/2}\mO}\braket{\mO|\Delta_B^{1/2}\mO}}}\nn\\
+    &&=1+i \mathcal{M}_{\mO}(u)
+\end{eqnarray}
+First, we find that 
+\begin{eqnarray}
+    1-\Im(\mathcal{M}_\mO(u))=\Re(f_\mO(u))\leq |f_\mO(u)|\leq 1
+\end{eqnarray}
+which implies that 
+\begin{eqnarray}
+    \Im\mathcal{M}_\mO(u)\geq 0\ .
+\end{eqnarray}
+Using the change of variables $E=ie^{-2\pi u}$ sends the function above to the upper half-plane. Therefore, we can view $\mM(E)$ as an analytic map from the upper half-plane $H$ to itself. Then, writing $E=v+iw$ the Schwarz-Pick lemma becomes
+\begin{eqnarray}
+    \frac{|w \p_w \mM(v+iw)|}{\Im \mM(v+iw)}\leq 1\ . 
+\end{eqnarray}
+Since we have $|\p_w \Im\mM(v+i\omega)|\leq |\p_w \mM(v+i\omega)|$ we find
+\begin{eqnarray}
+    |w\p_w \log \Im \mM(v+iw)|\leq 1\ .
+\end{eqnarray}
+This is the modular chaos bound. To saturate this bound, first we need to take the equality condition in the lemma above, which fixes $\mM(E)=\frac{a E+b}{c E+d}$ to be a $PSL(2,\mathbb{R})$ transformation. Next, we need to require that 
+\begin{eqnarray}
+    \forall v+iw\in H:\qquad \p_w \Re \mM(v+iw)=0\ .
+\end{eqnarray}
+This is satisfied if and only if 
+\begin{eqnarray}
+    \mM(E)=\frac{a E+b}{d}\ .
+\end{eqnarray}
+
+In a CFT, we can compute the correlator above for the inclusion of balls $B(t+s)\subset B(t)$ and a conformal primary $\mO$. Then,
+\begin{eqnarray}
+    f_\mO(u)=\frac{\bra{\Delta_{B(t)}^{1/4}\mO} T_{t,s}(-i/4+u)\ket{\Delta_{B(t+s)}^{1/4} \mO}}{\sqrt{\braket{\mO|\Delta_{B(t)}^{1/2}\mO}\braket{\mO|\Delta_{B(t+s)}^{1/2}\mO}}}
+\end{eqnarray}
+
+
+it is expected that the expectation value of this Hamiltonian in all true global eigenstates remains bounded, which translates to the statement that there exists no vector $\ket{\Psi}\in \mathcal{H}$ such that 
+\begin{eqnarray}
+    T_{t,s}(z)\ket{\Psi}=0\ .
+\end{eqnarray}
+
+
+Work out the example of $U_A U_B'\ket{\Omega}$ and view the relative modular operators as perturbations of the state. The spectrum of the Hamiltonian is unchanged, and the eigenvectors are little changed at very high energies because $U_AU_{B'}$ have no energy.
+
+Work out the case of Generalized Free Fields
+
+%\section{Characteristic function as a regulator, double cone, and Modular quasi-normal modes}
+
+
+
+
+% \section{1D Lattice examples}
+
+
+% Consider the one-dimensional quantum XY-model with the Hamiltonian
+% \begin{eqnarray}
+%     H--\frac{1}{2}\sum_i\lb \frac{1+\gamma}{2}X_i X_{i+1}+\frac{1-\gamma}{2}Y_i Y_{i+1}+\lambda Z_i\rb\ .
+% \end{eqnarray}
+% The cases $\gamma=0$ and $\gamma=1$ are called the XX model and the Ising model, respectively. This model can be solved using the Jordan-Wigner transform 
+% that sends it to a second-order action in fermionic modes.
+
+% We start with the case $\lambda=1$, the transverse Ising model. For $\lambda<1$ the system is in the disordered phase, and for $\lambda>1$ it is ordered. We define $k=\min(\lambda,\lambda^{-1})$ and $k'=\sqrt{1-k^2}$.
+
+% The modular Hamiltonian of a half-line  $W_0=\{i| i\geq 0\}$ can be written explicitly as
+% \begin{eqnarray}
+% &&\lambda<1:\quad \hat{K}_{W(0)}=-2I(k')\sum_{j=0}^\infty \lb j X_jX_{j+1}+k (j-1/2) Z_j\rb\nn\\
+% &&\lambda>1:\quad \hat{K}_{W(0)}=-2I(k')\sum_{j=0}^\infty \lb k j X_jX_{j+1}+ (j-1/2) Z_j\rb\nn
+% \end{eqnarray}
+% where $I(k')$ is a complete elliptic integral of the first kind. We would like to compute the characteristic function $\Delta_B^{1/4}\Delta_A^{-1/4}$ for half-spaces $A=W(a>0)\subset W(0)=B$. We can avoid the calculation of the full modular operator, by thinking in terms of the characteristic function as the following super-operator acting on the operators in the algebra:
+% \begin{eqnarray}
+% &&\Delta_B^{1/4}\Delta_A^{-1/4}a\ket{\Omega}=\mathcal{D}_{i/4}(a)\ket{\Omega}\nn\\
+% &&\mathcal{D}_{i/4}(a)=e^{K_B/4}e^{-K_A/4} a e^{K_A/4}e^{-K_B/4}\ .
+% \end{eqnarray}
+% Define the operator $\tilde{K}=K/(2I(k'))$, then for $\lambda<1$ we have
+% \begin{eqnarray}
+% &&[\tilde{K},X_l]=-k(l-1/2)i Y_l\nn\\
+% &&[\tilde{K},Z_l]=i (l Y_lX_{l+1}+(l-1)X_{l-1}Y_l)\nn\\
+% &&[\tilde{K},Y_l]=-\ .
+% \end{eqnarray}
+% Use Jordan-Wigner transform to write it in terms of the fermions
+
+%Similarly, the modular Hamiltonians of the commutants are
+%\begin{eqnarray}
+%&&\lambda<1:\quad \hat{K}_{W'(0)}=2I(k')\sum_{j=0}^{-\infty} \lb j X_jX_{j-1}+k (j+1/2) Z_j\rb\nn\\
+%&&\lambda>1:\quad \hat{K}_{W'(0)}=2I(k')\sum_{j=0}^{-\infty} \lb k j X_jX_{j-1}+ (j+1/2) Z_j\rb\nn\ .
+%\end{eqnarray}
+%
+%
+% We first write down the full modular Hamiltonians for $\lambda<1$ 
+%\begin{eqnarray}
+%K_{W(0)}&&=\hat{K}_{W(0)}-\hat{K}_{W'(0)}=\nn\\
+%&&=-2I(k')\sum_{j=\infty}^\infty \lb j X_jX_{j+\text{sgn}(j)}+k (j-\text{sgn}(j))/2) Z_j\rb\nn
+%\end{eqnarray}
+%and for $\lambda>1$ 
+%\begin{eqnarray}
+%K_{W(0)}&&=\hat{K}_{W(0)}-\hat{K}_{W'(0)}=\nn\\
+%&&=-2I(k')\sum_{j=\infty}^\infty \lb k j X_jX_{j+\text{sgn}(j)}+ (j-\text{sgn}(j))/2) Z_j\rb\nn
+%\end{eqnarray}
+% 
+%\NL{Finish the calculation; how about the XY-model?}
+
+% As the second example, consider a 1d harmonic chain
+% \begin{eqnarray}
+% H=\sum_i \lb \frac{1}{2m}p_i^2+\frac{m\omega^2}{2}q_i^2+\frac{\kappa}{2}(q_i-q_{i+1})^2\rb
+% \end{eqnarray}
+% It is a discretization of massive scalar field in 1 dimensions. The modular Hamiltonian of a subregion $A$ of $L$ sites is
+% \begin{eqnarray}
+% &&\hat{K}_A=\frac{1}{2}\vec{r}^T\cdot {\bf K}_A \cdot \vec{r},\qquad \vec{r}=\begin{pmatrix}&\vec{q}\\& \vec{p}\end{pmatrix}
+% \end{eqnarray}
+% The matrix ${\bf K}_A$ is real, symmetric, and positive definite so that $\hat{K}_A$ is hermitian. Consider the two-point functions $Q_{ij}=\braket{q_i q_j}$ and $P_{ij}=\braket{p_i p_j}$. Since ${\bf Q}$ and ${\bf P}$ are symmetric we define ${\bf C}_A=\sqrt{{\bf Q}_A{\bf P}_A}$ and have $\sqrt{{\bf Q}_A{\bf P}_A}^T=\sqrt{{\bf P}_A{\bf Q}_A}$. Then,
+% \begin{eqnarray}
+% &&\hat{K}_A=({\bf P}_A\oplus {\bf Q}_A)\lb h({\bf C}_A)\oplus h({\bf C}^T_A)\rb\nn\\
+% &&h(y)=\frac{1}{y}\log\lb \frac{y+1/2}{y-1/2}\rb
+% \end{eqnarray}
+% Therefore, we can split $\hat{K}_A$ into two terms
+% \begin{eqnarray}
+% &&{\bf K}_A=\hat{K}^{(M)}_A+\hat{K}^{(N)}_A\nn\\
+% &&{\bf K}^{(M)}_A=L\sum_{ij}\frac{M_{ij}}{L}q_i q_j,\qquad {\bf K}_A^{(N)}=L\sum_{ij}\frac{N_{ij}}{L}\pi_i \pi_j,
+% \end{eqnarray}
+% where we have multiplied and dividing by a factor of $L$ to compare to the continuum limit. Note that in the continuum limit which motivates the existence of the following limits
+% \begin{eqnarray}
+% &&\mu_k(x_k)=\lim_{L\to \infty}\frac{M_{i,i+k}}{L},\qquad \nu_k(x_k)=\lim_{L\to \infty}\frac{N_{i,i+k}}{L}\nn\\
+% &&x_k=\frac{1}{L}\lb i+k/2\rb\ .
+% \end{eqnarray}
+
+% The calculation of full modular Hamiltonian is somewhat 
+
+% Take the transverse Ising model and compute the characteristic functions for half-space inclusions.
+
+% Take massless free bosons and fermions and compute the characteristic function for an interval
+
+
+
+\NL{Kubo-Ando mean for inclusions in QFT Rindler wedges, and }
+
+\NL{Zeros of characteristic function, and a chaos bound}
+
+%\section{Characteristic function as a regulator, double cone, and Modular quasi-normal modes}
+
+
+
+
+% \section{1D Lattice examples}
+
+
+% Consider the one-dimensional quantum XY-model with the Hamiltonian
+% \begin{eqnarray}
+%     H--\frac{1}{2}\sum_i\lb \frac{1+\gamma}{2}X_i X_{i+1}+\frac{1-\gamma}{2}Y_i Y_{i+1}+\lambda Z_i\rb\ .
+% \end{eqnarray}
+% The cases $\gamma=0$ and $\gamma=1$ are called the XX model and the Ising model, respectively. This model can be solved using the Jordan-Wigner transform 
+% that sends it to a second-order action in fermionic modes.
+
+% We start with the case $\lambda=1$, the transverse Ising model. For $\lambda<1$ the system is in the disordered phase, and for $\lambda>1$ it is ordered. We define $k=\min(\lambda,\lambda^{-1})$ and $k'=\sqrt{1-k^2}$.
+
+% The modular Hamiltonian of a half-line  $W_0=\{i| i\geq 0\}$ can be written explicitly as
+% \begin{eqnarray}
+% &&\lambda<1:\quad \hat{K}_{W(0)}=-2I(k')\sum_{j=0}^\infty \lb j X_jX_{j+1}+k (j-1/2) Z_j\rb\nn\\
+% &&\lambda>1:\quad \hat{K}_{W(0)}=-2I(k')\sum_{j=0}^\infty \lb k j X_jX_{j+1}+ (j-1/2) Z_j\rb\nn
+% \end{eqnarray}
+% where $I(k')$ is a complete elliptic integral of the first kind. We would like to compute the characteristic function $\Delta_B^{1/4}\Delta_A^{-1/4}$ for half-spaces $A=W(a>0)\subset W(0)=B$. We can avoid the calculation of the full modular operator, by thinking in terms of the characteristic function as the following super-operator acting on the operators in the algebra:
+% \begin{eqnarray}
+% &&\Delta_B^{1/4}\Delta_A^{-1/4}a\ket{\Omega}=\mathcal{D}_{i/4}(a)\ket{\Omega}\nn\\
+% &&\mathcal{D}_{i/4}(a)=e^{K_B/4}e^{-K_A/4} a e^{K_A/4}e^{-K_B/4}\ .
+% \end{eqnarray}
+% Define the operator $\tilde{K}=K/(2I(k'))$, then for $\lambda<1$ we have
+% \begin{eqnarray}
+% &&[\tilde{K},X_l]=-k(l-1/2)i Y_l\nn\\
+% &&[\tilde{K},Z_l]=i (l Y_lX_{l+1}+(l-1)X_{l-1}Y_l)\nn\\
+% &&[\tilde{K},Y_l]=-\ .
+% \end{eqnarray}
+% Use Jordan-Wigner transform to write it in terms of the fermions
+
+%Similarly, the modular Hamiltonians of the commutants are
+%\begin{eqnarray}
+%&&\lambda<1:\quad \hat{K}_{W'(0)}=2I(k')\sum_{j=0}^{-\infty} \lb j X_jX_{j-1}+k (j+1/2) Z_j\rb\nn\\
+%&&\lambda>1:\quad \hat{K}_{W'(0)}=2I(k')\sum_{j=0}^{-\infty} \lb k j X_jX_{j-1}+ (j+1/2) Z_j\rb\nn\ .
+%\end{eqnarray}
+%
+%
+% We first write down the full modular Hamiltonians for $\lambda<1$ 
+%\begin{eqnarray}
+%K_{W(0)}&&=\hat{K}_{W(0)}-\hat{K}_{W'(0)}=\nn\\
+%&&=-2I(k')\sum_{j=\infty}^\infty \lb j X_jX_{j+\text{sgn}(j)}+k (j-\text{sgn}(j))/2) Z_j\rb\nn
+%\end{eqnarray}
+%and for $\lambda>1$ 
+%\begin{eqnarray}
+%K_{W(0)}&&=\hat{K}_{W(0)}-\hat{K}_{W'(0)}=\nn\\
+%&&=-2I(k')\sum_{j=\infty}^\infty \lb k j X_jX_{j+\text{sgn}(j)}+ (j-\text{sgn}(j))/2) Z_j\rb\nn
+%\end{eqnarray}
+% 
+%\NL{Finish the calculation; how about the XY-model?}
+
+% As the second example, consider a 1d harmonic chain
+% \begin{eqnarray}
+% H=\sum_i \lb \frac{1}{2m}p_i^2+\frac{m\omega^2}{2}q_i^2+\frac{\kappa}{2}(q_i-q_{i+1})^2\rb
+% \end{eqnarray}
+% It is a discretization of massive scalar field in 1 dimensions. The modular Hamiltonian of a subregion $A$ of $L$ sites is
+% \begin{eqnarray}
+% &&\hat{K}_A=\frac{1}{2}\vec{r}^T\cdot {\bf K}_A \cdot \vec{r},\qquad \vec{r}=\begin{pmatrix}&\vec{q}\\& \vec{p}\end{pmatrix}
+% \end{eqnarray}
+% The matrix ${\bf K}_A$ is real, symmetric, and positive definite so that $\hat{K}_A$ is hermitian. Consider the two-point functions $Q_{ij}=\braket{q_i q_j}$ and $P_{ij}=\braket{p_i p_j}$. Since ${\bf Q}$ and ${\bf P}$ are symmetric we define ${\bf C}_A=\sqrt{{\bf Q}_A{\bf P}_A}$ and have $\sqrt{{\bf Q}_A{\bf P}_A}^T=\sqrt{{\bf P}_A{\bf Q}_A}$. Then,
+% \begin{eqnarray}
+% &&\hat{K}_A=({\bf P}_A\oplus {\bf Q}_A)\lb h({\bf C}_A)\oplus h({\bf C}^T_A)\rb\nn\\
+% &&h(y)=\frac{1}{y}\log\lb \frac{y+1/2}{y-1/2}\rb
+% \end{eqnarray}
+% Therefore, we can split $\hat{K}_A$ into two terms
+% \begin{eqnarray}
+% &&{\bf K}_A=\hat{K}^{(M)}_A+\hat{K}^{(N)}_A\nn\\
+% &&{\bf K}^{(M)}_A=L\sum_{ij}\frac{M_{ij}}{L}q_i q_j,\qquad {\bf K}_A^{(N)}=L\sum_{ij}\frac{N_{ij}}{L}\pi_i \pi_j,
+% \end{eqnarray}
+% where we have multiplied and dividing by a factor of $L$ to compare to the continuum limit. Note that in the continuum limit which motivates the existence of the following limits
+% \begin{eqnarray}
+% &&\mu_k(x_k)=\lim_{L\to \infty}\frac{M_{i,i+k}}{L},\qquad \nu_k(x_k)=\lim_{L\to \infty}\frac{N_{i,i+k}}{L}\nn\\
+% &&x_k=\frac{1}{L}\lb i+k/2\rb\ .
+% \end{eqnarray}
+
+% The calculation of full modular Hamiltonian is somewhat 
+
+% Take the transverse Ising model and compute the characteristic functions for half-space inclusions.
+
+% Take massless free bosons and fermions and compute the characteristic function for an interval
+%\subsection{older stuff}
+\subsection{No zeros and recovery maps}
+
+
+\section{One state and two algebras}
+
+\subsection{Inclusion of ball inside Rindler wedge}
+\YC{
+In this section, we briefly consider a situation where characteristic functions of certain inclusions can be well-approximated by characteristic functions of wedge inclusions. The result is derived directly from the well-known result of Fredenhagen \cite{fredenhagen}.}
+
+\YC{
+Consider a net of algebras of local observables on $\{\mathcal{A}(\mathcal{O})\}_{\mathcal{O}\subset\mathbb{R}^{d,1}}$. Assume this net satisfies the Haag-Kastler axioms. Let $\ket{\Omega}$ be the vacuum vecrtor of this net. By Reeh-Schlieder theorem, the vacuum vector is a common cyclic and separating vector for all algebras in this net. In addition, by the axiom, this net of algebras is covariant under the Poincaré group and the group action is strongly continuous.}
+
+\YC{
+Consider two right wedges:
+\begin{equation}
+    W_0 := \{x\in\mathbb{R}^{d,1}: |x_0| < x_1\}
+\end{equation}
+\begin{equation}
+    W_{r} := \{x\in\mathbb{R}^{d,1}: |x_0 - r| < x_1 \}
+\end{equation}
+The two algebras of local observables associated with the two wedges are related by the action of right translation:
+\begin{equation}
+    Ad_{T_r}(\mathcal{A}(W_0)) = \mathcal{A}(W_r)
+\end{equation}
+where $T_r$ is right translation by $r$ and $Ad_{T_r}$ is the adjoint action. Let $\{\Delta_{W_0}^{it}\}$ be the modular automorphism of $\mathcal{A}(W_0)$ under the vacuum state and let $\{\Delta_{W_r}^{it}\}$ be the modular automorphism of $\mathcal{A}(W_r)$ under the same vacuum state. The two modular automorphisms are related by:
+\begin{equation}
+    T_r\Delta_{W_0}^{it}T_r^* = T_r\Delta_{W_0}^{it}T_{-r} = \Delta^{it}_{W_r}
+\end{equation}
+where $T_r^* = T_{-r}$ is left translation by $r$.
+}
+
+\YC{
+It is well-known \cite{bisognanowichmann}that the modular flow $\Delta_{W_0}^{it}$ in a massless free field theory is given by the geometric action of boost. For our purpose, we would like to consider double cones in the wedges:
+\begin{equation}
+    B_R\subset W_0
+\end{equation}
+where the spatial slice $B_R\cap \{x\in \mathbb{R}^{d,1}: x_0 = 0\}$ is a ball of radius $R$ and the ball is centered at $x_1 = R$ \footnote{For our discussion, we do not need to specify the other coordinates. For concreteness, one can assume $x_i = 0$ for $2\leq i\leq d$.}. Notice that the vertex of the wedge $W_0$ is in the closure of $B_R$. 
+}
+
+\YC{
+Similarly, consider another double cone:
+\begin{equation}
+    B_{e^{-2\pi s}R}\subset W_{r(s)}
+\end{equation}
+where the spatial slice $B_{e^{-2\pi s}R}\cap \{x\in\mathbb{R}^{d,1}: x_0 = 0\}$ is a ball of radius $e^{-2\pi s}R$ and the ball is centered at $x_1 = R$ \footnote{Again the other coordinates need not be specified. And for concreteness, we consider $x_i = 0$ for $2\leq i\leq d$.}. Notice that by construction, the double cone $B_{e^{-2\pi s}R}$ can be constructed by shrinking the double cone $B_R$ by a factor of $e^{-2\pi s}$. The parameter $r(s)$ is given by:
+\begin{equation}
+    r(s) := R - e^{-2\pi s}R
+\end{equation}
+such that the vertex of $W_{r(s)}$ is in the closure of the double cone $B_{e^{-2\pi s} R}$. 
+}
+
+\YC{
+Now recall the following result of Fredenhagen \cite{fredenhagen}:
+\begin{theorem}
+    Let $W_0$ be the right wedge with vertex at the origin and let $B\subset W_0$ be a double cone. For any $f\in L^1(\mathbb{R})$ and any constant $s > 0$, there exists a constant $c_f(s) > 0$ such that:
+    \begin{equation}
+        ||\int_\mathbb{R} dt f(t)(\Delta_{B}^{-it} - \Delta_{W_0}^{-it})A\ket{\Omega}||^2 \leq c_f(s)(||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2)
+    \end{equation}
+    where $A$ is any operator in the local algebra $\mathcal{A}(e^{-2\pi s}B)$. The constant $c_f(s)$ approaches $0$ as $s\rightarrow \infty$.
+\end{theorem}
+}
+\YC{
+For our discussion, we need to recall one of the key technical tools used in Fredenhagen's proof \cite{fredenhagen}:
+\begin{proposition}
+    Let $\mathcal{B}\subset \mathcal{A}$ be two von Neumann algebras with a common cyclic and separating vector $\ket{\Omega}$. For all $\mathcal{O}\in\mathcal{B}$ such that for all $|t| < t_0$ (where $t_0 > 0$ is a positive constant), we have:
+    \begin{equation}
+        \Delta_\mathcal{A}^{it}\mathcal{O}\Delta_\mathcal{A}^{-it}\in\mathcal{B}
+    \end{equation}
+    where $\Delta_\mathcal{A}$ is the modular operator associated with $\ket{\Omega}$ on $\mathcal{A}$, then the following resolvent estimate holds:
+    \begin{equation}
+        ||\lb(1 + \Delta_\mathcal{A})^{-1} - (1 + \Delta_\mathcal{B}^{-1})\rb\mathcal{O}\ket{\Omega}|| \leq \frac{2}{\pi}\tanh^{-1}(e^{-\pi t_0})(||\mathcal{O}\ket{\Omega}||^2 + ||\mathcal{O}^*\ket{\Omega}||^2)^{1/2}
+    \end{equation}
+\end{proposition}
+}
+\YC{
+Note that in Fredenhagen's original theorem, the double cone $e^{-2\pi s}B$ is a shrunk version of the original double cone $B$. And the operator $A$ is localized to the shrunk double cone. The bound is tighter as the size of this support shrinks to zero. In other words, the theorem states that when the support of the operator $A$ becomes smaller, the averaged (or smoothed) difference between the double cone's modular automorphism and the Rindler wedge's modular automorphism becomes smaller in the $L^2$-sense. For our discussion, the size of the support is not a free parameter. Rather we are considering the opposite scenario where the support of the operator is fixed but we are embedding the operator in larger local algebras. More precisely, we want to show the following corollary to the Proposition above:
+\begin{corollary}
+    Consider two double cones inside the right Rindler wedge: $B\subset e^{2\pi s}B\subset W_0$. For any operator $\mathcal{O}\in\mathcal{A}(B)$, the following resolvent estimate holds:
+    \begin{equation}
+        ||\lb(1 + \Delta_{e^{2\pi s}B})^{-1} - (1 + \Delta_{W_0})^{-1}\rb\mathcal{O}\ket{\Omega}||\leq \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})\lb||\mathcal{O}\ket{\Omega}||^2 + ||\mathcal{O}^*\ket{\Omega}||^2\rb^{1/2}
+    \end{equation}
+    where $\ket{\Omega}$ is a common cyclic and separating vector. $\Delta_{e^{2\pi s}B}$ is the modular operator of the dilated double cone $e^{2\pi s}B$ and $\Delta_{W_0}$ is the modular operator of the right Rindler wedge.
+\end{corollary}
+\begin{proof}
+    Using the fact that the modular flow of the right Rindler wedge is the boost, it is elementary to observe that for all time $|t|\leq s$ and for all $\mathcal{O}\in\mathcal{A}(B)$, we have:
+    \begin{equation}
+        \Delta_{W_0}^{it}\mathcal{O}\Delta^{-it}_{W_0} \in \mathcal{A}(e^{2\pi s}B)
+    \end{equation}
+    The statement follows directly from the Proposition.
+\end{proof}
+}
+\YC{
+As the size of the ambient double cone $e^{2\pi s}B$ increases (eventually approaching the right Rindler wedge), $s\rightarrow\infty$ and hence $\tanh^{-1}(e^{-\pi s})\rightarrow 0$. Using the same proof as Fredenhagen's proof of his theorem, we have the following theorem:
+\begin{theorem}\label{theorem:modifiedfredenhagen}
+    Using the same set-up as the previous Corollary, for any operator $\mathcal{O}\in \mathcal{A}(B)$ and for any $f\in L^1(\mathbb{R})$ and for any constant $s > 0$, there exists a constant $c_f(s) > 0$ such that:
+    \begin{equation}
+        ||\int_\mathbb{R} dt f(t)\lb\Delta^{-it}_{e^{2\pi s}B} - \Delta^{-it}_{W_0}\rb\mathcal{O}\ket{\Omega}||^2 \leq c_f(s)\lb||\mathcal{O}\ket{\Omega}||^2 + ||\mathcal{O}^*\ket{\Omega}||^2\rb
+    \end{equation}
+    In addition, $\lim_{s\rightarrow \infty}c_f(s) = 0$
+\end{theorem}
+\begin{proof}
+    This follows directly from Fredenhagen's proof and the previous Corollary.
+\end{proof}
+}
+\YC{
+Notice that this modified theorem states that the averaged (or smoothed) difference between the double cone's modular automorphism and the Rindler wedge's modular automorphism becomes smaller in the $L^2$-sense as the size of the double cone dilates to infinity (i.e. as the double cone approaches the Rindler wedge).
+}
+
+\YC{
+For our discussion, we would need to study the exact form of the constant $c_f(s)$ in detail. Specifically we need to study how this constant changes when the function $f(t)$ becomes $f(t)e^{i\mu t}$ (where $\mu\in\mathbb{R}$). From Fredenhagen's derivation \cite{fredenhagen}, we have the following formula:
+\begin{equation}
+    c_f(s) = \inf_{g\in \mathcal{D}(\mathbb{R}), c > 0}\{2\int_\mathbb{R} dt|f(t) - g(t)| + 2\int_{|u| \geq c}du |\varphi_g(u)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}\int_\mathbb{R} du|\varphi_g(u)|\}
+\end{equation}
+where $\varphi_g$ is a twisted Fourier transform of $g$:
+\begin{equation}
+    \varphi_g(u) := \frac{1}{2\pi}\int_\mathbb{R} dt g(t)\lb\frac{2}{i}\sinh(\pi t)\rb e^{-itu}
+\end{equation}
+And $g\in\mathcal{D}(\mathbb{R})$ is a Schwartz function.
+}
+\YC{
+If the function $f(t)$ becomes $f_\mu(t) := f(t)e^{i\mu t}$, we can calculate the constant $c_{f_\mu}(s)$:
+\begin{align}
+    \begin{split}
+        c_{f_\mu}(s) &:= \inf_{g\in\mathcal{D}(\mathbb{R}),c>0}\{2||f_\mu-g||_1 + 2\int_{|u|\geq c}du|\varphi_g(u)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}||\varphi_g||_1\}
+        \\&
+        =\inf_{g_\mu\in\mathcal{D}(\mathbb{R}),c>0}\{2||f_\mu-g_\mu||_1 + 2\int_{|u|\geq c}du |\varphi_{g_\mu}(u)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}||\varphi_{g_\mu}||_1\}
+        \\&
+        =\inf_{g_\mu\in\mathcal{D}(\mathbb{R}),c>0}\{2||f-g||_1 + 2\int_{|u|\geq c}du|\varphi_g(u - \mu)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}||\varphi_g||_1\}
+        \\&
+        =\inf_{g\in\mathcal{D}(\mathbb{R}),c>0}\{2||f-g||_1 + 2\int_{|u|\geq c}du|\varphi_g(u - \mu)|+ \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}||\varphi_g||_1\}
+    \end{split}
+\end{align}
+where we used the facts:
+\begin{equation}
+    \varphi_{g_\mu}(u) = \frac{1}{2\pi}\int_\mathbb{R}dt g(t)\lb\frac{2}{i}\sinh(\pi t)\rb e^{-it(u - \mu)} = \varphi_g(u - \mu)
+\end{equation}
+\begin{equation}
+    ||\varphi_{g_\mu}||_1 = \int_\mathbb{R} du |\varphi_{g_\mu}(u)| = \int_\mathbb{R} du |\varphi_g(u - \mu)|=||\varphi_g||_1
+\end{equation}
+}
+\YC{
+Notice that the constant regarded as a function of $s$ (or equivalently as a function of $e^{-\pi s}$) for $s\geq 0$ is a continuous function for any $\mu \in\mathbb{R}$. In addition, for any fixed $\mu$, we have the limit:
+\begin{align}
+    \begin{split}
+        \lim_{s\rightarrow\infty}c_{f_\mu}(s) &= \inf_{g\in\mathcal{D}(\mathbb{R}),c>0}\{2||f-g||_1 + 2\int_{|u|\geq c}du |\varphi_g(u - \mu)|\}\\&
+        \underbrace{=}_{c\rightarrow\infty}\inf_{g\in\mathcal{D}(\mathbb{R})}\{2||f-g||_1\} = 0
+    \end{split} 
+\end{align}
+The existence of this limit together with the continuity ensures the bound that we are going to prove is physically useful. We will comment on this point in detail later.
+}
+
+\YC{
+To calculate $c_f(s)$ (or $c_{f_\mu}(s)$) is non-trivial in general. Here we provide a simple upper estimate of $c_f(s)$ (and $c_{f_\mu}(s)$) when $f$ is Gaussian.
+\begin{lemma}
+    For Gaussian $f_{\sigma,\mu}(t) := \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(t - \mu)^2}{2\sigma^2}}$, there exists $s_0 > 0$ and positive constants $K_3, K_4, K_5 > 0$ such that for $s > s_0$, to the first order in $s$ the following bound holds:
+    \begin{equation}
+        c_{f_{\sigma,\mu}}(s) \leq K_3e^{-\frac{K_4}{2}s^2} + K_5e^{-K_4 s^2}
+    \end{equation}
+    These positive constants depend on $\sigma,\mu$.
+\end{lemma}
+In addition, as $\sigma \rightarrow 0$, the upper bound of $c_{f_{\sigma, \mu}}$ approaches:
+\begin{align}
+    \begin{split}
+        c_{f_{\sigma,\mu}}(s) &\leq C_1 \frac{e^{-C_2/\sigma^2}e^{C_3\sigma^2}}{\sigma}e^{-C_4s^2}
+    \end{split}
+\end{align}
+where $C_1,C_2,C_3, C_4 > 0$ are positive constants that depend on $\mu$. The right hand side as a well-defined limit as $\sigma\rightarrow 0^+$ and the limit is $0$ (uniformly in $s$).
+}
+
+\YC{
+Before we state the main result, we make one final observation:
+\begin{corollary}\label{corollary:extensionfredenhagen}
+    Let $B_R$ be a double cone in $W_0$ whose spatial slice is a ball with radius $R > 0$ and centered at $x_1 = R$. Let $B_{e^{-2\pi s}R}$ be a shrunk double cone. And let $W_{r(s)}$ be the shifted right wedge where $r(s) := R - e^{-2\pi s}R$. Then for any $f\in L^1(\mathbb{R})$ and any constant $s > 0$, there exists a constant $c'_f(s) > 0$ such that:
+    \begin{equation}
+        ||\int_\mathbb{R} dt f(t) (\Delta^{-it}_{B_{e^{-2\pi s }R}} - \Delta_{W_{r(s)}}^{-it})A\ket{\Omega}||^2 \leq c'_f(s)(||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2)
+    \end{equation}
+    where $A$ is any operator in the local algebra $\mathcal{A}(B_{e^{-2\pi s}R})$. The constant $c'_f(s)$ approaches $0$ as $s\rightarrow \infty$.
+\end{corollary}
+\begin{proof}
+    Consider the shifted double cone $T_{-r(s)}(B_{e^{-2\pi s}R})$. This double cone is contained inside the right wedge $W_0$ such that the vertex of the wedge is in the closure of the shifted double cone. Because the Poincaré group acts strongly continuously on the net of local algebras, for any operator $A\in \mathcal{A}(B_{e^{-2\pi s}R})$, the adjoint action by the left translation $T_{-r(s)}$ shifts the support of $A$ to the shifted double cone $T_{-r(s)}(B_{e^{-2\pi s}R})$:
+    \begin{equation}
+        Ad_{T_{-r(s)}}A\in\mathcal{A}(T_{-r(s)}(B_{e^{-2\pi s}R}))
+    \end{equation}
+    In addition, the group action is implemented unitarily on the standard Hilbert space. Hence we have:
+    \begin{equation}
+        U_{T_{-r(s)}}(A\ket{\Omega}) = (Ad_{T_{-r(s)}}A)\ket{\Omega}
+    \end{equation}
+    where $U_{T_{-r(s)}}$ is the unitary representation of the Poincaré group on the standard Hilbert space. By Fredenhagen's theorem \cite{fredenhagen}, for any operator $A\in \mathcal{A}(B_{e^{-2\pi s}R})$ and for any $f\in L^1(\mathbb{R})$ and for any constant $s > 0$, there exists a constant $c'_f(s) > 0$ such that:
+    \begin{align}
+        \begin{split}
+            ||\int_\mathbb{R} dt f(t)(\Delta^{-it}_{T_{-r(s)}(B_{e^{-2\pi s}R})} - \Delta^{-it}_{W_0})(Ad_{T_{-r(s)}}A)\ket{\Omega}||^2 &\leq c'_f(s)(||(Ad_{T_{-r(s)}}A)\ket{\Omega}||^2 + ||(Ad_{T_{-r(s)}}A)^*\ket{\Omega}||^2)
+            \\&
+            =c'_f(s)(||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2)
+        \end{split}
+    \end{align}
+    where the equality follows from the fact that:
+    \begin{equation}
+        ||(Ad_{T_{-r(s)}}A)\ket{\Omega}|| = ||U_{T_{-r(s)}}(A\ket{\Omega})|| = ||A\ket{\Omega}||
+    \end{equation}
+    By covariance of the net of local algebras, the modular automorphisms satisfy the following relations:
+    \begin{equation}
+        \Delta^{-it}_{T_{-r(s)}B_{e^{-2\pi s}R}} = T_{-r(s)}\Delta^{-it}_{B_{e^{-2\pi s}R}}T^*_{-r(s)}
+    \end{equation}
+    \begin{equation}
+        \Delta^{-it}_{W_0} = T_{-r(s)}\Delta_{W_{r(s)}}^{-it}T^*_{-r(s)}
+    \end{equation}
+    Hence we have:
+    \begin{align}
+        \begin{split}
+            ||&\int_\mathbb{R} dt f(t)(\Delta^{-it}_{T_{-r(s)}(B_{e^{-2\pi s}R})} - \Delta^{-it}_{W_0})(Ad_{T_{-r(s)}}A)\ket{\Omega}||^2 = ||\int_\mathbb{R} dt f(t)Ad_{T_{-r(s)}}\bigg((\Delta^{-it}_{B_{e^{-2\pi s}R}} - \Delta_{W_{r(s)}}^{-it})A\bigg)\ket{\Omega}||^2
+            \\&
+            =||U_{T_{-r(s)}}\bigg(\int_\mathbb{R} dt f(t)(\Delta^{-it}_{B_{e^{-2\pi s}R}} - \Delta^{-it}_{W_{r(s)}})A\ket{\Omega}\bigg)||^2
+            =||\int_\mathbb{R} dt f(t)(\Delta^{-it}_{B_{e^{-2\pi s}R}} - \Delta^{-it}_{W_{r(s)}})A\ket{\Omega}||^2
+        \end{split}
+    \end{align}
+    The conclusion of the corollary follows immediately from this equality.
+\end{proof}
+}
+
+
+\YC{
+We are now ready to state the main result.
+\begin{theorem}\label{theorem:mainresult}
+    Consider a net of local algebras $\{\mathcal{A}(\mathcal{O})\}_{\mathcal{O}\in\mathbb{R}^{d,1}}$ that satisfies the Haag-Kastler axioms. Let $W_0$ be the right Rindler wedge and let $W_r$ be a translated right Rindler wedge shifted to the right (along $x_1$ direction) $r > 0$. Consider a double cone $B_{R}\subset W_r$ where the vertex of $W_r$ is in the closure of $B_R$. Consider dilated double cone $B_{e^{2\pi s}R}$ where the dilation is performed such that the vertex of $W_r$ is always in the closure of $B_{e^{2\pi s} R}$. Moreover, consider the spectral decomposition of the modular flow of the right Rindler wedge:
+    \begin{equation}
+        \Delta_{W_0}^{it} = \int_0^\infty e^{i\mu t} dE(\mu)
+    \end{equation}
+    Then for any spectral cut-off $\mu_0 > 0$, for any $f\in L^1(\mathbb{R})$, for any operator $A\in \mathcal{A}(B_R)$ and for any constant $s > 0$, there exists a constant $b_f(\mu_0, s) > 0$ such that:
+    \begin{equation}
+        ||E(\mu_0)\lb\int_\mathbb{R} dtf(t)\lb\Delta_{W_0}^{-it}\Delta_{e^{2\pi s}B_R}^{it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{it}\rb A\ket{\Omega}\rb||^2 \leq b_f(\mu_0, s)\lb||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2\rb
+    \end{equation}
+    In addition, for any spectral cut-off, we have a well-defined limit:
+    \begin{equation}
+        \lim_{s\rightarrow \infty}||E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb\Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{it}\rb A\ket{\Omega}\rb||^2 = 0
+    \end{equation}
+\end{theorem}
+}
+
+\YC{
+Similarly, we can prove the following result:
+\begin{corollary}\label{corollary:reverseorder}
+    Using the same set up as the Theorem above, for any spectral cut-off $\mu_0 > 0$, for any $f\in L^1{\mathbb{R}}$, for any operator $A\in\mathcal{A}(\mathcal{B_R})$ and for any constant $s > 0$, there exists a constant $b_f(\mu_0, s) > 0$ such that:
+    \begin{equation}
+        ||\int_\mathbb{R}dt f(t)\lb \Delta_{B_{e^{2\pi s}R}}^{it}\Delta_{W_0}^{-it} - \Delta_{W_r}^{it}\Delta_{W_0}^{-it}\rb E(\mu_0)\lb A\ket{\Omega}\rb||^2\leq b_f(\mu_0, s)\lb||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2\rb
+    \end{equation}
+    In addition, for any spectral cut-off, we have a well-defined limit:
+    \begin{equation}
+        \lim_{s\rightarrow\infty}||\int_\mathbb{R}dt f(t)\lb \Delta_{B_{e^{2\pi s}R}}^{it}\Delta_{W_0}^{-it} - \Delta_{W_r}^{it}\Delta_{W_0}^{-it}\rb E(\mu_0)\lb A\ket{\Omega}\rb|| = 0
+    \end{equation}
+\end{corollary}
+}
+
+\YC{
+Before we presenting the proof, we caution the reader that we are \textit{\textbf{NOT}} able to conclude the following limit exists:
+\begin{equation}
+    \lim_{\mu_0\rightarrow \infty}||E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb\Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{it}\rb A\ket{\Omega}\rb||^2
+\end{equation}
+Heuristically, the theorem states that, when restricted to finite energy (i.e. in terms of the modular Hamiltonian of the right Rindler wedge) subspace, the averaged (or smoothed) difference between the characteristic function of $B_R\subset W_0$ and the characteristic function of $W_r\subset W_0$ is small in the $L^2$-sense.  
+}
+
+\YC{
+Finally, returning to the main object of interest, recall the modular $S$-matrix associated with an inclusion of two regions $W_r\subset W_0$ is given by:
+\begin{equation}
+    S_{W_r\subset W_0} = \Delta_{W_0}^{-it}\Delta_{W_r}^{2it}\Delta_{W_0}^{-it}
+\end{equation}
+Similarly, for the inclusion of a double cone inside the right Rindler wedge, the corresponding modular $S$-matrix is given by:
+\begin{equation}
+    S_{B_{e^{2\pi s}R}\subset W_0} = \Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{2it}\Delta_{W_0}^{-it}
+\end{equation}
+}
+
+\YC{
+As the double cone $B_{e^{2\pi s}R}$ grows in size (i.e. $s\rightarrow \infty$), we would like to understand in what sense $S_{B_{e^{2\pi s}R}\subset W_0}$ provides an estimate of $S_{W_r\subset W_0}$. We first show the following:
+\begin{corollary}\label{corollary:doubleup}
+    Using the set up as the Theorem above, for any spectral cut-off $\mu_0 > 0$, for any $f\in L^1(\mathbb{R})$, for any operator $A\in\mathcal{A}(B_R)$ and for any constant $s > 0$, there exists a constant $b_f(\mu_0, s) > 0$ such that:
+    \begin{align}
+        \begin{split}
+            ||&E(\mu_0)\lb\int_\mathbb{R} dt f(t) \lb\Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{it}\Delta_{W_0}^{-it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{it}\Delta_{W_0}^{-it}\rb\rb E(\mu_0)\lb A\ket{\Omega}\rb||^2 \\&\leq b_f(\mu_0, s)\lb||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2\rb
+        \end{split}
+    \end{align}
+    In addition, for any spectral cut-off, we have a well-defined limit:
+    \begin{equation}
+        \lim_{s\rightarrow\infty}||E(\mu_0)\lb\int_\mathbb{R} dt f(t) \lb\Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{2it}\Delta_{W_0}^{-it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{2it}\Delta_{W_0}^{-it}\rb\rb E(\mu_0)\lb A\ket{\Omega}\rb||^2 = 0
+    \end{equation}
+\end{corollary}
+}
+
+\subsection{Inclusion of balls}\label{subsection:ballinball}
+In the previous subsection, we considered a double cone contained in a wedge and showed that, as the size of the double cone approaches infinity, the modular scattering operator of the cone relative to the wedge can be approximated by the modular scattering operator of two wedges. The precise sense of this approximation is specified in Corollary 10. 
+
+In this subsection, we consider the modular scattering operator of two double cones - one included in the other. And we aim to show that this modular scattering operator can be approximated by the modular scattering operator of two wedges as well. 
+
+More precisely, consider two double cones $B_r \subset B_R$. The intersection of $B_r$ and the plane $x_0 = 0$ is a ball with radius $r$ and centered at $x_1 = r' > r$. The intersection of $B_R$ and the plane $x_0 = 0$ is a ball with radius $R > r$ and centered at $x_1 = r' > R$. For our discussion, we would need to consider three wedges: $W_2\subset W_1\subset W_0$, where the smallest wedge $W_2$ has its vertex at $x_1 = r' - r > 0$ such that the vertex is in the closure of the smaller double cone $B_r$. Similarly, the wedge $W_1$ has its vertex at $x_1 = r' - R > 0$ such that the vertex is in the closure of the larger double cone $B_R$. Finally, the wedge $W_0$ is the standard right Rindler wedge with its vertex at the origin. 
+
+As in the previous subsection, we consider a net of algebras of local observables $\{\mathcal{A}(\mathcal{O})\}_{\mathcal{O}\subset\mathbb{R}^{d,1}}$ that satisfies the Haag-Kastler axioms. The modular scattering operator we want to study is $\Delta_{B_R}^{-it}\Delta_{B_r}^{2it}\Delta_{B_R}^{-it}$ and its action on the dense subspace $\{A\ket{\Omega}: A\in\mathcal{A}(B_r)\}$.
+
+More precisely, we want to consider how this modular scattering operator can be approximated by the modular scattering operator of two wedges $\Delta_{W_1}^{-it}\Delta_{W_2}^{2it}\Delta_{W_1}^{-it}$ as the size of the two double cones increase. Here we specify the geometric set-up of how the double cones increase in size. For the larger double cone, we increase its size by dilation in such a way that the vertex of the wedge $W_1$ is always in the closure of the dilated double cone. The intersection of the dilated double cone $B_{e^{2\pi s}R}$ and the plane $x_0 = 0$ is a ball of radius $e^{2\pi s}R$ and centered at $x_1 = r' + (e^{2\pi s} - 1)R$. For the smaller double cone, we increase its size by dilation while translating to the left. The intersection of the dilated and translated double cone $T_{\tanh(s)(R - r)}B_{e^{2\pi s}r}$ and the plane $x_0 = 0$ is a ball of radius $e^{2\pi s}r$ and centered at $x_1 = (r' - r) - \tanh(s)(R - r) + e^{2\pi s}r$. This dilated and shifted double cone is contained in a left-translated wedge $T_{\tanh(s)(R - r)}W_2$ for all $s > 0$. As $s\rightarrow\infty$, this wedge approaches $W_1$. Simultaneously, the double cone dilates in size with parameter $e^{2\pi s}$.
+
+The claim is the following:
+\begin{theorem}
+    For any spectral cut-off $\mu_0 > 0$ and for any $f\in L^1(\mathbb{R})$ and for any operator $A\in\mathcal{A}(B_r)$ and for any constant $s > 0$, there exists a constant $b_f(\mu_0, s) >0$ such that:
+    \begin{align}
+        \begin{split}
+            ||&E_1(\mu_0)\lb \int_\mathbb{R} dt f(t)\lb \Delta_{B_{e^{2\pi s}R}}^{-it}\Delta_{T_{\tanh(s)(R-r)}B_{e^{2\pi s}r}}^{2it}\Delta_{B_{e^{2\pi s}R}}^{-it} - \Delta_{W_1}^{-it}\Delta_{T_{\tanh(s)(R - r)}W_2}^{2it}\Delta_{W_1}^{-it} \rb E_1(\mu_0)\lb A\ket{\Omega}\rb \rb||^2 
+            \\&
+            \leq b_f(\mu_0, s)||\lb A\ket{\Omega}\rb^2 + \lb A^*\ket{\Omega} \rb^2||
+        \end{split}
+    \end{align}
+    where $E_1(\mu_0)$ is the spectral projection of the modular operator $\Delta_{W_1}$. In addition for any spectral cut-off, we have a well-defined limit:
+    \begin{align}
+        \begin{split}
+            \lim_{s\rightarrow\infty}||E_1(\mu_0)\lb \int_\mathbb{R} dt f(t)\lb \Delta_{B_{e^{2\pi s}R}}^{-it}\Delta_{T_{\tanh(s)(R-r)}B_{e^{2\pi s}r}}^{2it}\Delta_{B_{e^{2\pi s}R}}^{-it} - \Delta_{W_1}^{-it}\Delta_{T_{\tanh(s)(R - r)}W_2}^{2it}\Delta_{W_1}^{-it} \rb E_1(\mu_0)\lb A\ket{\Omega}\rb \rb||^2  = 0
+        \end{split}
+    \end{align}
+\end{theorem}
+To prove this theorem, we need the following lemma which requires half-sided modular inclusion to hold:
+\begin{lemma}
+    Consider two right wedges $W_2(s)\subset W_1$ where $W_2(s) := \{\}$
+\end{lemma}
+
+\section{Two states and two algebras: IR regulated S-matrix}
+
+Consider the S-matrix of some interacting QFT defined as
+\begin{eqnarray}
+S_{H,H_0}(t)=e^{i t H_0}e^{-2i t H}e^{it H_0}\ .
+\end{eqnarray}
+Consider the vacua $\ket{\Omega_0}$ and $\ket{\Omega_\lambda}$ of the Hamiltonians $H_0$ and $H$, respectively. Then, for the inclusion of wedges, we find
+\begin{eqnarray}
+S_{H_0,H,A,B}&&\equiv S_{H_0,A\subset B}(t) S_{H,A\subset B}(-2\tilde{t})S_{H_0,A\subset B}(t)\nn\\
+&&=e^{i a H_0 \sinh(2\pi t)} e^{-2i a H \sinh(\pi t)}e^{i a H_0 \sinh(2\pi t)}\ .
+\end{eqnarray}
+We can write this as 
+\begin{eqnarray}
+    &&\Omega^\dagger(t)=S_{H_0}(t) S^\dagger_{H}(t)\nn\\
+    &&S_{H_0,H,A\subset B}=\Omega^\dagger(t) \Omega(-t)\ .
+\end{eqnarray}
+\NL{This is similar to the work of Mizera-Hannesdottir on IR observables made out of alternating sequences of the in and out creation-annihilation operators.}
+
+
+Note that these equations do not require small $a$ or small $ae^{2\pi t}$ to hold. Therefore, for all values of $a$ and $t$ we have the exact identity
+\begin{eqnarray}
+S_{H_0,H,A,B}(t)=S_{H,H_0}(a \sinh(2\pi t)) 
+\end{eqnarray} 
+Then, the large $t$ limit of both sides coincides, and we obtain a half-space approximation of the global S-matrix \NL{Any connections to the story of Gandalf Lechner?}.
+
+Consider the inclusion of a ball-shaped region in a wedge $B_R\subset W$ such that they share one boundary point $x$. Our modular S-matrix in this case is
+\begin{eqnarray}
+S(t)=e^{i K_W t} e^{-2\pi K_B t} e^{i K_W t}\ .
+\end{eqnarray}
+In the vicinity of this common point $x$ the modular flow of the ball is well-approximated by a boost for short amounts of time. 
+
+
+The S-matrix exists in theories in which the interaction falls off exponentially fast. However, in theories with long range interactions such as gauge theories or in conformal field theory this limit might not exist. In these cases, if we replace the inclusion of wedges with the inclusion of balls, we obtain an operator algebraic infrared regulator for the S-matrix!
+
+\NL{As an example take the vacuum of CFT and a conformally deformed theory to the first order in $\lambda$.}
+
+
+
+
+
+We showed that our local approximation of Hamiltonian in the vicinity of the entangling surface tends to the true global Hamiltonian of the system. 
+
+Consider the S-matrix of some interacting QFT defined as
+\begin{eqnarray}
+S=\lim_{t\to \infty} e^{i t H_0}e^{-2i t H}e^{it H_0}\ .
+\end{eqnarray}
+where we take
+
+
+
+% \section{CFT Hamiltonian from a ball}
+
+% %Emphasize $T(z)T(-z)^{-1}$.
+
+% Consider the vacuum state of a CFT in $\mathbb{R}^{d-1,1}$ conformally embedded inside the Lorentzian cylinder $\mathbb{S}^{d-1}\times \mathbb{R}_T$ with $T$ the global time on the cylinder; see figure \ref{}. The universal cover of the conformal group $\widetilde{SO(d+1,2)}$ acts on the Lorentzian cylinder. Consider concentric ball-shaped regions $B(s)$ centered at the $x^\mu=0$ and radius $e^{-2\pi s}$. 
+% \begin{theorem}
+%     For any real $t$ and $s>0$ we have the inclusion of ball-shaped region $B(t+s)\subset B(t)$ we have the characteristic function for $\Im (z)\in (0,1/2)$:
+%     \begin{eqnarray}
+%         &&\log T_{t,s}(z)=-(\beta_BK_B+\beta_H H+\beta_F K_F)\nn\\
+%         &&\beta_F=\beta\cosh(\pi s)\coth(\pi z)\nn\\
+%         &&\beta_B=\beta \sinh(\pi (2t+s))\nn\\
+%         &&\beta_H=\beta\cosh(\pi (2t+s))\nn\\
+%         &&\beta=\frac{2i\cosh^{-1}(A)}{\sqrt{\sinh^2(\pi z)\sinh^2(\pi s)-1}}\nn\\
+%         &&A=1-2\sinh^2(\pi s)\sinh^2(\pi z)
+%     \end{eqnarray}
+% where $B=B(0)$ is a unit ball, $s=|B(t+s)|/|B(t)|$ is the relative size of the inclusion and $|B|$ is the linear size of $B$.
+% \end{theorem}
+% \begin{corollary}
+% In this case, at small $s$ the characteristic function is
+% \begin{eqnarray}
+% T_{t,s}(z)&&=1-2\pi i s \lb  \frac{\sinh(\pi z)}{2\pi}\p_t K_{B(t)}+\cosh(\pi z)K_F\rb \nn\\
+% &&+O(s^2)\nn\\
+%  &&\frac{1}{2\pi}\p_t K_{B(t)}=\sinh(2\pi t)K_B+\cosh(2\pi t) H\nn\\
+%     &&K_{B(t)}=\cosh(2\pi t)K_B+\sinh(2\pi t) H\ .
+% \end{eqnarray}
+% The modular S-matrix in this limit is
+% \begin{eqnarray}
+% S_t(z)=1-2 i s \sinh(\pi z)\p_t K_{B(t)}+O(s^2)\ .
+% \end{eqnarray}
+% Further expanding for large $|z|$ we obtain the scattering amplitude operator
+% \begin{eqnarray}
+% \tilde{M}_t=-2 s e^{\pi z}\p_t K_{B(t)}
+% \end{eqnarray}
+% which once again saturates the chaos bound.
+% \end{corollary}
+
+
+% A local observer on a unit ball $B$ has access to $K_B$. 
+
+
+% Therefore, if we want to reconstruct the global Hamiltonian $H$ using only local data $K_B$ we need to remove the $K_F$ term. Under $z\to -z$ the coefficient $\beta_F$ is invariant whereas $\beta_B$ and $\beta_H$ are invariant. 
+
+% We are particularly interested in the limit $s\ll 1$ and $s e^{\pi \Re z}\ll 1$. We define $T_{t,s}(z)=1+i M_{t,s}(z)$ so that in this limit we find
+% \begin{eqnarray}
+% %\beta&&\sim 4\pi i s \sinh(\pi z)\nn\\
+%     &&M_{t,s}(z)=\nn\\
+%     &&-4\pi s\lb \frac{\sinh(\pi z)}{2\pi}\p_t K_{B(t)}+\cosh(\pi z)K_F\rb+O(s^2)\nn\\
+%     &&\frac{1}{2\pi}\p_t K_{B(t)}=\sinh(2\pi t)K_B+\cosh(2\pi t) H\nn\\
+%     &&K_{B(t)}=\cosh(2\pi t)K_B+\sinh(2\pi t) H\ .
+%     \end{eqnarray}
+% Note that $M_{t,s}(z)$ is an operator-valued function, but its matrix elements are analogous to the scattering amplitude defined in scattering theory.
+
+% The expansion above makes it clear that if we compute $M_{t,s}(z)$ 
+
+% The connection to scattering theory suggests writing $z=x+iy$ and taking a further limit of large $x$ to find
+% \begin{eqnarray}
+%     M=-4\pi s e^{\pi z}\lb\sinh(2\pi t)K_B+\cosh(2\pi t)K_B+K_F\rb\nn
+% \end{eqnarray}
+
+
+% ----
+
+% \begin{enumerate}
+%     \item   The positive operator below is independent of $s$:
+%     \begin{eqnarray}
+%     \tilde{H}_{t}&&\equiv \frac{1}{4\pi s}T_{t,s}(-i/4)T_{t,s}(-i/4)^\dagger \nn\\
+%     &&=\cosh(2\pi t)H+\sinh(2\pi t)K_B\nn\\
+%     &&=\frac{1}{2\pi}\p_t K_{B(t)}\Big|_{t=0}=-R\p_R K_{B(R)}\ .
+%     \end{eqnarray}
+%     \item The boundary value at $z=-i/2$ is
+%     \begin{eqnarray}
+%         T_{t,s}(-i/2)=4\pi s (\tanh(\pi s)K_B+H)\ .
+%     \end{eqnarray}
+%     \item We can construct both the global Hamiltonian $J_{(-1)0}$ and the generator of rotations on the Lorentzian cylinder in terms of the local modular Hamiltonian
+%        \begin{eqnarray}
+%     \begin{pmatrix}
+%     J_{(-1)0}\\
+%         J_{0(d+1)}
+%     \end{pmatrix}
+%     &&=\begin{pmatrix}
+%         &\cosh(2\pi t) & \sinh(2\pi t)  \\
+%          &\sinh(2\pi t)& \cosh(2\pi t)
+%     \end{pmatrix}
+%     \begin{pmatrix}
+%         & \tilde{H}_{t} \\
+%         & -K_{B(t)}
+%     \end{pmatrix}\nn\\
+%     &&=\frac{-1}{2R}\begin{pmatrix}
+%         &1+R^2 & 1-R^2  \\
+%          &1-R^2& 1+R^2
+%     \end{pmatrix}
+%     \begin{pmatrix}
+%         & R\p_R K_{B(R)}\\
+%         & K_{B(R)}
+%     \end{pmatrix}\ .
+% \end{eqnarray}
+%     \end{enumerate}
+
+
+
+
+% \begin{eqnarray}
+%     T_{t,s}(x)T_{t,s}(-x)^{-1}=\mathbb{I}+2\pi s\sinh(2\pi x)\begin{pmatrix}
+%         &0 & -1  \\
+%          &1& 0
+%     \end{pmatrix}+O(s^2)\nn\ .
+% \end{eqnarray}
+% This means that $T_{t,s}(x) T_{t,s}(-x)^{-1}$ generates an infinitesimal step of real-time evolution $e^{i s H}$. Interestingly, this is independent of $t$.
+
+
+% Our result generalize almost trivially to Conformally flat spacetimes. The results generalize to conformally flat spacetimes including double cones in de Sitter and Anti-de Sitter space \cite{frob2023modular}. In curved spacetime, ...
+
+% Note that nuclearity implies that $e^{-\ep \tilde{H}}$ is trace class for all $\ep>0$, which in turn implies that the spectrum of $\tilde{H}$ is discrete \footnote{Note that in Minkowski space QFT, $e^{-\beta H}$ is not trace class, and the spectrum of Hamiltonian contains cuts corresponding to the continuum of multi-particle states.}. 
+
+% Next, consider the eternal black hole in AdS in the limit of $G_N\to 0$. The boundary theory is a GFF with time-band algebras. Assuming spherical symmetry, we can view time-band algebras as time-interval algebras of $0+1$ GFF with an infinite tower of fields corresponding to the spherical harmonics. Then, the assumption of nuclearity implies that the split property, which in turn implies that the emergent type III$_1$ algebras of GFF are hyperfinite. This is related to the conjecture of Sam and Hong \cite{}.
+
+
+
+
+
+
+% \section{Local approximation to global QFT Hamiltonian}
+
+% In this section, we would like to use our reconstruction of the global Hamiltonian from the reduced state on the ball to a general QFT to define a local approximation to the global Hamiltonian of QFT. As in the case of CFT, we start with an inclusion $B_s\in B$ of balls of radius $R e^{2\pi s}\leq R$. To simplify our discussion, we assume translation invariance of the QFT state so that we can denote the characteristic function of this inclusion by $T_{R,s}(z)$, and compute $\chi_{R,s}(z)=T_{R,s}(z)T_{R,s}(-z)^{-1}$ for $\Im z\in (0,1/4)$. 
+% While the CFT result holds for the inclusion of balls $B_s\in B$ with arbitrary relative size $s\sim \log(|B_s|/|B|)$. Guided by Theorem 3 \ref{} and the connection with the modular chaos bound we will discuss in the next section, in a QFT, we focus our attention on the small limit of small $s$:
+% \begin{eqnarray}
+%     \chi_{R,s}(z)=1+s \tilde{H}_R(z)+O(s^2)\ .
+% \end{eqnarray}
+% We make the following two proposals for the local approximation to the global Hamiltonian of a CFT from the inclusion of balls $B_s\in B$ for $z=t+i \alpha$. 
+% \begin{enumerate}
+%     \item For real $z=t$ we propose $\tilde{H}_R(t)$ for $e^{2\pi t}\ll 1/s$ is an approximation of the global Hamiltonian.
+%     \item For all $\alpha\in (0,1/4)$ we propose $\tilde{H}_R(\alpha)...$ as an approximation of the global Hamiltonian.
+% \end{enumerate}
+% The general expectation that we will confirm in this section is that $\tilde{H}_R$ is 
+
+
+
+
+
+% Consider QFT at finite volume; a sphere of radius $L$. Then, we propose the following operator as the local approximation to the global Hamiltonian in QFT using the local state on a sphere of radius $R$; $B(R)$:
+% \begin{eqnarray}
+%     H(R)=\frac{-L}{2R}\lb (1+(R/L)^2)R\p_R+(1-(R/L)^2)\rb K_{B(R)}\nn\ .
+% \end{eqnarray}
+% At a CFT fixed point, this operator matches the global Hamiltonian of the theory.
+
+% In this section, we show that our proposed Hamiltonian is stable towards perturbations meaning that 1) the action of this operator on probes localized in the vicinity of the boundary $B(R)$ is close to the actual Hamiltonian of the theory. 2) In the excited states of CFT and the vacuum of deformed CFT, our Hamiltonian faithfully captures the high-energy eigenvaulues and eigenvectors of the global Hamiltonian.
+
+
+
+% In conformal perturbation theory, one can show that the high-energy spectrum and eigenvectors of this operator are close to the actual Hamiltonian of the theory. See appendix \ref{}.
+
+
+% %\subsection{New attempt}
+
+% Consider the modular Hamiltonian of a ball of radius $R$ in conformal perturbation theory: $K_{B(R)}(\lambda)$ with $R=e^{-2\pi t}$. It is a two-parameter family of self-adjoint operators $K(t,\lambda)$, and we would like to compute
+% \begin{eqnarray}
+%     &&\tilde{H}_t(\lambda)\equiv \partial_s\log\lb e^{-\pi K(t,\lambda)/2} e^{\pi K(t+s,\lambda)} e^{-\pi K(t,\lambda)/2}\rb\Big|_{s=0}\ .
+% \end{eqnarray}
+% First, we define
+% \begin{eqnarray}
+%     A(s)\equiv e^{-\pi K(t,\lambda)/2} e^{\pi K(t+s,\lambda)} e^{-\pi K(t,\lambda)/2}
+% \end{eqnarray}
+% Then,
+% \begin{eqnarray}
+%     \p_s \log A(s)\Big|_{s=0}&&=\int_0^1 du \lb A(s)^u \: (\p_s A(s))\: A(s)^{-u}\rb \Big|_{s=0}= \p_sA(s)\Big|_{s=0}\ .
+% \end{eqnarray}
+% It follows that 
+% \begin{eqnarray}\label{Hamiltonianexpress}
+%     \tilde{H}_\lambda&&=\Delta_{B(t)}^{1/4}(\p_s \Delta^{-1/2}_{B(s+t)})_{s=0} \Delta_{B(t)}^{1/4}\nn\\
+%     &&=\Delta_{B(t)}^{-1/4}(\p_s\Delta^{1/2}_{B(s+t)})_{s=0}\Delta_{B(t)}^{-1/4}\nn\\
+%     &&=-\frac{1}{2\pi}\Delta_{B(R)}^{-1/4}(R\p_R\Delta^{1/2}_{B(R)})\Delta_{B(R)}^{-1/4}\ .
+% \end{eqnarray}
+
+% ---
+
+% \begin{lemma}
+%     We have
+%     \begin{eqnarray}
+%         &&\lb\Delta_s^{-\alpha}\p_s \Delta_s^{2\alpha} \Delta_s^{-\alpha}\rb_{s=0}=-\alpha\int_{-\alpha/2}^{\alpha/2} du \:\Delta^{-u}(\p_s\log \Delta)_{s=0}\Delta^u\nn\\
+%         &&=\frac{-\alpha\pi}{2}\int_{-\alpha/2}^{\alpha/2}du\int_{-\infty}^\infty\frac{ dt}{\cosh^2(\pi t)}\:\Delta^{1/2+it+u}(\Delta^{-1}(\p_s\Delta))\Delta^{-(1/2+it+u)}\ .
+%     \end{eqnarray}
+% \end{lemma}
+% \begin{proof}
+%     Using the Duhammel formula, we have
+%     \begin{eqnarray}
+%         e^{-X/2}(\p_s e^X)e^{-X/2}=\int_0^1 du\: e^{(1/2-u)X}(\p_sX)e^{-(1/2-u)X}
+%     \end{eqnarray}
+%     We obtain the first equality by setting $e^X=\Delta^{-\alpha}$, and using the change of variable $u\to (1/2-u)\alpha$. To obtain the second equality, we use the variation of the logarithm
+%     \begin{eqnarray}
+%         \p_s\log\Delta=\frac{\pi}{2}\int_{-\infty}^\infty \frac{dt}{\cosh^2(\pi t)}\Delta^{it}(\p_s\Delta)\Delta^{-it}
+%     \end{eqnarray}
+% \end{proof}
+% This means that for $\alpha=1/4$, and the modular Hamiltonian $K=-\frac{1}{2\pi}\log\Delta$, we have the following two expressions for our local approximation to the global Hamiltonian
+% \begin{eqnarray}
+%     \tilde{H}_s&&=\frac{-1}{8\pi}\int_{-\pi/4}^{\pi/4}du\:e^{i u K}(\p_s K)e^{-i u K}\label{Hs}\\
+%     &&=\frac{1}{8}\int_{-1/8}^{1/8}du\:\int_{-\infty}^\infty\frac{dt}{\cosh^2(\pi t)}\Delta^{1/2+it+u}(\Delta^{-1}\p_s\Delta)\Delta^{-(1/2+it+u)}
+% \end{eqnarray}
+% The modular operator acts on operators in the algebra as a super-operator. 
+% \begin{eqnarray}
+%     \Delta^\alpha a\ket{\Omega}=\mathcal{D}_\alpha (a)\ket{\Omega}\ .
+% \end{eqnarray}
+% If there are density matrices, this super operator is
+% \begin{eqnarray}
+%     \mathcal{D}_\alpha(a)=\rho^\alpha a \rho^{-\alpha}\ .
+% \end{eqnarray}
+% Therefore, we can write
+% \begin{eqnarray}
+%     (\p_s\Delta) a\ket{\rho^{1/2}}=\p_s(\rho a \rho^{-1})\ket{\rho^{1/2}}=[(\p_s \rho)\rho^{-1},\rho a \rho^{-1}]\ket{\rho^{1/2}}\ .
+% \end{eqnarray}
+% Therefore, our operator $\tilde{H}$ acts on the operators in the algebra as the superoperator
+% \begin{eqnarray}
+%     &&\Delta^{-1}(\p_s\Delta) \mO\ket{\Omega}=[\rho^{-1}(\p_s \rho) ,\mO]\ket{\Omega}\ .
+% \end{eqnarray}
+% We will use the Euclidean path integrals to compute the variation
+% \begin{eqnarray}
+%     \rho^{-1}(\p_s \rho)
+% \end{eqnarray}
+% and plug it in Lemma \ref{} to compute our local approximation to the global Hamiltonian to be
+% \begin{eqnarray}\label{Hsdensitymatrix}
+%   H_s=\frac{-\pi}{8}\int_{-\pi/8}^{\pi/8}du \int_{-\infty}^\infty\frac{dt}{\cosh^2(\pi t)}\rho^{1/2+it+u}\lb \rho^{-1}\p_s\rho)\rb \rho^{-(1/2+it+u)}\ .
+% \end{eqnarray}
+
+% \begin{enumerate}
+%     \item {\bf General QFT:} In QFT, the density matrix is given by a path integral 
+% \begin{eqnarray}
+%     \int_{\varphi_-}^{\varphi_+} \mathcal{D}\varphi e^{-S(\phi)}
+% \end{eqnarray}
+% with boundary values $\varphi_\pm$ above and below the cut on the sphere. To compute $\p_s \rho$, following \cite{faulkner}, we make a small scaling diffeomorphism with the vector field $\zeta=t \p_t+r \p_r$, and the metric changes by 
+% \begin{eqnarray}
+%     \eta_{\mu\nu}\to g(s)_{\mu\nu}=\eta_{\mu\nu}+s(\p_\mu \zeta_\nu+\p_\nu \zeta_\mu)+O(s^2)\ .
+% \end{eqnarray}
+% We find that 
+% \begin{eqnarray}\label{variationrhog}
+%     \rho_{B,g(s)}-\rho_{B,\eta}&&=\int d^dx (\delta g^{\mu\nu}) \rho_{B,\eta} \lb :T_{\mu\nu}:\rb+O(s^2)\nn\\
+%     &&=-2s\int d^dx \zeta^\mu \rho_{B,\eta} \lb :\p^\nu T_{\mu\nu}:\rb+2s \mathcal{P}\lb \int_{\p\mathcal{M}} \zeta^\mu n^\nu \rho_{B,\eta}:T_{\mu\nu}:\rb+O(s^2) \nn\\
+%     :T_{\mu\nu}:&&=T_{\mu\nu}-\braket{T_{\mu\nu}}\ .
+% \end{eqnarray}
+% There are three boundaries in the path integral: those above and below $B$ that we call $B^\pm$, and one that circles the entangling surface in the Euclidean plane that we refer to $\Sigma$.
+% The density matrix $\rho_{B,g(s)}=U_s\rho_{B(s),\eta}U^\dagger_s$ where $B(s)$ is rescaled. To the first order in $s$, we have
+% \begin{eqnarray}
+%     \rho_{B,g}=\rho_{B(s),\eta}+2s \int_B \zeta^\mu[:T_{\mu} :,\rho_{B,\eta}]+O(s^2)\ .
+% \end{eqnarray}
+% Putting the two pieces together, we find that the term above cancels the contribution of the boundaries $B^\pm$ in (\ref{variationrhog}), and we are left with
+% \begin{eqnarray}
+%     \p_s\rho_{B(s),\eta}=2 \int_\Sigma  \rho_{B,\eta}(\zeta^\mu n^\nu:T_{\mu\nu}:)\ .
+% \end{eqnarray}
+% Therefore,
+% \begin{eqnarray}
+%    \rho^{-1} (\p_s\rho)=2\mathcal{P}\lb \int_\Sigma \zeta^\mu n^\nu :T_{\mu\nu}:\rb
+% \end{eqnarray}
+% While the expression above explicitly involves the stress tensor, the modular flows of (\ref{Hsdensitymatrix}) are highly nontrivial, and one cannot simplify the expression above any further. To make further progress, we need to resort to perturbation theory or generalized free fields.
+
+
+% \item {\bf Vicinity of entangling surface}
+
+% Consider the case that we are in a general QFT, but the subregion is almost the whole region. In this limit, we can zoom in, near the entangling surface, and the physics is well-approximated by boost, and the earlier analysis work. Therefore, in this limit, at least for operators localized in the vicinity of the entangling wedge our operator is interest is well-approximated by the Hamiltonian.
+
+% \item {\bf Conformal perturbation theory:}
+
+% Consider a CFT with Hamiltonian $H_0$ in $\mathbb{R}^{1,d-1}$, the vacuum state $\ket{\Omega_0}$, and the modular Hamiltonian of a ball-shaped region $B$ of radius $R$ which generates a geometric flow.
+% We deform the Hamiltonian by a relevant operator $\mathcal{O}$:
+% \begin{eqnarray}
+%     &&H=H_0+\lambda V\nn\\
+%     &&V=\int d^{d-1}x \:\mathcal{O}(\tau,x),\ .
+% \end{eqnarray}
+% The vacuum of the deformed theory, in the interaction picture, can be written using the Dyson formula as
+% \begin{eqnarray}
+%  \ket{\Omega(\lambda)}&&\sim \mathcal{T}\lb e^{-\lambda\int_{-\infty}^0  d\tau V(\tau)}\rb\ket{\Omega_0}\nn\\
+%  &&=\sum_{n\geq 0}\frac{(-1)^n}{n!}\int_{-\infty}^0d\tau_1\cdots d\tau_n \:\mathcal{T}\lb V(\tau_1)\cdots V(\tau_n)\rb\ket{\Omega_0} \nn\\
+%  &&V(\tau)=e^{H_0\tau}V e^{-H_0\tau}
+% \end{eqnarray}
+% where $\ket{\Omega_0}$ is the CFT vaccum. In terms of the density matrix, we find
+% \begin{eqnarray}
+%     \rho^{-1}\delta_\lambda \rho=-\int d\tau\:\mathcal{T}\lb V(\tau)\rb\ .
+% \end{eqnarray}
+% Plugging this into the (\ref{Hsdensitymatrix}) we find that our Hamiltonian becomes
+% \begin{eqnarray}
+%     \tilde{H}_s=H_0+\lambda \int \mO+O(\lambda^2)
+% \end{eqnarray}
+% where $H_0$ is the CFT Hamiltonian and the first-order correction takes the form of an integral with a single insertion of the relevant conformal primary operator $\mO$ in the Euclidean space and some measure that is explicitly calculated in (\ref{Hsdensitymatrix}). Alternatively, we can write this result expanded in terms of the deformation of the modular Hamiltonian in conformal perturbation theory as in (\ref{}). 
+
+% Perturbation theory allows us to compare the eigenvalues and eigenvectors of our locally reconstructed Hamiltonian to the actual one. Schematically, both Hamiltonians take the following form
+% \begin{eqnarray}
+%     H=H_0+\lambda \int \mO
+% \end{eqnarray}
+% for some integral measure. Intuitively, one expects that continuity in $\lambda$ and the fact that $\mO$ is a light primary imply that at high energies our proposed Hamiltonian matches the actual Hamiltonian of the theory. To put this on more solid ground, we use the non-degenerate perturbation theory
+% \begin{eqnarray}
+%     (H_0-E_0+\lambda (H_1-E_1))\lb \ket{n^{(0)}}+\lambda\ket{n^{(1)}}\rb=O(\lambda^2)\ .
+% \end{eqnarray}
+% and notice that the first-order change in eigenvalues and eigenvectors is given by 
+% \begin{eqnarray}
+%     E_1(n)=\lambda \int\bra{n^{(0)}}\mO\ket{n^{(0)}}\nn\\
+%     \ket{n^{(1)}}=\sum_{k\neq n}\frac{\bra{k^{(0)}}\mO\ket{n^{(0)}}}{(E_0(n)-E_0(k))}\ .
+% \end{eqnarray}
+%  In a chaotic theory, it follows from the eigenstate thermalization hypothesis that the matrix elements of light operator $\mO_p$ in these heavy energy eigenbasis, at high energies and for the vast majority of energy eigenstates, are given by 
+% \begin{eqnarray}
+% &&\bra{E_H}\mO_p\ket{E_{H'}}=\mO_p(E_H)\delta_{HH'}+O^p_{HH'}
+% \end{eqnarray}
+% where the first term is diagonal and depends only on the energy $E_H$, and the dependence of the microstate $H$ or $H'$ is all captured in the second term $O^p_{HH'}\sim e^{-S(E)}$ with $E=(E_H+E_{H'})/2$. This implies that the difference in the eigenvalues of the global Hamiltonian $H_\lambda$ and our local approximation $\tilde{H}_\lambda$ to the first order $\lambda$ is universal at high energies, and the difference in energy eigenvectors is exponentially suppressed and random to the first order in $\lambda$. In a CFT, the operator-state correspondence implies that there is a one-to-one correspondence between energy eigenvectors and there is a one-to-one correspondence between energy eigenvectors and local operators. In particular, the expectation is that, for a generic chaotic CFT, the vast majority of high-energy eigenstates correspond to heavy primary operators $H$. Then, 
+% \begin{eqnarray}
+%      E_1(H)\sim C_{HH}^\mO, \qquad \braket{(H')^{(0)}|H^{(1)}}\sim C_{HH'}^\mO\ .
+% \end{eqnarray}
+% In other words, 
+% \begin{enumerate}
+%     \item The first order change in energy levels of our Hamiltonian is proportional to a Heavy-Heavy-Light coefficient $C_{\mO HH}$ with the same heavy conformal primary $H$.
+%     \item The first order change in energy eigenvectors is proportional to a Heavy-Heavy-Light coefficient $C_{\mO HH'}$ with differing heavy conformal primaries $H$ and $H'$.
+% \end{enumerate}
+% We are interested in studying the high-energy spectrum of the perturbed Hamiltonian. In the thermodynamic limit, the radius of the Lorentzian cylinder $L\to \infty$, and we look at part of the spectrum with energies that grow to infinity $E_H\sim L^d$ such that the energy density $\epsilon_H$ is kept finite. There is finite wavelength associated to $\epsilon$: 
+% \begin{eqnarray}
+%     l=\lb \frac{\epsilon}{N}\rb^{-1/(d+1)}\ .
+% \end{eqnarray}
+% where $N$ is the central charge of the CFT. Then,
+% \begin{eqnarray}
+%     &&C_{HH'}^\mO=\delta_{HH'}\Delta_H^{\Delta_\mO/(d+1)}f_\mO(E_H)+\mathcal{R}_{HH'}^\mO\nn\\
+%     &&f_\mO(E_H)=l_H^{\Delta_\mO}(N \omega_d)^{-\Delta_\mO/(d+1)}\mO(E_H),
+% \end{eqnarray}
+% where $\omega_d$ is the volume of a unit sphere $S^d$, and the non-universal term suffers an exponential suppression of the form
+% \begin{eqnarray}
+%     \mathcal{R}^\mO_{HH'}=e^{-O(\Delta_\mO^{d/(d+1)})+\frac{\Delta_\mO}{(d+1)}\log\Delta_H}\ .
+% \end{eqnarray}
+% In 2d CFTs and typical holographic CFTs, the thermal one-point functions vanish in the thermodynamic limit, which implies the further restriction that the first-order perturbation $E_1(n)=0$.
+
+% \item {\bf  Excited states of CFT:} 
+
+% Instead of considering the vacuum of QFT, we can consider the excited states of CFT. More generally, for an inclusion $A\subset B$ and any pair of vectors $\Phi$ and $\Psi$ in the Hilbert space, we can consider the following characteristic function
+% \begin{eqnarray}
+%    T_{\Phi|\Psi}(t)=\Delta_{\Phi|\Psi;B}^{it}\Delta_{\Phi|\Psi;A}^{-it}
+% \end{eqnarray}
+% and define
+% \begin{eqnarray}
+%     \tilde{H}_s=\frac{-1}{8\pi}\int_{-\pi/4}^{\pi/4}du\:e^{i u K_{\Phi|\Psi}}(\p_s K_{\Phi|\Psi})e^{-i u K_{\Phi|\Psi}}\ .
+% \end{eqnarray}
+% The simplest cases to consider is when the excited states $U_AU_{B'}\ket{\Omega}$ and $V_AV_{B'}\ket{\Psi}$, then for either $A$ or $B$ we have
+% \begin{eqnarray}
+%     &&\Delta_{\Phi|\Psi;A/B}=V_{B'}U_A\Delta_{\Omega;A/B}U_A^\dagger V_{B'}^\dagger
+% \end{eqnarray}
+% which implies
+% \begin{eqnarray}
+%      &&T_{\Phi|\Psi;A\subset B}(\alpha)=\Delta_{\Phi|\Psi;B}^{\alpha}\Delta_{\Phi|\Psi;A}^{-\alpha}=V_{B'}U_A T_{\Omega;A\subset B} U_A^\dagger V_{B'}^\dagger\ .
+% \end{eqnarray}
+% This implies that in this case, the spectrum of our approximate Hamiltonian matches that of the actual global Hamiltonian exactly, whereas the eigenvectors differ.
+% To make the example more non-trivial, we consider one-parameter families of operators
+% \begin{eqnarray}
+%     &&\Phi_\lambda=1+\lambda \phi^{(1)}+\frac{\lambda^2}{2}\phi^{(2)}+\cdots\nn\\
+%     &&\Psi_\lambda=1+\lambda\psi^{(1)}+\frac{\lambda^2}{2}\psi^{(2)}+\cdots
+% \end{eqnarray}
+% and from (\ref{}) we know that 
+% \begin{eqnarray}
+%     &&\delta=\lambda \delta^{(10)}+\mu \delta^{(01)}+\mu\lambda \delta^{(11)}+O(\lambda^2)+O(\mu^2)\nn\\
+%     &&K_{\Phi|\Psi}-K_\Omega=\lambda K^{(10)}+\mu K^{(01)}+\lambda\mu K^{(11)}+O(\lambda^2)+O(\mu^2)\nn\\
+%     &&K^{(10)}=\frac{-\pi}{2}\int_{-\infty}^\infty \frac{dt}{\cosh^2(\pi t)}(\phi^{(1)}_{-i/2+t}+\phi^{(1)}_{i/2+t}),\nn\\
+%     &&K^{(01)}=\pi\int_{-\infty}^\infty \frac{dt}{\cosh^2(\pi t)}J\psi_{t}^{(1)}J,\qquad K^{(11)}=0\ .
+% \end{eqnarray}
+% Consider the modular Hamiltonian of a ball of size $e^{-2\pi s}$ on the Lorentzian cylinder and denote it by $K(s,\lambda)$. To simplify our notation, we will use
+% \begin{eqnarray}
+%     &&K'(s)=\p_tK(s+t,\lambda)|_{t=0}\nn\\
+%     &&\dot{K}(s)=\p_\lambda K(s,\lambda)|_{\lambda=0}\ .
+% \end{eqnarray}
+% We prove the following lemma
+% \begin{lemma}
+
+
+% \end{lemma}
+
+% \begin{eqnarray}
+%      \p_sA(s)\Big|_{s=0}= e^{-\pi K(0)/2}\lb\int_0^1 du \: e^{2\pi u K(0)}K'(0) e^{2\pi(1-u)K(0)}\rb e^{-\pi K(0)/2}
+%  \end{eqnarray}
+% As a result,
+% \begin{eqnarray}
+%     \delta\tilde{H}_t(\lambda)&&=\int_0^1 du\: e^{2\pi(u-1/2)K_{B(t)}} \lb \p_s K_{B(t+s)}\rb_{s=0} e^{-2\pi(u-1/2)K_{B(t)}}\nn\\
+%     &&=-\frac{1}{\pi}\int_0^1 du\: e^{2\pi(u-1/2)K_{B(R)}} R\p_R K_{B(R)} e^{-2\pi(u-1/2)K_{B(R)}}
+% \end{eqnarray}
+
+% Next, we would like to compute the expression above in the first-order perturbation theory in $\lambda$ around $\lambda=0$:
+% \begin{eqnarray}
+%    \delta_\lambda (\delta\tilde{H}_t)&&=\p_\lambda\p_s\lb e^{-\pi K(t,\lambda)}e^{2\pi K(t+s,\lambda)}e^{-\pi K(t,\lambda)}\rb_{\lambda=s=0}\nn\\
+%    &&=\p_\lambda\p_s A(s,\lambda)\Big|_{s=\lambda=0}\nn\\
+%    &&=\int_0^1 du\: \p_\lambda\lb e^{B}K'(0) e^{-B} \rb_{\lambda=0}\nn\\
+%    &&=\int_0^1 du\: \lb e^B (\p_\lambda K'(0)) e^{-B}+ (\p_\lambda e^B)K'(0)e^{-B}+e^B K'(0)(\p_\lambda e^{-B})\rb_{\lambda=0}
+% \end{eqnarray}
+% where we have defined $B=2\pi(u-1/2)K_{B(t)}$. We focus on the second and third terms, using 
+% the Duhamel formula
+% \begin{eqnarray}\label{firstorderBCH}
+%     &&\delta(e^X)=\int_0^1 du\: e^X (\delta X)_{X,-u}=\int_0^1 du\:  (\delta X)_{X,u} e^X \nn\\
+%     &&(\delta X)_{X,u}\equiv \lb e^{u X}(\delta X)e^{-u X}\rb
+% \end{eqnarray}
+% we find the integrand in the second and third terms can be written as
+% \begin{eqnarray}
+%   \lb(\p_\lambda e^B)K'(0)e^{-B}+e^B K'(0)(\p_\lambda e^{-B})\rb_{\lambda=0}=\int_0^1 dv\: e^{B} [ e^{-v B}\p_\lambda K(0) e^{v B},K'(0)] e^{-B}
+% \end{eqnarray}
+% As a result, we have
+% \begin{eqnarray}
+%     \delta_\lambda (\delta\tilde{H}_t)&&=\int_0^1 du\:dv\: e^B\lb  K^{(1,1)}(t,0)+ [e^{-v B}K^{(0,1)}(t,0)e^{vB},K^{(1,0)}(t,0)]\rb e^{-B}\nn\\
+%     &&=\int_0^1 du e^B K^{(1,1)}(t,0)e^{-B}+\int du\:d v \: e^{(1-v)B}[K^{(0,1)}(t,0),e^{v B}K^{(1,0)}(t,0) e^{-v B}]\: e^{-(1-v)B}
+% \end{eqnarray}
+% where we are denoting $\p_\lambda K(s,\lambda)=K^{(0,1)}(s,\lambda)$ and $\p_sK(s,\lambda)=K^{(1,0)}$. Note that 
+% \begin{eqnarray}
+%     K^{(1,0)}(t,0)&&=\p_s \lb \cosh(2\pi (t+s))K_B+\sinh(2\pi (t+s) H\rb_{s=0}\nn\\
+%     &&=2\pi \lb \cosh(2\pi t)H+\sinh(2\pi t)K_B\rb=-R\p_R K_{B(R)}\ .
+% \end{eqnarray}
+% Therefore, all we need to compute is $\delta_\lambda K_{B(R)}$ because
+% \begin{eqnarray}
+%     &&K^{(0,1)}(t,0)=\delta_\lambda K_{B(R)}\nn\\
+%     &&K^{(1,1)}(t,0)=-\frac{1}{2\pi}R \p_R \lb \delta_\lambda K_{B(R)}\rb\ .
+% \end{eqnarray}
+% We will see that 
+% \begin{eqnarray}
+%     \delta_\lambda K_{B(R)}=\lambda R^2\int d\text{vol}_{B(t)} f(\alpha,u)\: \mO(\alpha,u)
+% \end{eqnarray}
+% where $\mO(\alpha,u)=e^{-\alpha K_{B(R)}}\mO(0,u) e^{\alpha K_{B(R)}}$. Then,
+% \begin{eqnarray}
+%     K^{(1,1)}(t,0)=-\frac{1}{\pi}K^{(0,1)}(t,0)
+% \end{eqnarray}
+% \NL{Can we simplify this any further?}
+
+
+
+% In conformal perturbation theory, we can expand the Euclidean path-integral that computes the density matrix as 
+% \begin{eqnarray}
+%     \rho_\lambda=\int_{\varphi_-}^{\varphi_+}\mathcal{D}\varphi\: e^{-S_0(\varphi)}\lb 1+\lambda \int_{\mM} \mO\rb
+% \end{eqnarray}
+% Then, we have
+% \begin{eqnarray}
+%     \rho_\lambda=\rho_0+\lambda\mathcal{P}\lb\int_{\mM}  \mO\rb
+% \end{eqnarray}
+
+
+
+
+
+% Consider a CFT with Hamiltonian $H_0$ in $\mathbb{R}^{1,d-1}$, the vacuum state $\ket{\Omega_0}$ and the modular Hamiltonian of a ball-shaped region $B$ of radius $R$ which generates a geometric flow.
+% We deform the Hamiltonian by a relevant operator $\mathcal{O}$:
+% \begin{eqnarray}
+%     &&H=H_0+\lambda V\nn\\
+%     &&V=\int d^{d-1}x \:\mathcal{O}(\tau,x),\ .
+% \end{eqnarray}
+% The vacuum of the deformed theory, in the interaction picture, can be written using the Dyson formula as
+% \begin{eqnarray}
+%  \ket{\Omega(\lambda)}&&\sim \mathcal{T}\lb e^{-\lambda\int_{-\infty}^0  d\tau V(\tau)}\rb\ket{\Omega_0}\nn\\
+%  &&=\sum_{n\geq 0}\frac{(-1)^n}{n!}\int_{-\infty}^0d\tau_1\cdots d\tau_n \:\mathcal{T}\lb V(\tau_1)\cdots V(\tau_n)\rb\ket{\Omega_0} \nn\\
+%  &&V(\tau)=e^{H_0\tau}V e^{-H_0\tau}
+% \end{eqnarray}
+% where $\ket{\Omega_0}$ is the CFT vaccum. 
+
+
+% To the first order in perturbation theory, we have
+% \begin{eqnarray}
+%     \ket{\Omega(\lambda)}=\lb 1-\lambda\int_{-\infty}^0d\tau\: V(\tau)\rb\ket{\Omega_0}+O(\lambda^2)
+% \end{eqnarray}
+% It is convenient to use polar coordinates and define the potential term at constant radius $r$ integrated on $S^{d-2}$:
+% \begin{eqnarray}
+% &&V=\int_0^\infty d\Omega_{d-2} r^{d-2}dr\:d\Omega_{d-2}\:\mO(r,\Omega_i)\ .
+% \end{eqnarray}
+% Since we are interested in spherically symmetric setups, the problem becomes effectively two-dimensional in $(\tau,r)$. 
+
+% Consider a ball-shaped region of angular size $\theta$ at constant time slice $\tau=0$ on the Lorentzian cylinder. 
+
+% The following change of coordinates $(\tau,r)\to (\alpha,u)$ that sends Euclidean space $\mathbb{R}^{d}$ to the $\mathbb{H}_{d-1}\times S^1$:
+% \begin{eqnarray}
+%     &&\tau/R=\frac{\sin(2\pi\alpha)}{\cos(2\pi\alpha)+\cosh(u)}\nn\\
+%     &&r/R=\frac{\sinh(u)}{\cos(2\pi\alpha)+\cosh(u)}
+% \end{eqnarray}
+% with $u\in \mathbb{R}$ and $\alpha\in [0,1]$ representing the $S^1$. It is often convenient to work with rescaled coordinates $\tilde{\tau}=\tau/R$ and $\tilde{r}=r/R$.
+% In these new coordinates, the first-order variation of the vacuum vector becomes
+% \begin{eqnarray}\label{variationvector}
+%     \delta_\lambda\ket{\Omega(\lambda)}\Big|_{\lambda=0}&&=\lb (2\pi R^2\lambda)\int_0^{1/2} d\alpha \int_{-\infty}^\infty  \frac{du\:\sinh^{d-2}(u)}{(\cos(2\pi\alpha)+\cosh(u))^{d}}V(\alpha,u)\rb\ket{\Omega(0)}=\lambda\tilde{V}\ket{\Omega(0)}\nn\\
+%     \tilde{V}&&=\int_0^{1/2}\int_{\mathbb{H}_{d-1}}(d\text{vol})\mathcal{O}(\alpha,u,\Omega_i)\nn\\
+%     d\text{vol}&&=2\pi R^2 \frac{d\Omega_{d-1}d\tau du\:\sinh^{d-2}(u)}{(\cos(2\pi\alpha)+\cosh(u))^{d}}=r^{d-2}drd\tau d\Omega_{d-2}\ .
+% \end{eqnarray}
+% It is also convenient to define the conformal factor
+% \begin{eqnarray}
+%     \omega(\alpha,u)=\cos(2\pi\alpha)+\cosh(u)\ .
+% \end{eqnarray}
+% Since the modular flow of a ball-shaped region is a shift in $\alpha$, we define the notation
+% \begin{eqnarray}
+%     \sigma_s(\mO)\equiv\Delta_B^{-is}\mO\Delta_B^{is}
+% \end{eqnarray}
+% and write 
+% \begin{eqnarray}
+%     \tilde{V}=\int (d\text{vol})\:\sigma_{i\alpha}(\mO)\ .
+% \end{eqnarray}
+% Note that the Euclidean modular flowed operator $\sigma_{i\alpha}(\mO)$ need not be inside the algebra.  However, for real $s$ we have $\sigma_s(\mO)\in \mA_B$, and for a dense set of operators $\sigma_z(\mO)$ remains inside the algebra for all complex $z$, we treat $\sigma_{i\alpha}(\mO)$ as if it belongs to the algebra. This way, we can view the vacuum of conformal perturbation theory as an ``excited state" of the CFT created by the action of an operator in the algebra $\tilde{V}$. 
+
+% Now, we have a one-parameter family of vectors in the Hilbert space expanded around a vacuum $\ket{\Omega_0}$ that we schematically denote by
+% \begin{eqnarray}
+%     \ket{\Omega(\lambda)}=(1+\int\lambda \mO)\ket{\Omega}+O(\lambda^2)
+% \end{eqnarray}
+% with $\mO\in \mA_B$ a self-adjoint operator in the algebra of a ball-shaped region $\mA_B$. In our example, the integral has the measure (\ref{variationvector}); however, we will treat the integral schematically. 
+
+
+
+% Then, following \cite{lashkari2023perturbation}
+% \begin{eqnarray}
+%    &&D(\lambda)=1-\Delta_\Omega^{-1/2} \Delta_{\Omega(\lambda)}\Delta_\Omega^{-1/2}=\lambda\int\lb \Delta^{1/2}\sigma_{i\alpha}(\mO)\Delta^{-1/2}+\Delta^{-1/2}\sigma_{i\alpha}(\mO)\Delta^{1/2}-2\sigma_{i\alpha}(\mO)\rb+O(\lambda^2)\nn\\
+%    &&\frac{D(\lambda)}{1-D(\lambda)/2}=\lambda\int \delta+O(\lambda^2)\nn\\
+%    &&\delta=\sigma_{i(\alpha+1/2)}(\mO)+\sigma_{i(\alpha-1/2)}(\mO)-2\sigma_{i\alpha}(\mO)
+% \end{eqnarray}
+
+% ----
+
+
+% Conformal perturbation theory
+
+
+
+% \item {\bf Coherent states of Generalized Free Fields:}
+
+
+% \end{enumerate}
+
+
+
+
+% Consider a one-parameter family of states 
+% \begin{eqnarray}
+%     \ket{\Omega(\lambda)}=1+\lambda \mO\ket{\Omega}+O(\lambda^2)
+% \end{eqnarray}
+% where for simplicity we will assume $\mO\in \mA$. 
+
+% Consider an infinitesimal diffeomorphism $f:x^\mu\to x^\mu-\zeta^\mu$ so that the metric changes by
+% \begin{eqnarray}
+%     g_{\mu\nu}=\eta_{\mu\nu}+\p_\mu \zeta_\nu+\p_\nu  \zeta_\mu+O(\zeta^2)\ .
+% \end{eqnarray}
+% Under this diffeormorphism the Euclidean path-integral that computes $\Delta_{B(R)}$ changes by
+% \begin{eqnarray}
+%  \delta\Delta_{B(R)}&&=\int_{\tau<0}(\delta g_{\mu\nu}) \Delta_{B(R)} :T_{\mu\nu}: 
+% \end{eqnarray}
+% where the integral is over the lower half-cylinder in  Euclidean time; $\tau<0$.
+% After integration by parts, we find
+% \begin{eqnarray}
+%     \delta\Delta_{B(R)}=-\int (\zeta^\nu \p^\mu T_{\mu\nu})
+% \end{eqnarray}
+% We choose the diffeomorphism to generate a dilatation:
+% \begin{eqnarray}
+%     \zeta=(r \p_r+\tau \p_\tau)\ .
+% \end{eqnarray}
+
+% Next, we define
+% \begin{eqnarray}
+%     K(s)\equiv K(t,\lambda)
+% \end{eqnarray}
+% so that 
+% \begin{eqnarray}
+%      \p_sA(s)\Big|_{s=0}= e^{-\pi K(0)/2}\lb\int_0^1 du \: e^{2\pi u K(0)}K'(0) e^{2\pi(1-u)K(0)}\rb e^{-\pi K(0)/2}
+%  \end{eqnarray}
+% As a result,
+% \begin{eqnarray}
+%     \delta\tilde{H}_t(\lambda)&&=\int_0^1 du\: e^{2\pi(u-1/2)K_{B(t)}} \lb \p_s K_{B(t+s)}\rb_{s=0} e^{-2\pi(u-1/2)K_{B(t)}}\nn\\
+%     &&=-\frac{1}{\pi}\int_0^1 du\: e^{2\pi(u-1/2)K_{B(R)}} R\p_R K_{B(R)} e^{-2\pi(u-1/2)K_{B(R)}}
+% \end{eqnarray}
+
+% Next, we would like to compute the expression above in the first-order perturbation theory in $\lambda$ around $\lambda=0$:
+% \begin{eqnarray}
+%    \delta_\lambda (\delta\tilde{H}_t)&&=\p_\lambda\p_s\lb e^{-\pi K(t,\lambda)}e^{2\pi K(t+s,\lambda)}e^{-\pi K(t,\lambda)}\rb_{\lambda=s=0}\nn\\
+%    &&=\p_\lambda\p_s A(s,\lambda)\Big|_{s=\lambda=0}\nn\\
+%    &&=\int_0^1 du\: \p_\lambda\lb e^{B}K'(0) e^{-B} \rb_{\lambda=0}\nn\\
+%    &&=\int_0^1 du\: \lb e^B (\p_\lambda K'(0)) e^{-B}+ (\p_\lambda e^B)K'(0)e^{-B}+e^B K'(0)(\p_\lambda e^{-B})\rb_{\lambda=0}
+% \end{eqnarray}
+% where we have defined $B=2\pi(u-1/2)K_{B(t)}$. We focus on the second and third terms, using 
+% the Duhamel formula
+% \begin{eqnarray}\label{firstorderBCH}
+%     &&\delta(e^X)=\int_0^1 du\: e^X (\delta X)_{X,-u}=\int_0^1 du\:  (\delta X)_{X,u} e^X \nn\\
+%     &&(\delta X)_{X,u}\equiv \lb e^{u X}(\delta X)e^{-u X}\rb
+% \end{eqnarray}
+% we find the integrand in the second and third terms can be written as
+% \begin{eqnarray}
+%   \lb(\p_\lambda e^B)K'(0)e^{-B}+e^B K'(0)(\p_\lambda e^{-B})\rb_{\lambda=0}=\int_0^1 dv\: e^{B} [ e^{-v B}\p_\lambda K(0) e^{v B},K'(0)] e^{-B}
+% \end{eqnarray}
+% As a result, we have
+% \begin{eqnarray}
+%     \delta_\lambda (\delta\tilde{H}_t)&&=\int_0^1 du\:dv\: e^B\lb  K^{(1,1)}(t,0)+ [e^{-v B}K^{(0,1)}(t,0)e^{vB},K^{(1,0)}(t,0)]\rb e^{-B}\nn\\
+%     &&=\int_0^1 du e^B K^{(1,1)}(t,0)e^{-B}+\int du\:d v \: e^{(1-v)B}[K^{(0,1)}(t,0),e^{v B}K^{(1,0)}(t,0) e^{-v B}]\: e^{-(1-v)B}
+% \end{eqnarray}
+% where we are denoting $\p_\lambda K(s,\lambda)=K^{(0,1)}(s,\lambda)$ and $\p_sK(s,\lambda)=K^{(1,0)}$. Note that 
+% \begin{eqnarray}
+%     K^{(1,0)}(t,0)&&=\p_s \lb \cosh(2\pi (t+s))K_B+\sinh(2\pi (t+s) H\rb_{s=0}\nn\\
+%     &&=2\pi \lb \cosh(2\pi t)H+\sinh(2\pi t)K_B\rb=-R\p_R K_{B(R)}\ .
+% \end{eqnarray}
+% Therefore, all we need to compute is $\delta_\lambda K_{B(R)}$ because
+% \begin{eqnarray}
+%     &&K^{(0,1)}(t,0)=\delta_\lambda K_{B(R)}\nn\\
+%     &&K^{(1,1)}(t,0)=-\frac{1}{2\pi}R \p_R \lb \delta_\lambda K_{B(R)}\rb\ .
+% \end{eqnarray}
+% We will see that 
+% \begin{eqnarray}
+%     \delta_\lambda K_{B(R)}=\lambda R^2\int d\text{vol}_{B(t)} f(\alpha,u)\: \mO(\alpha,u)
+% \end{eqnarray}
+% where $\mO(\alpha,u)=e^{-\alpha K_{B(R)}}\mO(0,u) e^{\alpha K_{B(R)}}$. Then,
+% \begin{eqnarray}
+%     K^{(1,1)}(t,0)=-\frac{1}{\pi}K^{(0,1)}(t,0)
+% \end{eqnarray}
+% \NL{Can we simplify this any further?}
+% % and 
+% % \begin{eqnarray}
+% %     e^{vB}K^{(1,0)}(t,\lambda)e^{-v B}=e^{2\pi v (u-1/2)K_{B(t)}}K^{(1,0)}(t,\lambda) e^{-2\pi v(u-1/2)K_{B(t)}}
+% % \end{eqnarray}
+
+
+\section{Discussion}
+
+\subsection{Underlying Operator Algebraic Structure}
+
+$L^2$-nuclearity implies split property which implies hyperfiniteness. Can this be used to set a constraint on the spectral density $\rho(\omega)$ based on the hyperfiniteness of the bulk algebra?
+
+\subsection{ANEC operator}
+If we consider the case $s$ is small in Rindler wedge in QFT, we find that our operator of interest is 
+\begin{eqnarray}
+    &&e^{-\pi J_{01}}\lb  \int dx^+ T_{++}(x^+,0)-\int dx^- T_{--}(0,x^-)\rb e^{\pi J_{01}}\nn\\\
+    &&=\int dx^+ T_{++}(-x^+,0)-\int dx^- T_{--}(0,-tx^-)
+\end{eqnarray}
+is this like an operator integrated over a time-like curve? I think the answer is no!
+
+
+\subsection{Curved spacetime QFT}
+Cosmological Spacetimes
+
+\subsection{IR deformation of S-matrix}
+
+\subsection{Late time measures of quantum chaos}
+Local Quantum Chaos
+Modular spectral form factor, decay ramp, and plateau?
+
+Comment on the boundary dual of apparent horizons, simple (coarse-grained) entropy.
+
+In the vicinity of the entangling surface, the operator of insert is, indeed, Hamiltonian which suggests that if we compute the spectrum of $K+i\epsilon H$ it should give us the quasi-normal modes \cite{maldacenapaper}.
+
+
+We postpone a numerical exploration of our proposal for critical lattice models to upcoming work.
+
+\section*{Acknowledgements}
+We thank Keiichiro Furuya, Mudassir Moosa, Shoy Ouseph, Laimei Nie, 
+
+% Acknowledgments
+%\begin{acknowledgments}
+%\end{acknowledgments}
+
+\appendix
+
+%\begin{widetext}
+
+
+\section{Chaos bound}
+
+\KL{==========================Chaos bound===================}\\
+We consider the modular chaos bound condition studied in \cite{}. We define
+\begin{eqnarray}
+    f_\mO(u)&&=\frac{\bra{\mO}\Delta_A^{1/2+iu}\Delta_B^{-iu}\ket{\mO}}{\sqrt{\braket{a|\Delta_A^{1/2}a}\braket{b|\Delta_B^{1/2}b}}}\\
+    &&=\frac{\bra{\Delta_A^{1/4}\mO} T_{B\subset A}(-i/4+u)\ket{\Delta_B^{1/4} \mO}}{\sqrt{\braket{\mO|\Delta_A^{1/2}\mO}\braket{\mO|\Delta_B^{1/2}\mO}}}\nn\\
+    &&=1+i \mathcal{M}_{\mO}(u)
+\end{eqnarray}
+First, we find that 
+\begin{eqnarray}
+    1-\Im(\mathcal{M}_\mO(u))=\Re(f_\mO(u))\leq |f_\mO(u)|\leq 1
+\end{eqnarray}
+which implies that 
+\begin{eqnarray}
+    \Im\mathcal{M}_\mO(u)\geq 0\ .
+\end{eqnarray}
+Using the change of variables $E=ie^{-2\pi u}$ sends the function above to the upper half-plane. Therefore, we can view $\mM(E)$ as an analytic map from the upper half-plane $H$ to itself. Then, writing $E=v+iw$ the Schwarz-Pick lemma becomes
+\begin{eqnarray}
+    \frac{|w \p_w \mM(v+iw)|}{\Im \mM(v+iw)}\leq 1\ . 
+\end{eqnarray}
+Since we have $|\p_w \Im\mM(v+i\omega)|\leq |\p_w \mM(v+i\omega)|$ we find
+\begin{eqnarray}
+    |w\p_w \log \Im \mM(v+iw)| \stackrel{(1)}{\leq} \frac{|w \p_w \mM(v+iw)|}{\Im \mM(v+iw)} \stackrel{(2)}{\leq} 1\ .
+\end{eqnarray}
+This is the modular chaos bound. To saturate this bound, first we need to take the equality condition $(2)$ in the lemma above, which fixes $\mM(E)=\frac{a E+b}{c E+d}$ to be a $PSL(2,\mathbb{R})$ transformation. Next, we require the saturation of the first inequality $(1)$
+\begin{eqnarray}
+    \forall v+iw\in H:\qquad \p_w \Re \mM(v+iw)=0\ .
+\end{eqnarray}
+This is satisfied if and only if $c=0$, i.e.
+\begin{eqnarray}
+    \mM(E)=\frac{a E+b}{d}\ .
+\end{eqnarray}
+\KL{*****} However, this inequality is not tight, i.e. $|w\p_w \log \Im \mM(v+iw)| < 1$. It is like a supremum rather than a maximum.
+\begin{lemma}
+    Consider a function $\mM(E)$ that is analytic in the upper half-plane ($\Im E > 0$). If it can be written as $f(E) = 1+i\mM(E)$ for some function $f(E)$ that is bounded by 1 in the upper half-plane, then the modular chaos bound cannot be saturated. In other words,
+    \begin{align}
+        |w\p_w \log \Im \mM(v+iw)| < 1.
+    \end{align}
+\end{lemma}
+We can write $\mM = -i(f-1)$. The image of $\mM$ is within the unit disk centered at $i$ in $\mathbb{C}$. Inequality $(2)$ is saturated if and only if the function is a M\"obius transformation with real coefficients. These M\"obius transformations are bijetive functions mapping from the upper half-plane to itself. The image of $\mM$ is by definition a strict subset of the upper half-plane, whereas the domain is the entire upper half-plane. The inequality can never exactly saturate. Instead, we can look for an asymptotic saturation under suitable limits. The modular chaos bound is proposed as the following\cite{}. Consider $\mM = i\varepsilon p e^{\lambda u} + O(\varepsilon^2)$ for some small $\varepsilon \ll 1$, $\varepsilon e^{\lambda u} \ll 1$, and $p>0$. The above inequality gives $\lambda \leq 2\pi$. This is the modular chaos bound. This chaos bound is only meaningful in a proper range of time scales. 
+
+We now consider a $0+1$d GFF example.
+
+%\KL{======== 0+1d GFF ==================================}
+
+
+\KL{=======================2. The Modular Chaos bound in GFF ============}\\
+\KL{Not finished yet.}
+
+\subsection{Modular chaos bound in GFF}
+
+We then consider the modular chaos bound in the 0+1d GFF example. We consider $B = (-1,1)$ and $B(s) = (-e^{-2\pi s}, e^{-2\pi s})$. We define
+\begin{eqnarray}
+    f_{s,x}(u)&&=\frac{\bra{\phi(x)}\Delta_B^{1/2+iu}\Delta_{B(s)}^{-iu}\ket{\phi(x)}}{\sqrt{\braket{\phi(x)|\Delta_B^{1/2}\phi(x)}\braket{\phi(x)|\Delta_{B(s)}^{1/2}\phi(x)}}}\\
+    &&=\frac{\bra{\Delta_A^{1/4}\phi(x)} T_{0,s}(-i/4+u)\ket{\Delta_B^{1/4} \phi(x)}}{\sqrt{\braket{\phi(x)|\Delta_B^{1/2}\phi(x)}\braket{\phi(x)|\Delta_{B(s)}^{1/2}\phi(x)}}}\nn\\
+    &&=1+i \mathcal{M}_{s,x}(u),
+\end{eqnarray}
+for $x \in B(s)\subset B$. By substituting $E = ie^{-2\pi u} \in {\mathbb{H}_+}$ for $\Im u \in (-\pi/4,\pi/4)$, we have
+\begin{align}
+    the.long.complicated.expression.here.finish.it.later
+\end{align}
+This is not a M\"obius transformation, which is expected. In the $\pi s \ll 1$ limit, we have
+\begin{align}
+    f_{s,x}(E) &= 1 - i\pi s h\lb \frac{1-x}{1+x}\frac{1}{E} - \frac{1+x}{1-x}E \rb + O((\pi s)^2),\\
+    f_{s,x}(u) &= 1 - \pi s h\lb \frac{1-x}{1+x}e^{2\pi u} + \frac{1+x}{1-x}e^{-2\pi u} \rb + O((\pi s)^2).
+\end{align}
+We then consider the late time behaviour in a double-scale limit, i.e. $e^{2\pi u} \gg1$ while keeping $1\gg\pi se^{2\pi u}$. The previous expression gives
+\begin{align} 
+    f_{s,x}(u) \approx 1 - \pi s h \frac{1-x}{1+x}e^{2\pi u},\\
+    \mM_{s,x}(u)\approx i\pi s h \frac{x-1}{x+1}e^{2\pi u}.
+\end{align}
+This is the saturation of the modular chaos bound asymptotically. It gives a similar result if we consider $e^{-2\pi u} \gg1$ instead. In other words, $\mM_{s,x}(u) \sim ise^{2\pi |u|}$ for $e^{2\pi |u|} \gg 1\gg\pi se^{2\pi |u|}$.
+
+
+\subsection{Analytic Properties of Characteristic Function}
+We consider a CFT in (1+1d) Minkowski space with wedge inclusion and study the analytic properties of the matrix element $f(z)=\bra{O(X)}\Delta_A^{1/2+iz}\Delta_B^{-iz}\ket{O(Y)}$ with point-like fields $O(X), O(Y)$ localized at point $Y\in B \subset A\ni X$ respectively. The general properties of characteristic function implies that the function $f(z)$ is analytic in the stripe Im$(z)\in (-1/4,1/4)$ and continuous and bounded in the closure. For self-adjoint $O(X), O(Y)$, we further have $f(z) = \overline{f(\overline{z})}$ for $z$ in the stripe, and thus $f(z)\in\mathbb{R}$ for $z\in\mathbb{R}$.
+
+The Lorentz boost allows us to take $B = W(a>0) \subset A = W(0)$ without loss of generality. For simplicity, we can take $O$ to be scalar primary field with conformal dimension $h$. One may choose to normalize $f(z)$ with $\sqrt{\braket{\mO(X)|\Delta_A^{1/2}\mO(X)}\braket{\mO(Y)|\Delta_B^{1/2}\mO(Y)}}$. This choice guarantees the function to be bounded by $1$, but in general strictly less then $1$. We will omit the normalization unless it is needed. For $X = (t_1,x_1)$ and $Y = (t_2,x_2+a)$, we have
+\begin{gather}
+    f(z) = \frac{C}{(\Delta s^2-i\epsilon(t_1+t_2+a\sinh(2\pi z))^{h}},\nonumber\\
+    \Delta s^2 = -(t_1+t_2+a\sinh(2\pi z))^2 + (x_1+x_2 + a\cosh(2\pi z))^2,
+\end{gather}
+where $C$ is the normalization factor. 
+
+We observe the following analytic properties in this setup. All branch points/poles locate at $\Delta s^2 = 0$. The first four singularities encountered locate at Re$(z) = \pm\frac{1}{2\pi}\log(\frac{x_1\pm t_1+x_2\pm t_2}{a})$ with Im$(z) = \pm 1/2$. The function $f(z)$ is analytic in a larger stripe Im$(z)\in (-1/2,1/2)$. The function has no zero in the stripe and decays to zero when Re$z \to \infty$. The function is continuous and real at $-\frac{1}{2\pi}\log(\frac{x_1- t_1+x_2- t_2}{a})<\text{Re}(z)< \frac{1}{2\pi}\log(\frac{x_1+ t_1+x_2+ t_2}{a})$ with Im$(z) = \pm i/2$. The function being real and continuous in these intervals on the boundary allows us to further extend the analyticity outside the strip by the Schwarz reflection principle. The function $f(z)$ is periodic with $f(z+i) = f(z)$, with singularities at Re$(z) = \pm\frac{1}{2\pi}\log(\frac{x_1\pm t_1+x_2\pm t_2}{a})$ with Im$(z) \in \pm \frac{1}{2}\mathbb{Z}$. For $h \in \mathbb{Z}$, the singularities are poles, and $f(z)$ is a meromorphic function on the complex plane. For $h \notin \mathbb{Z}$, they are branch points, and there is a branch cut originated horizontally from each branch point toward infinity. The discontinuity across the branch cut is a phase difference $e^{i2\pi h}$.  \KL{(fig.)}
+
+Although we start with a CFT in (1+1d) Minkowski space, there are several properties that remain valid in QFT and higher dimension. In general QFT, the two-point function is a function of the proper distance $\Delta s^2$. The two-point function has a singularity only if $\Delta s^2 = 0$. It can only achieve zero at infinite proper distance. The two-point function is real if the two points are spacelike separating. The modular flow of the wedges is still a boost. With these general features of QFT, most of the above analyticity and singularity structures remain the same in general QFT, except for the details about the singularity. 
+
+Next, we consider the setup with a ball included in the wedge in CFT.
+
+% Wrong, don't use it \KL{We consider $f_{ab}(z) \equiv \bra{a}\Delta_A^{1/2+iz}\Delta_B^{-iz}\ket{b} = \bra{\Delta_A^{1/4}a} T_{B\subset A}(z-i/4)\ket{\Delta_B^{1/4} b} $ with some special choice of $a,b$. $f_{ab}(z)$ is holomorphic on the stripe Im$(z) \in (-\frac{1}{4}, \frac{1}{4})$ and continuous in the closure. The characteristic function has the boundary value that, for real $t$,
+% \begin{align}
+%     T_{B\subset A}(t-i/2) = J_AT_{B\subset A}(t)J_B.
+% \end{align}
+% By choosing $a\in A$ and $b\in B \subset A$ as positive operators, we have
+% \begin{align}
+%     J_A \ket{\Delta_A^{1/4}a} = \ket{\Delta_A^{1/4}a},\nonumber\\
+%     J_B \ket{\Delta_B^{1/4}b} = \ket{\Delta_B^{1/4}b},
+% \end{align}
+% because both vectors are in the corresponding natural cones. Thus, the boundary value of $f_{ab}$ satisfies, for real $t$,
+% \begin{align}
+%     f_{ab}(t+i/4) = f_{ab}(t-i/4).
+% \end{align}
+% \textbf{Mistake, check the anti-unitary steps}
+% The claim is that, with this choice of $a$ and $b$, we can extend $f_{ab}(z)$ to an entire function, i.e. a holomorphic function on the whole complex plane. In fact, $f_{ab}(z)$ is a constant function. 
+% \begin{lemma}
+%     If $a\in A$ and $b\in B \subset A$ are both positive operators, $f_{ab}(z)$ is a constant function.
+% \end{lemma}
+% To prove it, we need the following result.
+% \begin{lemma}
+%     If $f(z)$ is holomorphic on the stripe Im$(z) \in (0,1)$ and continuous in the closure with boundary values
+%     \begin{align}
+%         f(t+i) = f(t)
+%     \end{align}
+%     for real $t$, there exists an entire function that is an extension of $f(z)$ to the whole complex plane.
+% \end{lemma}
+% \begin{proof}
+%     The function $\tilde{g}(z) = \overline{f(\overline{z})}$ is holomorphic on the stripe Im$(z) \in (-1,0)$ and continuous in the closure with boundary values
+%     \begin{align}
+%         \tilde{g}(t-i) = \tilde{g}(t) = \overline{f(t)}
+%     \end{align}  
+%     for real $t$. We define $g(z) = \tilde{g}(z-i)$ which shifts the domain to Im$(z) \in (0,1)$. Let $F_+(z) = \frac{f+g}{2}$ and $F_-(z) = \frac{f-g}{2i}$. $F_\pm(z)$ are both holomorphic on the stripe Im$(z) \in (0,1)$ and continuous in the closure with real boundary values. By the Schwarz reflection principle, we can extend $F_\pm(z)$ to Im$(z) \in (-1,1)$ with $F_\pm(z) = \overline{F_\pm(\overline{z})}$. Since the boundary values on two sides of the stripe are real, we can shift the stripe and apply the Schwarz reflection principle repeatedly to extend $F_\pm(z)$ to the whole complex plane. Thus, $f(z) = F_+(z) + i F_-(z)$ can be extended to the whole complex plane.
+% \end{proof}
+% If we have $|f(z)|\leq 1$ on the stripe Im$z \in [0,1]$, then $|g(z)|$ and $|F_\pm(z)|$ are also bounded by $1$ on the stripe. The extension through the Schwarz reflection principle does not change the bound of $F_\pm(z)$. A bounded entire function must be a constant function. Therefore, $F_\pm(z)$ are constant functions, and $f(z)$ is also a constant function. This finishes the proof, as $f_{ab}(z)$ is a bounded function. }
+
+\section{Operator Algebraic Structures of $L^2$-Nuclearity}\label{appendix:operatoralgebraicstructure}
+In this appendix, we introduce the necessary operator algebraic structures underlying the physics discussions in the main text. We start with a discussion on the existence and density of common cyclic and separating vectors. This provides the necessary backgrounds to introduce the characteristic function of von Neumann algebra inclusions. Finally, we introduce the $L^2$-nuclearity condition central to this paper.
+
+From the outset, we comment on the basic assumptions that we will use throughout. These assumptions are standard and are satisfied by most well-behaved algebraic quantum field theories.
+\begin{enumerate}
+    \item All local algebras of observables are assumed to be of type $III$;
+    \item In addition, all local algebras of observables are assumed to have separable preduals
+\end{enumerate}
+Notice that for our discussion, we do not need the axioms of algebraic quantum field theories.
+\subsection{Common Cyclic and Separating Vectors}\label{subsection:common}
+In this subsection, we consider two type $III$ von Neumann algebras $\mathcal{A},\mathcal{B}$ acting on a common separable Hilbert space $\mathcal{H}$. We would like to know:
+\begin{enumerate}
+    \item if there exists a common cyclic and separating vector;
+    \item if there exists a dense subset of common cyclic and separating vectors.
+\end{enumerate}
+It turns out the answers to both questions are affirmative.
+
+First recall the following fact\cite{blackadar}:
+\begin{lemma}\label{lemma:blackadar}
+    Every type $III$ von Neumann algebra acting on a separable Hilbert space is in standard form.
+\end{lemma}
+Under our assumptions, both $\mathcal{A}$ and $\mathcal{B}$ acting on $\mathcal{H}$ are in standard forms. Hence, there exist two non-empty sets of cyclic and separating vectors $\mathcal{C}_\mathcal{A}$ and $\mathcal{C}_\mathcal{B}$ where $\mathcal{C}_\mathcal{A}$ is the set of cyclic and separating vectors for $\mathcal{A}$ and analogously $\mathcal{C}_\mathcal{B}$ for $\mathcal{B}$. The nontrivial questions are whether $\mathcal{C}_\mathcal{A}\cap\mathcal{C}_\mathcal{B} \neq\emptyset$ and whether $\mathcal{C}_\mathcal{A}\cap\mathcal{C}_\mathcal{B}$ is dense. 
+
+The existence question is answered by the following observation due to Dixmier and Marechal\cite{dixmiermarechal}:
+\begin{lemma}
+    For a sequence of von Neumann algebras $(A_1,A_2,...)$ acting on the same Hilbert space $\mathcal{H}$, if each von Neumann algebra has a cyclic and separating vector, then there exists a common cyclic and separating vector for all $A_i$'s. 
+\end{lemma}
+This lemma directly shows that $\mathcal{C}_\mathcal{A}\cap\mathcal{C}_\mathcal{B} \neq \emptyset$. The density question explores whether such common cyclic and separating vectors are hard to find. The answer to this question follows from two simple observations:
+\begin{lemma}
+    For any von Neumann algebra $\mathcal{A}$ in its standard form acting on a Hilbert space $\mathcal{H}$, the set of cyclic vectors is dense in $\mathcal{H}$ and the set of separating vectors is dense in $\mathcal{H}$.
+\end{lemma}
+\begin{proof}
+    Since $\mathcal{A}$ is in its standard form, there exists a cyclic vector $\ket{\xi}\in\mathcal{H}$. For any invertible operator $\mathcal{O}\in\mathcal{A}$, the vector $\mathcal{O}\ket{\xi}\in\mathcal{H}$ is also a cyclic vector:
+    \begin{equation}
+        \overline{A\mathcal{O}\ket{\xi}} = \overline{A\mathcal{O}^{-1}\mathcal{O}\ket{\xi}} = \overline{A\ket{\xi}} = \mathcal{H}
+    \end{equation}
+    
+    Finally by an observation due to Dixmier and Marechal\cite{dixmiermarechal}, any element in $\mathcal{A}$ is a strong-operator limit of a sequence of invertible elements in $\mathcal{A}$. Therefore the set $\{\mathcal{O}\ket{\xi}: \mathcal{O}\in \text{Inv}(\mathcal{A})\}$ is dense in $\mathcal{H}$ where $\text{Inv}(\mathcal{A})$ is the set of invertible operators in $\mathcal{A}$.
+
+    Since $\mathcal{A}$ is in its standard form, its commutant $\mathcal{A}'$ acting on $\mathcal{H}$ is also in its standard form. Hence, the set of cyclic vectors of $\mathcal{A}'$ is dense in $\mathcal{H}$. Thus, the set of separating vectors of $\mathcal{A}$ is dense in $\mathcal{H}$.
+\end{proof}
+The next observation is again due to Dixmier and Marachel\cite{dixmiermarechal}. The statement applies to general von Neumann algebras.
+\begin{lemma}
+    For any von Neumann algebra $A$ acting on a Hilbert space $\mathcal{H}$ the set of cyclic vector forms a $G_\delta$ subset of $\mathcal{H}$ and the set of separating vector forms a $G_\delta$ subset of $\mathcal{H}$
+\end{lemma}
+The proof of this lemma is elementary and short. So we include it here. Recall a $G_\delta$ set of a topological space is the intersection of countably infinite open subsets. 
+\begin{proof}
+    An empty set is a $G_\delta$ set by definition.
+
+    Suppose the set of cyclic vectors of $A$ is non-empty, i.e. there exists $\ket{\xi_0}\in \mathcal{H}$ such that $\overline{A\ket{\xi_0}}= \mathcal{H}$. Then for any operator $\mathcal{O}\in A$, we consider the countably infinite collection of open sets:
+    \begin{equation}
+        U(\mathcal{O},n):=\{\ket{\xi}\in\mathcal{H}:||\mathcal{O}\ket{\xi} - \ket{\xi_0}|| < \frac{1}{n}\}
+    \end{equation}
+    If $\ket{\xi}\in\mathcal{H}$ is a cyclic vector of $A$, then for all $n > 0$ there exists an operator $\mathcal{O}_n$ such that $||\mathcal{O}_n\ket{\xi} - \ket{\xi_0}|| < \frac{1}{n}$. Hence we have:
+    \begin{equation}
+        \ket{\xi}\in \cap_{n > 0}\cup_{\mathcal{O}\in A}U(\mathcal{O}, n)
+    \end{equation}
+    Note that because $\cup_{\mathcal{O}\in A} U(\mathcal{O}, n)$ is open, the intersection $\cap_{n > 0}\cup_{\mathcal{O}\in A}U(\mathcal{O}, n)$ is a $G_\delta$ set. 
+    
+    Conversely, any vector in this intersection is a cyclic vector of $A$. This is because the reference vector $\ket{\xi_0}$ is a cyclic vector. Thus for an arbitrary vector $\ket{\xi}\in\mathcal{H}$ and for any $\epsilon  > 0$, there exists an operator $\mathcal{O}\in A$ such that:
+    \begin{equation}
+        ||\mathcal{O}\ket{\xi_0} - \ket{\xi}|| < \frac{\epsilon}{2}
+    \end{equation}
+    For any vector $\ket{\xi'}$ in the aforementioned $G_\delta$ set, there exists another operator $\mathcal{O}'$ such that:
+    \begin{equation}
+        ||\mathcal{O}'\ket{\xi'
+        } - \ket{\xi_0}|| < \frac{\epsilon}{2 ||\mathcal{O}||}
+    \end{equation}
+    Then we have:
+    \begin{equation}
+        ||\mathcal{O}\mathcal{O}'\ket{\xi'} - \ket{\xi}||\leq||\mathcal{O}||\cdot||\mathcal{O}\ket{\xi'} - \ket{\xi_0}|| + ||\mathcal{O}\ket{\xi_0} - \ket{\xi}|| <\epsilon
+    \end{equation}
+    Hence $\overline{\mathcal{A}\ket{\xi'}} = \mathcal{H}$. 
+
+    Thus it follows that the set of cyclic vectors is exactly the $G_\delta$ set $\cap_{n >0}\cup_{\mathcal{O}\in A}U(\mathcal{O},n)$. Apply the same argument to the commutant $A'$ and since the set of separating vectors of $A$ is the set of cyclic vectors of $A'$, we arrive at the conclusion.
+\end{proof}
+Based on these two observations, the density of common cyclic and separating vectors follows from the Baire category theorem. 
+\begin{corollary}
+    For two type $III$ von Neumann algebras $\mathcal{A}, \mathcal{B}$ acting on a common separable Hilbert space $\mathcal{H}$, then the set of common cyclic and separating vectors is a dense $G_\delta$ subset of $\mathcal{H}$.
+\end{corollary}
+\begin{proof}
+    Following the previous two lemmas, for the algebra $\mathcal{A}$, the set of cyclic vectors is a dense $G_\delta$ subset of $\mathcal{H}$ and the set of separating vectors is also a dense $G_\delta$ subset of $\mathcal{H}$. By Baire category theorem, the intersection of these two sets is also a dense $G_\delta$ subset of $\mathcal{H}$, i.e. $\mathcal{C}_\mathcal{A}$ is a dense $G_\delta$ subset of $\mathcal{H}$. Similarly, $\mathcal{C}_\mathcal{B}$ is a dense $G_\delta$ subset of $\mathcal{H}$.
+
+    Finally, by another application of Baire category theorem, the intersection $\mathcal{C}_\mathcal{A}\cap\mathcal{C}_\mathcal{B}$ is a dense $G_\delta$ subset of $\mathcal{H}$.
+\end{proof}
+\subsection{Characteristic Functions of von Neumann Algebra Inclusions}\label{subsection:characteristicfunctions}
+Under our assumptions, consider an inclusion of two type $III$ von Neumann algebras $\mathcal{B}\subset \mathcal{A}$ where both algebras act on a separable Hilbert space $\mathcal{H}$. We have already seen that the set of common cyclic and separating vectors is dense in $\mathcal{H}$. Fix one such common cyclic and separating vector $\ket{\Omega}\in\mathcal{C}_\mathcal{A}\cap\mathcal{C}_\mathcal{B}$. Assume $\ket{\Omega}$ is normalized. Then $\bra{\Omega}\cdot\ket{\Omega}$ is a normal faithful state on both $\mathcal{A}$ and $\mathcal{B}$. Denote the state on $\mathcal{A}$ as $\omega_\mathcal{A}$ and the state on $\mathcal{B}$ as $\omega_\mathcal{B}$. By modular theory, we can define the corresponding modular operators and modular conjugations. Denote $\Delta_\mathcal{A}$ as the modular operator of $\omega_\mathcal{A}$ on $\mathcal{A}$ and $J_\mathcal{A}$ as the modular conjugation on $\mathcal{A}$. Denote $\Delta_\mathcal{B}$ as the modular operator of $\omega_\mathcal{B}$ on $\mathcal{B}$ and $J_\mathcal{B}$ as the modular conjugation on $\mathcal{B}$.
+
+By definition of modular operator and modular conjugation, it is clear that $\Delta_\mathcal{A}$ is an extension of $\Delta_\mathcal{B}$:
+\begin{equation}
+    \mathcal{S}_\mathcal{A}\mathcal{O}_\mathcal{B}\ket{\Omega} = J_\mathcal{A}\Delta_\mathcal{A}^{1/2}\mathcal{O}_\mathcal{B}\ket{\Omega} = \mathcal{O}_\mathcal{B}^*\ket{\Omega} = J_\mathcal{B}\Delta_\mathcal{B}^{1/2}\mathcal{O}_\mathcal{B}\ket{\Omega} = \mathcal{S}_\mathcal{B}\mathcal{O}_\mathcal{B}\ket{\Omega}
+\end{equation}
+where $\mathcal{O}_\mathcal{B}$ can be any operator in $\mathcal{B}$. Hence, by general operator theory, we have operator inequality:
+\begin{equation}
+    \Delta_\mathcal{B}\geq \Delta_\mathcal{A}
+\end{equation}
+Since the function $f(z)  = z^\alpha$ for $0\leq \alpha\leq 1$ is an operator monotone function, then we have:
+\begin{equation}
+    \Delta_\mathcal{B}^\alpha \geq \Delta_\mathcal{A}^\alpha
+\end{equation}
+In particular, this means that for any $0\leq \alpha\leq 1$, the domain $\mathcal{D}(\Delta_\mathcal{B}^\alpha)$ is contained in the domain $\mathcal{D}(\Delta_\mathcal{A}^\alpha)$. Hence, the following operator is well-defined and closable for $0\leq \alpha\leq 1/2$:
+\begin{equation}
+    \Delta_\mathcal{A}^\alpha \Delta_\mathcal{B}^{-\alpha}
+\end{equation}
+Moreover, the closure of $\Delta_\mathcal{A}^\alpha\Delta_\mathcal{B}^{-\alpha}$ is bounded:
+\begin{equation}
+    ||\Delta_\mathcal{A}^\alpha\Delta_\mathcal{B}^{-\alpha}||^2 = ||\Delta_\mathcal{B}^{-\alpha}\Delta_\mathcal{A}^{2\alpha}\Delta_\mathcal{B}^{-\alpha}|| \leq 1
+\end{equation}
+where the last equation follows from the operator inequality:
+\begin{equation}
+    \Delta_\mathcal{B}^{-\alpha}\Delta_\mathcal{A}^{2\alpha}\Delta_\mathcal{B}^{-\alpha} \leq \Delta_\mathcal{B}^{-\alpha}\Delta_\mathcal{A}^{2\alpha}\Delta_\mathcal{B}^{-\alpha} = \mathbbm{1}
+\end{equation}
+Here we used the fact that $0\leq \alpha\leq 1/2$ and hence $2\alpha \leq 1$.
+
+We are now ready to introduce the characteristic function of the inclusion $\mathcal{B}\subset\mathcal{A}$\cite{revolutionizing}:
+\begin{definition}
+    Given a pair of von Neumann algebras $\mathcal{B}\subset\mathcal{A}$ and a common cyclic and separating vector $\ket{\Omega}\in\mathcal{H}$, the characteristic function is defined as:
+    \begin{equation}
+        \mathcal{D}_{\mathcal{A}, \mathcal{B}}(t) := \Delta_\mathcal{A}^{it}\Delta_\mathcal{B}^{-it}
+    \end{equation}
+\end{definition}
+We have already seen that the characteristic function $\mathcal{D}_{\mathcal{A}, \mathcal{B}}(t)$ can be extended to the imaginary values: $\mathcal{D}_{\mathcal{A}, \mathcal{B}}(-i\alpha)$ where $0\leq \alpha\leq 1/2$. The crucial fact is that the characteristic function can be extended to the entire strip $S(0, -1/2) := \{z\in\mathbb{C}: 0\geq \Im{z}\geq -1/2\}$ \cite{revolutionizing}:
+\begin{lemma}
+    Given a pair of von Neumann algebra $\mathcal{B}\subset\mathcal{A}$ with a common cyclic and separating vector $\ket{\Omega}$, then the characteristic function $\mathcal{D}_{\mathcal{A}, \mathcal{B}}(t)$ can be extended to the strip $\mathcal{S}(0, -1/2)$. The extension is a bounded analytic function on $\mathcal{S}(0,-1/2)$.
+
+    Moreover, on the boundary $\partial\mathcal{S}(0,-1/2) = \{z\in\mathbb{C}:\Im{z} = 0\}\sqcup\{z\in\mathbb{C}:\Im{z} = -1/2\}$, the characteristic function is strongly continuous.
+\end{lemma}
+For a full discussion of the characteristic function, we refer the reader to \cite{revolutionizing}. Here we list the properties of the characteristic function \cite{revolutionizing}:
+\begin{enumerate}
+    \item $\mathcal{D}_{\mathcal{A},\mathcal{B}}(t)$ and $\mathcal{D}_{\mathcal{A}, \mathcal{B}}(t - \frac{i}{2})$ are unitary and strongly continuous in $t$;
+    \item $\mathcal{D}_{\mathcal{A},\mathcal{B}}(z)$ is bounded analytic on the strip $\mathcal{S}(0,-\frac{1}{2})$;
+    \item $\mathcal{D}_{\mathcal{A},\mathcal{B}}(t)\ket{\Omega} = \ket{\Omega}$;
+    \item The cocycle condition holds: $\mathcal{D}_{\mathcal{A},\mathcal{B}}(t+s) = \sigma_t^{\ket{\Omega}}(\mathcal{D}_{\mathcal{A},\mathcal{B}}(s))\mathcal{D}_{\mathcal{A},\mathcal{B}}(t)$ where $\sigma_t^{\ket{\Omega}}$ is the modular automorphism on $\mathcal{A}$ associated with the state $\ket{\Omega}$;
+    \item $\mathcal{D}_{\mathcal{A},\mathcal{B}}(t - \frac{i}{2}) = J_\mathcal{A}\mathcal{D}_{\mathcal{A},\mathcal{B}}(t)J_\mathcal{B}$. In particular, $\mathcal{D}_{\mathcal{A},\mathcal{B}}(-\frac{i}{2}) = J_\mathcal{A}J_\mathcal{B}$. This unitary operator is crucial in subfactor theory creating a chain of algebras:
+    \begin{equation}
+        \mathcal{A}\supset\mathcal{B}\supset\mathcal{D}_{\mathcal{A},\mathcal{B}}(-\frac{i}{2})^*\mathcal{A}\mathcal{D}_{\mathcal{A},\mathcal{B}}(-\frac{i}{2})\supset\mathcal{D}_{\mathcal{A},\mathcal{B}}(-\frac{i}{2})^*\mathcal{B}\mathcal{D}_{\mathcal{A},\mathcal{B}}(-\frac{i}{2})\supset...
+    \end{equation}
+    \item For all $t\in\mathbb{R}$, $\mathcal{D}_{\mathcal{A},\mathcal{B}}(t)\mathcal{D}_{\mathcal{A},\mathcal{B}}(-\frac{i}{2})^*\mathcal{A}\mathcal{D}_{\mathcal{A},\mathcal{B}}(-\frac{i}{2})\mathcal{D}_{\mathcal{A},\mathcal{B}}(t)^*\subset\mathcal{A}$ holds.
+\end{enumerate}
+Any operator-valued function associated with a pair of von Neumann algebras that satisfy the above-listed properties is called a characteristic function \cite{revolutionizing}.
+
+For our discussion on $L^2$-nuclearity, we actually only need to consider $\mathcal{D}_{\mathcal{A},\mathcal{B}}(-i/4) = \Delta_\mathcal{A}^{1/4}\Delta_\mathcal{B}^{-1/4}$. However, the important observation regarding characteristic functions is the following observation \cite{revolutionizing}:
+\begin{theorem}
+    Given a von Neumann algebra $\mathcal{A}$ and a cyclic and separating vector $\ket{\Omega}$, then each subalgebra $\mathcal{B}\subset\mathcal{A}$ such that $\ket{\Omega}$ is cyclic for $\mathcal{B}$ is uniquely associated with a characteristic function.
+\end{theorem}
+Again for details, we refer the readers to \cite{revolutionizing}. The key point is that the characteristic function full characterizes inclusions of von Neumann algebras with common cyclic vectors. 
+
+In Subsection \ref{subsection:perturbation}, we will study perturbations of characteristic functions.
+\subsection{$L^2$-Nuclearity Condition}\label{subsection:l2nuclearity}
+We are now ready to present the definition of $L^2$-nuclearity.
+\begin{definition}
+    Given a pair of von Neumann algebras $\mathcal{B}\subset\mathcal{A}$ with a common cyclic and separating vector $\ket{\Omega}\in\mathcal{H}$, $\mathcal{D}_{\mathcal{A}, \mathcal{B}}(-i/4) = \Delta_\mathcal{A}^{1/4}\Delta_\mathcal{B}^{-1/4}$ is a well-defined map between the standard Hilbert spaces:
+    \begin{equation}
+        \Delta_\mathcal{A}^{1/4}\Delta_\mathcal{B}^{-1/4}: L_2(\mathcal{B})\rightarrow L_2(\mathcal{A})
+    \end{equation} 
+    If $\Delta_\mathcal{A}^{1/4}\Delta_\mathcal{B}^{-1/4}$ is a nuclear operator, then we say the triplet $(\mathcal{B}\subset\mathcal{A}, \ket{\Omega})$ satisfies the \textit{$L^2$-nuclearity condition}.
+\end{definition}
+For a map between two separable Hilbert spaces, it is nuclear if and only if it is trace-class. For maps between general Banach spaces, the notion of a nuclear operator generalizes the notion of a trace-class operator \cite{nuclearandsumming}.
+
+For algebraic quantum field theories, one of the most important consequences of $L^2$-nuclearity is the following observation \cite{buchholz2007nuclearity}:
+\begin{theorem}
+    Given a pair of von Neumann algebras $\mathcal{B}\subset\mathcal{A}$ with a common cyclic and separating vector $\ket{\Omega}$, if it satisfies $L^2$-nuclearity condition, then the inclusion is split. More specifically, we have isomorphism:
+    \begin{equation}
+        \mathcal{B}'\vee\mathcal{A}\cong\mathcal{B}'\otimes\mathcal{A}
+    \end{equation}
+\end{theorem}
+For other important consequences of $L^2$-nuclearity, we refer the readers to \cite{buchholz2007nuclearity}. 
+
+In the context of algebraic quantum field theory, $L^2$-nuclearity is usually proved using representation theory. For example, in the context of massless Lorentzian conformal field theories of dimension $d + 1$, the global conformal group $SO(d + 1, 2)$ admits discrete series representations (i.e. positive energy representations). In this case, any operator representing an element in the maximal compact sub Lie algebra has discrete spectrum that is bounded from below. This provides ample examples of nuclear operators. The calculations in the main text reflect this fact.
+
+\section{Titchmarsh theorem}\label{app:titchmarsh}
+
+Titchmarsh theorems are a class of Paley-Weiner type theorems that relate the behavior of complex-valued square-integrable functions $S(t)\in L^2(\mathbb{R})$ to the analytic domain of their Fourier transform
+\begin{equation}
+    \tilde{S}(\omega) = \int_{-\infty}^{\infty} S(t) e^{i\omega t} \, dt\ .
+\end{equation}
+Theorem \ref{titchmarshUHP} gives a condition that is equivalent to $\tilde{S}(\omega)$ being analytic on the upper-half-plane. Theorem \ref{titchmarshStrip} generalizes it to the condition equivalent to the analyticity of $\tilde{S}(\omega)$ in the strip $\Im(\omega)\in (-A,B)$.
+
+\subsection{Analyticity in frequency upper-half-plane:}
+\begin{theorem}[Titchmarsh]\label{titchmarshUHP}
+The following three statements are mutually equivalent:
+
+\begin{enumerate}
+    \item \textbf{Causality:} $S(t) = 0$ for almost every $t < 0$: $S(t)=\text{Sgn}(t)S(t)$.
+    \item \textbf{Analyticity:} The function $\tilde{S}(\omega)$ is the boundary limit of a function $G(z)$ analytic in the upper half-plane $\mathbb{C}^+$ (belonging to Hardy space $H^2$).
+    \item \textbf{Hilbert Transform Pair:}
+    The real and imaginary parts of the spectrum $\tilde{S}(\omega) = U(\omega) + i V(\omega)$ are Hilbert transforms of each other:
+    \begin{align}
+        V(\omega) &= -\mathcal{H}[U](\omega) \\
+        U(\omega) &= \mathcal{H}[V](\omega)
+    \end{align}
+    where the Hilbert transform is defined as:
+    \begin{equation}
+        \mathcal{H}[f](\omega) = \frac{1}{\pi} \mathcal{P} \int_{-\infty}^{\infty} \frac{f(\omega')}{\omega' - \omega} \, d\omega'
+    \end{equation}
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textbf{1) $\implies$ 2) (Causality to Analyticity)} \\
+Assume $S(t) = 0$ for $t < 0$. We define the analytic extension $G(z)$ for $z = \omega + i\eta$ with $\eta > 0$:
+\begin{equation}
+    G(z) = \int_{0}^{\infty} S(t) e^{i(\omega + i\eta)t} \, dt = \int_{0}^{\infty} S(t) e^{-\eta t} e^{i\omega t} \, dt
+\end{equation}
+Because $S(t) \in L^2$ and $e^{-\eta t} \le 1$ for $t > 0$, the integral converges absolutely and defines a holomorphic function in the upper half-plane. By Plancherel's theorem, it satisfies the Hardy space condition. As $\eta \to 0^+$, $G(z)$ converges to $\tilde{S}(\omega)$ in the $L^2$ norm.
+
+\vspace{0.5cm}
+\textbf{2) $\implies$ 3) (Analyticity to Hilbert Transform)} \\
+By Cauchy's Integral Formula for $z \in \mathbb{C}^+$:
+\begin{equation}
+    G(z) = \frac{1}{2\pi i} \int_{-\infty}^{\infty} \frac{\tilde{S}(\omega')}{\omega' - z} \, d\omega'
+\end{equation}
+Taking the limit $z \to \omega + i0^+$ using the Plemelj-Sokhotski relations:
+\begin{equation}
+    \tilde{S}(\omega) = \frac{1}{2}\tilde{S}(\omega) + \frac{1}{2\pi i} \mathcal{P} \int_{-\infty}^{\infty} \frac{\tilde{S}(\omega')}{\omega' - \omega} \, d\omega'
+\end{equation}
+Rearranging to isolate $\tilde{S}(\omega)$:
+\begin{equation}\label{contourint}
+    \tilde{S}(\omega) = \frac{1}{\pi i} \mathcal{P} \int_{-\infty}^{\infty} \frac{\tilde{S}(\omega')}{\omega' - \omega} \, d\omega' = -i \mathcal{H}[\tilde{S}](\omega)
+\end{equation}
+Substituting $\tilde{S} = U + iV$:
+\begin{equation}
+    U + iV = -i (\mathcal{H}[U] + i\mathcal{H}[V]) = \mathcal{H}[V] - i\mathcal{H}[U]
+\end{equation}
+Comparing real and imaginary parts yields the relations: $U = \mathcal{H}[V]$ and $V = -\mathcal{H}[U]$.
+
+\vspace{0.5cm}
+\textbf{3) $\implies$ 1) (Hilbert Transform to Causality)} \\
+From the derivation in step 2, condition (3) implies that the full complex spectrum satisfies:
+\begin{equation}
+    \tilde{S}(\omega) = -i \mathcal{H}[\tilde{S}](\omega)
+\end{equation}
+We apply the inverse Fourier transform, $\mathcal{F}^{-1}$, to both sides. We utilize the property that the Hilbert transform in the frequency domain corresponds to multiplication by the signum function in the time domain. Specifically, for the transform definition used here ($\int e^{i\omega t}$):
+\begin{equation}
+    \mathcal{F}^{-1} \big\{ -i \mathcal{H}[\tilde{S}] \big\}(t) = \text{sgn}(t) S(t)
+\end{equation}
+Substituting this into the equation:
+\begin{equation}
+    S(t) = \text{sgn}(t) S(t)
+\end{equation}
+which implies $S(t) = 0$ for almost all $t < 0$. 
+\end{proof}
+Note that the Hilbert transform can be viewed as the convolution of the function with $f(\omega)=-\frac{1}{\pi\omega}$:
+\begin{eqnarray}
+    U(\omega)=(f*V)(\omega)\ .
+\end{eqnarray}
+Since $\mathcal{F}^{-1}(\frac{-1}{\pi \omega})=\frac{i}{2\pi}\text{sgn}(t)$ we find
+\begin{eqnarray}
+    \tilde{U}(t)=i\text{sgn}(t) \tilde{V}(t)\ .
+\end{eqnarray}
+However, note that both $\tilde{U}(t)$ and $\tilde{V}(t)$ are complex, as they are defined as the inverse Fourier transform of $U(\omega)$ and $V(\omega)$. 
+
+\begin{corollary}
+    If $S(t)$ that satisfies the conditions of Theorem \ref{titchmarshUHP} is a real function on $\mathbb{R}$, then we have
+    \begin{eqnarray}
+        &&U(\omega)=\frac{2}{\pi}\mathcal{P}\int_0^\infty \frac{\omega' V(\omega')}{\omega^2-(\omega')^2}\nn\\
+        &&V(\omega)=\frac{-2\omega}{\pi}\mathcal{P}\int_0^\infty \frac{U(\omega')}{\omega^2-(\omega')^2}
+    \end{eqnarray}
+\end{corollary}
+\begin{proof}
+    Since $S(t)$ is real for all $t\in\mathbb{R}$, then $S(-\omega)=S(\omega)^*$ which implies that $U(\omega)$ and $V(\omega)$ are even and odd functions of $\omega$, respectively. Then, the corollary follows from multiplying the numerator and denominator of the integrand inside the Contour integral in (\ref{contourint}) by $\omega+\omega'$.
+\end{proof}
+
+
+
+\subsection{Analyticity in the frequency strip:}
+
+We would like to generalize the Titchmarsh theorem to functions that are analytic in a complex frequency strip. The key intuition is the following: If a complex function of a real parameter $t$ decays exponentially fast in time its Fourier transform is analytic on a strip, and decays exponentially fast in real frequency space. More precisely, we have the following generalized Titchmarsh theorem
+
+
+\begin{theorem}[Generalized Titchmarsh for a Strip]\label{titchmarshStrip}
+Let $S(t)$ be a complex-valued function and $\tilde{S}(\omega)$ its Fourier transform. Let $A \ge 0$ and $B \ge 0$ (with $A+B > 0$) be real constants defining a horizontal strip $\mathcal{D}$ in the complex frequency plane:
+\begin{equation}
+    \mathcal{D} = \{ \omega \in \mathbb{C} \mid -A < \text{Im}(\omega) < B \}
+\end{equation}
+
+The following three statements are mutually equivalent:
+
+\begin{enumerate}
+    \item \textbf{Two-sided exponential decay:}
+    The function $S(t)$ satisfies the asymptotic decay conditions:
+    \begin{align}
+        S(t) &\sim e^{-B|t|} \quad (t \to -\infty) \\
+        S(t) &\sim e^{-At} \quad (t \to +\infty)
+    \end{align}
+    In other words, for any $\epsilon > 0$, the weighted norms are finite:
+    \begin{equation}
+        e^{(B-\epsilon)t} S(t) \in L^2(-\infty, 0] \quad \text{and} \quad e^{-(A-\epsilon)t} S(t) \in L^2[0, \infty)\ .
+    \end{equation}
+
+    \item \textbf{Strip Analyticity:}
+    The function $\tilde{S}(\omega)$ is the boundary limit of a function $G(z)$ holomorphic inside the strip $-A < \text{Im}(z) < B$, satisfying the uniform Hardy condition:
+    \begin{equation}
+        \sup_{-A < y < B} \int_{-\infty}^{\infty} |G(x + iy)|^2 \, dx < \infty
+    \end{equation}
+
+    \item \textbf{Spectral Decomposition and shifted dispersion Relations:}
+    The spectrum $\tilde{S}(\omega)$ uniquely decomposes into:
+    \begin{equation}
+        \tilde{S}(\omega) = \tilde{S}_+(\omega) + \tilde{S}_-(\omega)
+    \end{equation}
+    where $\tilde{S}_+(\omega)$ is analytic for $\text{Im}(\omega) > -A$ and $\tilde{S}_-(\omega)$ is analytic for $\text{Im}(\omega) < B$. \\
+    
+    Crucially, the real and imaginary parts of these components satisfy \textbf{Shifted Hilbert Transform} relations on the boundary lines:
+    
+    \begin{itemize}
+        \item \textbf{For $\tilde{S}_+$ (on the line $\omega = \nu - iA$):} \\
+        Let $\tilde{S}_+(\nu - iA) = U_+(\nu) + i V_+(\nu)$. Then:
+        \begin{equation}
+            U_+(\nu) = \mathcal{H}[V_+](\nu), \quad V_+(\nu) = -\mathcal{H}[U_+](\nu)
+        \end{equation}
+        
+        \item \textbf{For $\tilde{S}_-$ (on the line $\omega = \nu + iB$):} \\
+        Let $\tilde{S}_-(\nu + iB) = U_-(\nu) + i V_-(\nu)$. Then:
+        \begin{equation}
+            U_-(\nu) = -\mathcal{H}[V_-](\nu), \quad V_-(\nu) = \mathcal{H}[U_-](\nu)
+        \end{equation}
+    \end{itemize}
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textbf{1) $\implies$ 2) (Decay to Analyticity)} \\
+We define the complex integral $G(z) = \int_{-\infty}^{\infty} S(t) e^{i z t} \, dt$ for $z = x + iy$.
+Splitting the integral:
+\begin{equation}
+    G(z) = \int_{-\infty}^{0} S(t) e^{(B-y)t} e^{-(B-i x)t} \, dt + \int_{0}^{\infty} S(t) e^{-(A+y)t} e^{(A+ix)t} \, dt
+\end{equation}
+Convergence requires $y < B$ (for the first term) and $y > -A$ (for the second term). Thus, $G(z)$ is analytic in $-A < y < B$. The Hardy condition follows from Plancherel's theorem applied to $S(t)e^{-yt}$.
+
+\vspace{0.5cm}
+\textbf{2) $\implies$ 3) (Analyticity to Decomposition)} \\
+Using Cauchy's Integral Formula on a rectangular contour inside the strip and sending the horizontal width to infinity, we obtain:
+\begin{equation}
+    \tilde{S}(z) = \frac{1}{2\pi i} \int_{-\infty - iA}^{\infty - iA} \frac{\tilde{S}(\zeta)}{\zeta - z} \, d\zeta - \frac{1}{2\pi i} \int_{-\infty + iB}^{\infty + iB} \frac{\tilde{S}(\zeta)}{\zeta - z} \, d\zeta
+\end{equation}
+We define the first integral as $\tilde{S}_+(z)$ and the second as $\tilde{S}_-(z)$. The analyticity domains and shifted Hilbert relations follow directly from the standard Titchmarsh theorem applied to the shifted functions $\tilde{S}_+(z-iA)$ and $\tilde{S}_-(z+iB)$.
+
+\vspace{0.5cm}
+\textbf{3) $\implies$ 1) (Decomposition to Decay)} \\
+Inverse transforming $\tilde{S}_+$ yields a function supported on $t>0$ with weight $e^{-At}$. Inverse transforming $\tilde{S}_-$ yields a function supported on $t<0$ with weight $e^{Bt}$. The sum satisfies the two-sided decay.
+\end{proof}
+
+\subsection*{Discussion of Limits}
+
+\paragraph{1. The Causal Limit ($A \to 0, B \to \infty$)}
+The strip becomes the Upper Half-Plane. The condition $e^{Bt}S(t) \in L^2$ as $B \to \infty$ forces $S(t) = 0$ for $t<0$. This recovers the standard Kramers-Kronig relations on the real axis.
+
+\paragraph{2. The Anti-Causal Limit ($A \to \infty, B \to 0$)}
+The strip becomes the Lower Half-Plane. The condition $e^{-At}S(t) \in L^2$ as $A \to \infty$ forces $S(t) = 0$ for $t>0$.
+
+\paragraph{3. The Degenerate Limit ($A \to 0, B \to 0$)}
+The strip collapses to the real axis. The region of analyticity vanishes. The theorem reduces to the Plancherel Theorem ($S \in L^2 \iff \tilde{S} \in L^2$). The real and imaginary parts of the spectrum become independent, and no dispersion relations exist.
+\section{Proofs} 
+\YC{
+Proof of Lemma 6
+\begin{proof}
+    Since Gaussian function is a Schwartz function, we have the following bound:
+    \begin{equation}\label{equation:bound}
+        c_{f_{\sigma,\mu}}(s) \leq \inf_{c > 0}\{2\int_{|u|\geq c}du |\varphi_{f_{\sigma,\mu}}(u)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}||\varphi_{f_{\sigma,\mu}}||_1\}
+    \end{equation}
+    The modified Fourier transform of $f_{\sigma,\mu}$ can be calculated explicitly:
+    \begin{align}
+        \begin{split}
+            \varphi_{f_{\sigma,\mu}}(u) &= \frac{1}{2\pi}\int_\mathbb{R} dt \lb \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(t - \mu)^2}{2\sigma^2}} \rb\lb \frac{2}{i}\sinh(\pi t) \rb e^{-it u}
+            \\&
+            =\frac{1}{\sigma\sqrt{2\pi }2\pi i}\int_\mathbb{R} dt e^{-\frac{(t-  \mu)^2}{2\sigma^2} + (\pi - i u) t} - e^{-\frac{(t - \mu)^2}{2\sigma^2} - (\pi + i u) t}
+            \\&
+            =\frac{1}{2\pi i}\lb e^{\frac{(\pi - iu)(2\mu + \sigma^2(\pi - iu))}{2}} - e^{-\frac{(\pi + iu)(2\mu - \sigma^2(\pi + iu))}{2}}\rb
+            \\&
+            =\frac{1}{\pi i}e^{\frac{\sigma^2}{2}(\pi^2 - u^2) - i\mu u}\sinh(\pi \mu  - \pi i u\sigma^2)
+        \end{split}
+    \end{align}
+    This $L^1$-norm of $\varphi_{f_{\sigma,\mu}}$ can be bounded above by:
+    \begin{align}
+        \begin{split}
+            ||\varphi_{f_{\sigma,\mu}}||_1 &= \int_\mathbb{R} du |\varphi_{f_{\sigma,\mu}}(u)| = \int_\mathbb{R} du \frac{e^{\frac{\sigma^2}{2}(\pi^2 - u^2)}}{\pi}|\sinh(\pi\mu - \pi i u \sigma^2)|
+            \\&
+            \leq \int_\mathbb{R}du\frac{e^{\frac{\sigma^2}{2}(\pi^2 - u^2)}}{\pi}e^{\pi\mu}|\sin(\pi u \sigma^2)|\leq \frac{e^{\pi\mu + \frac{\sigma^2\pi^2}{2}}}{\pi}\frac{\sqrt{2\pi}}{\sigma} = \frac{e^{\pi\mu}\sqrt{2}}{\sqrt{\pi}}\frac{e^{\frac{\sigma^2\pi^2}{2}}}{\sigma}
+        \end{split}
+    \end{align}
+    To calculate the infimum on the right hand side of Equation \ref{equation:bound}, notice that the function on the right hand side is differentiable in $c$. Hence the infimum can be calculated using elementary methods. The infimum is achieved at $c_0 > 0$ where $c_0$ is the solution to:
+    \begin{equation}
+        -|\varphi_{f_{\sigma,\mu}}(c)| - |\varphi_{f_{\sigma,\mu}}(-c)| + \frac{1}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}||\varphi_{f_{\sigma,\mu}}||_1 = 0
+    \end{equation}
+    Notice that $|\varphi_{f_{\sigma,\mu}}(c)| = |\varphi_{f_{\sigma,\mu}}(-c)|$:
+    \begin{align}
+        \begin{split}
+            |\varphi_{f_{\sigma,\mu}}(c)| &= \frac{e^{\frac{\sigma^2}{2}(\pi^2 - c^2)}}{\pi}|\sinh(\pi\mu - \pi i c\sigma^2)| \\&= \frac{e^{\frac{\sigma^2}{2}(\pi^2 - c^2)}}{\pi}\sqrt{\sin^2(\pi c\sigma^2)\sinh^2(\pi\mu) + \cos^2(\pi c \sigma^2)\cosh^2(\pi\mu)}= |\varphi_{f_{\sigma,\mu}}(-c)|
+        \end{split}
+    \end{align}
+    Hence the infimum is achieved at $c_0$ where $c_0$ is the solution to:
+    \begin{equation}
+        |\varphi_{f_{\sigma,\mu}}(c_0)| = \frac{1}{2\pi}\tanh^{-1}(e^{-\pi s})e^{c_0/2}||\varphi_{f_{\sigma,\mu}}||_1
+    \end{equation}
+    We can provide a more explicit lower bound on $c_0$:
+    \begin{align}
+        \begin{split}
+            \frac{1}{2\pi}\tanh^{-1}(e^{-\pi s})e^{c_0 / 2}||\varphi_{f_{\sigma,\mu}}||_1 &=\frac{e^{\frac{\sigma^2}{2}(\pi^2 - c_0^2)}}{\pi}\sqrt{\sin^2(\pi c_0\sigma^2)\sinh^2(\pi\mu) + \cos^2(\pi c_0 \sigma^2)\cosh^2(\pi\mu)}
+            \\&
+            = \frac{e^{\frac{\sigma^2}{2}(\pi^2 - c_0^2)}}{\pi}\sqrt{\cosh^2(\pi\mu) - \sin^2(\pi c_0\sigma^2)\lb\cosh^2(\pi\mu) - \sinh^2(\pi\mu)\rb}
+            \\&
+            =\frac{e^{\frac{\sigma^2}{2}(\pi^2 - c_0^2)}}{\pi}\sqrt{\cosh^2(\pi\mu) - \sin^2(\pi c_0\sigma^2)}
+            \\&\geq\frac{e^{\frac{\sigma^2}{2}(\pi^2 - c_0^2)}}{\pi}\sqrt{\cosh^2(\pi\mu) - 1}
+            =\frac{e^{\frac{\sigma^2}{2}(\pi^2 - c_0^2)}}{\pi}\sinh(\pi\mu)
+        \end{split}
+    \end{align}
+    Therefore, we have:
+    \begin{equation}
+        e^{-\frac{\sigma^2}{2}c_0^2 - \frac{c_0}{2}} \leq \frac{\tanh^{-1}(e^{-\pi s})||\varphi_{f_{\sigma,\mu}}||_1 e^{-\frac{\pi^2\sigma^2}{2}}}{2\sinh(\pi\mu)}
+    \end{equation}
+    Since $c_0 > 0$, using this formula we can solve for a lower bound of $c_0$:
+    \begin{equation}
+        c_0 \geq c_0(\sigma, \mu, s) := -\frac{1}{2\sigma^2} + \sqrt{\frac{1}{4} - \frac{2}{\sigma^2}\log\lb\frac{\tanh^{-1}(e^{-\pi s})||\varphi_{f_{\sigma,\mu}}||_1 e^{-\frac{\pi^2\sigma^2}{2}}}{2\sinh(\pi\mu)}\rb}
+    \end{equation}
+    Notice that $c_0(\sigma,\mu, s)$ monotonely increases as $s$ increases. In particular, there exists $s_0 > 0$ such that:
+    \begin{equation}
+        c_0(\sigma,\mu,s_0) \geq \frac{1}{\sinh^2(\pi\mu)}
+    \end{equation}
+    Notice that for $u \geq c_0(\sigma,\mu,s_0)\geq \frac{1}{\sinh^2(\pi\mu)}$, the norm $|\varphi_{f_{\sigma,\mu}}|$ is monotone decreasing:
+    \begin{align}
+        \begin{split}
+            \frac{d}{du}|\varphi_{f_{\sigma,\mu}}(u)| 
+            &=\frac{d}{du}\frac{e^{\frac{\sigma^2}{2}(\pi^2 - u^2)}}{\pi}\sqrt{\cosh^2(\pi\mu) - \sin^2(\pi u\sigma^2)}
+            \\&= -\sigma^2 u e^{\frac{\sigma^2}{2}(\pi^2 - u^2)}\sqrt{\cosh^2(\pi\mu) - \sin^2(\pi u \sigma^2)} - \frac{2\pi\sigma^2e^{\frac{\sigma^2}{2}(\pi^2 - u^2)}\sin(\pi u\sigma^2)\cos(\pi u \sigma^2)}{2\pi\sqrt{\cosh^2(\pi\mu) - \sin^2(\pi u \sigma^2)}}
+            \\&
+            =\frac{\sigma^2 e^{\frac{\sigma^2}{2}(\pi^2 - u^2)}}{\sqrt{\cosh^2(\pi\mu) - \sin^2(\pi u\sigma^2)}}\lb -u\lb \cosh^2(\pi\mu) - \sin^2(\pi u \sigma^2) \rb - \sin(\pi u \sigma^2)\cos(\pi u \sigma^2) \rb
+            \\&
+            \leq \frac{\sigma^2 e^{\frac{\sigma^2}{2}(\pi^2 - u^2)}}{\sqrt{\cosh^2(\pi\mu) - \sin^2(\pi u \sigma^2)}}\lb -u\lb \cosh^2(\pi\mu) - 1 \rb + 1 \rb
+            \\&
+            =\frac{\sigma^2 e^{\frac{\sigma^2}{2}(\pi^2 - u^2)}}{\sqrt{\cosh^2(\pi\mu) - \sin^2(\pi u \sigma^2)}}\lb  -u\sinh^2(\pi\mu) + 1\rb
+        \end{split}
+    \end{align}
+    Hence for $u \geq c_0(\sigma,\mu,s_0) \geq \frac{1}{\sinh^2(\pi\mu)}$, $\frac{d}{du}|\varphi_{f_{\sigma,\mu}}(u)| \leq 0$ and thus $|\varphi_{f_{\sigma,\mu}}(c_0)| \geq |\varphi_{f_{\sigma,\mu}}(u)|$. And since $|\varphi_{f_{\sigma,\mu}}(u)|$ is even, for $u \leq -c_0(\sigma,\mu, s_0)\leq -\frac{1}{\sinh^2(\pi\mu)}$, the function $|\varphi_{f_{\sigma,\mu}}(u)|$ is monotonely increasing and thus $|\varphi_{f_{\sigma,\mu}}(-c_0)|\geq |\varphi_{f_{\sigma,\mu}}(u)|$. Moreover, to the leading order in $s$, $c_0(\sigma,\mu, s)$ is approximated by:
+    \begin{equation}
+        c_0(\sigma,\mu,s) = -\frac{1}{2\sigma^2} + \sqrt{\frac{1}{4} - \frac{2}{\sigma^2}\log\lb\frac{||\varphi_{f_{\sigma,\mu}}||_1 e^{-\frac{\pi^2\sigma^2}{2}}}{2\sinh(\pi \mu)}\rb + \frac{2\pi s }{\sigma^2}} \sim K_1 + K_2 s
+    \end{equation}
+    where $K_1, K_2$ are two constants which depend on $\sigma, \mu$ and $K_2 > 0$. Finally using the formula for $|\varphi_{f_{\sigma,\mu}}(c_0)|$, we can provide an upper bound:
+    \begin{align}
+        \begin{split}
+            |\varphi_{f_{\sigma,\mu}}(c_0)| &=\frac{e^{\frac{\sigma^2}{2}(\pi^2 - c_0^2)}}{\pi}|\sinh(\pi\mu - \pi i c_0\sigma^2)| \leq \frac{e^{\pi\mu}e^{\frac{\sigma^2}{2}(\pi^2 - c_0^2)}}{\pi}
+        \end{split}
+    \end{align}
+    Using these observations, we can calculate the following bound for all $s\geq s_0$ (i.e. $c_0(\sigma,\mu,s_0)\geq\frac{1}{\sinh^2(\pi\mu)}$):
+    \begin{align}
+        \begin{split}
+            c_{f_{\sigma,\mu}}(s) &\leq 2\int_{|u| \geq c_0}du |\varphi_{f_{\sigma,\mu}}(u)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c_0 / 2}||\varphi_{f_{\sigma,\mu}}||_1
+            \\&
+            \leq 2\lb|\varphi_{f_{\sigma,\mu}}(c_0)|^{1/2} + |\varphi_{f_{\sigma,\mu}}(-c_0)|^{1/2}\rb\int_\mathbb{R} du |\varphi_{f_{\sigma,\mu}}(u)|^{1/2} + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s })e^{c_0 / 2}||\varphi_{f_{\sigma,\mu}}||_1
+            \\&
+            \leq 4|\varphi_{f_{\sigma,\mu}}(c_0)|^{1/2}\frac{e^{\frac{\sigma^2\pi^2}{4}}}{\sqrt{\pi}}e^{\frac{\pi\mu}{2}}\int_\mathbb{R}du e^{-\frac{\sigma^2}{4}u^2} + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c_0/2}||\varphi_{f_{\sigma,\mu}}||_1
+            \\&
+            =\frac{8e^{\frac{\sigma^2\pi^2}{4}}e^{\frac{\pi\mu}{2}}}{\sigma}|\varphi_{f_{\sigma,\mu}}(c_0)|^{1/2} + 4|\varphi_{f_{\sigma,\mu}}(c_0)|
+            \\&
+            \leq\frac{8e^{\frac{\sigma^2\pi^2}{4}}e^{\frac{\pi\mu}{2}}}{\sigma}\frac{e^{\frac{\pi\mu}{2}}e^{\frac{\sigma^2}{4}(\pi^2 - c_0^2)}}{\sqrt{\pi}} + 4\frac{e^{\pi\mu}e^{\frac{\sigma^2}{2}(\pi^2 - c_0^2)}}{\pi}
+            \\&
+            \leq\frac{8e^{\frac{\sigma^2\pi^2}{4}}e^{\frac{\pi\mu}{2}}}{\sigma}\frac{e^{\frac{\pi\mu}{2}}e^{\frac{\sigma^2}{4}(\pi^2 - c_0(\sigma,\mu,s)^2)}}{\sqrt{\pi}} + 4\frac{e^{\pi\mu}e^{\frac{\sigma^2}{2}(\pi^2 - c_0(\sigma,\mu,s)^2)}}{\pi}
+        \end{split}
+    \end{align}
+    As $s$ increases, the upper bound on $c_{f_{\sigma,\mu}}(s)$ is monotonely decreasing. And to the leading order in $s$, the upper bound can be approximated by:
+    \begin{equation}
+        c_{f_{\sigma,\mu}}(s) \leq K_3e^{-\frac{K_4 s^2}{2}} + K_5e^{-K_4 s^2}
+    \end{equation}
+    where $K_3, K_4, K_5 > 0$ are positive constants which depend on $\sigma, \mu$. 
+\end{proof}
+Proof of Theorem 8, Corollaries 9 and 10.
+\YC{
+We are now ready to prove Theorem \label{theorem:mainresult}:
+\begin{proof}
+    We first observe that for $A\in\mathcal{A}(B_R)$, both $\Delta^{-it}_{W_0}\Delta^{it}_{B_{e^{2\pi s}R}}A\ket{\Omega}$ and $\Delta^{-it}_{W_0}\Delta^{it}_{W_r}A\ket{\Omega}$ are inside the algebra $\mathcal{A}(W_0)$. Hence we can rewrite the norm as:
+    \begin{align}
+        \begin{split}
+            ||&E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb \Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{it} \rb A\ket{\Omega}\rb|| \\&= \sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\ket{\Omega}||\leq 1}|\langle  B\Omega, E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb \Delta^{-it}_{W_0}\Delta^{it}_{B_{e^{2\pi s}R}} - \Delta^{-it}_{W_0}\Delta^{it}_{W_r}\rb A\Omega\rb\rangle|
+        \end{split}
+    \end{align}
+    Using spectral decomposition, we have:
+    \begin{align}
+        \begin{split}
+            ||&E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb \Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{it} \rb A\ket{\Omega}\rb||
+            \\&
+            =\sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}|\int_\mathbb{R} dt f(t)\langle \Delta_{W_0}^{it}E(\mu_0)B\Omega, \lb\Delta^{it}_{B_{e^{2\pi s}R}} - \Delta^{it}_{W_r}\rb A\Omega\rangle|
+            \\&
+            =\sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}|\int_\mathbb{R} dt f(t) \int_0^{\mu_0}e^{i\mu t}d\langle E(\mu)B\Omega, \lb\Delta^{it}_{B_{e^{2\pi s}R}} - \Delta^{it}_{W_r}\rb A\Omega\rangle|
+        \end{split}
+    \end{align}
+    By Fubini theorem, we can rewrite:
+    \begin{align}
+        \begin{split}
+            ||&E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb \Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{it} \rb A\ket{\Omega}\rb||
+            \\&
+            =\sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}|\int_0^{\mu_0} d\langle E(\mu)B\Omega, \int_\mathbb{R} dt f(t)e^{i\mu t}\lb\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_r}^{it}\rb A\Omega\rangle|
+        \end{split}
+    \end{align}
+    where the measure $d\langle E(\mu)B\Omega, \int_\mathbb{R} dt f(t)e^{i\mu t}\lb\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_r}^{it}\rb A\Omega\rangle$ should be understood as a complex measure. We can bound it from above:
+    \begin{align}
+        \begin{split}
+            ||&E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb \Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{it} \rb A\ket{\Omega}\rb||
+            \\&
+            \leq\sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}\int_0^{\mu_0} d|\langle E(\mu)B\Omega, \int_\mathbb{R} dt f(t)e^{i\mu t}\lb\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_r}^{it}\rb A\Omega\rangle|
+            \\&
+            \leq\sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}\int_0^{\mu_0}d\lb||E(\mu)B\Omega||\cdot||\int_\mathbb{R} dt f(t)e^{i\mu t}\lb\Delta^{it}_{B_{e^{2\pi s}R}} - \Delta^{it}_{W_r}\rb A\Omega||\rb
+        \end{split}
+    \end{align}
+    Now using the modified Fredenhagen's result (c.f. Theorem \ref{theorem:modifiedfredenhagen}), we can provide the following bound:
+    \begin{align}
+        \begin{split}
+            ||&E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb \Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{it} \rb A\ket{\Omega}\rb||
+            \\&
+            \leq \sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}\int_0^{\mu_0}d\lb||E(\mu)B\Omega||\cdot \lb c_{f_\mu}(s)^{1/2}\lb ||A\Omega||^2 + ||A^*\Omega||^2 \rb^{1/2}\rb\rb
+            \\&
+            \leq\sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}[ ||E(\mu_0)B\Omega||\lb c_{f_{\mu_0}}(s)^{1/2}\lb ||A\Omega||^2 + ||A^*\Omega||^2 \rb^{1/2}\rb \\&- ||E(0)B\Omega||\lb c_f(s)^{1/2}\lb||A\Omega||^2 + ||A^*\Omega||^2\rb^{1/2} \rb
+            \\&
+            \leq c_{f_{\mu_0}}(s)^{1/2}\lb ||A\Omega||^2 + ||A^*\Omega||^2 \rb^{1/2}
+        \end{split}
+    \end{align}
+    where we have used the fact that $E(0) = 0$ is the zero projection. As we have seen before, $\lim_{s\rightarrow\infty}c_{f_{\mu_0}}(s) = 0$.
+\end{proof}
+}
+\YC{
+If the $L^1$ function is a Gaussian function, as we have seen before, the constant in Theorem \ref{theorem:mainresult} decreases to the order of $O(e^{-s^2})$ as $s\rightarrow\infty$.
+}
+\YC{
+The proof of the Corollary \ref{corollary:reverseorder} follows almost verbatim from the proof of the Theorem \ref{theorem:mainresult}. We present the proof below. 
+\begin{proof}
+The calculation of this upper bound is slightly easier than the calculation in Theorem \ref{theorem:mainresult}. Using spectral decomposition of the modular operator of the right Rindler wedge, we can rewrite the norm as:
+\begin{align}
+    \begin{split}
+        ||&\int_\mathbb{R} dt f(t)\lb\Delta_{B_{e^{2
+        \pi s}R}}^{it}\Delta_{W_0}^{-it} - \Delta_{W_r}^{it}\Delta_{W_0}^{-it}\rb E(\mu_0)A\Omega|| = ||\int_\mathbb{R} dt f(t)\lb\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_r}^{it}\rb \int_0^{\mu_0}e^{-i\mu t}dE(\mu) A\Omega||
+        \\&
+        =\sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}|\langle B\Omega, \int_\mathbb{R} dt f(t)\lb\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_r}^{it}\rb\int_0^{\mu_0}e^{-i\mu t}dE(\mu) A\Omega\rangle|
+    \end{split}
+\end{align}
+Using Fubini theorem we have:
+\begin{align}
+    \begin{split}
+        ||&\int_\mathbb{R} dt f(t)\lb\Delta_{B_{e^{2
+        \pi s}R}}^{it}\Delta_{W_0}^{-it} - \Delta_{W_r}^{it}\Delta_{W_0}^{-it}\rb E(\mu_0)A\Omega|| \\&= \sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}|\int_0^{\mu_0}d\langle B\Omega, \int_\mathbb{R} dt f(t)e^{-i\mu t}\lb\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_r}^{it}\rb E(\mu)A\Omega\rangle|
+    \end{split}
+\end{align}
+Then by bounding the complex measure with its total variation and using Corollary \ref{corollary:extensionfredenhagen}, we have:
+\begin{align}
+    \begin{split}
+        ||&\int_\mathbb{R} dt f(t)\lb\Delta_{B_{e^{2
+        \pi s}R}}^{it}\Delta_{W_0}^{-it} - \Delta_{W_r}^{it}\Delta_{W_0}^{-it}\rb E(\mu_0)A\Omega||\\&
+        \leq \sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}\int_0^{\mu_0}d|\langle B\Omega, \int_\mathbb{R} dt f(t)e^{-i\mu t}\lb\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_r}^{it}\rb E(\mu) A\Omega\rangle|
+        \\&
+        \leq \sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}\int_0^{\mu_0}d\lb||B\Omega||\cdot||c^{1/2}_{f_{-\mu}}(s)\lb||E(\mu)A\Omega||^2 + ||E(\mu)A^*\Omega||^2\rb^{1/2}||\rb
+        \\&
+        \leq c^{1/2}_{f_{-\mu_0}}(s)\lb||E(\mu_0)A\Omega||^2 + ||E(\mu_0)A^*\Omega||^2\rb^{1/2} - c^{1/2}_{f_0}(s)\lb||E(0)A\Omega||^2 + ||E(0)A^*\Omega||^2\rb^{1/2}
+    \end{split}
+\end{align}
+Since $E(0)$ is the zero projection, we have the desired bound:
+\begin{equation}
+    ||\int_\mathbb{R} dt f(t)\lb\Delta_{B_{e^{2
+        \pi s}R}}^{it}\Delta_{W_0}^{-it} - \Delta_{W_r}^{it}\Delta_{W_0}^{-it}\rb E(\mu_0)A\Omega|| \leq c_{f_{-\mu_0}}^{1/2}(s)\lb||A\Omega||^2 + ||A^*\Omega||^2\rb^{1/2}
+\end{equation}
+As discussed before, the constant $c_{f_{-\mu_0}}(s)$ approaches zero as $s\rightarrow\infty$.
+\end{proof}
+}
+\YC{
+Finally, we are ready to prove Corollary \ref{corollary:doubleup}. The proof follows the same strategy as the proof of Theorem \ref{theorem:mainresult} and Corollary \ref{corollary:reverseorder}.
+\begin{proof}
+    \begin{align}
+        \begin{split}
+            ||&E(\mu_0)\lb\int_\mathbb{R} dt f(t)\Delta_{W_0}^{-it}\lb\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_r}^{it}\rb\Delta_{W_0}^{-it}\rb E(\mu_0)A\Omega|
+            \\&
+            \leq \sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}|\int_\mathbb{R} dt f(t)\langle \Delta^{it}_{W_0}E(\mu_0)B\Omega, \lb\Delta^{it}_{B_{e^{2\pi s}R}} - \Delta^{it}_{W_r}\rb\Delta_{W_0}^{-it}E(\mu_0) A\Omega\rangle|
+            \\&
+            =\sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}|\int_\mathbb{R} dt f(t)\langle \int_0^{\mu_0}dE(\mu)e^{i\mu t} B\Omega, \lb\Delta^{it}_{B_{e^{2\pi s}R}} - \Delta^{it}_{W_r}\rb\int_0^{\mu_0}dE(\nu)e^{-i\nu t}A\Omega\rangle|
+            \\&
+            \leq\sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}|\int_0^{\mu_0}\int_0^{\mu_0}d^2_{\mu\nu}\langle\rangle\textbf{}|
+        \end{split}
+    \end{align}
+\end{proof}
+}
+}
+
+\bibliographystyle{unsrt}``````````
+\bibliography{modularscattering}
+
+\end{document}
+
