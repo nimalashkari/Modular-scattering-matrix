@@ -1,0 +1,1133 @@
+%\documentclass[aps,prl,singlecolumn,superscriptaddress]{revtex4-2}
+
+
+\documentclass[a4paper,11pt]{article}
+\usepackage{jheppub}
+\setcounter{secnumdepth}{3}
+% Useful packages
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+%\usepackage{showlabels}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{prop}{Conjecture}
+\newtheorem{cor}{Corollary}
+%-------------------packages-------------------------
+\usepackage{enumerate}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb,amsbsy,mathtools,amsmath}
+\usepackage{braket}
+\usepackage{graphicx}
+\usepackage{xcolor}
+%\usepackage{multirow}
+\usepackage{hyperref}
+%\usepackage{caption}
+%\usepackage{subcaption}
+%\captionsetup{compatibility=false}
+\usepackage{natbib}
+%\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{soul}
+\usepackage{showlabels}
+
+%Includes "References" in the table of contents
+\usepackage[nottoc]{tocbibind}
+
+\usepackage{bbm}
+\usepackage{amsthm}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{corollary}[theorem]{Corollary}
+%\theoremstyle{definition}
+%\newtheorem{definition}{Definition}[section]
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{braket}
+\usepackage{quantikz}
+\usepackage{graphicx}
+\usepackage{caption}
+\newcommand{\mA}{\mathcal{A}}
+\newcommand{\mB}{\mathcal{B}}
+\newcommand{\nn}{\nonumber}
+\newcommand{\mL}{\mathcal{L}}
+\newcommand{\lb}{\left(}
+\newcommand{\rb}{\right)}
+\newcommand{\mH}{\mathcal{H}}
+\usepackage{subcaption}
+\newcommand{\tOO}{\tilde{\mathcal{O}}}
+\newcommand{\mO}{\mathcal{O}}
+\newcommand{\mK}{\mathcal{K}}
+\newcommand{\ep}{\epsilon}
+\newcommand{\mbR}{\mathbb{R}}
+\newcommand{\mM}{\mathcal{M}}
+\newcommand{\mT}{\mathcal{T}}
+\newcommand{\NL}[1]{\textcolor{blue}{#1}}
+\newcommand{\p}{\partial}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\tT}{\tilde{T}}
+
+\newcommand{\SO}[1]{\textcolor{purple}{#1}}
+%\newcommand{\MM}[1]{\textcolor{red}{#1}}
+\newcommand{\KL}[1]{\textcolor{brown}{#1}}
+\newcommand{\YC}[1]{\textcolor{teal}{#1}}
+
+\begin{document}
+\subsection{Inclusion of balls}\label{subsection:ballinball}
+In the previous subsection, we considered a double cone contained in a wedge and showed that, as the size of the double cone approaches infinity, the modular scattering operator of the cone relative to the wedge can be approximated by the modular scattering operator of two wedges. The precise sense of this approximation is specified in Corollary 10. 
+
+In this subsection, we consider the modular scattering operator of two double cones - one included in the other. And we aim to show that this modular scattering operator can be approximated by the modular scattering operator of two wedges as well. 
+
+More precisely, consider two double cones $B_r \subset B_R$. The intersection of $B_r$ and the plane $x_0 = 0$ is a ball with radius $r$ and centered at $x_1 = r' > r$. The intersection of $B_R$ and the plane $x_0 = 0$ is a ball with radius $R > r$ and centered at $x_1 = r' > R$. For our discussion, we would need to consider three wedges: $W_2\subset W_1\subset W_0$, where the smallest wedge $W_2$ has its vertex at $x_1 = r' - r > 0$ such that the vertex is in the closure of the smaller double cone $B_r$. Similarly, the wedge $W_1$ has its vertex at $x_1 = r' - R > 0$ such that the vertex is in the closure of the larger double cone $B_R$. Finally, the wedge $W_0$ is the standard right Rindler wedge with its vertex at the origin. 
+
+As in the previous subsection, we consider a net of algebras of local observables $\{\mathcal{A}(\mathcal{O})\}_{\mathcal{O}\subset\mathbb{R}^{d,1}}$ that satisfies the Haag-Kastler axioms. The modular scattering operator we want to study is $\Delta_{B_R}^{-it}\Delta_{B_r}^{2it}\Delta_{B_R}^{-it}$ and its action on the dense subspace $\{A\ket{\Omega}: A\in\mathcal{A}(B_r)\}$.
+
+More precisely, we want to consider how this modular scattering operator can be approximated by the modular scattering operator of two wedges $\Delta_{W_1}^{-it}\Delta_{W_2}^{2it}\Delta_{W_1}^{-it}$ as the size of the two double cones increase. Here we specify the geometric set-up of how the double cones increase in size. For the larger double cone, we increase its size by dilation in such a way that the vertex of the wedge $W_1$ is always in the closure of the dilated double cone. The intersection of the dilated double cone $B_{e^{2\pi s}R}$ and the plane $x_0 = 0$ is a ball of radius $e^{2\pi s}R$ and centered at $x_1 = r' + (e^{2\pi s} - 1)R$. For the smaller double cone, we increase its size by dilation while translating to the left. The intersection of the dilated and translated double cone $T_{\tanh(s)(R - r)}B_{e^{2\pi s}r}$ and the plane $x_0 = 0$ is a ball of radius $e^{2\pi s}r$ and centered at $x_1 = (r' - r) - \tanh(s)(R - r) + e^{2\pi s}r$. This dilated and shifted double cone is contained in a left-translated wedge $T_{\tanh(s)(R - r)}W_2$ for all $s > 0$. As $s\rightarrow\infty$, this wedge approaches $W_1$. Simultaneously, the double cone dilates in size with parameter $e^{2\pi s}$.
+
+The claim is the following:
+\begin{theorem}
+    For any spectral cut-off $\mu_0 > 0$ and for any $f\in L^1(\mathbb{R})$ and for any operator $A\in\mathcal{A}(B_r)$ and for any constant $s > 0$, there exists a constant $b_f(\mu_0, s) >0$ such that:
+    \begin{align}
+        \begin{split}
+            ||&E_1(\mu_0)\lb \int_\mathbb{R} dt f(t)\lb \Delta_{B_{e^{2\pi s}R}}^{-it}\Delta_{T_{\tanh(s)(R-r)}B_{e^{2\pi s}r}}^{2it}\Delta_{B_{e^{2\pi s}R}}^{-it} - \Delta_{W_1}^{-it}\Delta_{T_{\tanh(s)(R - r)}W_2}^{2it}\Delta_{W_1}^{-it} \rb E_1(\mu_0)\lb A\ket{\Omega}\rb \rb||^2 
+            \\&
+            \leq b_f(\mu_0, s)||\lb A\ket{\Omega}\rb^2 + \lb A^*\ket{\Omega} \rb^2||
+        \end{split}
+    \end{align}
+    where $E_1(\mu_0)$ is the spectral projection of the modular operator $\Delta_{W_1}$. In addition for any spectral cut-off, we have a well-defined limit:
+    \begin{align}
+        \begin{split}
+            \lim_{s\rightarrow\infty}||E_1(\mu_0)\lb \int_\mathbb{R} dt f(t)\lb \Delta_{B_{e^{2\pi s}R}}^{-it}\Delta_{T_{\tanh(s)(R-r)}B_{e^{2\pi s}r}}^{2it}\Delta_{B_{e^{2\pi s}R}}^{-it} - \Delta_{W_1}^{-it}\Delta_{T_{\tanh(s)(R - r)}W_2}^{2it}\Delta_{W_1}^{-it} \rb E_1(\mu_0)\lb A\ket{\Omega}\rb \rb||^2  = 0
+        \end{split}
+    \end{align}
+\end{theorem}
+To prove this theorem, we need the following lemma which requires half-sided modular inclusion to hold:
+\begin{lemma}
+    Consider two right wedges $W_2(s)\subset W_1$ where $W_2(s) := \{\}$
+\end{lemma}
+\section{One state and two algebras}
+In this section, we briefly consider a situation where characteristic functions of certain inclusions can be well-approximated by characteristic functions of wedge inclusions. The result is derived directly from the well-known result of Fredenhagen \cite{fredenhagen}.
+
+Consider a net of algebras of local observables on $\{\mathcal{A}(\mathcal{O})\}_{\mathcal{O}\subset\mathbb{R}^{d,1}}$. Assume this net satisfies the Haag-Kastler axioms. Let $\ket{\Omega}$ be the vacuum vecrtor of this net. By Reeh-Schlieder theorem, the vacuum vector is a common cyclic and separating vector for all algebras in this net. In addition, by the axiom, this net of algebras is covariant under the Poincaré group and the group action is strongly continuous.
+
+Consider two right wedges:
+\begin{equation}
+    W_0 := \{x\in\mathbb{R}^{d,1}: |x_0| < x_1\}
+\end{equation}
+\begin{equation}
+    W_{r} := \{x\in\mathbb{R}^{d,1}: |x_0 | < x_1 - r \}
+\end{equation}
+The two algebras of local observables associated with the two wedges are related by the action of right translation:
+\begin{equation}
+    Ad_{T_r}(\mathcal{A}(W_0)) = \mathcal{A}(W_r)
+\end{equation}
+where $T_r$ is right translation by $r$ and $Ad_{T_r}$ is the adjoint action. Let $\{\Delta_{W_0}^{it}\}$ be the modular automorphism of $\mathcal{A}(W_0)$ under the vacuum state and let $\{\Delta_{W_r}^{it}\}$ be the modular automorphism of $\mathcal{A}(W_r)$ under the same vacuum state. The two modular automorphisms are related by:
+\begin{equation}
+    T_r\Delta_{W_0}^{it}T_r^* = T_r\Delta_{W_0}^{it}T_{-r} = \Delta^{it}_{W_r}
+\end{equation}
+where $T_r^* = T_{-r}$ is left translation by $r$.
+
+It is well-known \cite{bisognanowichmann}that the modular flow $\Delta_{W_0}^{it}$ in a massless free field theory is given by the geometric action of boost. For our purpose, we need to consider several double cones in the right wedge $W_0$. All double cones intersect the spatial slice $\{x\in\mathbb{R}^{d,1}: x_0 = 0\}$ and the intersections are balls. To specify such double cones, it suffices to specify the intersecting balls: 
+\begin{equation}
+    B_{c,r}\subset W_0
+\end{equation}
+where $B_{c,r}$ denotes a generic double cone in the right wedge. The intersecting ball $B_{c,r}\cap\{x\in\mathbb{R}^{d,1}:x_0 = 0\}$ is centered at $x_1 = c\text{ , }x_i = 0$ (for $i\neq 0,1$) and has a radius $r$. Notice that for the double cone to be included in the right wedge, $0 < r \leq c$. In case where $r = c$, the vertex of the right wedge $W_0$ is in the closure of the double cone. To simplify notations, we collect the following families of examples and introduce specialized notations:
+\begin{enumerate}
+    \item $B_R:=B_{R, R}\subset W_0$ where the intersecting ball $B_R\cap \{x\in\mathbb{R}^{d,1}: x_0 = 0\}$ is centered at $x_1 = R, x_i = 0$ (for $i\neq 0, 1$) and has a radius $R$;
+    \item $B_{e^{-2\pi s}R} := B_{e^{-2\pi s}R, R}\subset W_0$ where the intersecting balls $B_{e^{-2\pi s}R}\cap\{x\in\mathbb{R}^{d,1}:x_0 =0\}$ is centered at $x_1 = R, x_i = 0$ (for $i\neq 0, 1$) and has a radius $e^{-2\pi s}R$. Here $s$ is a positive real parameter. These are the double cones that appear in Fredenhagen's original discussions \cite{fredenhagen}. Notice that the vertex of the right wedge $W_0$ is no longer contained in the closure of $B_{e^{-2\pi s}R}$. Instead, we consider the shifted right wedge $W_{r(s)}:= \{x\in\mathbb{R}^{d,1}: x_1 - r(s) > |x_0|\}$ where $r(s) := R - e^{-2\pi s}R$. The vertex of the wedge $W_{r(s)}$ is in the closure of the double cone $B_{e^{-2\pi s}R}$;
+    \item $B_{e^{2\pi s}R}:= B_{e^{2\pi s}R, e^{2\pi s}R}\subset W_0$ where the center of the intersecting ball is moving away from the origin as the radius of the ball increases so that the vertex of $W_0$ is in the closure of the double cone. These are dilated double cone and as $s\rightarrow \infty$, these double cones would approach the right wedge $W_0$.
+\end{enumerate}
+In addition to these double cones in the right Rindler wedge, we would also need to consider translated double cones contained in translated wedges. We introduce the following notations for these translated wedges:
+\begin{equation}
+    B^s_{c,r} := T_s(B_{c,r})\subset W_s  = T_s(W_0)
+\end{equation}
+where $T_s$ is the right translation by $s$ along the $x_1$-direction. The intersection of the translated double cone $B^s_{r,c}$ and the spatial slice $\{x\in\mathbb{R}^{d,1}:x_0 = 0\}$ is a ball centered at $x_1 = c+ s\text{ , }x_i = 0$ (for $i\neq 0, 1$) with radius $r$.
+\subsection{Review of Fredenhagen's Results}
+In this subsection, we briefly review Fredenhagen's results in \cite{fredenhagen} and modify the results to suit our discussion. First recall the following main theorem:
+\begin{theorem}
+    Let $W_0$ be the right wedge with vertex at the origin and let $B_R\subset W_0$ be a double cone. For any $f\in L^1(\mathbb{R})$ and any constant $s > 0$, there exists a constant $c_f(s) > 0$ such that:
+    \begin{equation}
+        ||\int_\mathbb{R} dt f(t)(\Delta_{B_R}^{-it} - \Delta_{W_0}^{-it})A\ket{\Omega}||^2 \leq c_f(s)(||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2)
+    \end{equation}
+    where $A$ is any operator in the local algebra $\mathcal{A}(B_{e^{-2\pi s}R})$. The constant $c_f(s)$ approaches $0$ as $s\rightarrow \infty$.
+\end{theorem}
+Heuristically, Fredenhagen's result states that, for operators localized in an exponentially small region close to the vertex of the wedge $W_0$, the averaged modular evolution (smeared out by the function $f$ in time) can be well approximated by the (geometric) modular evolution of the wedge. The theorem verifies the intuition that the error of this approximation should become smaller as the support of the local operators shrinks (i.e. $s\rightarrow\infty$).
+
+If the smearing function $f$ has finite support (symmetric around the origin), we would expect the approximation to hold for longer periods of time as the support of the local operators shrinks. This intuition can be qualitatively verified by studying the constant $c_f(s)$ for the case where $f$ is Gaussian. We would turn to the detailed calculation in Subsection \ref{subsection:gaussiansmear}.
+
+Back to the proof of Fredenhagen's main result, it is instructive to recall the following key technical result \cite{fredenhagen}. Notice that the following result holds for any two generic von Neumann algebras with a common cyclic and separating vector:
+\begin{proposition}
+    Let $\mathcal{B}\subset \mathcal{A}$ be two von Neumann algebras with a common cyclic and separating vector $\ket{\Omega}$. For all $\mathcal{O}\in\mathcal{B}$ such that for all $|t| < t_0$ (where $t_0 > 0$ is a positive constant), we have:
+    \begin{equation}
+        \Delta_\mathcal{A}^{it}\mathcal{O}\Delta_\mathcal{A}^{-it}\in\mathcal{B}
+    \end{equation}
+    where $\Delta_\mathcal{A}$ is the modular operator associated with $\ket{\Omega}$ on $\mathcal{A}$, then the following resolvent estimate holds:
+    \begin{equation}
+        ||\lb(1 + \Delta_\mathcal{A})^{-1} - (1 + \Delta_\mathcal{B}^{-1})\rb\mathcal{O}\ket{\Omega}|| \leq \frac{2}{\pi}\tanh^{-1}(e^{-\pi t_0})(||\mathcal{O}\ket{\Omega}||^2 + ||\mathcal{O}^*\ket{\Omega}||^2)^{1/2}
+    \end{equation}
+\end{proposition}
+In Fredenhagen's original theorem, the approximation is tighter as the support of local operators shrinks to zero. For our discussion, the size of the support is not a free parameter. Rather, we need to consider the opposite scenario where the support of the operator is fixed but we are embedding the operator in larger local algebras. More precisely, we want to show the following corollary to the Proposition above:
+\begin{corollary}
+    Consider two double cones inside the right Rindler wedge: $B_R\subset B_{e^{2\pi s}R}\subset W_0$. For any operator $\mathcal{O}\in\mathcal{A}(B)$, the following resolvent estimate holds:
+    \begin{equation}
+        ||\lb(1 + \Delta_{B_{e^{2\pi s}R}})^{-1} - (1 + \Delta_{W_0})^{-1}\rb\mathcal{O}\ket{\Omega}||\leq \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})\lb||\mathcal{O}\ket{\Omega}||^2 + ||\mathcal{O}^*\ket{\Omega}||^2\rb^{1/2}
+    \end{equation}
+    where $\ket{\Omega}$ is a common cyclic and separating vector. $\Delta_{B_{e^{2\pi s}R}}$ is the modular operator of the dilated double cone $e^{2\pi s}B$ and $\Delta_{W_0}$ is the modular operator of the right Rindler wedge.
+\end{corollary}
+\begin{proof}
+    Using the fact that the modular flow of the right Rindler wedge is the boost, it is elementary to observe that for all time $|t|\leq s$ and for all $\mathcal{O}\in\mathcal{A}(B)$, we have:
+    \begin{equation}
+        \Delta_{W_0}^{it}\mathcal{O}\Delta^{-it}_{W_0} \in \mathcal{A}(B_{e^{2\pi s}R})
+    \end{equation}
+    The statement follows directly from the Proposition.
+\end{proof}
+From this Corollary and using the same proof as Fredenhagen \cite{fredenhagen}, we immediately arrive at the following theorem:
+\begin{theorem}\label{theorem:modifiedfredenhagen}
+    Using the same set-up as the previous Corollary, for any operator $\mathcal{O}\in \mathcal{A}(B)$ and for any $f\in L^1(\mathbb{R})$ and for any constant $s > 0$, there exists a constant $c_f(s) > 0$ such that:
+    \begin{equation}
+        ||\int_\mathbb{R} dt f(t)\lb\Delta^{-it}_{B_{e^{2\pi s}R}} - \Delta^{-it}_{W_0}\rb\mathcal{O}\ket{\Omega}||^2 \leq c_f(s)\lb||\mathcal{O}\ket{\Omega}||^2 + ||\mathcal{O}^*\ket{\Omega}||^2\rb
+    \end{equation}
+    In addition, $\lim_{s\rightarrow \infty}c_f(s) = 0$
+\end{theorem}
+\begin{proof}
+    Notice that we have:
+    \begin{equation}
+        \lim_{s\rightarrow\infty}\tanh^{-1}(e^{-\pi s}) = 0
+    \end{equation}
+    Then the theorem follows directly from Fredenhagen's proof and the previous Corollary.
+\end{proof}
+Notice that this modified theorem states that the averaged modular flow  of a dilating double cone is close to that of the right wedge. The approximation is in the $L^2$-sense as specified in the Theorem above. This result matches the intuition since the dilating double cone approaches the right wedge.
+\subsection{Main Theorem - Approximation of Characteristic Functions}\label{subsection:maintheorem}
+One of the main insights of algebraic quantum field theory is that the information of a field theory is encoded in the inclusions of local algebras. Hence, we are naturally more interested in the characteristic function associated with inclusions of a pair of local algebras. Recall the definition of characteristic function \cite{revolutionizing}:
+\begin{definition}
+    Given a pair of von Neumann algebra $\mathcal{B}\subset\mathcal{A}$ and a common cyclic and separating vector $\ket{\Omega}\in\mathcal{H}$, the characteristic function is defined as:
+    \begin{equation}
+        \mathcal{D}_{\mathcal{A},\mathcal{B}}(t) := \Delta_\mathcal{A}^{-it}\Delta_\mathcal{B}^{it}
+    \end{equation}
+\end{definition}
+It is well-known that the characteristic function can be analytically continued to the horizontal strip $S(0, \frac{1}{2}) := \{z\in\mathbb{C}:0\leq \Im{z} \leq \frac{1}{2}\}$ in the complex plane. In addition, on the boundary of the horizontal strip, the characteristic function is unitary and strongly continuous. 
+
+Our main theorem concerns the approximation of two characteristic functions:
+\begin{enumerate}
+    \item One characteristic function is associated with the inclusion of a shifted wedge $W_r := T_r(W_0)$ in the standard right Rindler wedge $W_0$:
+    \begin{equation}
+        \mathcal{D}_{W_0, W_r}(t) = \Delta_{W_0}^{-it}\Delta_{W_r}^{it}
+    \end{equation}
+    Because the modular operators of the two wedges are both geometric, this characteristic function can be calculated explicitly;
+    \item The other characteristic function is associated with the inclusion of a (one-parameter family of) shifted double cone $B^r_{e^{2\pi s }R}:=B^r_{e^{2\pi s}R, e^{2\pi s}R} = T_r(B_{e^{2\pi s}R, e^{2\pi s}R})$ in the standard right wedge $W_0$:
+    \begin{equation}
+        \mathcal{D}_{W_0, B^r_{e^{2\pi s}R}}(t) = \Delta_{W_0}^{-it}\Delta_{B^r_{e^{2\pi s}R}}^{it}
+    \end{equation}
+\end{enumerate}
+Intuitively, as $s\rightarrow\infty$, the double cone $B^r_{e^{2\pi s}R}$ approaches the shifted right wedge $W_r$ and it is reasonable to expect $\mathcal{D}_{W_0,B^r_{e^{2\pi s}R}}$ to approach $\mathcal{D}_{W_0, W_r}$. Our main theorem formalizes this intuition:
+\begin{theorem}\label{theorem:mainresult}
+    Consider a net of local algebras $\{\mathcal{A}(\mathcal{O})\}_{\mathcal{O}\in\mathbb{R}^{d,1}}$ that satisfies the Haag-Kastler axioms. Let $W_0$ be the right Rindler wedge and let $W_r$ be a translated right Rindler wedge shifted to the right by $r > 0$ along the $x_1$ direction. Consider a one-parameter family of the shifted double cones inside the shifted wedge $\{B^r_{e^{2\pi s}R} \subset W_r\}_{s > 0}$. 
+    
+    In addition, consider the following modular operators associated with the local algebras:
+    \begin{enumerate}
+        \item Let $\Delta_{W_0}$ be the modular operator of $\mathcal{A}(W_0)$;
+        \item Let $\Delta_{W_r}$ be the modular operator of $\mathcal{A}(W_r)$;
+        \item Let $\Delta_{B^r_{e^{2\pi s}R}}$ be the modular operator $\mathcal{A}(B^r_{e^{2\pi s}R})$
+    \end{enumerate}
+    Finally consider the spectral decomposition of the modular flow of the right Rindler wedge:
+    \begin{equation}
+        \Delta_{W_0}^{it} = \int_0^\infty e^{i\mu t} dE(\mu)
+    \end{equation}
+    Then for any spectral cut-off $\mu_0 > 0$, for any Schwartz function $f(t)\in \mathcal{D}(\mathbb{R})$, for any operator $A\in \mathcal{A}(B^r_R)$ and for any constant $s > 0$, there exists a constant $b_f(\mu_0, s) > 0$ such that:
+    \begin{equation}
+        ||E(\mu_0)\lb\int_\mathbb{R} dtf(t)\lb\mathcal{D}_{W_0, B^r_{e^{2\pi s}R}}(t) - \mathcal{D}_{W_0, W_r}(t)\rb A\ket{\Omega}\rb||^2 \leq b_f(\mu_0, s)\lb||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2\rb
+    \end{equation}
+    In addition, for any spectral cut-off, we have a well-defined limit:
+    \begin{equation}
+        \lim_{s\rightarrow \infty}||E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb\mathcal{D}_{W_0, B^r_{e^{2\pi s}R}}(t) - \mathcal{D}_{W_0, W_r}(t)\rb A\ket{\Omega}\rb||^2 = 0
+    \end{equation}
+\end{theorem}
+When the smearing function $f$ is Gaussian, the constant $b_f(\mu_0, s)$ can be calculated. The qualitative behavior of this constant matches the intuition (c.f. Subsection \ref{subsection:gaussiansmear}). In particular, as $s\rightarrow\infty$, the approximation error decreases for any fixed spectral cut-off. 
+
+The proof of the theorem is straight-forward. We first consider the following lemma which is an adaptation of Fredenhagen's original result \cite{fredenhagen} coupled with the covariant translation group action:
+\begin{lemma}\label{lemma:extensionfredenhagen}
+    Using the same notation as the Theorem above. Specifically, consider the double cone $B^r_{e^{2\pi s}R}$ contained inside the wedge $W_r$. Then for any $f\in L^1(\mathbb{R})$ and any constant $s > 0$, there exists a constant $c_f'(s) > 0$ such that:
+    \begin{equation}
+        ||\int_\mathbb{R} dt f(t) (\Delta^{-it}_{B^r_{e^{2\pi s}R}} - \Delta_{W_r}^{-it})A\ket{\Omega}||^2 \leq c'_f(s)(||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2)
+    \end{equation}
+    where $A$ is any operator in the local algebra $\mathcal{A}(B_R)$. The constant $c'_f(s)$ approaches $0$ as $s\rightarrow \infty$.
+\end{lemma}
+\begin{proof}
+    Let $T_r$ be the right translation. Then we have:
+    \begin{equation}
+        T_r^*\lb B^r_{e^{2\pi s}R}\rb = B_{e^{2\pi s}R}\subset W_0
+    \end{equation}
+    \begin{equation}
+        T_r^*\lb W_r \rb = W_0
+    \end{equation}
+    Then the modular automorphisms for the local algebras $\mathcal{A}\lb B^r_{e^{2\pi s}R}\rb$ and $\mathcal{A}\lb B_{e^{2\pi s}R} \rb$ are related by conjugation of the translation operator:
+    \begin{equation}
+        \Delta^{it}_{B^r_{e^{2\pi s}R}} = T_r\Delta^{it}_{B_{e^{2\pi s}R}} T_r^*
+    \end{equation}
+    Similarly, the modular automorphisms for the local algebras $\mathcal{A}\lb W_r\rb$ and $\mathcal{A}\lb W_0\rb$ are related by conjugation of the translation operator:
+    \begin{equation}
+        \Delta^{it}_{W_r} = T_r\Delta^{it}_{W_0}T_r^*
+    \end{equation}
+    Using these relations, we can rewrite the norm of the smeared modular time evolution of $A\ket{\Omega}$ as follows:
+    \begin{align}
+        \begin{split}
+            &||\int_\mathbb{R} dt f(t)\lb\Delta^{-it}_{B^r_{e^{2\pi s}R}} - \Delta^{-it}_{W_r}\rb A\ket{\Omega}|| = ||\int_\mathbb{R} dt f(t)T_r\lb\Delta^{-it}_{B_{e^{2\pi s}R}} - \Delta^{-it}_{W_0}\rb T^*_r A\ket{\Omega}||
+            \\&
+            =||T_r\int_\mathbb{R} dt f(t) \lb\Delta^{-it}_{B_{e^{2\pi s}R}}-\Delta^{-it}_{W_0}\rb Ad_{T_r^*}\lb A\rb\ket{\Omega}||
+            \\&=||\int_\mathbb{R} dt f(t) \lb \Delta^{-it}_{B_{e^{2\pi s}R}} - \Delta^{-it}_{W_0}\rb Ad_{T^*_r}\lb A\rb\ket{\Omega}||
+        \end{split}
+    \end{align}
+    where we have used the fact that the translation action is unitary and hence does not change the norm. By Theorem \ref{theorem:modifiedfredenhagen}, we have the estimates:
+    \begin{align}
+        \begin{split}
+            &||\int_\mathbb{R} dt f(t) \lb \Delta^{-it}_{B^r_{e^{2\pi s}R}}- \Delta^{-it}_{W_r} \rb A\ket{\Omega}|| = ||\int_\mathbb{R} dt f(t) \lb \Delta^{-it}_{B_{e^{2\pi s}R}} - \Delta^{-it}_{W_0} \rb Ad_{T_r^*}\lb A\rb \ket{\Omega}||
+            \\&\leq c^{1/2}_f(s)\lb||Ad_{T_r^*}\lb A \rb\ket{\Omega}||^2 + ||Ad_{T^*_r}\lb A^*\rb\ket{\Omega}||^2\rb^{1/2}
+            \\&
+            =c_f^{1/2}(s)\lb ||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2 \rb^{1/2}
+        \end{split}
+    \end{align}
+    where the last equation follows from the fact that translation action is unitary and the vacuum vector is invariant under translation:
+    \begin{equation}
+        ||Ad_{T_r^*}\lb A \rb\ket{\Omega}|| = ||T^*_rAT_r\ket{\Omega}|| = ||T_r^*A\ket{\Omega}|| = ||A\ket{\Omega}||\qedhere
+    \end{equation}
+\end{proof}
+Using the observation above, we are now ready to prove Theorem \ref{theorem:mainresult}:
+\begin{proof}
+    Using the spectral decomposition we can rewrite the norm as follows:
+    \begin{align}
+        \begin{split}
+            &||E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb \mathcal{D}_{W_0, B^r_{e^{2\pi s}R}}(t) - \mathcal{D}_{W_0, W_r}(t) \rb A\ket{\Omega}\rb||
+            \\&= ||\int_\mathbb{R} dtf(t)\int_0^{\mu_0}dE(\mu) e^{-i\mu t}\lb\Delta_{B^r_{e^{2\pi s}R}}^{it} - \Delta_{W_r}^{it}\rb A\ket{\Omega}||
+            \\&
+            =\sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}|\langle B\Omega\text{ , }\int_\mathbb{R}dt f(t)\int_0^{\mu_0}dE(\mu)e^{-i\mu t}\lb\Delta_{B^r_{e^{2\pi s}R}}^{it} - \Delta_{W_r}^{it}\rb A\Omega\rangle|
+            \\&
+            =\sup_{\substack{B\in\mathcal{A}(W_0)\\ s.t.||B\ket{\Omega}||\leq 1}}|\int_\mathbb{R}dt f(t)\int_0^{\mu_0}e^{-i\mu t}d\bra{E(\mu) B\Omega}\text{ , }\lb\Delta_{B^r_{e^{2\pi s}R}}^{it} - \Delta_{W_r}^{it}\rb A\Omega\rangle|
+        \end{split}
+    \end{align}
+    To simplify notation, we denote the $(t,\mu)$-dependent measurable function as:
+    \begin{equation}
+        g_t(\mu) := \langle E(\mu) B\Omega\text{ , }\lb\Delta^{it}_{B^r_{e^{2\pi s}R}} - \Delta^{it}_{W_r}\rb A\Omega\rangle
+    \end{equation}
+    Notice that $g_t(0) = 0$ because $E(0) = 0$ is the zero projection. By integration by parts, we have:
+    \begin{align}
+        \begin{split}
+            &||E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb\mathcal{D}_{W_0, B^r_{e^{2\pi s}R}}(t) - \mathcal{D}_{W_0, W_r}(t)\rb A\ket{\Omega}\rb||
+            \\&
+            =\sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}|\int_\mathbb{R}dt f(t)\lb e^{-i\mu t}g_t(\mu)|_0^{\mu_0} - \int_0^{\mu_0}g_t(\mu)\lb-ite^{-i\mu t}\rb d\mu \rb|
+            \\&
+            =\sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}|\int_\mathbb{R} dt f(t) e^{-i\mu_0 t}g_t(\mu_0) + i\int_\mathbb{R} dt \int_0^{\mu_0} d\mu \lb tf(t)\rb e^{-i\mu t} g_t(\mu)|
+        \end{split}
+    \end{align}
+    For the first term, we have the following estimate:
+    \begin{align}
+        \begin{split}
+            &|\int_\mathbb{R} dt f(t)e^{-i\mu_0 t}\langle E(\mu_0) B\Omega\text{ , }\lb\Delta^{it}_{B^r_{e^{2\pi s}R}} - \Delta^{it}_{W_r}\rb A\Omega\rangle|
+            \\&
+            =|\langle E(\mu_0)B\Omega\text{ , }\int_\mathbb{R}dt f(t)e^{-i\mu_0 t}\lb\Delta^{it}_{B^r_{e^{2\pi s}R}} - \Delta^{it}_{W_r}\rb A\Omega\rangle|
+            \\&
+            \leq ||E(\mu_0)B\ket{\Omega}||\cdot||\int_\mathbb{R} dt f(t) e^{-i\mu_0 t}\lb\Delta^{it}_{B^r_{e^{2\pi s}R}} - \Delta^{it}_{W_r}\rb A\ket{\Omega}||
+        \end{split}
+    \end{align}
+    Since the function $f_{\mu_0}(t) := e^{-i\mu_0 t}f(t)$ is integrable, by Lemma \ref{lemma:extensionfredenhagen} we can provide the following upper bound:
+    \begin{align}
+        \begin{split}
+            &\sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}|\int_\mathbb{R} dt f(t) e^{-i\mu_0 t}\langle E(\mu_0)B\Omega\text{ , }\lb\Delta^{it}_{B^r_{e^{2\pi s}R}} - \Delta^{it}_{W_r}\rb A\Omega\rangle|
+            \\&
+            \leq \sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}||E(\mu_0)B\ket{\Omega}||\cdot\lb c_{f_{\mu_0}}^{1/2}(s)\lb||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2\rb^{1/2}\rb
+            \\&
+            \leq c_{f_{\mu_0}}^{1/2}(s)\lb||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2\rb^{1/2}
+        \end{split}
+    \end{align}
+    For the second term, by Fubini's theorem we have the following estimate:
+    \begin{align}
+        \begin{split}
+            &\sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}|i\int_\mathbb{R} dt \int_0^{\mu_0}d\mu \lb tf(t)\rb e^{-i\mu t}\langle E(\mu)B\Omega\text{ , }\lb\Delta^{it}_{B^r_{e^{2\pi s}R}} - \Delta^{it}_{W_r}\rb A\Omega \rangle|
+            \\&
+            \leq \sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}\int_0^{\mu_0}d\mu\int_\mathbb{R} dt |\lb tf(t)\rb e^{-i\mu t}\langle E(\mu)B\Omega\text{ , }\lb \Delta^{it}_{B^r_{e^{2\pi s}R}} - \Delta^{it}_{W_r} \rb A\Omega \rangle|
+            \\&
+            \leq \sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}\int_0^{\mu_0}d\mu ||E(\mu) B\ket{\Omega}||\cdot||\int_\mathbb{R} dt\lb tf(t) \rb e^{-i\mu t}\lb\Delta^{it}_{B^r_{e^{2\pi s}R}}- \Delta^{it}_{W_r}\rb A\ket{\Omega}||
+        \end{split}
+    \end{align}
+    Again since the function $tf_\mu(t):= \lb tf(t) \rb e^{-i\mu t}$ is integrable, by Lemma \ref{lemma:extensionfredenhagen} we can provide the following upper bound:
+    \begin{align}
+        \begin{split}
+            &\sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}|i\int_\mathbb{R} dt \int_0^{\mu_0}d\mu \lb tf(t)\rb e^{-i\mu t}\langle E(\mu)B\Omega\text{ , }\lb\Delta^{it}_{B^r_{e^{2\pi s}R}} - \Delta^{it}_{W_r}\rb A\Omega \rangle|
+            \\&
+            \leq \sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}\int_0^{\mu_0}d\mu ||E(\mu)B\ket{\Omega}||\cdot\lb c^{1/2}_{t f_\mu}(s)\lb||A\ket{\Omega}|| + ||A^*\ket{\Omega}||^2\rb^{1/2}\rb
+            \\&
+            \leq \int_0^{\mu_0}d\mu \lb c^{1/2}_{tf_\mu}(s)\lb||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2\rb^{1/2}\rb 
+            \\&
+            \leq \mu_0\lb\sup_{0\leq \mu\leq \mu_0}c^{1/2}_{tf_\mu}(s)\rb\cdot\lb||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2\rb^{1/2}
+        \end{split}
+    \end{align}
+    Combining these two upper bounds, we have the estimates:
+    \begin{align}
+        \begin{split}
+            &||E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb\mathcal{D}_{W_0, B^r_{e^{2\pi s}R}}(t) - \mathcal{D}_{W_0, W_r}(t)\rb A\ket{\Omega}\rb||
+            \\&
+            \leq \lb c^{1/2}_{f_{\mu_0}}(s) + \mu_0\sup_{0\leq \mu\leq \mu_0}c^{1/2}_{tf_\mu}(s) \rb\cdot\lb||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2\rb^{1/2}
+        \end{split}
+    \end{align}
+    By Lemma \ref{lemma:shiftedfredenhagenconstant} below (which requires the assumption that $tf(t)$ is integrable), the constant $b_f(\mu_0, s) := \lb c^{1/2}_{f_{\mu_0}}(s) + \mu_0\sup_{0\leq \mu\leq \mu_0}c^{1/2}_{tf_\mu}(s)\rb$ has a well-defined limit as $s\rightarrow\infty$:
+    \begin{equation}
+        \lim_{s\rightarrow\infty}b_f(\mu_0, s) = 0
+    \end{equation}
+    This concludes the proof of our main theorem. 
+\end{proof}
+\subsection{Approximation of Modular Scattering Matrix}\label{subsection:approxscattering}
+The results on the approximations of characteristic functions in the previous subsection provide the necessary technical tools for us to prove corresponding results on the approximations of modular scattering matrices. Recall the following definition of modular scattering matrix:
+\begin{definition}
+    Given a pair of von Neumann algebras $\mathcal{B}\subset\mathcal{A}$ and a common cyclic and separating vector $\ket{\Omega}\in\mathcal{H}$, the modular scattering matrix is defined as:
+    \begin{equation}
+        \mathcal{M}_{\mathcal{A},\mathcal{B}}(t):=\Delta_\mathcal{A}^{-it}\Delta_\mathcal{B}^{2it}\Delta_\mathcal{A}^{-it}
+    \end{equation}
+\end{definition}
+Using the same set-up as Theorem \ref{theorem:mainresult}, we can state the main approximation results on the modular scattering matrices:
+\begin{theorem}\label{theorem:approxscattering}
+    Consider a net of local algebras $\{\mathcal{A}(\mathcal{O})\}_{\mathcal{O}\in\mathbb{R}^{d,1}}$ that satisfies the Haag-Kastler axioms. Let $W_0$ be the right Rindler wedge and let $W_r$ be a translated right Rindler wedge shifted to the right by $r > 0$ along the $x_1$ direction. Consider a one-parameter family of shifted double cones inside the shifted wedge $\{ B^r_{e^{2\pi s}R}\subset W_r\}_{s > 0}$. 
+
+    In addition, consider the following modular operators associated with the local algebras:
+    \begin{enumerate}
+        \item Let $\Delta_{W_0}$ be the modular operator of $\mathcal{A}(W_0)$;
+        \item Let $\Delta_{W_r}$ be the modular operator of $\mathcal{A}(W_r)$;
+        \item Let $\Delta_{B^r_{e^{2\pi s}R}}$ be the modular operator of $\mathcal{A}(B^r_{e^{2\pi s}R})$
+    \end{enumerate}
+    Finally consider the spectral decomposition of the modular flow of the right Rindler wedge:
+    \begin{equation}
+        \Delta_{W_0}^{it} = \int_0^{W_0}e^{i\mu t}dE(\mu)
+    \end{equation}
+    Then for any spectral cut-off $\mu_0 > 0$, for any Schwartz function $f\in \mathcal{D}(\mathbb{R})$, for any operator $A\in\mathcal{A}(B^r_R)$ and for any constant $s > 0$, there exists a constant $b_f(\mu_0, s) > 0$ such that:
+    \begin{align}
+        \begin{split}
+            ||&E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb \mathcal{M}_{W_0, B^r_{e^{2\pi s}R}}(t) - \mathcal{M}_{W_0, W_r}(t) \rb E(\mu_0)A\ket{\Omega}\rb||^2 \\&\leq b_f(\mu_0, s)\lb||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2\rb
+        \end{split}
+    \end{align}
+    In addition, for any spectral cut-off, we have a well-defined limit:
+    \begin{equation}
+        \lim_{s\rightarrow\infty}||E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb \mathcal{M}_{W_0, B^r_{e^{2\pi s}R}}(t) - \mathcal{M}_{W_0, W_r}(t) \rb E(\mu_0)A\ket{\Omega}\rb||^2 = 0
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    The proof is similar to the proof of Theorem \ref{theorem:mainresult}. Using the spectral decomposition we can rewrite the norm as follows:
+    \begin{align}
+        \begin{split}
+            ||&E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb\mathcal{M}_{W_0, B^r_{e^{2\pi s}R}}(t) - \mathcal{M}_{W_0, W_r}(t)\rb E(\mu_0)A\ket{\Omega}\rb||
+            \\&
+            =||\int_\mathbb{R} dt f(t)\int_0^{\mu_0} dE(\mu) e^{-i\mu t}\lb\Delta^{2it}_{B^r_{e^{2\pi s}R}} - \Delta_{W_r}^{2it}\rb \int_0^{\mu_0}dE(\nu) e^{-i\nu t} A\ket{\Omega}||
+            \\&
+            =\sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}|\langle B\Omega\text{ , }\int_\mathbb{R} dt f(t)\int_0^{\mu_0} dE(\mu)e^{-i\mu t}\lb\Delta_{B^r_{e^{2\pi s}R}}^{2it} - \Delta_{W_r}^{2it}\rb\int_0^{\mu_0}dE(\nu)e^{-i\nu t}A\Omega\rangle|
+            \\&
+            =\sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}|\int_\mathbb{R} dt f(t)\int_0^{\mu_0}e^{-i\mu t}\int_0^{\mu_0}e^{-i\nu t}d_{\mu\nu}\langle E(\mu)B\Omega\text{ , }\lb\Delta^{2it}_{B^r_{e^{2\pi s}R}} - \Delta^{2it}_{W_r}\rb E(\nu)A\Omega\rangle|
+        \end{split}
+    \end{align}
+    To simplify notation, we denote the $(t,\mu,\nu)$-dependent measurable function as:
+    \begin{equation}
+        g_t(\mu,\nu):=\langle E(\mu)B\Omega\text{ , }\lb\Delta^{2it}_{B^r_{e^{2\pi s}R}} - \Delta^{2it}_{W_r}\rb E(\nu)A\Omega \rangle
+    \end{equation}
+    Notice that $g_t(0,\nu) = g_t(\mu,0) = 0$ because $E(0) = 0$ is the zero projection. To apply integration by parts, we have the following formula:
+    \begin{align}
+        \begin{split}
+            e^{-i\mu t}&e^{-i\nu t}d_{\mu\nu}g_t(\mu,\nu) = e^{-i\mu t}e^{-i\nu t}d_{\mu\nu}\langle E(\mu)B\Omega\text{ , }\lb\Delta^{2it}_{B^r_{e^{2\pi s}R}} - \Delta^{2it}_{W_r}\rb E(\nu)A\Omega\rangle
+            \\&
+            = d_{\mu\nu}\lb e^{-i\mu t}e^{-i\nu t}g_t(\mu,\nu) \rb + ite^{-i\mu t}e^{-i\nu t} d_\nu g_t(\mu,\nu) d\mu+ ite^{-i\mu t}e^{-i\nu t} d_\mu g_t(\mu,\nu)d\nu \\&+ t^2 e^{-i\mu t}e^{-i\nu t} g_t(\mu,\nu)d\mu d\nu
+        \end{split}
+    \end{align}
+    Then by integration by parts, we have:
+    \begin{align}
+        \begin{split}
+            ||&E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb\mathcal{M}_{W_0,B^r_{e^{2\pi s}R}}(t) - \mathcal{M}_{W_0, W_r}(t)\rb E(\mu_0) A\ket{\Omega}\rb||
+            \\&
+            = \sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}|\int_\mathbb{R} dt f(t)\int_0^{\mu_0}\int_0^{\mu_0}d_{\mu\nu}\lb e^{-i\mu t}e^{-i\nu t}g_t(\mu,\nu)\rb 
+            \\&
+            + i\int_\mathbb{R} dt \lb tf(t)\rb\int_0^{\mu_0}\int_0^{\mu_0}\lb e^{-i\mu t}d_\nu \lb e^{-i\nu t}g_t(\mu,\nu) \rb d\mu\rb
+            \\&
+            +i\int_\mathbb{R} dt \lb tf(t)\rb\int_0^{\mu_0}\int_0^{\mu_0}\lb e^{-i\nu t} d_\mu\lb e^{-i\mu t} g_t(\mu,\nu)\rb d\nu\rb 
+            \\&
+            - \int_\mathbb{R} dt \lb t^2f(t) \rb\int_0^{\mu_0}\int_0^{\mu_0} e^{-i\mu t}e^{-i\mu t}g_t(\mu,\nu)d\mu d\nu|
+        \end{split}
+    \end{align}
+    We estimate each term separately. For the first term, we have the following direct calculation:
+    \begin{align}
+        \begin{split}
+            &\sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}|\int_\mathbb{R} dt f(t)\int_0^{\mu_0}\int_0^{\mu_0} d_{\mu\nu}\lb e^{-i\mu t}e^{-i\nu t}g_t(\mu,\nu) \rb| = \sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}|\int_\mathbb{R} dt f(t) e^{-2i\mu_0 t}g_t(\mu_0, \mu_0)|
+            \\&
+            =\sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}|\frac{1}{2}\int_\mathbb{R} dt f(\frac{t}{2}) e^{-i\mu_0 t}\langle E(\mu_0)B\Omega\text{ , }\lb\Delta_{B^r_{e^{2\pi s}R}}^{it} - \Delta_{W_r}^{it}\rb E(\mu_0)A\Omega\rangle|\\&
+            \leq \frac{1}{2}c_{f_{\mu_0}(t/2)}^{1/2}(s)\lb||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2\rb^{1/2}
+        \end{split}
+    \end{align}
+    where the last inequality follows from Lemma \ref{lemma:extensionfredenhagen} and $c_{f_{\mu_0}(t/2)}$ is Fredenhagen's constant associated with the function $e^{-i\mu_0 t}f_(\frac{t}{2})$.
+
+    For the second term, we have the following estimate:
+    \begin{align}
+        \begin{split}
+            &\sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}|\int_\mathbb{R} dt \lb tf(t) \rb\int_0^{\mu_0}\int_0^{\mu_0}\lb e^{-i\mu t}d_\nu\lb e^{-i\nu t}g_t(\mu,\nu) \rb d\mu \rb|
+            \\&
+            =\sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}|\int_\mathbb{R}dt \lb tf(t)\rb\int_0^{\mu_0}e^{-i\mu t} e^{-i\mu_0 t}g_t(\mu,\mu_0) d\mu|
+            \\&
+            \leq \sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}\sup_{0\leq\mu\leq\mu_0}\mu_0|\int_\mathbb{R} dt\lb tf(t) \rb e^{-i(\mu + \mu_0) t}\langle E(\mu)B\Omega\text{ , }\lb\Delta^{2it}_{B^r_{e^{2\pi s}R}} - \Delta^{2it}_{W_r}\rb E(\mu_0)A\Omega \rangle|
+            \\&
+            =\sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}\sup_{0\leq \mu\leq\mu_0}\mu_0|\frac{1}{4}\int_\mathbb{R} dt \lb tf(\frac{t}{2}) \rb e^{-i\frac{\mu + \mu_0}{2}t}\langle E(\mu)B\Omega\text{ , }\lb\Delta^{it}_{B^r_{e^{2\pi s}R}} - \Delta^{it}_{W_r}\rb E(\mu_0)A\Omega \rangle|
+            \\&
+            \leq \sup_{0\leq \mu\leq\mu_0}\frac{\mu_0}{4} c^{1/2}_{tf_{\frac{\mu + \mu_0}{2}}(\frac{t}{2})}(s)\lb||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2\rb^{1/2}
+        \end{split}
+    \end{align}
+    where the last inequality follows from Lemma \ref{lemma:extensionfredenhagen} and $c_{tf_{\frac{\mu + \mu_0}{2}}(\frac{t}{2})}$ is Fredenhagen's constant associated with the function $e^{-i\frac{\mu + \mu_0}{2}t}tf(\frac{t}{2})$.
+
+    For the third term, we have the same estimate:
+    \begin{align}
+        \begin{split}
+            &\sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}|\int_\mathbb{R} dt \lb tf(t) \rb\int_0^{\mu_0}\int_0^{\mu_0}\lb e^{-i\nu t}d_\mu\lb e^{-i\mu t}g_t(\mu,\nu) \rb d\nu \rb|\\&
+            \leq\sup_{0\leq \mu\leq\mu_0}\frac{\mu_0}{4}c^{1/2}_{tf_{\frac{\mu + \mu_0}{2}}(\frac{t}{2})}(s)\lb||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2\rb^{1/2}
+        \end{split}
+    \end{align}
+
+    For the last term, we directly apply Lemma \ref{lemma:extensionfredenhagen}:
+    \begin{align}
+        \begin{split}
+            &\sup_{\substack{B\in\mathcal{A}(W_0)\\s.t.||B\ket{\Omega}||\leq 1}}|\int_\mathbb{R} dt \lb t^2f(t) \rb\int_0^{\mu_0}\int_0^{\mu_0}e^{-i(\mu + \nu)t}g_t(\mu,\nu)d\mu d\nu|
+            \\&
+            \leq \frac{1}{8}c_{t^2f_{\frac{\mu + \nu}{2}}(\frac{t}{2})}^{1/2}(s)\lb||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2\rb^{1/2}
+        \end{split}
+    \end{align}
+    Combining these four estimates, we have:
+    \begin{align}
+        \begin{split}
+            ||&E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb \mathcal{M}_{W_0, B^r_{e^{2\pi s}R}}(t) - \mathcal{M}_{W_0, W_r}(t) \rb E(\mu_0)A\ket{\Omega}\rb||
+            \\&
+            \leq \lb \frac{1}{2}c^{1/2}_{f_{\mu_0}(\frac{t}{2})}(s) + \sup_{0\leq\mu\leq\mu_0}\frac{\mu_0}{2} c^{1/2}_{tf_{\frac{\mu + \mu_0}{2}}(\frac{t}{2})}(s) + \frac{1}{8}c^{1/2}_{t^2f_{\frac{\mu + \nu}{2}}(\frac{t}{2})}(s)\rb\cdot\lb||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2\rb^{1/2}
+        \end{split}
+    \end{align}
+    By Lemma \ref{lemma:shiftedfredenhagenconstant}, we have the limit:
+    \begin{equation}
+        \lim_{s\rightarrow\infty}\frac{1}{2}c^{1/2}_{f_{\mu_0}(\frac{t}{2})}(s) + \sup_{0\leq\mu\leq\mu_0}\frac{\mu_0}{2} c^{1/2}_{tf_{\frac{\mu + \mu_0}{2}}(\frac{t}{2})}(s) + \frac{1}{8}c^{1/2}_{t^2f_{\frac{\mu + \nu}{2}}(\frac{t}{2})}(s) = 0\qedhere
+    \end{equation}
+\end{proof}
+
+\subsection{Calculation of Fredenhagen's Constant}\label{subsection:gaussiansmear}
+In this subsection, we collect several results (including explicit calculations) of Fredenhagen's constant \cite{fredenhagen}. Recall the Fredenhagen's original estimate depends on the constant:
+\begin{equation}
+    c_f(s):=\inf_{\substack{g\in\mathcal{D}(\mathbb{R})\\ c > 0}}\{2||f - g||_1 + 2\int_{|u|\geq c}du|\varphi_g(u)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}||\varphi_g||_1\}
+\end{equation}
+where $g\in\mathcal{D}(\mathbb{R})$ is a Schwartz function and $\varphi_g(u)$ is  a twisted Fourier transform of $g$:
+\begin{equation}
+    \varphi_g(u):=\frac{1}{2\pi}\int_\mathbb{R} dt g(t)\lb\frac{2}{i}\sinh(\pi t)\rb e^{itu}
+\end{equation}
+We first make the following observation on Fredenhagen's constant for shifted function $f_\mu(t) = e^{-i\mu t}f(t)$:
+\begin{lemma}\label{lemma:shiftedfredenhagenconstant}
+    For a Schwartz function $f\in \mathcal{D}(\mathbb{R})$, the following limits hold:
+    \begin{equation}
+        \lim_{s\rightarrow\infty}c_{f_\mu}(s) = 0
+    \end{equation}
+    \begin{equation}
+        \lim_{s\rightarrow\infty}\sup_{0\leq \mu\leq\mu_0}c_{tf_\mu}(s) = 0
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    The proof is based on an explicit calculation of $c_{f_\mu}(s)$. Using the definition of $c_f(s)$, we have the following:
+    \begin{align}
+        \begin{split}
+            c_{f_\mu}(s) &= \inf_{\substack{g\in\mathcal{D}(\mathbb{R})\\ c>0}}\{2||f_\mu - g|| + 2\int_{|u|\geq c}du|\varphi_g(u)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}||\varphi_g||_1\}
+            \\&
+            =\inf_{\substack{g_\mu\in\mathcal{D}(\mathbb{R})\\ c > 0}}\{2||f_\mu - g_\mu||_1 + 2\int_{|u|\geq c}du|\varphi_{g_\mu}(u)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}||\varphi_{g_\mu}||_1\}
+            \\&
+            =\inf_{\substack{g_\mu\in\mathcal{D}(\mathbb{R})\\ c > 0}}\{2||f-g||_1 + 2\int_{|u| \geq c}du|\varphi_g(u + \mu)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}||\varphi_g||_1\}
+            \\&
+            =\inf_{\substack{g\in\mathcal{D}(\mathbb{R})\\ c > 0}}\{2||f-g||_1 + 2\int_{|u - \mu|\geq c}du|\varphi_g(u)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}||\varphi_g||_1\}
+        \end{split}
+    \end{align}
+    where $g_\mu(t) := e^{-i\mu t}g(t)\in\mathcal{D}(\mathbb{R})$. In addition, by definition of $\varphi_g$, we have:
+    \begin{align}
+        \begin{split}
+            \varphi_{g_\mu}(u)&=\frac{1}{2\pi}\int_\mathbb{R} dt g_\mu(t)\lb\frac{2}{i}\sinh(\pi t)\rb e^{-itu} = \frac{1}{2\pi}\int_\mathbb{R} dt g(t)\lb\frac{2}{i}\sinh(\pi t)\rb e^{-i(\mu + u)t} = \varphi_g(u + \mu)
+        \end{split}
+    \end{align}
+    In particular by translation invariance of the Lebesgue measure, we have $||\varphi_g||_1 = ||\varphi_{g_\mu}||_1$.
+
+    Since the function $f$ is a Schwartz function, we have the following upper bound by taking $g = f$:
+    \begin{align}
+        \begin{split}
+            c_{f_\mu}(s) &\leq \inf_{c > 0}\{2\int_{|u - \mu| > c}du|\varphi_f(u)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}||\varphi_f||_1\}
+        \end{split}
+    \end{align}
+    In addition, because $f$ is a Schwartz function, the twisted Fourier transform $\varphi_f$ is integrable. Hence, for any small constant $\epsilon > 0$, there exists $c_\epsilon > 0$ such that:
+    \begin{equation}
+        2\int_{|u - \mu| > c_\epsilon}du|\varphi_f(u)| < \epsilon
+    \end{equation}
+
+    Hence for any $\epsilon > 0$, we have:
+    \begin{align}
+        \begin{split}
+            \lim_{s\rightarrow\infty}c_{f_\mu}(s) &\leq \lim_{s\rightarrow\infty}2\int_{|u-\mu|>c_\epsilon}du|\varphi_f(u)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c_\epsilon/2}||\varphi_f||_1
+            \\&
+            <\lim_{s\rightarrow\infty}2\epsilon + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c_\epsilon/2}||\varphi_f||_1 = 2\epsilon
+        \end{split}
+    \end{align}
+    Since the bound holds for any $\epsilon > 0$, we have $\lim_{s\rightarrow\infty}c_{f_\mu}(s) = 0$.
+
+    To calculate the limit $\lim_{s\rightarrow\infty}c_{tf_\mu}(s)$, first notice that because $f$ is a Schwartz function, $tf_\mu(t) = tf(t)e^{-i\mu t}$ is also a Schwartz function. Using the same arguments as above, we have the following upper bound:
+    \begin{equation}
+        \sup_{0\leq \mu\leq\mu_0}c_{tf_\mu}(s) \leq \sup_{0\leq \mu\leq\mu_0}\inf_{c > 0}\{2\int_{|u - \mu| > c}du|\varphi_{tf}(u)|+ \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}||\varphi_{tf}||_1\}
+    \end{equation}
+    Consider $\int_{|u-\mu| > c}du|\varphi_{tf}(u)|$ as a family of functions $\{F_\mu(c)\}_{0\leq\mu\leq\mu_0}$. For any $\mu \in [0, \mu_0]$, the function $F_\mu$ is Lipschitz with the same constant:
+    \begin{align}
+        \begin{split}
+            ||\frac{d}{dc}F_\mu(c)||_\infty &= ||\frac{d}{dc}\int_{|u| > c}|\varphi_{tf}(u + \mu)|du||_\infty \leq 2||\varphi_{tf}||_\infty
+        \end{split}
+    \end{align}
+    Hence the family of functions $\{F_\mu\}_{0\leq \mu\leq \mu_0}$ is equicontinuous. In particular, since for any $\mu\in [0, \mu_0]$ the limit $\lim_{c\rightarrow \infty}F_\mu(c) = 0$ (by the integrability of $\varphi_{tf}$), then for any $\epsilon > 0$ there exists $c_\epsilon > 0$ such that for all $\mu \in [0, \mu_0]$, we have $|F_\mu(c_\epsilon)| < \epsilon$. Thus for any $\epsilon > 0$, we have:
+    \begin{align}
+        \begin{split}
+            &\sup_{0\leq \mu\leq \mu_0}c_{tf_\mu}(s) \leq \sup_{0\leq \mu\leq\mu_0}\{2\int_{|u - \mu| > c_\epsilon} du |\varphi_{tf}(u)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c_\epsilon / 2}||\varphi_{tf}||_1\}
+            \\&
+            < 2\epsilon + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c_\epsilon / 2}||\varphi_{tf}||_1
+        \end{split}    
+    \end{align}
+    Taking the limit $s\rightarrow\infty$, for any $\epsilon > 0$ we have the limit:
+    \begin{align}
+        \begin{split}
+            \lim_{s\rightarrow\infty}\sup_{0\leq \mu\leq \mu_0}c_{tf_\mu}(s) \leq \lim_{s\rightarrow\infty}2\epsilon + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c_\epsilon / 2}||\varphi_{tf}||_1 = 2\epsilon
+        \end{split}
+    \end{align}
+    Since the bound holds for any $\epsilon > 0$, we have the limit $\lim_{s\rightarrow\infty}\sup_{0\leq \mu\leq \mu_0}c_{tf_\mu}(s) = 0$.
+\end{proof}
+In the remainder of this section, we provide explicit upper bound on Fredenhagen's constant when the smearing function is Gaussian. The purpose of this calculation is to confirm several physical intuitions.
+\begin{lemma}
+    For Gaussian $f_{\sigma,\mu}(t) := \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(t - \mu)^2}{2\sigma^2}}$, there exists $s_0 > 0$ and positive constants $K_3, K_4, K_5 > 0$ such that for $s > s_0$, to the first order in $s$ the following bound holds:
+    \begin{equation}
+        c_{f_{\sigma,\mu}}(s) \leq K_3e^{-\frac{K_4}{2}s^2} + K_5e^{-K_4 s^2}
+    \end{equation}
+    These positive constants depend on $\sigma,\mu$.
+\end{lemma}
+\begin{proof}
+    Since Gaussian function is a Schwartz function, we have the following bound:
+    \begin{equation}\label{equation:bound}
+        c_{f_{\sigma,\mu}}(s) \leq \inf_{c > 0}\{2\int_{|u|\geq c}du |\varphi_{f_{\sigma,\mu}}(u)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}||\varphi_{f_{\sigma,\mu}}||_1\}
+    \end{equation}
+    The modified Fourier transform of $f_{\sigma,\mu}$ can be calculated explicitly:
+    \begin{align}
+        \begin{split}
+            \varphi_{f_{\sigma,\mu}}(u) &= \frac{1}{2\pi}\int_\mathbb{R} dt \lb \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(t - \mu)^2}{2\sigma^2}} \rb\lb \frac{2}{i}\sinh(\pi t) \rb e^{-it u}
+            \\&
+            =\frac{1}{\sigma\sqrt{2\pi }2\pi i}\int_\mathbb{R} dt e^{-\frac{(t-  \mu)^2}{2\sigma^2} + (\pi - i u) t} - e^{-\frac{(t - \mu)^2}{2\sigma^2} - (\pi + i u) t}
+            \\&
+            =\frac{1}{2\pi i}\lb e^{\frac{(\pi - iu)(2\mu + \sigma^2(\pi - iu))}{2}} - e^{-\frac{(\pi + iu)(2\mu - \sigma^2(\pi + iu))}{2}}\rb
+            \\&
+            =\frac{1}{\pi i}e^{\frac{\sigma^2}{2}(\pi^2 - u^2) - i\mu u}\sinh(\pi \mu  - \pi i u\sigma^2)
+        \end{split}
+    \end{align}
+    This $L^1$-norm of $\varphi_{f_{\sigma,\mu}}$ can be bounded above by:
+    \begin{align}
+        \begin{split}
+            ||\varphi_{f_{\sigma,\mu}}||_1 &= \int_\mathbb{R} du |\varphi_{f_{\sigma,\mu}}(u)| = \int_\mathbb{R} du \frac{e^{\frac{\sigma^2}{2}(\pi^2 - u^2)}}{\pi}|\sinh(\pi\mu - \pi i u \sigma^2)|
+            \\&
+            \leq \int_\mathbb{R}du\frac{e^{\frac{\sigma^2}{2}(\pi^2 - u^2)}}{\pi}e^{\pi\mu}|\sin(\pi u \sigma^2)|\leq \frac{e^{\pi\mu + \frac{\sigma^2\pi^2}{2}}}{\pi}\frac{\sqrt{2\pi}}{\sigma} = \frac{e^{\pi\mu}\sqrt{2}}{\sqrt{\pi}}\frac{e^{\frac{\sigma^2\pi^2}{2}}}{\sigma}
+        \end{split}
+    \end{align}
+    To calculate the infimum on the right hand side of Equation \ref{equation:bound}, notice that the function on the right hand side is differentiable in $c$. Hence the infimum can be calculated using elementary methods. The infimum is achieved at $c_0 > 0$ where $c_0$ is the solution to:
+    \begin{equation}
+        -|\varphi_{f_{\sigma,\mu}}(c)| - |\varphi_{f_{\sigma,\mu}}(-c)| + \frac{1}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}||\varphi_{f_{\sigma,\mu}}||_1 = 0
+    \end{equation}
+    Notice that $|\varphi_{f_{\sigma,\mu}}(c)| = |\varphi_{f_{\sigma,\mu}}(-c)|$:
+    \begin{align}
+        \begin{split}
+            |\varphi_{f_{\sigma,\mu}}(c)| &= \frac{e^{\frac{\sigma^2}{2}(\pi^2 - c^2)}}{\pi}|\sinh(\pi\mu - \pi i c\sigma^2)| \\&= \frac{e^{\frac{\sigma^2}{2}(\pi^2 - c^2)}}{\pi}\sqrt{\sin^2(\pi c\sigma^2)\sinh^2(\pi\mu) + \cos^2(\pi c \sigma^2)\cosh^2(\pi\mu)}= |\varphi_{f_{\sigma,\mu}}(-c)|
+        \end{split}
+    \end{align}
+    Hence the infimum is achieved at $c_0$ where $c_0$ is the solution to:
+    \begin{equation}
+        |\varphi_{f_{\sigma,\mu}}(c_0)| = \frac{1}{2\pi}\tanh^{-1}(e^{-\pi s})e^{c_0/2}||\varphi_{f_{\sigma,\mu}}||_1
+    \end{equation}
+    We can provide a more explicit lower bound on $c_0$:
+    \begin{align}
+        \begin{split}
+            \frac{1}{2\pi}\tanh^{-1}(e^{-\pi s})e^{c_0 / 2}||\varphi_{f_{\sigma,\mu}}||_1 &=\frac{e^{\frac{\sigma^2}{2}(\pi^2 - c_0^2)}}{\pi}\sqrt{\sin^2(\pi c_0\sigma^2)\sinh^2(\pi\mu) + \cos^2(\pi c_0 \sigma^2)\cosh^2(\pi\mu)}
+            \\&
+            = \frac{e^{\frac{\sigma^2}{2}(\pi^2 - c_0^2)}}{\pi}\sqrt{\cosh^2(\pi\mu) - \sin^2(\pi c_0\sigma^2)\lb\cosh^2(\pi\mu) - \sinh^2(\pi\mu)\rb}
+            \\&
+            =\frac{e^{\frac{\sigma^2}{2}(\pi^2 - c_0^2)}}{\pi}\sqrt{\cosh^2(\pi\mu) - \sin^2(\pi c_0\sigma^2)}
+            \\&\geq\frac{e^{\frac{\sigma^2}{2}(\pi^2 - c_0^2)}}{\pi}\sqrt{\cosh^2(\pi\mu) - 1}
+            =\frac{e^{\frac{\sigma^2}{2}(\pi^2 - c_0^2)}}{\pi}\sinh(\pi\mu)
+        \end{split}
+    \end{align}
+    Therefore, we have:
+    \begin{equation}
+        e^{-\frac{\sigma^2}{2}c_0^2 - \frac{c_0}{2}} \leq \frac{\tanh^{-1}(e^{-\pi s})||\varphi_{f_{\sigma,\mu}}||_1 e^{-\frac{\pi^2\sigma^2}{2}}}{2\sinh(\pi\mu)}
+    \end{equation}
+    Since $c_0 > 0$, using this formula we can solve for a lower bound of $c_0$:
+    \begin{equation}
+        c_0 \geq c_0(\sigma, \mu, s) := -\frac{1}{2\sigma^2} + \sqrt{\frac{1}{4} - \frac{2}{\sigma^2}\log\lb\frac{\tanh^{-1}(e^{-\pi s})||\varphi_{f_{\sigma,\mu}}||_1 e^{-\frac{\pi^2\sigma^2}{2}}}{2\sinh(\pi\mu)}\rb}
+    \end{equation}
+    Notice that $c_0(\sigma,\mu, s)$ monotonely increases as $s$ increases. In particular, there exists $s_0 > 0$ such that:
+    \begin{equation}
+        c_0(\sigma,\mu,s_0) \geq \frac{1}{\sinh^2(\pi\mu)}
+    \end{equation}
+    Notice that for $u \geq c_0(\sigma,\mu,s_0)\geq \frac{1}{\sinh^2(\pi\mu)}$, the norm $|\varphi_{f_{\sigma,\mu}}|$ is monotone decreasing:
+    \begin{align}
+        \begin{split}
+            \frac{d}{du}|\varphi_{f_{\sigma,\mu}}(u)| 
+            &=\frac{d}{du}\frac{e^{\frac{\sigma^2}{2}(\pi^2 - u^2)}}{\pi}\sqrt{\cosh^2(\pi\mu) - \sin^2(\pi u\sigma^2)}
+            \\&= -\sigma^2 u e^{\frac{\sigma^2}{2}(\pi^2 - u^2)}\sqrt{\cosh^2(\pi\mu) - \sin^2(\pi u \sigma^2)} - \frac{2\pi\sigma^2e^{\frac{\sigma^2}{2}(\pi^2 - u^2)}\sin(\pi u\sigma^2)\cos(\pi u \sigma^2)}{2\pi\sqrt{\cosh^2(\pi\mu) - \sin^2(\pi u \sigma^2)}}
+            \\&
+            =\frac{\sigma^2 e^{\frac{\sigma^2}{2}(\pi^2 - u^2)}}{\sqrt{\cosh^2(\pi\mu) - \sin^2(\pi u\sigma^2)}}\lb -u\lb \cosh^2(\pi\mu) - \sin^2(\pi u \sigma^2) \rb - \sin(\pi u \sigma^2)\cos(\pi u \sigma^2) \rb
+            \\&
+            \leq \frac{\sigma^2 e^{\frac{\sigma^2}{2}(\pi^2 - u^2)}}{\sqrt{\cosh^2(\pi\mu) - \sin^2(\pi u \sigma^2)}}\lb -u\lb \cosh^2(\pi\mu) - 1 \rb + 1 \rb
+            \\&
+            =\frac{\sigma^2 e^{\frac{\sigma^2}{2}(\pi^2 - u^2)}}{\sqrt{\cosh^2(\pi\mu) - \sin^2(\pi u \sigma^2)}}\lb  -u\sinh^2(\pi\mu) + 1\rb
+        \end{split}
+    \end{align}
+    Hence for $u \geq c_0(\sigma,\mu,s_0) \geq \frac{1}{\sinh^2(\pi\mu)}$, $\frac{d}{du}|\varphi_{f_{\sigma,\mu}}(u)| \leq 0$ and thus $|\varphi_{f_{\sigma,\mu}}(c_0)| \geq |\varphi_{f_{\sigma,\mu}}(u)|$. And since $|\varphi_{f_{\sigma,\mu}}(u)|$ is even, for $u \leq -c_0(\sigma,\mu, s_0)\leq -\frac{1}{\sinh^2(\pi\mu)}$, the function $|\varphi_{f_{\sigma,\mu}}(u)|$ is monotonely increasing and thus $|\varphi_{f_{\sigma,\mu}}(-c_0)|\geq |\varphi_{f_{\sigma,\mu}}(u)|$. Moreover, to the leading order in $s$, $c_0(\sigma,\mu, s)$ is approximated by:
+    \begin{equation}
+        c_0(\sigma,\mu,s) = -\frac{1}{2\sigma^2} + \sqrt{\frac{1}{4} - \frac{2}{\sigma^2}\log\lb\frac{||\varphi_{f_{\sigma,\mu}}||_1 e^{-\frac{\pi^2\sigma^2}{2}}}{2\sinh(\pi \mu)}\rb + \frac{2\pi s }{\sigma^2}} \sim K_1 + K_2 s
+    \end{equation}
+    where $K_1, K_2$ are two constants which depend on $\sigma, \mu$ and $K_2 > 0$. Finally using the formula for $|\varphi_{f_{\sigma,\mu}}(c_0)|$, we can provide an upper bound:
+    \begin{align}
+        \begin{split}
+            |\varphi_{f_{\sigma,\mu}}(c_0)| &=\frac{e^{\frac{\sigma^2}{2}(\pi^2 - c_0^2)}}{\pi}|\sinh(\pi\mu - \pi i c_0\sigma^2)| \leq \frac{e^{\pi\mu}e^{\frac{\sigma^2}{2}(\pi^2 - c_0^2)}}{\pi}
+        \end{split}
+    \end{align}
+    Using these observations, we can calculate the following bound for all $s\geq s_0$ (i.e. $c_0(\sigma,\mu,s_0)\geq\frac{1}{\sinh^2(\pi\mu)}$):
+    \begin{align}
+        \begin{split}
+            c_{f_{\sigma,\mu}}(s) &\leq 2\int_{|u| \geq c_0}du |\varphi_{f_{\sigma,\mu}}(u)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c_0 / 2}||\varphi_{f_{\sigma,\mu}}||_1
+            \\&
+            \leq 2\lb|\varphi_{f_{\sigma,\mu}}(c_0)|^{1/2} + |\varphi_{f_{\sigma,\mu}}(-c_0)|^{1/2}\rb\int_\mathbb{R} du |\varphi_{f_{\sigma,\mu}}(u)|^{1/2} + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s })e^{c_0 / 2}||\varphi_{f_{\sigma,\mu}}||_1
+            \\&
+            \leq 4|\varphi_{f_{\sigma,\mu}}(c_0)|^{1/2}\frac{e^{\frac{\sigma^2\pi^2}{4}}}{\sqrt{\pi}}e^{\frac{\pi\mu}{2}}\int_\mathbb{R}du e^{-\frac{\sigma^2}{4}u^2} + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c_0/2}||\varphi_{f_{\sigma,\mu}}||_1
+            \\&
+            =\frac{8e^{\frac{\sigma^2\pi^2}{4}}e^{\frac{\pi\mu}{2}}}{\sigma}|\varphi_{f_{\sigma,\mu}}(c_0)|^{1/2} + 4|\varphi_{f_{\sigma,\mu}}(c_0)|
+            \\&
+            \leq\frac{8e^{\frac{\sigma^2\pi^2}{4}}e^{\frac{\pi\mu}{2}}}{\sigma}\frac{e^{\frac{\pi\mu}{2}}e^{\frac{\sigma^2}{4}(\pi^2 - c_0^2)}}{\sqrt{\pi}} + 4\frac{e^{\pi\mu}e^{\frac{\sigma^2}{2}(\pi^2 - c_0^2)}}{\pi}
+            \\&
+            \leq\frac{8e^{\frac{\sigma^2\pi^2}{4}}e^{\frac{\pi\mu}{2}}}{\sigma}\frac{e^{\frac{\pi\mu}{2}}e^{\frac{\sigma^2}{4}(\pi^2 - c_0(\sigma,\mu,s)^2)}}{\sqrt{\pi}} + 4\frac{e^{\pi\mu}e^{\frac{\sigma^2}{2}(\pi^2 - c_0(\sigma,\mu,s)^2)}}{\pi}
+        \end{split}
+    \end{align}
+    As $s$ increases, the upper bound on $c_{f_{\sigma,\mu}}(s)$ is monotonely decreasing. And to the leading order in $s$, the upper bound can be approximated by:
+    \begin{equation}
+        c_{f_{\sigma,\mu}}(s) \leq K_3e^{-\frac{K_4 s^2}{2}} + K_5e^{-K_4 s^2}
+    \end{equation}
+    where $K_3, K_4, K_5 > 0$ are positive constants which depend on $\sigma, \mu$. 
+\end{proof}
+In addition, as $\sigma \rightarrow 0$, the upper bound of $c_{f_{\sigma, \mu}}$ approaches:
+\begin{align}
+    \begin{split}
+        c_{f_{\sigma,\mu}}(s) &\leq C_1 \frac{e^{-C_2/\sigma^2}e^{C_3\sigma^2}}{\sigma}e^{-C_4s^2}
+    \end{split}
+\end{align}
+where $C_1,C_2,C_3, C_4 > 0$ are positive constants that depend on $\mu$. The right hand side as a well-defined limit as $\sigma\rightarrow 0^+$ and the limit is $0$ (uniformly in $s$).
+
+
+\subsection{Inclusion of balls}\label{subsection:ballinball}
+In the previous subsection, we considered a double cone contained in a wedge and showed that, as the size of the double cone approaches infinity, the modular scattering operator of the cone relative to the wedge can be approximated by the modular scattering operator of two wedges. The precise sense of this approximation is specified in Corollary 10. 
+
+In this subsection, we consider the modular scattering operator of two double cones - one included in the other. And we aim to show that this modular scattering operator can be approximated by the modular scattering operator of two wedges as well. 
+
+More precisely, consider two double cones $B_r \subset B_R$. The intersection of $B_r$ and the plane $x_0 = 0$ is a ball with radius $r$ and centered at $x_1 = r' > r$. The intersection of $B_R$ and the plane $x_0 = 0$ is a ball with radius $R > r$ and centered at $x_1 = r' > R$. For our discussion, we would need to consider three wedges: $W_2\subset W_1\subset W_0$, where the smallest wedge $W_2$ has its vertex at $x_1 = r' - r > 0$ such that the vertex is in the closure of the smaller double cone $B_r$. Similarly, the wedge $W_1$ has its vertex at $x_1 = r' - R > 0$ such that the vertex is in the closure of the larger double cone $B_R$. Finally, the wedge $W_0$ is the standard right Rindler wedge with its vertex at the origin. 
+
+As in the previous subsection, we consider a net of algebras of local observables $\{\mathcal{A}(\mathcal{O})\}_{\mathcal{O}\subset\mathbb{R}^{d,1}}$ that satisfies the Haag-Kastler axioms. The modular scattering operator we want to study is $\Delta_{B_R}^{-it}\Delta_{B_r}^{2it}\Delta_{B_R}^{-it}$ and its action on the dense subspace $\{A\ket{\Omega}: A\in\mathcal{A}(B_r)\}$.
+
+More precisely, we want to consider how this modular scattering operator can be approximated by the modular scattering operator of two wedges $\Delta_{W_1}^{-it}\Delta_{W_2}^{2it}\Delta_{W_1}^{-it}$ as the size of the two double cones increase. Here we specify the geometric set-up of how the double cones increase in size. For the larger double cone, we increase its size by dilation in such a way that the vertex of the wedge $W_1$ is always in the closure of the dilated double cone. The intersection of the dilated double cone $B_{e^{2\pi s}R}$ and the plane $x_0 = 0$ is a ball of radius $e^{2\pi s}R$ and centered at $x_1 = r' + (e^{2\pi s} - 1)R$. For the smaller double cone, we increase its size by dilation while translating to the left. The intersection of the dilated and translated double cone $T_{\tanh(s)(R - r)}B_{e^{2\pi s}r}$ and the plane $x_0 = 0$ is a ball of radius $e^{2\pi s}r$ and centered at $x_1 = (r' - r) - \tanh(s)(R - r) + e^{2\pi s}r$. This dilated and shifted double cone is contained in a left-translated wedge $T_{\tanh(s)(R - r)}W_2$ for all $s > 0$. As $s\rightarrow\infty$, this wedge approaches $W_1$. Simultaneously, the double cone dilates in size with parameter $e^{2\pi s}$.
+
+The claim is the following:
+\begin{theorem}
+    For any spectral cut-off $\mu_0 > 0$ and for any $f\in L^1(\mathbb{R})$ and for any operator $A\in\mathcal{A}(B_r)$ and for any constant $s > 0$, there exists a constant $b_f(\mu_0, s) >0$ such that:
+    \begin{align}
+        \begin{split}
+            ||&E_1(\mu_0)\lb \int_\mathbb{R} dt f(t)\lb \Delta_{B_{e^{2\pi s}R}}^{-it}\Delta_{T_{\tanh(s)(R-r)}B_{e^{2\pi s}r}}^{2it}\Delta_{B_{e^{2\pi s}R}}^{-it} - \Delta_{W_1}^{-it}\Delta_{T_{\tanh(s)(R - r)}W_2}^{2it}\Delta_{W_1}^{-it} \rb E_1(\mu_0)\lb A\ket{\Omega}\rb \rb||^2 
+            \\&
+            \leq b_f(\mu_0, s)||\lb A\ket{\Omega}\rb^2 + \lb A^*\ket{\Omega} \rb^2||
+        \end{split}
+    \end{align}
+    where $E_1(\mu_0)$ is the spectral projection of the modular operator $\Delta_{W_1}$. In addition for any spectral cut-off, we have a well-defined limit:
+    \begin{align}
+        \begin{split}
+            \lim_{s\rightarrow\infty}||E_1(\mu_0)\lb \int_\mathbb{R} dt f(t)\lb \Delta_{B_{e^{2\pi s}R}}^{-it}\Delta_{T_{\tanh(s)(R-r)}B_{e^{2\pi s}r}}^{2it}\Delta_{B_{e^{2\pi s}R}}^{-it} - \Delta_{W_1}^{-it}\Delta_{T_{\tanh(s)(R - r)}W_2}^{2it}\Delta_{W_1}^{-it} \rb E_1(\mu_0)\lb A\ket{\Omega}\rb \rb||^2  = 0
+        \end{split}
+    \end{align}
+\end{theorem}
+To prove this theorem, we need the following lemma which requires half-sided modular inclusion to hold:
+\begin{lemma}
+    Consider two right wedges $W_2(s)\subset W_1$ where $W_2(s) := \{\}$
+\end{lemma}
+
+We are now ready to prove Theorem \label{theorem:mainresult}:
+\begin{proof}
+    We first observe that for $A\in\mathcal{A}(B_R)$, both $\Delta^{-it}_{W_0}\Delta^{it}_{B_{e^{2\pi s}R}}A\ket{\Omega}$ and $\Delta^{-it}_{W_0}\Delta^{it}_{W_r}A\ket{\Omega}$ are inside the algebra $\mathcal{A}(W_0)$. Hence we can rewrite the norm as:
+    \begin{align}
+        \begin{split}
+            ||&E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb \Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{it} \rb A\ket{\Omega}\rb|| \\&= \sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\ket{\Omega}||\leq 1}|\langle  B\Omega, E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb \Delta^{-it}_{W_0}\Delta^{it}_{B_{e^{2\pi s}R}} - \Delta^{-it}_{W_0}\Delta^{it}_{W_r}\rb A\Omega\rb\rangle|
+        \end{split}
+    \end{align}
+    Using spectral decomposition, we have:
+    \begin{align}
+        \begin{split}
+            ||&E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb \Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{it} \rb A\ket{\Omega}\rb||
+            \\&
+            =\sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}|\int_\mathbb{R} dt f(t)\langle \Delta_{W_0}^{it}E(\mu_0)B\Omega, \lb\Delta^{it}_{B_{e^{2\pi s}R}} - \Delta^{it}_{W_r}\rb A\Omega\rangle|
+            \\&
+            =\sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}|\int_\mathbb{R} dt f(t) \int_0^{\mu_0}e^{i\mu t}d\langle E(\mu)B\Omega, \lb\Delta^{it}_{B_{e^{2\pi s}R}} - \Delta^{it}_{W_r}\rb A\Omega\rangle|
+        \end{split}
+    \end{align}
+    By Fubini theorem, we can rewrite:
+    \begin{align}
+        \begin{split}
+            ||&E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb \Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{it} \rb A\ket{\Omega}\rb||
+            \\&
+            =\sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}|\int_0^{\mu_0} d\langle E(\mu)B\Omega, \int_\mathbb{R} dt f(t)e^{i\mu t}\lb\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_r}^{it}\rb A\Omega\rangle|
+        \end{split}
+    \end{align}
+    where the measure $d\langle E(\mu)B\Omega, \int_\mathbb{R} dt f(t)e^{i\mu t}\lb\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_r}^{it}\rb A\Omega\rangle$ should be understood as a complex measure. We can bound it from above:
+    \begin{align}
+        \begin{split}
+            ||&E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb \Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{it} \rb A\ket{\Omega}\rb||
+            \\&
+            \leq\sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}\int_0^{\mu_0} d|\langle E(\mu)B\Omega, \int_\mathbb{R} dt f(t)e^{i\mu t}\lb\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_r}^{it}\rb A\Omega\rangle|
+            \\&
+            \leq\sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}\int_0^{\mu_0}d\lb||E(\mu)B\Omega||\cdot||\int_\mathbb{R} dt f(t)e^{i\mu t}\lb\Delta^{it}_{B_{e^{2\pi s}R}} - \Delta^{it}_{W_r}\rb A\Omega||\rb
+        \end{split}
+    \end{align}
+    Now using the modified Fredenhagen's result (c.f. Theorem \ref{theorem:modifiedfredenhagen}), we can provide the following bound:
+    \begin{align}
+        \begin{split}
+            ||&E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb \Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{it} \rb A\ket{\Omega}\rb||
+            \\&
+            \leq \sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}\int_0^{\mu_0}d\lb||E(\mu)B\Omega||\cdot \lb c_{f_\mu}(s)^{1/2}\lb ||A\Omega||^2 + ||A^*\Omega||^2 \rb^{1/2}\rb\rb
+            \\&
+            \leq\sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}[ ||E(\mu_0)B\Omega||\lb c_{f_{\mu_0}}(s)^{1/2}\lb ||A\Omega||^2 + ||A^*\Omega||^2 \rb^{1/2}\rb \\&- ||E(0)B\Omega||\lb c_f(s)^{1/2}\lb||A\Omega||^2 + ||A^*\Omega||^2\rb^{1/2} \rb
+            \\&
+            \leq c_{f_{\mu_0}}(s)^{1/2}\lb ||A\Omega||^2 + ||A^*\Omega||^2 \rb^{1/2}
+        \end{split}
+    \end{align}
+    where we have used the fact that $E(0) = 0$ is the zero projection. As we have seen before, $\lim_{s\rightarrow\infty}c_{f_{\mu_0}}(s) = 0$.
+\end{proof}
+
+\YC{
+If the $L^1$ function is a Gaussian function, as we have seen before, the constant in Theorem \ref{theorem:mainresult} decreases to the order of $O(e^{-s^2})$ as $s\rightarrow\infty$.
+}
+\YC{
+The proof of the Corollary \ref{corollary:reverseorder} follows almost verbatim from the proof of the Theorem \ref{theorem:mainresult}. We present the proof below. }   
+\begin{proof}
+The calculation of this upper bound is slightly easier than the calculation in Theorem \ref{theorem:mainresult}. Using spectral decomposition of the modular operator of the right Rindler wedge, we can rewrite the norm as:
+\begin{align}
+    \begin{split}
+        ||&\int_\mathbb{R} dt f(t)\lb\Delta_{B_{e^{2
+        \pi s}R}}^{it}\Delta_{W_0}^{-it} - \Delta_{W_r}^{it}\Delta_{W_0}^{-it}\rb E(\mu_0)A\Omega|| = ||\int_\mathbb{R} dt f(t)\lb\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_r}^{it}\rb \int_0^{\mu_0}e^{-i\mu t}dE(\mu) A\Omega||
+        \\&
+        =\sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}|\langle B\Omega, \int_\mathbb{R} dt f(t)\lb\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_r}^{it}\rb\int_0^{\mu_0}e^{-i\mu t}dE(\mu) A\Omega\rangle|
+    \end{split}
+\end{align}
+Using Fubini theorem we have:
+\begin{align}
+    \begin{split}
+        ||&\int_\mathbb{R} dt f(t)\lb\Delta_{B_{e^{2
+        \pi s}R}}^{it}\Delta_{W_0}^{-it} - \Delta_{W_r}^{it}\Delta_{W_0}^{-it}\rb E(\mu_0)A\Omega|| \\&= \sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}|\int_0^{\mu_0}d\langle B\Omega, \int_\mathbb{R} dt f(t)e^{-i\mu t}\lb\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_r}^{it}\rb E(\mu)A\Omega\rangle|
+    \end{split}
+\end{align}
+Then by bounding the complex measure with its total variation and using Corollary \ref{corollary:extensionfredenhagen}, we have:
+\begin{align}
+    \begin{split}
+        ||&\int_\mathbb{R} dt f(t)\lb\Delta_{B_{e^{2
+        \pi s}R}}^{it}\Delta_{W_0}^{-it} - \Delta_{W_r}^{it}\Delta_{W_0}^{-it}\rb E(\mu_0)A\Omega||\\&
+        \leq \sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}\int_0^{\mu_0}d|\langle B\Omega, \int_\mathbb{R} dt f(t)e^{-i\mu t}\lb\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_r}^{it}\rb E(\mu) A\Omega\rangle|
+        \\&
+        \leq \sup_{B\in\mathcal{A}(W_0)\text{s.t.}||B\Omega||\leq 1}\int_0^{\mu_0}d\lb||B\Omega||\cdot||c^{1/2}_{f_{-\mu}}(s)\lb||E(\mu)A\Omega||^2 + ||E(\mu)A^*\Omega||^2\rb^{1/2}||\rb
+        \\&
+        \leq c^{1/2}_{f_{-\mu_0}}(s)\lb||E(\mu_0)A\Omega||^2 + ||E(\mu_0)A^*\Omega||^2\rb^{1/2} - c^{1/2}_{f_0}(s)\lb||E(0)A\Omega||^2 + ||E(0)A^*\Omega||^2\rb^{1/2}
+    \end{split}
+\end{align}
+Since $E(0)$ is the zero projection, we have the desired bound:
+\begin{equation}
+    ||\int_\mathbb{R} dt f(t)\lb\Delta_{B_{e^{2
+        \pi s}R}}^{it}\Delta_{W_0}^{-it} - \Delta_{W_r}^{it}\Delta_{W_0}^{-it}\rb E(\mu_0)A\Omega|| \leq c_{f_{-\mu_0}}^{1/2}(s)\lb||A\Omega||^2 + ||A^*\Omega||^2\rb^{1/2}
+\end{equation}
+As discussed before, the constant $c_{f_{-\mu_0}}(s)$ approaches zero as $s\rightarrow\infty$.
+\end{proof}
+
+\YC{
+In this section, we briefly consider a situation where characteristic functions of certain inclusions can be well-approximated by characteristic functions of wedge inclusions. The result is derived directly from the well-known result of Fredenhagen \cite{fredenhagen}.}
+
+\YC{
+Consider a net of algebras of local observables on $\{\mathcal{A}(\mathcal{O})\}_{\mathcal{O}\subset\mathbb{R}^{d,1}}$. Assume this net satisfies the Haag-Kastler axioms. Let $\ket{\Omega}$ be the vacuum vecrtor of this net. By Reeh-Schlieder theorem, the vacuum vector is a common cyclic and separating vector for all algebras in this net. In addition, by the axiom, this net of algebras is covariant under the Poincaré group and the group action is strongly continuous.}
+
+\YC{
+Consider two right wedges:
+\begin{equation}
+    W_0 := \{x\in\mathbb{R}^{d,1}: |x_0| < x_1\}
+\end{equation}
+\begin{equation}
+    W_{r} := \{x\in\mathbb{R}^{d,1}: |x_0 - r| < x_1 \}
+\end{equation}
+The two algebras of local observables associated with the two wedges are related by the action of right translation:
+\begin{equation}
+    Ad_{T_r}(\mathcal{A}(W_0)) = \mathcal{A}(W_r)
+\end{equation}
+where $T_r$ is right translation by $r$ and $Ad_{T_r}$ is the adjoint action. Let $\{\Delta_{W_0}^{it}\}$ be the modular automorphism of $\mathcal{A}(W_0)$ under the vacuum state and let $\{\Delta_{W_r}^{it}\}$ be the modular automorphism of $\mathcal{A}(W_r)$ under the same vacuum state. The two modular automorphisms are related by:
+\begin{equation}
+    T_r\Delta_{W_0}^{it}T_r^* = T_r\Delta_{W_0}^{it}T_{-r} = \Delta^{it}_{W_r}
+\end{equation}
+where $T_r^* = T_{-r}$ is left translation by $r$.
+}
+
+\YC{
+It is well-known \cite{bisognanowichmann}that the modular flow $\Delta_{W_0}^{it}$ in a massless free field theory is given by the geometric action of boost. For our purpose, we would like to consider double cones in the wedges:
+\begin{equation}
+    B_R\subset W_0
+\end{equation}
+where the spatial slice $B_R\cap \{x\in \mathbb{R}^{d,1}: x_0 = 0\}$ is a ball of radius $R$ and the ball is centered at $x_1 = R$ \footnote{For our discussion, we do not need to specify the other coordinates. For concreteness, one can assume $x_i = 0$ for $2\leq i\leq d$.}. Notice that the vertex of the wedge $W_0$ is in the closure of $B_R$. 
+}
+
+\YC{
+Similarly, consider another double cone:
+\begin{equation}
+    B_{e^{-2\pi s}R}\subset W_{r(s)}
+\end{equation}
+where the spatial slice $B_{e^{-2\pi s}R}\cap \{x\in\mathbb{R}^{d,1}: x_0 = 0\}$ is a ball of radius $e^{-2\pi s}R$ and the ball is centered at $x_1 = R$ \footnote{Again the other coordinates need not be specified. And for concreteness, we consider $x_i = 0$ for $2\leq i\leq d$.}. Notice that by construction, the double cone $B_{e^{-2\pi s}R}$ can be constructed by shrinking the double cone $B_R$ by a factor of $e^{-2\pi s}$. The parameter $r(s)$ is given by:
+\begin{equation}
+    r(s) := R - e^{-2\pi s}R
+\end{equation}
+such that the vertex of $W_{r(s)}$ is in the closure of the double cone $B_{e^{-2\pi s} R}$. 
+}
+
+\YC{
+Now recall the following result of Fredenhagen \cite{fredenhagen}:
+\begin{theorem}
+    Let $W_0$ be the right wedge with vertex at the origin and let $B\subset W_0$ be a double cone. For any $f\in L^1(\mathbb{R})$ and any constant $s > 0$, there exists a constant $c_f(s) > 0$ such that:
+    \begin{equation}
+        ||\int_\mathbb{R} dt f(t)(\Delta_{B}^{-it} - \Delta_{W_0}^{-it})A\ket{\Omega}||^2 \leq c_f(s)(||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2)
+    \end{equation}
+    where $A$ is any operator in the local algebra $\mathcal{A}(e^{-2\pi s}B)$. The constant $c_f(s)$ approaches $0$ as $s\rightarrow \infty$.
+\end{theorem}
+}
+\YC{
+For our discussion, we need to recall one of the key technical tools used in Fredenhagen's proof \cite{fredenhagen}:
+\begin{proposition}
+    Let $\mathcal{B}\subset \mathcal{A}$ be two von Neumann algebras with a common cyclic and separating vector $\ket{\Omega}$. For all $\mathcal{O}\in\mathcal{B}$ such that for all $|t| < t_0$ (where $t_0 > 0$ is a positive constant), we have:
+    \begin{equation}
+        \Delta_\mathcal{A}^{it}\mathcal{O}\Delta_\mathcal{A}^{-it}\in\mathcal{B}
+    \end{equation}
+    where $\Delta_\mathcal{A}$ is the modular operator associated with $\ket{\Omega}$ on $\mathcal{A}$, then the following resolvent estimate holds:
+    \begin{equation}
+        ||\lb(1 + \Delta_\mathcal{A})^{-1} - (1 + \Delta_\mathcal{B}^{-1})\rb\mathcal{O}\ket{\Omega}|| \leq \frac{2}{\pi}\tanh^{-1}(e^{-\pi t_0})(||\mathcal{O}\ket{\Omega}||^2 + ||\mathcal{O}^*\ket{\Omega}||^2)^{1/2}
+    \end{equation}
+\end{proposition}
+}
+\YC{
+Note that in Fredenhagen's original theorem, the double cone $e^{-2\pi s}B$ is a shrunk version of the original double cone $B$. And the operator $A$ is localized to the shrunk double cone. The bound is tighter as the size of this support shrinks to zero. In other words, the theorem states that when the support of the operator $A$ becomes smaller, the averaged (or smoothed) difference between the double cone's modular automorphism and the Rindler wedge's modular automorphism becomes smaller in the $L^2$-sense. For our discussion, the size of the support is not a free parameter. Rather we are considering the opposite scenario where the support of the operator is fixed but we are embedding the operator in larger local algebras. More precisely, we want to show the following corollary to the Proposition above:
+\begin{corollary}
+    Consider two double cones inside the right Rindler wedge: $B\subset e^{2\pi s}B\subset W_0$. For any operator $\mathcal{O}\in\mathcal{A}(B)$, the following resolvent estimate holds:
+    \begin{equation}
+        ||\lb(1 + \Delta_{e^{2\pi s}B})^{-1} - (1 + \Delta_{W_0})^{-1}\rb\mathcal{O}\ket{\Omega}||\leq \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})\lb||\mathcal{O}\ket{\Omega}||^2 + ||\mathcal{O}^*\ket{\Omega}||^2\rb^{1/2}
+    \end{equation}
+    where $\ket{\Omega}$ is a common cyclic and separating vector. $\Delta_{e^{2\pi s}B}$ is the modular operator of the dilated double cone $e^{2\pi s}B$ and $\Delta_{W_0}$ is the modular operator of the right Rindler wedge.
+\end{corollary}
+\begin{proof}
+    Using the fact that the modular flow of the right Rindler wedge is the boost, it is elementary to observe that for all time $|t|\leq s$ and for all $\mathcal{O}\in\mathcal{A}(B)$, we have:
+    \begin{equation}
+        \Delta_{W_0}^{it}\mathcal{O}\Delta^{-it}_{W_0} \in \mathcal{A}(e^{2\pi s}B)
+    \end{equation}
+    The statement follows directly from the Proposition.
+\end{proof}
+}
+\YC{
+As the size of the ambient double cone $e^{2\pi s}B$ increases (eventually approaching the right Rindler wedge), $s\rightarrow\infty$ and hence $\tanh^{-1}(e^{-\pi s})\rightarrow 0$. Using the same proof as Fredenhagen's proof of his theorem, we have the following theorem:
+\begin{theorem}\label{theorem:modifiedfredenhagen}
+    Using the same set-up as the previous Corollary, for any operator $\mathcal{O}\in \mathcal{A}(B)$ and for any $f\in L^1(\mathbb{R})$ and for any constant $s > 0$, there exists a constant $c_f(s) > 0$ such that:
+    \begin{equation}
+        ||\int_\mathbb{R} dt f(t)\lb\Delta^{-it}_{e^{2\pi s}B} - \Delta^{-it}_{W_0}\rb\mathcal{O}\ket{\Omega}||^2 \leq c_f(s)\lb||\mathcal{O}\ket{\Omega}||^2 + ||\mathcal{O}^*\ket{\Omega}||^2\rb
+    \end{equation}
+    In addition, $\lim_{s\rightarrow \infty}c_f(s) = 0$
+\end{theorem}
+\begin{proof}
+    This follows directly from Fredenhagen's proof and the previous Corollary.
+\end{proof}
+}
+\YC{
+Notice that this modified theorem states that the averaged (or smoothed) difference between the double cone's modular automorphism and the Rindler wedge's modular automorphism becomes smaller in the $L^2$-sense as the size of the double cone dilates to infinity (i.e. as the double cone approaches the Rindler wedge).
+}
+
+\YC{
+For our discussion, we would need to study the exact form of the constant $c_f(s)$ in detail. Specifically we need to study how this constant changes when the function $f(t)$ becomes $f(t)e^{i\mu t}$ (where $\mu\in\mathbb{R}$). From Fredenhagen's derivation \cite{fredenhagen}, we have the following formula:
+\begin{equation}
+    c_f(s) = \inf_{g\in \mathcal{D}(\mathbb{R}), c > 0}\{2\int_\mathbb{R} dt|f(t) - g(t)| + 2\int_{|u| \geq c}du |\varphi_g(u)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}\int_\mathbb{R} du|\varphi_g(u)|\}
+\end{equation}
+where $\varphi_g$ is a twisted Fourier transform of $g$:
+\begin{equation}
+    \varphi_g(u) := \frac{1}{2\pi}\int_\mathbb{R} dt g(t)\lb\frac{2}{i}\sinh(\pi t)\rb e^{-itu}
+\end{equation}
+And $g\in\mathcal{D}(\mathbb{R})$ is a Schwartz function.
+}
+\YC{
+If the function $f(t)$ becomes $f_\mu(t) := f(t)e^{i\mu t}$, we can calculate the constant $c_{f_\mu}(s)$:
+\begin{align}
+    \begin{split}
+        c_{f_\mu}(s) &:= \inf_{g\in\mathcal{D}(\mathbb{R}),c>0}\{2||f_\mu-g||_1 + 2\int_{|u|\geq c}du|\varphi_g(u)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}||\varphi_g||_1\}
+        \\&
+        =\inf_{g_\mu\in\mathcal{D}(\mathbb{R}),c>0}\{2||f_\mu-g_\mu||_1 + 2\int_{|u|\geq c}du |\varphi_{g_\mu}(u)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}||\varphi_{g_\mu}||_1\}
+        \\&
+        =\inf_{g_\mu\in\mathcal{D}(\mathbb{R}),c>0}\{2||f-g||_1 + 2\int_{|u|\geq c}du|\varphi_g(u - \mu)| + \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}||\varphi_g||_1\}
+        \\&
+        =\inf_{g\in\mathcal{D}(\mathbb{R}),c>0}\{2||f-g||_1 + 2\int_{|u|\geq c}du|\varphi_g(u - \mu)|+ \frac{2}{\pi}\tanh^{-1}(e^{-\pi s})e^{c/2}||\varphi_g||_1\}
+    \end{split}
+\end{align}
+where we used the facts:
+\begin{equation}
+    \varphi_{g_\mu}(u) = \frac{1}{2\pi}\int_\mathbb{R}dt g(t)\lb\frac{2}{i}\sinh(\pi t)\rb e^{-it(u - \mu)} = \varphi_g(u - \mu)
+\end{equation}
+\begin{equation}
+    ||\varphi_{g_\mu}||_1 = \int_\mathbb{R} du |\varphi_{g_\mu}(u)| = \int_\mathbb{R} du |\varphi_g(u - \mu)|=||\varphi_g||_1
+\end{equation}
+}
+\YC{
+Notice that the constant regarded as a function of $s$ (or equivalently as a function of $e^{-\pi s}$) for $s\geq 0$ is a continuous function for any $\mu \in\mathbb{R}$. In addition, for any fixed $\mu$, we have the limit:
+\begin{align}
+    \begin{split}
+        \lim_{s\rightarrow\infty}c_{f_\mu}(s) &= \inf_{g\in\mathcal{D}(\mathbb{R}),c>0}\{2||f-g||_1 + 2\int_{|u|\geq c}du |\varphi_g(u - \mu)|\}\\&
+        \underbrace{=}_{c\rightarrow\infty}\inf_{g\in\mathcal{D}(\mathbb{R})}\{2||f-g||_1\} = 0
+    \end{split} 
+\end{align}
+The existence of this limit together with the continuity ensures the bound that we are going to prove is physically useful. We will comment on this point in detail later.
+}
+
+\YC{
+To calculate $c_f(s)$ (or $c_{f_\mu}(s)$) is non-trivial in general. Here we provide a simple upper estimate of $c_f(s)$ (and $c_{f_\mu}(s)$) when $f$ is Gaussian.
+\begin{lemma}
+    For Gaussian $f_{\sigma,\mu}(t) := \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(t - \mu)^2}{2\sigma^2}}$, there exists $s_0 > 0$ and positive constants $K_3, K_4, K_5 > 0$ such that for $s > s_0$, to the first order in $s$ the following bound holds:
+    \begin{equation}
+        c_{f_{\sigma,\mu}}(s) \leq K_3e^{-\frac{K_4}{2}s^2} + K_5e^{-K_4 s^2}
+    \end{equation}
+    These positive constants depend on $\sigma,\mu$.
+\end{lemma}
+In addition, as $\sigma \rightarrow 0$, the upper bound of $c_{f_{\sigma, \mu}}$ approaches:
+\begin{align}
+    \begin{split}
+        c_{f_{\sigma,\mu}}(s) &\leq C_1 \frac{e^{-C_2/\sigma^2}e^{C_3\sigma^2}}{\sigma}e^{-C_4s^2}
+    \end{split}
+\end{align}
+where $C_1,C_2,C_3, C_4 > 0$ are positive constants that depend on $\mu$. The right hand side as a well-defined limit as $\sigma\rightarrow 0^+$ and the limit is $0$ (uniformly in $s$).
+}
+
+\YC{
+Before we state the main result, we make one final observation:
+\begin{corollary}\label{corollary:extensionfredenhagen}
+    Let $B_R$ be a double cone in $W_0$ whose spatial slice is a ball with radius $R > 0$ and centered at $x_1 = R$. Let $B_{e^{-2\pi s}R}$ be a shrunk double cone. And let $W_{r(s)}$ be the shifted right wedge where $r(s) := R - e^{-2\pi s}R$. Then for any $f\in L^1(\mathbb{R})$ and any constant $s > 0$, there exists a constant $c'_f(s) > 0$ such that:
+    \begin{equation}
+        ||\int_\mathbb{R} dt f(t) (\Delta^{-it}_{B_{e^{-2\pi s }R}} - \Delta_{W_{r(s)}}^{-it})A\ket{\Omega}||^2 \leq c'_f(s)(||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2)
+    \end{equation}
+    where $A$ is any operator in the local algebra $\mathcal{A}(B_{e^{-2\pi s}R})$. The constant $c'_f(s)$ approaches $0$ as $s\rightarrow \infty$.
+\end{corollary}
+\begin{proof}
+    Consider the shifted double cone $T_{-r(s)}(B_{e^{-2\pi s}R})$. This double cone is contained inside the right wedge $W_0$ such that the vertex of the wedge is in the closure of the shifted double cone. Because the Poincaré group acts strongly continuously on the net of local algebras, for any operator $A\in \mathcal{A}(B_{e^{-2\pi s}R})$, the adjoint action by the left translation $T_{-r(s)}$ shifts the support of $A$ to the shifted double cone $T_{-r(s)}(B_{e^{-2\pi s}R})$:
+    \begin{equation}
+        Ad_{T_{-r(s)}}A\in\mathcal{A}(T_{-r(s)}(B_{e^{-2\pi s}R}))
+    \end{equation}
+    In addition, the group action is implemented unitarily on the standard Hilbert space. Hence we have:
+    \begin{equation}
+        U_{T_{-r(s)}}(A\ket{\Omega}) = (Ad_{T_{-r(s)}}A)\ket{\Omega}
+    \end{equation}
+    where $U_{T_{-r(s)}}$ is the unitary representation of the Poincaré group on the standard Hilbert space. By Fredenhagen's theorem \cite{fredenhagen}, for any operator $A\in \mathcal{A}(B_{e^{-2\pi s}R})$ and for any $f\in L^1(\mathbb{R})$ and for any constant $s > 0$, there exists a constant $c'_f(s) > 0$ such that:
+    \begin{align}
+        \begin{split}
+            ||\int_\mathbb{R} dt f(t)(\Delta^{-it}_{T_{-r(s)}(B_{e^{-2\pi s}R})} - \Delta^{-it}_{W_0})(Ad_{T_{-r(s)}}A)\ket{\Omega}||^2 &\leq c'_f(s)(||(Ad_{T_{-r(s)}}A)\ket{\Omega}||^2 + ||(Ad_{T_{-r(s)}}A)^*\ket{\Omega}||^2)
+            \\&
+            =c'_f(s)(||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2)
+        \end{split}
+    \end{align}
+    where the equality follows from the fact that:
+    \begin{equation}
+        ||(Ad_{T_{-r(s)}}A)\ket{\Omega}|| = ||U_{T_{-r(s)}}(A\ket{\Omega})|| = ||A\ket{\Omega}||
+    \end{equation}
+    By covariance of the net of local algebras, the modular automorphisms satisfy the following relations:
+    \begin{equation}
+        \Delta^{-it}_{T_{-r(s)}B_{e^{-2\pi s}R}} = T_{-r(s)}\Delta^{-it}_{B_{e^{-2\pi s}R}}T^*_{-r(s)}
+    \end{equation}
+    \begin{equation}
+        \Delta^{-it}_{W_0} = T_{-r(s)}\Delta_{W_{r(s)}}^{-it}T^*_{-r(s)}
+    \end{equation}
+    Hence we have:
+    \begin{align}
+        \begin{split}
+            ||&\int_\mathbb{R} dt f(t)(\Delta^{-it}_{T_{-r(s)}(B_{e^{-2\pi s}R})} - \Delta^{-it}_{W_0})(Ad_{T_{-r(s)}}A)\ket{\Omega}||^2 = ||\int_\mathbb{R} dt f(t)Ad_{T_{-r(s)}}\bigg((\Delta^{-it}_{B_{e^{-2\pi s}R}} - \Delta_{W_{r(s)}}^{-it})A\bigg)\ket{\Omega}||^2
+            \\&
+            =||U_{T_{-r(s)}}\bigg(\int_\mathbb{R} dt f(t)(\Delta^{-it}_{B_{e^{-2\pi s}R}} - \Delta^{-it}_{W_{r(s)}})A\ket{\Omega}\bigg)||^2
+            =||\int_\mathbb{R} dt f(t)(\Delta^{-it}_{B_{e^{-2\pi s}R}} - \Delta^{-it}_{W_{r(s)}})A\ket{\Omega}||^2
+        \end{split}
+    \end{align}
+    The conclusion of the corollary follows immediately from this equality.
+\end{proof}
+}
+
+
+\YC{
+We are now ready to state the main result.
+\begin{theorem}\label{theorem:mainresult}
+    Consider a net of local algebras $\{\mathcal{A}(\mathcal{O})\}_{\mathcal{O}\in\mathbb{R}^{d,1}}$ that satisfies the Haag-Kastler axioms. Let $W_0$ be the right Rindler wedge and let $W_r$ be a translated right Rindler wedge shifted to the right (along $x_1$ direction) $r > 0$. Consider a double cone $B_{R}\subset W_r$ where the vertex of $W_r$ is in the closure of $B_R$. Consider dilated double cone $B_{e^{2\pi s}R}$ where the dilation is performed such that the vertex of $W_r$ is always in the closure of $B_{e^{2\pi s} R}$. Moreover, consider the spectral decomposition of the modular flow of the right Rindler wedge:
+    \begin{equation}
+        \Delta_{W_0}^{it} = \int_0^\infty e^{i\mu t} dE(\mu)
+    \end{equation}
+    Then for any spectral cut-off $\mu_0 > 0$, for any $f\in L^1(\mathbb{R})$, for any operator $A\in \mathcal{A}(B_R)$ and for any constant $s > 0$, there exists a constant $b_f(\mu_0, s) > 0$ such that:
+    \begin{equation}
+        ||E(\mu_0)\lb\int_\mathbb{R} dtf(t)\lb\Delta_{W_0}^{-it}\Delta_{e^{2\pi s}B_R}^{it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{it}\rb A\ket{\Omega}\rb||^2 \leq b_f(\mu_0, s)\lb||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2\rb
+    \end{equation}
+    In addition, for any spectral cut-off, we have a well-defined limit:
+    \begin{equation}
+        \lim_{s\rightarrow \infty}||E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb\Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{it}\rb A\ket{\Omega}\rb||^2 = 0
+    \end{equation}
+\end{theorem}
+}
+
+\YC{
+Similarly, we can prove the following result:
+\begin{corollary}\label{corollary:reverseorder}
+    Using the same set up as the Theorem above, for any spectral cut-off $\mu_0 > 0$, for any $f\in L^1{\mathbb{R}}$, for any operator $A\in\mathcal{A}(\mathcal{B_R})$ and for any constant $s > 0$, there exists a constant $b_f(\mu_0, s) > 0$ such that:
+    \begin{equation}
+        ||\int_\mathbb{R}dt f(t)\lb \Delta_{B_{e^{2\pi s}R}}^{it}\Delta_{W_0}^{-it} - \Delta_{W_r}^{it}\Delta_{W_0}^{-it}\rb E(\mu_0)\lb A\ket{\Omega}\rb||^2\leq b_f(\mu_0, s)\lb||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2\rb
+    \end{equation}
+    In addition, for any spectral cut-off, we have a well-defined limit:
+    \begin{equation}
+        \lim_{s\rightarrow\infty}||\int_\mathbb{R}dt f(t)\lb \Delta_{B_{e^{2\pi s}R}}^{it}\Delta_{W_0}^{-it} - \Delta_{W_r}^{it}\Delta_{W_0}^{-it}\rb E(\mu_0)\lb A\ket{\Omega}\rb|| = 0
+    \end{equation}
+\end{corollary}
+}
+
+\YC{
+Before we presenting the proof, we caution the reader that we are \textit{\textbf{NOT}} able to conclude the following limit exists:
+\begin{equation}
+    \lim_{\mu_0\rightarrow \infty}||E(\mu_0)\lb\int_\mathbb{R} dt f(t)\lb\Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{it}\rb A\ket{\Omega}\rb||^2
+\end{equation}
+Heuristically, the theorem states that, when restricted to finite energy (i.e. in terms of the modular Hamiltonian of the right Rindler wedge) subspace, the averaged (or smoothed) difference between the characteristic function of $B_R\subset W_0$ and the characteristic function of $W_r\subset W_0$ is small in the $L^2$-sense.  
+}
+
+\YC{
+Finally, returning to the main object of interest, recall the modular $S$-matrix associated with an inclusion of two regions $W_r\subset W_0$ is given by:
+\begin{equation}
+    S_{W_r\subset W_0} = \Delta_{W_0}^{-it}\Delta_{W_r}^{2it}\Delta_{W_0}^{-it}
+\end{equation}
+Similarly, for the inclusion of a double cone inside the right Rindler wedge, the corresponding modular $S$-matrix is given by:
+\begin{equation}
+    S_{B_{e^{2\pi s}R}\subset W_0} = \Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{2it}\Delta_{W_0}^{-it}
+\end{equation}
+}
+
+\YC{
+As the double cone $B_{e^{2\pi s}R}$ grows in size (i.e. $s\rightarrow \infty$), we would like to understand in what sense $S_{B_{e^{2\pi s}R}\subset W_0}$ provides an estimate of $S_{W_r\subset W_0}$. We first show the following:
+\begin{corollary}\label{corollary:doubleup}
+    Using the set up as the Theorem above, for any spectral cut-off $\mu_0 > 0$, for any $f\in L^1(\mathbb{R})$, for any operator $A\in\mathcal{A}(B_R)$ and for any constant $s > 0$, there exists a constant $b_f(\mu_0, s) > 0$ such that:
+    \begin{align}
+        \begin{split}
+            ||&E(\mu_0)\lb\int_\mathbb{R} dt f(t) \lb\Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{it}\Delta_{W_0}^{-it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{it}\Delta_{W_0}^{-it}\rb\rb E(\mu_0)\lb A\ket{\Omega}\rb||^2 \\&\leq b_f(\mu_0, s)\lb||A\ket{\Omega}||^2 + ||A^*\ket{\Omega}||^2\rb
+        \end{split}
+    \end{align}
+    In addition, for any spectral cut-off, we have a well-defined limit:
+    \begin{equation}
+        \lim_{s\rightarrow\infty}||E(\mu_0)\lb\int_\mathbb{R} dt f(t) \lb\Delta_{W_0}^{-it}\Delta_{B_{e^{2\pi s}R}}^{2it}\Delta_{W_0}^{-it} - \Delta_{W_0}^{-it}\Delta_{W_r}^{2it}\Delta_{W_0}^{-it}\rb\rb E(\mu_0)\lb A\ket{\Omega}\rb||^2 = 0
+    \end{equation}
+\end{corollary}
+}
+
+\end{document}
