@@ -230,6 +230,13 @@ For $(t,x) \in B$, $\delta>0$ for all real $s$ and the point $(t_s,x_s)$ remains
 The matrix element of the characteristic function depends on the proper distance and the conformal factor $\delta$. We consider $f(z)=\bra{O(X)}\Delta_A^{1/2+iz}\Delta_B^{-iz}\ket{O(Y)}$ with $Y\in B \subset A\ni X$.
 \section{Characteristic Functions in Conformal Perturbation Theory}\label{section:conformalperturbation}
 4.1. Setup of perturbation of modular flow, 4.2. cocycle flow, 4.3. 1st order correction of characteristic function, 4.4 analytic property 
+\subsection{Modular Flow with Conformal Perturbation Method}
+move the appendix here
+\subsection{Perturbative Cocycle Flow}
+move the appendix here
+\subsection{First order Correction of Characteristic Function}
+\subsection{Analytic Properties of Characteristic Function in QFT}
+
 
 \section{Approximations of Characteristic Functions}\label{section:approx}
 1. As non-perturbative result, Reformulation of Fredenhagen, instead of smaller region, larger ball approx wedge 2. Wedge in Wedge known, ball in wedge new result, cutoff, 3. Ball inside ball? Ball 1 in wedge + Ball 2 in wedge? Two states
@@ -2393,7 +2400,7 @@ Notice that the $d\tau$ integral of $h(u,X)$ can be done explicitly if there is 
 \begin{align}
     \int_0^1\, \frac{ d\tau }{\sinh^2(\pi (u+i\tau))} = -\frac{2}{\pi}\delta(u).
 \end{align}
-A similar calculation appears in the calculation for the Rindler wedge case, where this delta function combined with the CFT modular Hamiltonian gives the boost operator in the QFT. If $\Delta = 2$, the extra factor $\Omega^{\Delta-2}(-i\tau,X)$ become trivial and we obtain the delta function as the Rindler wedge case. The naive intuition is that the modular flow remains geometric because the deformed CFT is yet another CFT, although this may not be a suitable application of the perturbation method. For both physical and mathematical reasons, we separate the divergent piece from the integral
+A similar calculation appears in the calculation for the Rindler wedge case, where this delta function combined with the CFT modular Hamiltonian gives the boost operator in the QFT. If $\Delta = 2$, the extra factor $\Omega^{\Delta-2}(-i\tau,X)$ become trivial and we obtain the delta function as the Rindler wedge case. The naive intuition is that the modular flow remains geometric because the deformed CFT is yet another CFT, although this may not be a suitable application of the perturbation method. For these reasons, we separate the divergent piece from the integral
 \begin{gather}
     h(u,X) =  -2(1-X^2)\delta(u) + h_{reg}(u,X), \\
     h_{reg}(u,X)= \pi(1-X^2)\int_0^1\, d\tau \frac{ (\Omega^{\Delta-2}(-i\tau,X) -1)}{\sinh^2(\pi (u+i\tau))} .
@@ -2409,30 +2416,33 @@ By combining all the expressions, we have
 \end{align}
 We can then perform the $dw$ integral before $d\tau$. The divergences at $u = 0, \tau = 0, 1$ are regulated by separating the delta function. The divergence at $X=0, \tau = 1/2$ is mild enough so that the integrant is absolutely integrable. This allows us to change the order of integration.
 \begin{align}
-    \int_0^1 dw \; h_{reg}(u,X) =&\; \pi(1-X^2)\int_0^1 \, d\tau \int_0^1 dw \;\frac{\left(1 - (1-X^2)\sin^2(\pi \tau)\right)^{\Delta-2} -1}{\sinh^2(\pi (u+sw+i\tau))}\\
+    Q(u,X) \equiv&\;\int_0^1 dw \; h_{reg}(u,X) \nonumber\\
+    =&\; \pi(1-X^2)\int_0^1 \, d\tau \int_0^1 dw \;\frac{\left(1 - (1-X^2)\sin^2(\pi \tau)\right)^{\Delta-2} -1}{\sinh^2(\pi (u+sw+i\tau))}\\
     =&\; (1-X^2)\int_0^1 \, d\tau \; \left[\left(1 - (1-X^2)\sin^2(\pi \tau)\right)^{\Delta-2} -1\right] \nonumber\\
     &\times\left( \coth(\pi(u+i\tau)) - \coth(\pi(u+s+i\tau)) \right)
 \end{align}
-We can expand $\Omega^{\Delta-2}(-i\tau,X)$ as a cosine series in $\tau$
+We can expand $\Omega^{\Delta-2}(-i\tau,X)$ as a Fourier series.
 \begin{align}
-    \Omega^{\Delta-2}(-i\tau,X) - 1 = \sum_{n=0}^\infty a_n \cos(2\pi n \tau).
+    \Omega^{\Delta-2}(-i\tau,X) - 1 \equiv \sum_{n} a_n e^{i2\pi n \tau}.
 \end{align}
 We first consider small $\epsilon =2-\Delta\ll 1$ and keep the leading order term \footnote{One may worry that the first order approximation is only valid for $\epsilon \ln\Omega \ll 1$ but $\Omega$ can be arbitrarily large when $X\approx 0$ and $\tau \approx 1/2$. We consider splitting the $\tau$ integral into $(\frac{1}{2}-\delta, \frac{1}{2}+\delta)$ and the rest, with $1 \gg \pi\delta > e^{-\frac{1}{2\epsilon}}$. For $X\approx0$, $\Omega^{\Delta-2} \approx (X^2+\pi^2\delta^2)^{\Delta-2}$ such that the integral in $(\frac{1}{2}-\delta, \frac{1}{2}+\delta)$ is in $O(e^{-\frac{1}{2\epsilon}})$. The width of the interval is also $O(e^{-\frac{1}{2\epsilon}})$. The orthogonality of cosine functions remains approximately true.}
 \begin{align}
     \Omega^{\Delta-2}(-i\tau,X) - 1 =&\; - \epsilon \ln \left(\frac{1+X^2+(1-X^2)\cos(2\pi \tau)}{2}\right) + O(\epsilon^2)\\
-    =&\; - \epsilon \ln \left(\frac{1+X^2}{2}(1+\frac{1-X^2}{1+X^2}\cos(2\pi \tau))\right) + O(\epsilon^2). %\\
+    =&\; - \epsilon \ln \left[\frac{1+X^2}{2}\left(1+\frac{1-X^2}{1+X^2}\cos(2\pi \tau)\right)\right] + O(\epsilon^2). %\\
     %= &\; \epsilon \sum_{n=0}^{\infty} \left( \right)\cos(2 \pi n \tau) + O(\epsilon^2) 
 \end{align}
-We use the identity ($|r|<1$)
+We use the identity ($r\in (-1,1), \theta\in[0,1]$)
 \begin{align}
-    \ln(1+r^2 + 2r\cos(\theta)) =&\; \ln(1+re^{i\theta}) + \ln (1+re^{-i\theta}),\\
-    =&\; \sum_{n= 1}^{\infty} (-1)^{n+1}\frac{r^n e^{in\theta}}{n} +\sum_{n= 1}^{\infty} (-1)^{n+1}\frac{r^n e^{-in\theta}}{n}, \\
-    =&\; \sum_{n= 1}^{\infty}(-1)^{n+1} \frac{2r^n \cos(n\theta)}{n} .
+    \ln(1+r^2 + 2r\cos(2\pi\tau)) =&\; \ln(1+re^{i2\pi\tau}) + \ln (1+re^{-i2\pi\tau}),\\
+    =&\; -\sum_{n= 1}^{\infty} \frac{(-r)^n e^{i2\pi n\tau}}{n} -\sum_{n= 1}^{\infty} \frac{(-r)^n e^{-i2\pi n\tau}}{n}, \\
+    =&\; -\sum_{n \neq 0} \frac{(-r)^{|n|}e^{i2\pi n\tau}}{|n|} .
 \end{align}
-By putting $r = \frac{(1-|X|)^2}{1-X^2}$, we have
-\begin{align}
-    \Omega^{\Delta-2}(-i\tau,X) - 1 =&\; \epsilon \left(\sum_{n=1}^{\infty} \left( \right)\cos(2 \pi n \tau) \right) + O(\epsilon^2)
-\end{align}
+By substituting $r = \frac{1-|X|}{1+|X|}$, we obtain
+\begin{gather}
+    \Omega^{\Delta-2}(-i\tau,X) - 1 = \epsilon \left(\sum_{n} a_n^{(1)}e^{i2 \pi n \tau} \right) + O(\epsilon^2),\\
+    a_0^{(1)} =  -2\ln \frac{1+|X|}{2},\\
+    a_{n \neq 0}^{(1)} = \frac{1}{|n|} \left(-\frac{1-|X|}{1+|X|}\right)^{|n|}.
+\end{gather}
 We can also expand the $\coth$ function as
 \begin{align}
     \coth(\pi (u+i\tau)) =& \frac{e^{\pi (u+i\tau)}+e^{-\pi (u+i\tau)}}{e^{\pi (u+i\tau)}-e^{-\pi (u+i\tau)}} \nonumber\\
@@ -2442,12 +2452,21 @@ We can also expand the $\coth$ function as
     \end{cases}\\
     =& \begin{cases}
         1+\sum_{m=1}^{\infty} 2e^{-2\pi m (u+i\tau)}, & \text{for } u > 0,\\
-        -(1+\sum_{m=1}^{\infty} 2e^{2\pi m (u+i\tau)}), & \text{for } u < 0.
-    \end{cases}
+        -(1+\sum_{m=1}^{\infty} 2e^{2\pi m (u+i\tau)}), & \text{for } u < 0,
+    \end{cases}\\
+    =&\text{sign}(u) \left(1+ \sum_{m \neq 0 } \theta_{\text{step}}(-mu)2 e^{2\pi m u} e^{i2\pi m \tau}\right)
 \end{align}
+Thus, we have
+\begin{align}
+    &\int_0^1 \, d\tau \; \left[\Omega^{\Delta-2}(-i\tau,X) -1\right] \coth(\pi(u+i\tau)) \nonumber\\
+    =&\; \text{sign}(u)2\epsilon\left[-\ln\frac{1+|X|}{2}+\sum_{n\neq0} \theta_{\text{step}}(nu) e^{-2\pi n u} \frac{1}{|n|}\left(-\frac{1-|X|}{1+|X|}\right)^{|n|} \right] +O(\epsilon^2)\\
+    =&\; \text{sign}(u)2\epsilon\ln\left[1+|X| +(1-|X|)e^{-2\pi|u|}\right] +O(\epsilon^2)
+\end{align}
+
 Thus, the integral becomes
 \begin{align}
-    \int_0^1 dw \; h_{reg}(u,X) =&\; \pi(1-X^2)\int_0^1 \, d\tau \int_0^1 dw \;\frac{\left(1 - (1-X^2)\sin^2(\pi \tau)\right)^{\Delta-2} -1}{\sinh^2(\pi (u+sw+i\tau))}.....
+    Q(u,X) =&\; 2(1-X^2)\epsilon\left\{ \text{sign}(u)\ln\left[1+|X| +(1-|X|)e^{-2\pi|u|}\right] \right. \nonumber\\
+    & \left.- \text{sign}(u+s)\ln\left[1+|X| +(1-|X|)e^{-2\pi|u+s|}\right] \right\} + O(\epsilon^2).
 \end{align}
 
 
