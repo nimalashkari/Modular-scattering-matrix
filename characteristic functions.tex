@@ -228,13 +228,26 @@ with
 For $(t,x) \in B$, $\delta>0$ for all real $s$ and the point $(t_s,x_s)$ remains in $B$. For $(t,x) \notin B$, $\delta\leq 0$ for some real $s$. This corresponds to the point like field crossing the infinity and reaching the other patch of Minkowski. Also, we have to take care of the phase if the field crosses the infinity when $h\notin\mathbb{Z}$.
 
 The matrix element of the characteristic function depends on the proper distance and the conformal factor $\delta$. We consider $f(z)=\bra{O(X)}\Delta_A^{1/2+iz}\Delta_B^{-iz}\ket{O(Y)}$ with $Y\in B \subset A\ni X$.
-\section{Characteristic Functions in Conformal Perturbation Theory}\label{section:conformalperturbation}
+
+\section{Characteristic Functions in $1+1$ D QFT}\label{section:conformalperturbation}
 4.1. Setup of perturbation of modular flow, 4.2. cocycle flow, 4.3. 1st order correction of characteristic function, 4.4 analytic property 
+
+A short paragraph about general QFT, move on to conformal perturbation theory
 \subsection{Modular Flow with Conformal Perturbation Method}
 move the appendix here
 \subsection{Perturbative Cocycle Flow}
 move the appendix here
 \subsection{First order Correction of Characteristic Function}
+We compute $f(z)=_\lambda\bra{O(X)}\Delta_{A,\lambda}^{1/2+iz}\Delta_{B,\lambda}^{-iz}\ket{O(Y)}_\lambda$ in a QFT parametrized by $\lambda$. When both $A$ and $B$ are wedge, the same logic follows the CFT case, as the modular flows are still boost. We consider the inclusion $B\subset A$ where $B$ is a unit double cone centered at the origin and $A$ is the wedge with the end point $(0,-x_w)$, $x_w >0$. We have similar setup that $Y\in B$, $X\in A$. We have
+\begin{align}
+    f(z) =&\; _\lambda\bra{O(X)}\left(\Delta_{A,\lambda}^{1/2+iz}\Delta_{B,0}^{-iz}\right) \left(\Delta_{B,0}^{+iz}\Delta_{B,\lambda}^{-iz}\right)\ket{O(Y)}_\lambda \\
+    =&\; _0\bra{O(X)}\Delta_{A,0}^{1/2+iz}\Delta_{B,0}^{-iz}\ket{O(Y)}_0 + \lambda f^{(1)}(z) + O(\lambda^2),
+\end{align}
+where
+\begin{align}
+    f^{(1)}(z) \equiv \;_0\bra{O(X)}\left(\Delta_{A,\lambda}^{1/2+iz}\Delta_{B,0}^{-iz}\right) \left(...\right)\ket{O(Y)}_0
+\end{align}
+
 \subsection{Analytic Properties of Characteristic Function in QFT}
 
 
