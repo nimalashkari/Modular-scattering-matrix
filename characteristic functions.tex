@@ -232,20 +232,26 @@ The matrix element of the characteristic function depends on the proper distance
 \section{Characteristic Functions in $1+1$ D QFT}\label{section:conformalperturbation}
 4.1. Setup of perturbation of modular flow, 4.2. cocycle flow, 4.3. 1st order correction of characteristic function, 4.4 analytic property 
 
-A short paragraph about general QFT, move on to conformal perturbation theory
+A short paragraph about general QFT, move on to conformal perturbation theory, mention that only 2- and 3-pt functions are universal, best is first order correction if without CFT details 
 \subsection{Modular Flow with Conformal Perturbation Method}
 move the appendix here
 \subsection{Perturbative Cocycle Flow}
 move the appendix here
 \subsection{First order Correction of Characteristic Function}
-We compute $f(z)=_\lambda\bra{O(X)}\Delta_{A,\lambda}^{1/2+iz}\Delta_{B,\lambda}^{-iz}\ket{O(Y)}_\lambda$ in a QFT parametrized by $\lambda$. When both $A$ and $B$ are wedge, the same logic follows the CFT case, as the modular flows are still boost. We consider the inclusion $B\subset A$ where $B$ is a unit double cone centered at the origin and $A$ is the wedge with the end point $(0,-x_w)$, $x_w >0$. We have similar setup that $Y\in B$, $X\in A$. We have
+We compute $f(z)= \;_\lambda\bra{O(X)}\Delta_{A,\lambda}^{1/2+iz}\Delta_{B,\lambda}^{-iz}\ket{O(Y)}_\lambda$ in a QFT parametrized by $\lambda$. When both $A$ and $B$ are wedge, the same logic follows the CFT case, as the modular flows are still boost. We consider the inclusion $B\subset A$ where $B$ is a unit double cone centered at the origin and $A$ is the wedge with the end point $(0,-x_w)$, $x_w >0$. We have a similar setup where $Y\in B$, $X\in A$. We have
 \begin{align}
-    f(z) =&\; _\lambda\bra{O(X)}\left(\Delta_{A,\lambda}^{1/2+iz}\Delta_{B,0}^{-iz}\right) \left(\Delta_{B,0}^{+iz}\Delta_{B,\lambda}^{-iz}\right)\ket{O(Y)}_\lambda \\
+    f(z) =&\;_\lambda\bra{O(X)}\Delta_{A,\lambda}^{1/2+iz}\Delta_{B,\lambda}^{-iz}\ket{O(Y)}_\lambda \\
+    =&\;\bra{\Omega_\lambda}O(X)^\dagger \Delta_{A,\lambda}^{1/2+iz}\Delta_{B,\lambda}^{-iz}O(Y) \ket{\Omega_\lambda}\\
+    =&\;\bra{\Omega_\lambda}\left(\Delta_{A,\lambda}^{1/2} O(X)^\dagger \Delta_{A,\lambda}^{1/2}\right)\left( \Delta_{A,\lambda}^{iz} \Delta_{B,\lambda}^{-iz}O(Y) \Delta_{B,\lambda}^{+iz}\Delta_{A,\lambda}^{-iz}\right)\ket{\Omega_\lambda}\\
+    =& \; \bra{\Omega_\lambda}\left(\Delta_{A,\lambda}^{1/2} O(X)^\dagger \Delta_{A,\lambda}^{1/2}\right)\left( \Delta_{A,\lambda}^{iz} \Delta_{B,\lambda}^{-iz}O(Y) \Delta_{B,\lambda}^{+iz}\Delta_{A,\lambda}^{-iz}\right)\ket{\Omega_\lambda}\\
     =&\; _0\bra{O(X)}\Delta_{A,0}^{1/2+iz}\Delta_{B,0}^{-iz}\ket{O(Y)}_0 + \lambda f^{(1)}(z) + O(\lambda^2),
 \end{align}
 where
 \begin{align}
-    f^{(1)}(z) \equiv \;_0\bra{O(X)}\left(\Delta_{A,\lambda}^{1/2+iz}\Delta_{B,0}^{-iz}\right) \left(...\right)\ket{O(Y)}_0
+    f^{(1)}(z) =&\; f^{(1)}_{\text{flow}}(z) + f^{(1)}_{\text{vecL}}(z) + f^{(1)}_{\text{vecR}}(z),\\
+    f^{(1)}_{\text{flow}}(z) \equiv&\; \;_0\bra{O(X)}\left(\Delta_{A,\lambda}^{1/2+iz}\Delta_{B,0}^{-iz}\right) \left(...\right)\ket{O(Y)}_0, \\
+    f^{(1)}_{\text{vecL}}(z) \equiv&\; ,\\
+    f^{(1)}_{\text{vecR}}(z) \equiv&\; ,
 \end{align}
 
 \subsection{Analytic Properties of Characteristic Function in QFT}
@@ -2384,7 +2390,7 @@ where $J$ is the Jacobian determinant between the geometrically transformed coor
     \delta_\lambda K_\lambda=& \lambda\int_I dX\int_0^1 d\tau \int_{-\infty}^{\infty} du \, \frac{2\pi J(\tau,X)}{\sinh^2(\pi (u+i\tau))}   \Omega^{\Delta}(-i\tau,X) e^{iuK_0} O(X) e^{-iuK_0} \\
     =& 2\pi \lambda\int_I dX \int_{-\infty}^{\infty} du \, h(u,X) e^{iuK_0} O(X) e^{-iuK_0},
 \end{align}
-where 
+\KL{(A factor of 4 missing? Check later) }where 
 \begin{align}
     h(u,X) = \int_0^1\, d\tau \frac{J(\tau,X)\Omega^{\Delta}(-i\tau,X)}{\sinh^2(\pi (u+i\tau))} 
 \end{align}
@@ -2429,7 +2435,7 @@ By combining all the expressions, we have
 \end{align}
 We can then perform the $dw$ integral before $d\tau$. The divergences at $u = 0, \tau = 0, 1$ are regulated by separating the delta function. The divergence at $X=0, \tau = 1/2$ is mild enough so that the integrant is absolutely integrable. This allows us to change the order of integration.
 \begin{align}
-    Q(u,X) \equiv&\;\int_0^1 dw \; h_{reg}(u,X) \nonumber\\
+    Q(u,X) \equiv&\;\int_0^1 dw \; h_{reg}(u+sw,X) \nonumber\\
     =&\; \pi(1-X^2)\int_0^1 \, d\tau \int_0^1 dw \;\frac{\left(1 - (1-X^2)\sin^2(\pi \tau)\right)^{\Delta-2} -1}{\sinh^2(\pi (u+sw+i\tau))}\\
     =&\; (1-X^2)\int_0^1 \, d\tau \; \left[\left(1 - (1-X^2)\sin^2(\pi \tau)\right)^{\Delta-2} -1\right] \nonumber\\
     &\times\left( \coth(\pi(u+i\tau)) - \coth(\pi(u+s+i\tau)) \right)
@@ -2478,10 +2484,20 @@ Thus, we have
 
 Thus, the integral becomes
 \begin{align}
-    Q(u,X) =&\; 2(1-X^2)\epsilon\left\{ \text{sign}(u)\ln\left[1+|X| +(1-|X|)e^{-2\pi|u|}\right] \right. \nonumber\\
-    & \left.- \text{sign}(u+s)\ln\left[1+|X| +(1-|X|)e^{-2\pi|u+s|}\right] \right\} + O(\epsilon^2).
+    Q(u,X) =&\; Q^{(1)}(u,X) + O(\epsilon^2)\\
+    Q^{(1)}(u,X) =&\;2(1-X^2)\epsilon\left\{ \text{sign}(u)\ln\left[1+|X| +(1-|X|)e^{-2\pi|u|}\right] \right. \nonumber\\
+    & \left.- \text{sign}(u+s)\ln\left[1+|X| +(1-|X|)e^{-2\pi|u+s|}\right] \right\}.
 \end{align}
-
+Thus, the cocycle is 
+\begin{align}
+    u_{s,\lambda}=&\; 1 - i4\pi s\lambda\int_0^1 dw  \int_{-1}^1 dX \, (1-X^2)e^{-iswK_0} O(X) e^{iswK_0} \nonumber\\
+    &+ i2\pi s\lambda\int_0^1 dw  \int_{-1}^1 dX \int_{-\infty}^{\infty} du \, h_{reg}(u+sw,X) \Omega^{-\Delta}(u,X)O(t_u,x_u)\\
+    =&\; 1 + i2\pi s\lambda \int_{-1}^1 dX \int_{-\infty}^{\infty} du \, M(u,X)O(t_u,x_u) +O(\lambda^2),
+\end{align}
+where 
+\begin{align}
+    M(u,X) =&\; \left[Q(u,X) + 2(1-X^2)\frac{1}{s} \textbf{1}_{(-s,0)}(u)\right]\Omega^{-\Delta}(u,X)
+\end{align}
 
 
 =========================================
