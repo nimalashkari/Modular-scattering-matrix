@@ -2383,16 +2383,16 @@ where $O(x)$ is a conformal primary in the flat space coordinate $x$ and $\lambd
 \begin{gather}
     \delta_\lambda(e^{isK_\lambda}) = \int_0^1 dw e^{iswK_0} is\delta_\lambda K_\lambda e^{is(1-w)K_0} , \\
     \delta_\lambda K_\lambda= \int_{-\infty + i\theta}^{\infty + i\theta} \frac{2\pi du}{4\sinh^2(\pi u)} e^{iuK_0}\rho^{-1}\delta\rho e^{-iuK_0}, \quad\text{for } 0<\theta<1,\\
-    \rho^{-1}\delta\rho = \lambda\int_I dX\int_0^1 d\tau J(\tau,X) \Omega^{\Delta}(-i\tau,X) e^{\tau K_0} O(X) e^{-\tau K_0} ,
+    \rho^{-1}\delta\rho = -\lambda\int_I dX\int_0^1 d\tau J(\tau,X) \Omega^{\Delta}(-i\tau,X) e^{\tau K_0} O(X) e^{-\tau K_0} ,
 \end{gather}
 where $J$ is the Jacobian determinant between the geometrically transformed coordinate on $O(X)$ and $(X, \tau)$, $\Omega$ is the conformal factor that depends on the geometric action of the flow $e^{is K_0}$, $\Delta$ is the conformal dimension of $O$ \footnote{We would consider $D/2 < \Delta < D$ for the perturbation method to work \cite{}.}, and $D$ is the spacetime dimension. By substituting $\rho^{-1}\delta_\lambda\rho$ into the expression of $\delta_\lambda K_\lambda$ and changing the order of integration, we can choose $\theta = \tau$ to cancel the Euclidean part and obtain a  purely Lorentzian action \cite{}
 \begin{align}
-    \delta_\lambda K_\lambda=& \lambda\int_I dX\int_0^1 d\tau \int_{-\infty}^{\infty} du \, \frac{2\pi J(\tau,X)}{\sinh^2(\pi (u+i\tau))}   \Omega^{\Delta}(-i\tau,X) e^{iuK_0} O(X) e^{-iuK_0} \\
-    =& 2\pi \lambda\int_I dX \int_{-\infty}^{\infty} du \, h(u,X) e^{iuK_0} O(X) e^{-iuK_0},
+    \delta_\lambda K_\lambda=& -\lambda\int_I dX\int_0^1 d\tau \int_{-\infty}^{\infty} du \, \frac{2\pi J(\tau,X)}{4\sinh^2(\pi (u+i\tau))}   \Omega^{\Delta}(-i\tau,X) e^{iuK_0} O(X) e^{-iuK_0} \\
+    =& \pi \lambda\int_I dX \int_{-\infty}^{\infty} du \, h(u,X) e^{iuK_0} O(X) e^{-iuK_0},
 \end{align}
-\KL{(A factor of 4 missing? Check later) }where 
+where 
 \begin{align}
-    h(u,X) = \int_0^1\, d\tau \frac{J(\tau,X)\Omega^{\Delta}(-i\tau,X)}{\sinh^2(\pi (u+i\tau))} 
+    h(u,X) = -\int_0^1\, d\tau \frac{J(\tau,X)\Omega^{\Delta}(-i\tau,X)}{2\sinh^2(\pi (u+i\tau))} 
 \end{align}
 For simplicity, we consider $D = 1+1$, $I$ to be the interval $(-1,1)$ at $t = 0$, and $B$ the double cone corresponding to $I$. We can generalize the result to a different interval or ball-shaped region in higher dimension. We have 
 \begin{gather}
@@ -2413,31 +2413,31 @@ The conformal factor $\Omega$ and the Jacobian determinant are
     J(\tau,x) = \det \left.\begin{pmatrix}
         \partial_st_{s} & \partial_s x_{s}\\  \partial_X t_{s}& \partial_X x_{s}
     \end{pmatrix}\right|_{s=-i\tau, t =0} =\frac{\pi (1-x^2)}{\Omega(\tau,x)^2},\\
-    h(u,X) = \pi(1-X^2)\int_0^1\, d\tau \frac{\Omega^{\Delta-2}(-i\tau,X)}{\sinh^2(\pi (u+i\tau))}
+    h(u,X) = -\pi(1-X^2)\int_0^1\, d\tau \frac{\Omega^{\Delta-2}(-i\tau,X)}{2\sinh^2(\pi (u+i\tau))}
 \end{gather}
-Notice that the $d\tau$ integral of $h(u,X)$ can be done explicitly if there is no $\Omega^{\Delta-2}(-i\tau,X)$.
+Notice that the $d\tau$ integral of $h(u,X)$ can be done explicitly if there is no $\Omega^{\Delta-2}(-i\tau,X)$, with
 \begin{align}
-    \int_0^1\, \frac{ d\tau }{\sinh^2(\pi (u+i\tau))} = -\frac{2}{\pi}\delta(u).
+    -\int_0^1\, \frac{ \pi d\tau }{2\sinh^2(\pi (u+i\tau))} = \delta(u).
 \end{align}
 A similar calculation appears in the calculation for the Rindler wedge case, where this delta function combined with the CFT modular Hamiltonian gives the boost operator in the QFT. If $\Delta = 2$, the extra factor $\Omega^{\Delta-2}(-i\tau,X)$ become trivial and we obtain the delta function as the Rindler wedge case. The naive intuition is that the modular flow remains geometric because the deformed CFT is yet another CFT, although this may not be a suitable application of the perturbation method. For these reasons, we separate the divergent piece from the integral
 \begin{gather}
-    h(u,X) =  -2(1-X^2)\delta(u) + h_{reg}(u,X), \\
-    h_{reg}(u,X)= \pi(1-X^2)\int_0^1\, d\tau \frac{ (\Omega^{\Delta-2}(-i\tau,X) -1)}{\sinh^2(\pi (u+i\tau))} .
+    h(u,X) =  (1-X^2)\delta(u) + h_{reg}(u,X), \\
+    h_{reg}(u,X)= -\pi(1-X^2)\int_0^1\, d\tau \frac{ (\Omega^{\Delta-2}(-i\tau,X) -1)}{2\sinh^2(\pi (u+i\tau))} .
 \end{gather}
 By combining all the expressions, we have
 \begin{align}
     u_{s,\lambda} =&\; e^{-isK_0}e^{isK_\lambda} \approx 1 + e^{-isK_0}\delta e^{isK_\lambda}\\
-    =&\; 1 + i2\pi s\lambda\int_0^1 dw  \int_{-1}^1 dX \int_{-\infty}^{\infty} du \, h(u,X) e^{i(u+sw-s)K_0} O(X) e^{-i(u+sw-s)K_0} \\
-    =&\; 1 + i2\pi s\lambda\int_0^1 dw  \int_{-1}^1 dX \int_{-\infty}^{\infty} du \, h(u+sw,X) e^{iuK_0} O(X) e^{-iuK_0} \\
-    =&\; 1 + i2\pi s\lambda\int_0^1 dw  \int_{-1}^1 dX \int_{-\infty}^{\infty} du \, h(u+sw,X) e^{iuK_0} O(X) e^{-iuK_0}\\
-    =&\; 1 - i4\pi s\lambda\int_0^1 dw  \int_{-1}^1 dX \, (1-X^2)e^{-iswK_0} O(X) e^{iswK_0} \nonumber\\
-    &+ i2\pi s\lambda\int_0^1 dw  \int_{-1}^1 dX \int_{-\infty}^{\infty} du \, h_{reg}(u+sw,X) \Omega^{-\Delta}(u,X)O(t_u,x_u)\\
+    =&\; 1 + i\pi s\lambda\int_0^1 dw  \int_{-1}^1 dX \int_{-\infty}^{\infty} du \, h(u,X) e^{i(u+sw-s)K_0} O(X) e^{-i(u+sw-s)K_0} \\
+    =&\; 1 + i\pi s\lambda\int_0^1 dw  \int_{-1}^1 dX \int_{-\infty}^{\infty} du \, h(u+sw,X) e^{iuK_0} O(X) e^{-iuK_0} \\
+    =&\; 1 + i\pi s\lambda\int_0^1 dw  \int_{-1}^1 dX \int_{-\infty}^{\infty} du \, h(u+sw,X) e^{iuK_0} O(X) e^{-iuK_0}\\
+    =&\; 1 + i\pi s\lambda\int_0^1 dw  \int_{-1}^1 dX \, (1-X^2)e^{-iswK_0} O(X) e^{iswK_0} \nonumber\\
+    &+ {i\pi s\lambda}\int_0^1 dw  \int_{-1}^1 dX \int_{-\infty}^{\infty} du \, h_{reg}(u+sw,X) \Omega^{-\Delta}(u,X)O(t_u,x_u)\\
 \end{align}
 We can then perform the $dw$ integral before $d\tau$. The divergences at $u = 0, \tau = 0, 1$ are regulated by separating the delta function. The divergence at $X=0, \tau = 1/2$ is mild enough so that the integrant is absolutely integrable. This allows us to change the order of integration.
 \begin{align}
-    Q(u,X) \equiv&\;\int_0^1 dw \; h_{reg}(u+sw,X) \nonumber\\
-    =&\; \pi(1-X^2)\int_0^1 \, d\tau \int_0^1 dw \;\frac{\left(1 - (1-X^2)\sin^2(\pi \tau)\right)^{\Delta-2} -1}{\sinh^2(\pi (u+sw+i\tau))}\\
-    =&\; (1-X^2)\int_0^1 \, d\tau \; \left[\left(1 - (1-X^2)\sin^2(\pi \tau)\right)^{\Delta-2} -1\right] \nonumber\\
+    Q_{\text{nonloc}}(u,X) \equiv&\;\int_0^1 dw \; h_{reg}(u+sw,X) \nonumber\\
+    =&\; -\pi(1-X^2)\int_0^1 \, d\tau \int_0^1 dw \;\frac{\left(1 - (1-X^2)\sin^2(\pi \tau)\right)^{\Delta-2} -1}{2\sinh^2(\pi (u+sw+i\tau))}\\
+    =&\; -\frac{(1-X^2)}{2}\int_0^1 \, d\tau \; \left[\left(1 - (1-X^2)\sin^2(\pi \tau)\right)^{\Delta-2} -1\right] \nonumber\\
     &\times\left( \coth(\pi(u+i\tau)) - \coth(\pi(u+s+i\tau)) \right)
 \end{align}
 We can expand $\Omega^{\Delta-2}(-i\tau,X)$ as a Fourier series.
@@ -2484,21 +2484,23 @@ Thus, we have
 
 Thus, the integral becomes
 \begin{align}
-    Q(u,X) =&\; Q^{(1)}(u,X) + O(\epsilon^2)\\
-    Q^{(1)}(u,X) =&\;2(1-X^2)\epsilon\left\{ \text{sign}(u)\ln\left[1+|X| +(1-|X|)e^{-2\pi|u|}\right] \right. \nonumber\\
+    Q_{\text{nonloc}}(u,X) =&\; Q^{(1)}_{\text{nonloc}}(u,X) + O(\epsilon^2)\\
+    Q^{(1)}_{\text{nonloc}}(u,X) =&\; -(1-X^2)\epsilon\left\{ \text{sign}(u)\ln\left[1+|X| +(1-|X|)e^{-2\pi|u|}\right] \right. \nonumber\\
     & \left.- \text{sign}(u+s)\ln\left[1+|X| +(1-|X|)e^{-2\pi|u+s|}\right] \right\}.
 \end{align}
 Thus, the cocycle is 
 \begin{align}
-    u_{s,\lambda}=&\; 1 - i4\pi s\lambda\int_0^1 dw  \int_{-1}^1 dX \, (1-X^2)e^{-iswK_0} O(X) e^{iswK_0} \nonumber\\
-    &+ i2\pi s\lambda\int_0^1 dw  \int_{-1}^1 dX \int_{-\infty}^{\infty} du \, h_{reg}(u+sw,X) \Omega^{-\Delta}(u,X)O(t_u,x_u)\\
-    =&\; 1 + i2\pi s\lambda \int_{-1}^1 dX \int_{-\infty}^{\infty} du \, M(u,X)O(t_u,x_u) +O(\lambda^2),
+    u_{s,\lambda}=&\; 1 + i\pi s\lambda\int_0^1 dw  \int_{-1}^1 dX \, (1-X^2)e^{-iswK_0} O(X) e^{iswK_0} \nonumber\\
+    &+ i\pi s\lambda\int_0^1 dw  \int_{-1}^1 dX \int_{-\infty}^{\infty} du \, h_{reg}(u+sw,X) \Omega^{-\Delta}(u,X)O(t_u,x_u)\\
+    =&\; 1 + i\pi s\lambda \int_{-1}^1 dX \int_{-\infty}^{\infty} du \, Q(u,X)O(t_u,x_u) +O(\lambda^2),
 \end{align}
 where 
 \begin{align}
-    M(u,X) =&\; \left[Q(u,X) + 2(1-X^2)\frac{1}{s} \textbf{1}_{(-s,0)}(u)\right]\Omega^{-\Delta}(u,X)
+    Q(u,X) =&\; \left[Q_{\text{nonloc}}(u,X) + Q_{\text{loc}}(u,X) \right]\Omega^{-\Delta}(u,X), \\
+    Q_{\text{loc}}(u,X) \equiv &\; (1-X^2)\frac{1}{s} \textbf{1}_{(-s,0)}(u).
 \end{align}
 
+In the case where the perturbed QFT is another CFT ($\Delta = 2$), the non-local term $Q_{\text{nonloc}}$ vanishes. The local term $Q_\text{loc}$ combined with the original modular Hamiltonian gives the same geometric flow in the new CFT. 
 
 =========================================
 
@@ -2528,7 +2530,7 @@ where $A=A^\dagger \in \mathcal{A}$, $u_{s,\lambda} = e^{-isK_0}e^{isK_\lambda} 
     u_{s,\lambda} &\approx 1 + is\lambda\pi^2 \int_{-1}^1 dx \int_{-\infty}^{\infty} du \left[\int_0^1 dw \, h(u+s-sw,X)\right] e^{iuK_0} O(0,x)  e^{-iuK_0}\\
     &=1+ is\lambda\pi^2 \int_{-1}^1 dx \int_{-\infty}^{\infty} du \left[\int_0^1 dw \, h(u+s-sw,X) \tilde{\Omega}^{-\Delta}(u,x) \right] O(t_u,x_u) .
 \end{align}
-We then consider the case where $A = \int_{B}dX f(X) O(X)$, $\lVert(e^{isK_\lambda} - e^{isK_0}) A\Omega_\lambda \rVert^2$ becomes a 3-point function
+We then consider the case where $A = \int_{B}dX f(X) O(X)$, $\lVert(e^{isK_\lambda} - e^{isK_0}) A\Omega_\lambda \rVert^2$ becomes a 3-point function \KL{(The is also wrong, the leading order is a 4 pt function agian. The reason is that the Re will kill this term as it is purely imaginary)}
 \begin{align}
     &\lVert(e^{isK_\lambda} - e^{isK_0}) A\Omega_\lambda \rVert^2\\ 
     \approx&  -2 \text{Re } is\lambda\pi^2 \int_{B}dX_1\int_{B}dX_2\int_{-1}^1 dx \int_{-\infty}^{\infty} du \left[\int_0^1 dw \, h(u+s-sw,x) \tilde{\Omega}^{-\Delta}(u,x) f(X_1)f(X_2) \right] \nonumber\\
@@ -2544,10 +2546,12 @@ Another quantity to estimate the difference is
     =&\, \braket{\Omega_0|A^2|\Omega_0} + \braket{\Omega_0|u_{s,\lambda} A^2 u_{s,\lambda}^\dagger|\Omega_0} - 2\text{Re }\braket{\Omega_0|A u_{s,\lambda} A u_{s,\lambda}^\dagger|\Omega_0}\\
     \to &\braket{\Omega_0|[A^2, \lambda\delta u^\dagger]|\Omega_0} - 2\text{Re }\braket{\Omega_0|A[A, \lambda \delta u^\dagger]|\Omega_0}
 \end{align}
-\KL{The leading order}
+\KL{The leading order} \KL{(The is also wrong, the leading order is a 4 pt function agian. The reason is that the Re will kill this term as it is purely imaginary)}
 Although they are 4-point functions, the first order correction are still 3-point functions, same as the previous quantity. Since we are computing a commutator between $A$ and $u_{s,\lambda}^\dagger$, we can project out the spacelike separating part of $u_{s,\lambda}^\dagger$ relative to $A$. 
 
 \KL{Reminder: Check the order of integration issue, compare with the previous paper/interactive picture calculation, do the small s expansion first/order of scales, etc.}
+
+\KL{The leading order term of norm should be in $O(\lambda)$, thus the norm square is $O(\lambda^2)$. With two $A$ operators, the two power of $\lambda$ require two $O$ insertion, which results a 4-pt function in general.}
 
 \KL{=============== Rewrite it from here =====================}
 
