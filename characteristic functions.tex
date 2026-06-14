@@ -241,17 +241,22 @@ move the appendix here
 We compute $f(z)= \;_\lambda\bra{O(X)}\Delta_{A,\lambda}^{1/2+iz}\Delta_{B,\lambda}^{-iz}\ket{O(Y)}_\lambda$ in a QFT parametrized by $\lambda$. When both $A$ and $B$ are wedge, the same logic follows the CFT case, as the modular flows are still boost. We consider the inclusion $B\subset A$ where $B$ is a unit double cone centered at the origin and $A$ is the wedge with the end point $(0,-x_w)$, $x_w >0$. We have a similar setup where $Y\in B$, $X\in A$. We have
 \begin{align}
     f(z) =&\;_\lambda\bra{O(X)}\Delta_{A,\lambda}^{1/2+iz}\Delta_{B,\lambda}^{-iz}\ket{O(Y)}_\lambda \\
-    =&\;\bra{\Omega_\lambda}O(X)^\dagger \Delta_{A,\lambda}^{1/2+iz}\Delta_{B,\lambda}^{-iz}O(Y) \ket{\Omega_\lambda}\\
-    =&\;\bra{\Omega_\lambda}\left(\Delta_{A,\lambda}^{1/2} O(X)^\dagger \Delta_{A,\lambda}^{1/2}\right)\left( \Delta_{A,\lambda}^{iz} \Delta_{B,\lambda}^{-iz}O(Y) \Delta_{B,\lambda}^{+iz}\Delta_{A,\lambda}^{-iz}\right)\ket{\Omega_\lambda}\\
-    =& \; \bra{\Omega_\lambda}\left(\Delta_{A,\lambda}^{1/2} O(X)^\dagger \Delta_{A,\lambda}^{1/2}\right)\left( \Delta_{A,\lambda}^{iz} \Delta_{B,\lambda}^{-iz}O(Y) \Delta_{B,\lambda}^{+iz}\Delta_{A,\lambda}^{-iz}\right)\ket{\Omega_\lambda}\\
-    =&\; _0\bra{O(X)}\Delta_{A,0}^{1/2+iz}\Delta_{B,0}^{-iz}\ket{O(Y)}_0 + \lambda f^{(1)}(z) + O(\lambda^2),
+    %=&\;\bra{\Omega_\lambda}O(X)^\dagger \Delta_{A,\lambda}^{1/2+iz}\Delta_{B,\lambda}^{-iz}O(Y) \ket{\Omega_\lambda}\\
+    %=&\;\bra{\Omega_\lambda}\left(\Delta_{A,\lambda}^{1/2} O(X)^\dagger \Delta_{A,\lambda}^{1/2}\right)\left( \Delta_{A,\lambda}^{iz} \Delta_{B,\lambda}^{-iz}O(Y) \Delta_{B,\lambda}^{+iz}\Delta_{A,\lambda}^{-iz}\right)\ket{\Omega_\lambda}\\
+    %=& \; \bra{\Omega_\lambda}\left(\Delta_{A,\lambda}^{1/2} O(X)^\dagger \Delta_{A,\lambda}^{1/2}\right)\left( \Delta_{A,\lambda}^{iz} \Delta_{B,\lambda}^{-iz}O(Y) \Delta_{B,\lambda}^{+iz}\Delta_{A,\lambda}^{-iz}\right)\ket{\Omega_\lambda}\\
+    =&\; _0\bra{O(X)}\Delta_{A,0}^{1/2+iz}\Delta_{B,0}^{-iz}\ket{O(Y)}_0 + \lambda f^{(1)}(z) + O(\lambda^2).
 \end{align}
-where
+There are three contributions to the first order correction. We have
+\begin{gather}
+    u_{s,\lambda} = e^{-isK_0}e^{isK_\lambda} = 1 + i\pi s\lambda \int_{-1}^1 dX \int_{-\infty}^{\infty} du \, Q(u,X)O(t_u,x_u) +O(\lambda^2),\\
+    \Omega_\lambda = \Omega_0 + \lambda\Omega^{(1)} + O(\lambda^2).
+\end{gather}
+Therefore, the three correction terms are
 \begin{align}
     f^{(1)}(z) =&\; f^{(1)}_{\text{flow}}(z) + f^{(1)}_{\text{vecL}}(z) + f^{(1)}_{\text{vecR}}(z),\\
-    f^{(1)}_{\text{flow}}(z) \equiv&\; \;_0\bra{O(X)}\left(\Delta_{A,\lambda}^{1/2+iz}\Delta_{B,0}^{-iz}\right) \left(...\right)\ket{O(Y)}_0, \\
-    f^{(1)}_{\text{vecL}}(z) \equiv&\; ,\\
-    f^{(1)}_{\text{vecR}}(z) \equiv&\; ,
+    f^{(1)}_{\text{flow}}(z) \equiv&\; \;_0\bra{O(X)}\left(\Delta_{A,0}^{1/2+iz}\Delta_{B,0}^{-iz}\right) \left(...\right)\ket{O(Y)}_0, \\
+    f^{(1)}_{\text{vecL}}(z) \equiv&\; \bra{\Omega^{(1)}} ... \ket{\Omega_0},\\
+    f^{(1)}_{\text{vecR}}(z) \equiv&\; \bra{\Omega_0} ... \ket{\Omega^{(1)}}.
 \end{align}
 
 \subsection{Analytic Properties of Characteristic Function in QFT}
@@ -2431,7 +2436,7 @@ By combining all the expressions, we have
     =&\; 1 + i\pi s\lambda\int_0^1 dw  \int_{-1}^1 dX \int_{-\infty}^{\infty} du \, h(u+sw,X) e^{iuK_0} O(X) e^{-iuK_0} \\
     =&\; 1 + i\pi s\lambda\int_0^1 dw  \int_{-1}^1 dX \int_{-\infty}^{\infty} du \, h(u+sw,X) e^{iuK_0} O(X) e^{-iuK_0}\\
     =&\; 1 + i\pi s\lambda\int_0^1 dw  \int_{-1}^1 dX \, (1-X^2)e^{-iswK_0} O(X) e^{iswK_0} \nonumber\\
-    &+ {i\pi s\lambda}\int_0^1 dw  \int_{-1}^1 dX \int_{-\infty}^{\infty} du \, h_{reg}(u+sw,X) \Omega^{-\Delta}(u,X)O(t_u,x_u)\\
+    &+ {i\pi s\lambda}\int_0^1 dw  \int_{-1}^1 dX \int_{-\infty}^{\infty} du \, h_{reg}(u+sw,X) \Omega^{-\Delta}(u,X)O(t_u,x_u).
 \end{align}
 We can then perform the $dw$ integral before $d\tau$. The divergences at $u = 0, \tau = 0, 1$ are regulated by separating the delta function. The divergence at $X=0, \tau = 1/2$ is mild enough so that the integrant is absolutely integrable. This allows us to change the order of integration.
 \begin{align}
@@ -2502,7 +2507,7 @@ where
 
 In the case where the perturbed QFT is another CFT ($\Delta = 2$), the non-local term $Q_{\text{nonloc}}$ vanishes. The local term $Q_\text{loc}$ combined with the original modular Hamiltonian gives the same geometric flow in the new CFT. 
 
-=========================================
+========== DON'T USE THE REST HERE ===========
 
 The action of the modular flow is
 \begin{align}
@@ -2553,7 +2558,7 @@ Although they are 4-point functions, the first order correction are still 3-poin
 
 \KL{The leading order term of norm should be in $O(\lambda)$, thus the norm square is $O(\lambda^2)$. With two $A$ operators, the two power of $\lambda$ require two $O$ insertion, which results a 4-pt function in general.}
 
-\KL{=============== Rewrite it from here =====================}
+\KL{=============== END =====================}
 
 \section{Approximation of Modular Scattering Matrix}\label{app:modularSmatrix}
 
