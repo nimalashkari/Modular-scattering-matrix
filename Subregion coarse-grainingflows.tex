@@ -109,7 +109,7 @@
 %\date{\today}
 
 % Abstract
-\abstract{Recent developments in the algebraic approach to bulk reconstruction in holography have highlighted the role of the half-sided modular inclusions and modular intersections in the reconstruction of the spacetime symmetry transformations. A key ingredient in these algebraic reconstructions is the concept of {\it subregion/subalgebra flow}. In the first part of this work, we motivate the notion of coarse-graining flow in the classical ergodic hierarchy. We discuss its generalization to quantum coarse-graining (subalgebra) flow in the quantum ergodic hierarchy, focusing on ergodic classes that correspond to non-expected and split subalgebras. We call the subalgebra flows associated with subregions in QFT subregion flows. In the second part of this work, we compute subregion flows corresponding to causal developments of balls in vacuum CFT and study their analytic properties. We compute these flows in conformal perturbation theory, and prove bounds in general quantum field theories.}
+\abstract{Recent developments in the algebraic approach to bulk reconstruction in holography have highlighted the role of half-sided modular inclusions and modular intersections in reconstructing spacetime symmetry transformations. A key ingredient in these algebraic reconstructions is the concept of {\it subregion/subalgebra flow}. In the first part of this work, we motivate the notion of subregion/subalgebra flow in the classical Hamiltonian ergodic hierarchy. This relies on using the Poisson bracket on phase space to identify a classical avatar of the modular flow. We discuss the generalization to the quantum ergodic hierarchy, focusing on ergodic classes that correspond to {\it non-expected} and {\it split} subalgebras. In the second part of this work, we compute subregion flows corresponding to causal developments of balls in vacuum CFT and study their analytic properties. We compute these flows in conformal perturbation theory, and prove bounds on these flows in general QFTs.}
 
 % In QFT, to every inclusion of causally complete regions $A\subset B$, there corresponds the inclusion of von Neumann algebras $\mA_A\subset \mA_B$. When $B'$ and $A$ are disjoint, this is a split inclusion. In this paper, we study the characteristic operator $T(z)\equiv\Delta_B^{iz}\Delta_A^{-iz}$ of split inclusions in QFT. In conformal field theory, we study the domain of analyticity of the characteristic function in complex time. For the inclusion of a ball inside a wedge and the inclusion of a ball inside a larger ball, we set up a perturbative expansion for the characteristic function in conformal perturbation theory. In QFT, non-perturbatively away from the fixed point, we compute the characteristic function for short modular time and the operators localized near the entangling surface. We comment on the connections to modular chaos and noncommutative ergodic theory.}
 
@@ -122,6 +122,17 @@
 
 \section{Introduction}
 
+In modular theory, given a state $\omega$ on a von Neumann algebra $\mA$, we define the modular flow $\Delta_\omega^{-it}$, which can be identified as the unique automorphism of the algebra of observables (dynamics) that satisfies the KMS condition. Given a state $\omega$ on $\mA$ and a subalgebra $\mathcal{B}\subset \mA$, we define the {\it subalgebra flow} $\Delta_{\omega;\mA}^{-it}\Delta_{\omega;\mathcal{B}}^{it}$ flow that evolves backward in time by $\Delta_{\omega;B}^{it}$, and then forward in time by $\Delta_{\psi;A}^{-it}$. QFT associates to any inclusion of causally complete regions $B\subset A$, an inclusion of von Neumann algebras $\mA_B\subset \mA_A$. In this case, we call $\Delta_{\omega;A}^{-it}\Delta_{\omega;B}^{it}$ a {\it subregion flow}.
+
+In holography, at the $G_N=0$ limit (infinite $N$), the subregion/subalgebra duality associates to every causally-complete subregion of the bulk spacetime a von Neumann subalgebra on the boundary. The subregion flows play a prominent role in the algebraic reconstruction of the bulk spacetime from the net of boundary large $N$ algebras. 
+
+In the first part of this work, we motivate subregion/subalgebra flows from the point of view of classical Hamiltonian ergodic hierarchy. The standard ergodic hierarchy is formulated in terms of 
+
+In the second part of this work, we study the subregion/subalgebra flows in the vacuum of QFT for the inclusion of causal developments of a balls.
+
+
+
+
 \NL{Should we focus on standard inclusions on top of ergodic}
 
 Standard+maximal chaos (HMSI)  = PSL(2,R)
@@ -132,9 +143,9 @@ Standard+ ergodic (cyclic-separating)
 
 
 
-\section{Coarse-graining flows in classical ergodic theory}
+\section{Subregion/subalgebra flows in classical ergodic theory}
 
-\subsection{Classical coarse-grainings and entropy}
+\subsection{Coarse-gainings and Classical net of subregion algebras}
 
 The passage from a reversible microscopic description to an apparently irreversible macroscopic one is often attributed to information loss during coarse-graining. As we review below, this information loss can be quantified by associating an entropy to a coarse-graining. The generating functional for the coarse-graining entropy is a classical avatar of a coarse-graining flow. However, since the classical algebra is commutative, it does not generate any flows on the phase space; instead, it adds a phase to every observable, with a value that depends on the microstate (position on the phase space) and the flow parameter ``time".
 
@@ -165,7 +176,10 @@ The state $\mu$ is represented by the unit vector
   \qquad
   \|\ket{\sqrt{\rho}}\|_2^2=\int_X\rho\,\dd\mu=1.
 \]
+The GNS construction builds a connection between observables and states.
 
+
+\paragraph{Dynamics:} Dynamics will be described as a measure-preserving autmorphism $\sigma$ of $X$. General dynamics can be discontinuous or wild. In physics, we are often interested in smooth flows described by one-parameter family of volume-preserving diffeomorphisms $\Phi_t:X\to X$. Taking a $t$-derivative of how a point $x\in X$ moves under this flow defines a vector field, which preserves the volume-measure if and only if $\mathcal{L}_V\mu=0$; i.e. it is divergence-free with respect to $\mu$. 
 
 
 \paragraph{Coarse-graining:} Let $\Sigma_0\subseteq\Sigma$ be the sub-$\sigma$-algebra of macroscopically resolved events. We define a coarse-graining as 
@@ -222,13 +236,54 @@ E_\omega(f)(x) = \chi_O(x) f(x) + \chi_{O^c}(1) \left( \frac{1}{\omega_{O^c}(1)}
 \]
 In fact, there is a one-to-one correspondence between the states of $\mA_{O^c}$ and the normal-condition expectations for $\mA_O$. It is straightforward to see that this conditional expectation preserves any state for which the probability density $\rho$ restricted to $O^c$ is proportional to $\rho_\omega$. However, if the volume measure of $O^c$ is infinite, there does not exist any volume-preserving conditional expectation.
 
-\subsection{Classical ergodic theory}
+\subsection{Classical ergodic theory} 
 
-To define dynamics, we need more structure on our measurable space $X$. In particular, in addition to point-by-point multiplication that leads to the commutative algebra $L^\infty(X, \Sigma,\mu)$, we want a second operation that is a Poisson bracket $\{f,g\}$ that satisfies Leibniz's law. Poisson brackets generate Hamitlonian flows $f\to \alpha^g_t(f)$ defined by 
+We take the crossed product $\mM=L^\infty(X,\Sigma,\mu)\rtimes G$ where $G$ is the group generated by the action of the dynamics that we take to be locally compact, such as $G=\mathbb{R}$ and \textit{non-singular}, meaning it preserves sets of measure zero ($\mu(gE) = 0 \iff \mu(E) = 0$ for all $g \in G$). 
+
+Assuming the action is both \textbf{ergodic} (every $G$-invariant measurable set has either measure zero or full measure) and \textbf{essentially free} (the set of fixed points for any non-identity group element has measure zero), the center of $\mathcal{M}$ is trivial, guaranteeing that $\mathcal{M}$ is a \textbf{factor}. The Murray-von Neumann classification of the resulting factor $\mathcal{M}$ is entirely determined by the geometric and dynamical properties of the measure space under the group action.
+
+\paragraph{Type I: Atomic Phase Space (Transitive Dynamics):}
+The algebra $\mathcal{M}$ is a Type I factor if and only if the underlying measure space $X$ is \textbf{atomic} (consisting of discrete points with strictly positive measure) and the group $G$ acts transitively on it. 
+
+In this regime, classical phase space is completely discrete, and the dynamical flow simply permutes these discrete states. The resulting crossed product algebra is isomorphic to the algebra of all bounded operators on a Hilbert space, $\mathcal{M} \cong \mathcal{B}(\mathcal{H})$. For classical continuous systems where $X$ is a smooth symplectic manifold, the phase space is inherently \textit{diffuse} (no single point carries positive volume), making Type I algebras physically unrealizable.
+
+\paragraph{Type II: Volume Preservation (Conservative Dynamics):}
+The algebra $\mathcal{M}$ is a Type II factor if $X$ is diffuse (continuous) and the flow is structurally conservative. Mathematically, this occurs if and only if there exists a $\sigma$-finite measure $\nu$ that is equivalent to the background measure $\mu$ (meaning they share the same null sets) such that $\nu$ is strictly \textbf{$G$-invariant}: $\nu(gE) = \nu(E)$. The existence of this invariant measure guarantees the existence of a normal, semi-finite, faithful tracial weight on the algebra. 
+\begin{itemize}
+    \item \textbf{Type II$_1$ (Finite Volume):} If the invariant measure is finite ($\nu(X) < \infty$), it can be normalized to a probability measure. This corresponds to a classical system confined to a compact phase space or a closed energy surface (e.g., a chaotic pendulum or gas in a rigid box). The trace of the identity is finite, $\tau(\mathbf{1}) = 1$.
+    \item \textbf{Type II$_\infty$ (Infinite Volume):} If the invariant measure is infinite ($\nu(X) = \infty$), the system explores an unbounded phase space. This represents scattering processes or unconfined Hamiltonian flows where trajectories can escape to infinity. The trace exists, but $\tau(\mathbf{1}) = \infty$.
+\end{itemize}
+
+\paragraph{Type III: Quasi-Invariance (Dissipative Dynamics):}
+The algebra $\mathcal{M}$ is a Type III factor if $X$ is diffuse, the action is non-singular, but \textbf{no equivalent invariant measure exists}. In this regime, the flow is purely quasi-invariant. The classical dynamics preserve the topology of the space (impossible events remain impossible), but the vector field inherently stretches, compresses, or folds the phase space volume. No smooth change of coordinates (via a Radon-Nikodym derivative) can eliminate this divergence. 
+
+Physically, a Type III factor perfectly encodes \textbf{dissipative chaotic systems}, strange attractors, or Anosov diffeomorphisms with non-zero entropy production. Because the classical volume is perpetually destroyed or created, the resulting non-commutative algebra admits no trace ($\tau(AB) \neq \tau(BA)$). Instead, it possesses a non-trivial Tomita-Takesaki modular automorphism group, which acts as a purely algebraic clock tracking the exact rate of classical volume dissipation over time.
+
+\paragraph{Correlation functions and ergodic hierarchy:}
+The net of subregion algebras allows to define correlation functions which are the building blocks of the classical ergodic hierarchy...
+ 
+\subsection{Classical avatar of modular flow in Hamiltonian dynamics}
+
+In modular theory, we define a flow starting from a state. 
+We have already since that there is a correspondence between states $\omega$ and observables $\rho_\omega^{1/2}$. We saw that continuous dynamics is generated using vector fields on $X$. Given a smooth real $f$ on $X$, we can define the 1-form $df$. To connect observables to vector fields, we need a $(0,2)$-tensor $\sigma$: 
+\begin{align}
+    X_f(\cdot)=\sigma(\cdot,df)\ .
+\end{align}
+This defines the Poisson bracket
+\begin{align}
+    \{f,g\}=\sigma(df,dg)=X_f(dg)\ .
+\end{align}
+This implies that $f$ is conserved along the flows generated by $X_f$ \footnote{This principle underlies Noether theorem that associates conserved charges to symmetries.}. We need the $(0,2)$-tensor to be closed $d\sigma=0$ so that the Lie-algebra of vector fields $X_f$ matches the Poisson algebra of functions 
+\begin{align}
+    [X_f,X_g]=X_{\{f,g\}}\ .
+\end{align}
+
+
+
+Poisson brackets generate Hamitlonian flows $f\to \alpha^g_t(f)$ defined by 
 \begin{align}
     \partial_t\alpha_t^g(f)=-\{f,g\}\ .
 \end{align}
-
 If $X$ is a Poisson manifold, it is equipped with such a Poisson bracket, and the subspace of smooth real functions on $X$ forms a Poisson algebra. However, a general choice of volume measure on $X$ is not invariant under Hamiltonian flows above. The condition for invariance is 
 \begin{align}\label{statepreserve}
     \int \{f,H\} d\mu=0\ .
@@ -256,7 +311,7 @@ So the semi-classical avatar of inclusion of vN algebras is a Poisson coarse-gra
 
 \paragraph{No subregion nets:} Sub-symplectic manifolds live in lower dimensions that $X$. That is why there is no natural notion of a net of coarse-graining flows associated to subregions on $X$. In cases where on can quantize the phase space and obtain a one-particle Hilbert space, the structure that replaces the net of subregion algebras is the net of standard subspaces. There is a canonical notion of subspace modular flow here that we review in Appendix \ref{}. The connection between this and the quantum ergodic theory we discuss in the next section (inclusion of algebras) is based on the second quantization.
 
-\subsection{Classical avator of modular flow}
+\paragraph{Classical avatar of KMS condition:}
 
 Any state described by a probability density that is a function of $h$ alone is invariant under this flow. Among such states, the Gibbs state $\omega_\beta$ stands out as the unique state with the distinguished property that it satisfies the KMS condition that any pair of observables $f$ and $g$ \footnote{In this context, it is sometimes called the Gallavotti-Verboven condition.}:
 \begin{equation}\label{KMSclassical}
@@ -631,20 +686,23 @@ In summary, the classical theory says that a coarse-graining is a sub-\(\sigma\)
 Takesaki's theorem identifies the special case where the dynamics is the modular flow of a state: a subalgebra is invariant under the modular flow exactly when there is a unique conditional expectation onto it preserving that state.
 
 
-\subsection{Coarse-graining flows and entropy production}
+\subsection{Subregion/subalgebra Hamiltonian flows}
 
 Standard inclusions are unique in that the action of the characteristic flow on the relative commutant generates all of the larger algebra?
 
-\section{Coarse-graining flows in quantum ergodic theory}\label{section:basics}
+\section{Subalgebra flows in quantum ergodic theory}\label{section:basics}
 
 \subsection{Quantum coarse-grainings}
-modular flow
 
 \paragraph{Algebra of quantum observables:}
 
 \paragraph{Quantum states:}
 
 \paragraph{GNS Hilbert space:}
+
+paragraph{Dynamics}
+
+\paragraph{Modular flow:}
 
 \paragraph{Quantum coarse-grainings:}
 
@@ -653,7 +711,8 @@ modular flow
 \paragraph{Coarse-graining flow and entropy generation:}
 
 
-\subsection{Quantum ergodic theory}
+
+\subsection{Quantum ergodic theory for modular flow}
 
 \paragraph{State-preserving conditional expectations as Quantum Error Correction codes:}
 
@@ -721,7 +780,7 @@ The situation above is unitarily correctable QEC. In stochastic QEC, if we have 
 % A useful way to compare classical ergodic theory with operator-algebraic dynamics is to formulate both in terms of algebras of observables. 
 
 
-\subsection{Twirled Petz map and characteristic function of inclusions}
+\subsection*{Twirled Petz map and characteristic function of inclusions}
 
 
 \NL{Explain physics interpretation}
@@ -773,7 +832,7 @@ Under our assumptions, both $\mathcal{A}$ and $\mathcal{B}$ acting on $\mathcal{
 
 
 
-\subsection{Subregion coarse-graining flow}
+\subsection*{Subregion coarse-graining flow}
 
 \NL{Add modular chaos bound}
 
@@ -842,7 +901,7 @@ Write down the converse in holography... If we have diff-invariant inclusions, t
 
 It is the $z=i/2$ case. It is the canonical endomorphism. It is the Petz map in the case of QECC.
 
-\subsection{Future algebras, characteristic functions and spacetime symmetries}
+\subsection{Future algebras, Modular Inclusions and Intersections}
 
 \subsection{Geometry from a net of coarse-grainings}
 
@@ -964,78 +1023,70 @@ One main difference compared to the wedge-inside-wedge case is that there are mo
 
 \NL{Study this in modular frequency space}
 
-\subsection{Chaos Bound}
-\KL{==========================Chaos bound===================}\\
-We consider the modular chaos bound condition studied in \cite{}. We define
+\subsection{Modular Chaos Bound}
+We first review the modular chaos bound condition studied in \cite{}\footnote{Different conventions maybe used but they are simply related by a shift in $z$ or by a complex conjugate.}. We consider, for $B \subset A$,
 \begin{eqnarray}
-    f_\mO(u)&&=\frac{\bra{\mO}\Delta_A^{1/2+iu}\Delta_B^{-iu}\ket{\mO}}{\sqrt{\braket{a|\Delta_A^{1/2}a}\braket{b|\Delta_B^{1/2}b}}}\\
-    &&=\frac{\bra{\Delta_A^{1/4}\mO} T_{B\subset A}(-i/4+u)\ket{\Delta_B^{1/4} \mO}}{\sqrt{\braket{\mO|\Delta_A^{1/2}\mO}\braket{\mO|\Delta_B^{1/2}\mO}}}\nn\\
-    &&=1+i \mathcal{M}_{\mO}(u)
+    f(z)&&=\frac{\bra{O_1}\Delta_A^{1/2+iz}\Delta_B^{-iz}\ket{O_2}}{\sqrt{\bra{O_1}\Delta_A^{1/2}\ket{O_1} \bra{O_2}\Delta_B^{1/2}\ket{O_2}}}\\
+    &&=\frac{\bra{\Delta_A^{1/4}O_1} \Delta_A^{1/4+iz}\Delta_B^{-1/4-iz}\ket{\Delta_B^{1/4} O_2}}{\sqrt{\bra{O_1}\Delta_A^{1/2}\ket{O_1} \bra{O_2}\Delta_B^{1/2}\ket{O_2}}}\nn\\
+    &&=1+i \mathcal{M}(z)
 \end{eqnarray}
+Both $\ket{\Delta_A^{1/4}O_1}$ and $\ket{\Delta_B^{1/4} O_2}$ have a finite norm even if $O_1, O_2$ are a point-like operator. $f(z)$ is bounded analytic on the strip Im$(z) \in (-1/4,1/4)$ and continuous on the closure. This property follows from $\Delta_A^{iz}\Delta_B^{-iz}$ being bounded analytic on the strip Im$(z) \in (-1/2,0)$ and strongly continuous on the closure. 
 First, we find that 
 \begin{eqnarray}
-    1-\Im(\mathcal{M}_\mO(u))=\Re(f_\mO(u))\leq |f_\mO(u)|\leq 1
+    1-\text{Im}(\mathcal{M}(z))=\text{Re}(f(z))\leq |f(z)|\leq 1
 \end{eqnarray}
 which implies that 
 \begin{eqnarray}
-    \Im\mathcal{M}_\mO(u)\geq 0\ .
+    \text{Im}\mathcal{M}(z)\geq 0\ .
 \end{eqnarray}
-Using the change of variables $E=ie^{-2\pi u}$ sends the function above to the upper half-plane. Therefore, we can view $\mM(E)$ as an analytic map from the upper half-plane $H$ to itself. Then, writing $E=v+iw$ the Schwarz-Pick lemma becomes
+The change of variable $E=ie^{-2\pi z}$ sends the strip to the upper half-plane $\mathbb{H}^+$. $\mM(E)$ is an analytic map from the upper half-plane to itself. By writing $E=v+iw$, the Schwarz-Pick lemma gives
 \begin{eqnarray}
-    \frac{|w \p_w \mM(v+iw)|}{\Im \mM(v+iw)}\leq 1\ . 
+    \frac{|w \p_w \mM(v+iw)|}{\text{Im} \mM(v+iw)}\leq 1\ . 
 \end{eqnarray}
-Since we have $|\p_w \Im\mM(v+i\omega)|\leq |\p_w \mM(v+i\omega)|$ we find
+Since we have $|\p_w \text{Im}\mM(v+i\omega)|\leq |\p_w \mM(v+i\omega)|$, we find
 \begin{eqnarray}
-    |w\p_w \log \Im \mM(v+iw)| \stackrel{(1)}{\leq} \frac{|w \p_w \mM(v+iw)|}{\Im \mM(v+iw)} \stackrel{(2)}{\leq} 1\ .
+    |w\p_w \log \text{Im} \mM(v+iw)| \stackrel{(1)}{\leq} \frac{|w \p_w \mM(v+iw)|}{\text{Im} \mM(v+iw)} \stackrel{(2)}{\leq} 1\ .
 \end{eqnarray}
-This is the modular chaos bound. To saturate this bound, first we need to take the equality condition $(2)$ in the lemma above, which fixes $\mM(E)=\frac{a E+b}{c E+d}$ to be a $PSL(2,\mathbb{R})$ transformation. Next, we require the saturation of the first inequality $(1)$
+This is the modular chaos bound (the exact version). To saturate this bound, the inequality $(2)$ fixes $\mM(E)=\frac{a E+b}{c E+d}$ to be a $PSL(2,\mathbb{R})$ transformation. Next, the saturation of the first inequality $(1)$ gives
 \begin{eqnarray}
-    \forall v+iw\in H:\qquad \p_w \Re \mM(v+iw)=0\ .
+    \p_w \text{Re} \mM(v+iw)=0, \quad \forall v+iw\in \mathbb{H}^+ .
 \end{eqnarray}
-This is satisfied if and only if $c=0$, i.e.
+This is satisfied if and only $\mM(E)$ takes the form
 \begin{eqnarray}
-    \mM(E)=\frac{a E+b}{d}\ .
+    \mM(E)=a E+b, \quad a>0,\ b\in\mathbb{R}.
 \end{eqnarray}
-\KL{*****} However, this inequality is not tight, i.e. $|w\p_w \log \Im \mM(v+iw)| < 1$. It is like a supremum rather than a maximum.
+However, this saturation is very restrictive and has little application. $f(z) = 1+ib - a e^{-2\pi z}$ is not bounded in the strip. Therefore, there is no $f(z)$ saturates this bounded and the inequality is not tight, i.e. $|w\p_w \log \Im \mM(v+iw)| < 1$. The bound at best gives a supremum rather than a maximum.
 \begin{lemma}
-    Consider a function $\mM(E)$ that is analytic in the upper half-plane ($\Im E > 0$). If it can be written as $f(E) = 1+i\mM(E)$ for some function $f(E)$ that is bounded by 1 in the upper half-plane, then the modular chaos bound cannot be saturated. In other words,
+    Given a function $\mM(E)$ that is analytic in the upper half-plane ($\text{Im} E > 0$). If $f(E) = 1+i\mM(E)$ is bounded by 1 in the upper half-plane, then $\mM(E)$ cannot saturate the modular chaos bound, i.e.
     \begin{align}
-        |w\p_w \log \Im \mM(v+iw)| < 1.
+        |w\p_w \log \text{Im} \mM(v+iw)| < 1, \quad \text{for}\ E=v+iw.
     \end{align}
 \end{lemma}
-We can write $\mM = -i(f-1)$. The image of $\mM$ is within the unit disk centered at $i$ in $\mathbb{C}$. Inequality $(2)$ is saturated if and only if the function is a M\"obius transformation with real coefficients. These M\"obius transformations are bijetive functions mapping from the upper half-plane to itself. The image of $\mM$ is by definition a strict subset of the upper half-plane, whereas the domain is the entire upper half-plane. The inequality can never exactly saturate. Instead, we can look for an asymptotic saturation under suitable limits. The modular chaos bound is proposed as the following\cite{}. Consider $\mM = i\varepsilon p e^{\lambda u} + O(\varepsilon^2)$ for some small $\varepsilon \ll 1$, $\varepsilon e^{\lambda u} \ll 1$, and $p>0$. The above inequality gives $\lambda \leq 2\pi$. This is the modular chaos bound. This chaos bound is only meaningful in a proper range of time scales. 
+There is another way to see why we need an approximate version of this bound. We consider $\mM = -i(f-1)$, which has image within the unit disk centered at $i$ in $\mathbb{C}$. The inequality $(2)$ is saturated if and only if the map is a M\"obius transformation with real coefficients. These M\"obius transformations are bijetive functions mapping from the upper half-plane to itself. The image of $\mM$ is by definition a strict subset of the upper half-plane, whereas the domain is the entire upper half-plane. The inequality can never exactly saturate. Instead, we shall consider an asymptotic saturation with a suitable limit/approximation. The usual modular chaos bound is proposed in the following way\cite{}. Consider $\mM = i\varepsilon p e^{\lambda z} + O(\varepsilon^2)$ for small $\varepsilon \ll 1$, $\varepsilon e^{\lambda z} \ll 1$, and $p>0$. The modular chaos bound gives $\lambda \leq 2\pi$. This bound is only meaningful in the proper range of time scales. This bound control the behaviour of early time chaos. 
 
-We now consider a $0+1$d GFF example.
+% \subsection{Modular chaos bound in GFF}
 
-%\KL{======== 0+1d GFF ==================================}
-
-
-\KL{=======================2. The Modular Chaos bound in GFF ============}\\
-\KL{Not finished yet.}
-
-\subsection{Modular chaos bound in GFF}
-
-We then consider the modular chaos bound in the 0+1d GFF example. We consider $B = (-1,1)$ and $B(s) = (-e^{-2\pi s}, e^{-2\pi s})$. We define
-\begin{eqnarray}
-    f_{s,x}(u)&&=\frac{\bra{\phi(x)}\Delta_B^{1/2+iu}\Delta_{B(s)}^{-iu}\ket{\phi(x)}}{\sqrt{\braket{\phi(x)|\Delta_B^{1/2}\phi(x)}\braket{\phi(x)|\Delta_{B(s)}^{1/2}\phi(x)}}}\\
-    &&=\frac{\bra{\Delta_A^{1/4}\phi(x)} T_{0,s}(-i/4+u)\ket{\Delta_B^{1/4} \phi(x)}}{\sqrt{\braket{\phi(x)|\Delta_B^{1/2}\phi(x)}\braket{\phi(x)|\Delta_{B(s)}^{1/2}\phi(x)}}}\nn\\
-    &&=1+i \mathcal{M}_{s,x}(u),
-\end{eqnarray}
-for $x \in B(s)\subset B$. By substituting $E = ie^{-2\pi u} \in {\mathbb{H}_+}$ for $\Im u \in (-\pi/4,\pi/4)$, we have
-\begin{align}
-    the.long.complicated.expression.here.finish.it.later
-\end{align}
-This is not a M\"obius transformation, which is expected. In the $\pi s \ll 1$ limit, we have
-\begin{align}
-    f_{s,x}(E) &= 1 - i\pi s h\lb \frac{1-x}{1+x}\frac{1}{E} - \frac{1+x}{1-x}E \rb + O((\pi s)^2),\\
-    f_{s,x}(u) &= 1 - \pi s h\lb \frac{1-x}{1+x}e^{2\pi u} + \frac{1+x}{1-x}e^{-2\pi u} \rb + O((\pi s)^2).
-\end{align}
-We then consider the late time behaviour in a double-scale limit, i.e. $e^{2\pi u} \gg1$ while keeping $1\gg\pi se^{2\pi u}$. The previous expression gives
-\begin{align} 
-    f_{s,x}(u) \approx 1 - \pi s h \frac{1-x}{1+x}e^{2\pi u},\\
-    \mM_{s,x}(u)\approx i\pi s h \frac{x-1}{x+1}e^{2\pi u}.
-\end{align}
-This is the saturation of the modular chaos bound asymptotically. It gives a similar result if we consider $e^{-2\pi u} \gg1$ instead. In other words, $\mM_{s,x}(u) \sim ise^{2\pi |u|}$ for $e^{2\pi |u|} \gg 1\gg\pi se^{2\pi |u|}$.
+% We then consider the modular chaos bound in the 0+1d GFF example. We consider $B = (-1,1)$ and $B(s) = (-e^{-2\pi s}, e^{-2\pi s})$. We define
+% \begin{eqnarray}
+%     f_{s,x}(u)&&=\frac{\bra{\phi(x)}\Delta_B^{1/2+iu}\Delta_{B(s)}^{-iu}\ket{\phi(x)}}{\sqrt{\braket{\phi(x)|\Delta_B^{1/2}\phi(x)}\braket{\phi(x)|\Delta_{B(s)}^{1/2}\phi(x)}}}\\
+%     &&=\frac{\bra{\Delta_A^{1/4}\phi(x)} T_{0,s}(-i/4+u)\ket{\Delta_B^{1/4} \phi(x)}}{\sqrt{\braket{\phi(x)|\Delta_B^{1/2}\phi(x)}\braket{\phi(x)|\Delta_{B(s)}^{1/2}\phi(x)}}}\nn\\
+%     &&=1+i \mathcal{M}_{s,x}(u),
+% \end{eqnarray}
+% for $x \in B(s)\subset B$. By substituting $E = ie^{-2\pi u} \in {\mathbb{H}_+}$ for $\Im u \in (-\pi/4,\pi/4)$, we have
+% \begin{align}
+%     the.long.complicated.expression.here.finish.it.later
+% \end{align}
+% This is not a M\"obius transformation, which is expected. In the $\pi s \ll 1$ limit, we have
+% \begin{align}
+%     f_{s,x}(E) &= 1 - i\pi s h\lb \frac{1-x}{1+x}\frac{1}{E} - \frac{1+x}{1-x}E \rb + O((\pi s)^2),\\
+%     f_{s,x}(u) &= 1 - \pi s h\lb \frac{1-x}{1+x}e^{2\pi u} + \frac{1+x}{1-x}e^{-2\pi u} \rb + O((\pi s)^2).
+% \end{align}
+% We then consider the late time behaviour in a double-scale limit, i.e. $e^{2\pi u} \gg1$ while keeping $1\gg\pi se^{2\pi u}$. The previous expression gives
+% \begin{align} 
+%     f_{s,x}(u) \approx 1 - \pi s h \frac{1-x}{1+x}e^{2\pi u},\\
+%     \mM_{s,x}(u)\approx i\pi s h \frac{x-1}{x+1}e^{2\pi u}.
+% \end{align}
+% This is the saturation of the modular chaos bound asymptotically. It gives a similar result if we consider $e^{-2\pi u} \gg1$ instead. In other words, $\mM_{s,x}(u) \sim ise^{2\pi |u|}$ for $e^{2\pi |u|} \gg 1\gg\pi se^{2\pi |u|}$.
 
 
 
@@ -1133,7 +1184,7 @@ The integral of $X$ and $u$ is the integration over the double cone region. The 
 
 
 \paragraph{Almost-marginal relevant operators*:} 
-We consider small $\epsilon =2-\Delta\ll 1$ and expand $Q_{\text{nonloc}}(u,X;s)$ up to the leading order term. We have the following expansion\footnote{One may worry that the first order approximation is only valid for $\epsilon \ln\Omega \ll 1$ but $\Omega$ can be arbitrarily large when $X\approx 0$ and $\tau \approx 1/2$. We can split the $\tau$ integral into $(\frac{1}{2}-\delta, \frac{1}{2}+\delta)$ and the rest, with $1 \gg \pi\delta > e^{-\frac{1}{2\epsilon}}$. For $X\approx0$, $\Omega^{\Delta-2} \approx (X^2+\pi^2\delta^2)^{\Delta-2}$ such that the integral in $(\frac{1}{2}-\delta, \frac{1}{2}+\delta)$ is $O(e^{-\frac{1}{2\epsilon}})$. The width of the interval is also $O(e^{-\frac{1}{2\epsilon}})$. This is also how we see the integrand of $Q_{\text{nonloc}}$ being absolutely integrable for $\Delta > 3/2$. The orthogonality of cosine functions we use later also remains approximately true because of the same reason.}
+We consider small $\epsilon =2-\Delta\ll 1$ and expand $Q_{\text{nonloc}}(u,X;s)$ up to the leading order term. We have the following expansion\footnote{One may worry that the first order approximation is only valid for $\epsilon \ln\Omega \ll 1$ but $\Omega$ can be arbitrarily large when $X\approx 0$ and $\tau \approx 1/2$. We can split the $\tau$ integral into $(\frac{1}{2}-\delta, \frac{1}{2}+\delta)$ and the rest, with $1 \gg \pi\delta > e^{-\frac{1}{2\epsilon}}$. For $X\approx0$, $\Omega^{\Delta-2} \approx (X^2+\pi^2\delta^2)^{\Delta-2}$ such that the integral in $(\frac{1}{2}-\delta, \frac{1}{2}+\delta)$ is $O(e^{-\frac{1}{2\epsilon}})$. The width of the interval is also $O(e^{-\frac{1}{2\epsilon}})$. This is also how we see the integrand of $Q_{\text{nonloc}}$ being absolutely integrable for $\Delta > 1$. The orthogonality of cosine functions we use later also remains approximately true because of the same reason.}
 \begin{align}
     \Omega^{\Delta-2}(-i\tau,X) - 1 =&\; - \epsilon \ln \left(\frac{1+X^2+(1-X^2)\cos(2\pi \tau)}{2}\right) + O(\epsilon^2)\\
     =&\; - \epsilon \ln \left[\frac{1+X^2}{2}\left(1+\frac{1-X^2}{1+X^2}\cos(2\pi \tau)\right)\right] + O(\epsilon^2). %\\
