@@ -111,10 +111,7 @@
 % Abstract
 \abstract{Recent developments in the algebraic approach to bulk reconstruction in holography have highlighted the role of half-sided modular inclusions and modular intersections in reconstructing spacetime symmetry transformations. A key ingredient in these algebraic reconstructions is the concept of subalgebra flow which composes modular evolutions associated with an algebra and a subalgebra. In the first part of this work, we motivate the notion of coarse-grainings (subalgebras) in the classical Hamiltonian ergodic hierarchy, distinguishing two cases: subspace and subsystem subalgebras. To associate flows to these subalgebras, we use the Poisson bracket on phase space to identify a classical avatar of the modular flow. We discuss the generalization to the quantum ergodic hierarchy, focusing on ergodic classes that correspond to {\it non-expected} and {\it split} subalgebras that arise in the net of subalgebras of QFT. In the second part of this work, we compute subregion flows corresponding to causal developments of balls in vacuum CFT and study their analytic properties. For inclusion of wedges in QFT and inclusion of ball-shaped regions in CFTs, the subregion flow is, up to a reparametrization, the same as time evolution with the global Hamiltonian. We compute the subregion flows in conformal perturbation theory and prove bounds on the comparison of subregion flows of balls with global time evolution in the vacuum of a general QFT.}
 
-% In QFT, to every inclusion of causally complete regions $A\subset B$, there corresponds the inclusion of von Neumann algebras $\mA_A\subset \mA_B$. When $B'$ and $A$ are disjoint, this is a split inclusion. In this paper, we study the characteristic operator $T(z)\equiv\Delta_B^{iz}\Delta_A^{-iz}$ of split inclusions in QFT. In conformal field theory, we study the domain of analyticity of the characteristic function in complex time. For the inclusion of a ball inside a wedge and the inclusion of a ball inside a larger ball, we set up a perturbative expansion for the characteristic function in conformal perturbation theory. In QFT, non-perturbatively away from the fixed point, we compute the characteristic function for short modular time and the operators localized near the entangling surface. We comment on the connections to modular chaos and noncommutative ergodic theory.}
 
-% Keywords (optional but recommended)
-%\pacs{00.00.00, 11.11.11}  % Replace with appropriate PACS codes
 
 \maketitle
 
@@ -143,34 +140,727 @@ Standard+ ergodic (cyclic-separating)
 
 
 
+% \section{Subalgebra flows in classical ergodic theory}
+
+% %\subsection{Coarse-gainings and Classical net of subregion algebras}
+
+% The passage from a reversible microscopic description to an apparently irreversible macroscopic one is often attributed to information loss during coarse-graining. As we review below, this information loss can be quantified by associating an entropy to a coarse-graining. The generating functional for the coarse-graining entropy is a classical avatar of a coarse-graining flow. However, since the classical algebra is commutative, it does not generate any flows on the phase space; instead, it adds a phase to every observable, with a value that depends on the microstate (position on the phase space) and the flow parameter ``time".
+
+% % We will see that it is the failure of conditional expectation to intertwine the microscopic phase action with its coarse-grained counterpart that is of interest to us.  The same relative density that measures this failure generates a cocycle whose expectation is exactly the Kullback--Leibler divergence, and this divergence is exactly the entropy increase produced by coarse-graining.  These results provide a rigorous kinematic account of information loss, but they do not by themselves derive an irreversible physical time evolution.
+
+% \paragraph{Algebra of observables:} In classical mechanics, one often begins with a phase space that we take to be an orientable smooth manifold \(X\) that admits a strictly positive volume measure. Points \(x\in X\) represent microstates of the system. But from the algebraic viewpoint, the primary object is not the set of points but the commutative von Neumann algebra of observables (complex measurable functions)
+% \[
+% M=L^\infty(X,\Sigma,\mu),
+% \]
+% where \((X,\Sigma,\mu)\) is a probability space, and $\mu$ is a volume measure on $X$ \footnote{$\Sigma$ is the completion of the Borel $\sigma$-algebra of the open sets of $X$'s topology with respect to the measure $\mu$. If $\mu$ is a general measure, to generate the algebra, we need to take the equivalence classes of functions that agree $\mu$-almost everywhere.}.
+
+
+% \paragraph{States:} If the volume measure $\mu$ above is finite, it is interpreted as a distinguished state (vacuum)\footnote{If the volume measure $\mu$ is not finite, it still acts as a distinguished weight (unnormalized state). We come back to this in later sections.}. General states correspond to measures $\nu$ on $X$ that are absolutely continuous with respect to the volume measure $\mu$ (denoted $\nu\ll \mu$), meaning that for every measurable set $E\in X$, if $\mu(E)=0$ then $\nu(E)=0$.
+% There exists a $\mu$-measurable function $\rho_\nu:X\to [0,\infty)$ such that $\nu(E)=\int_E \rho_\nu d\mu$ \footnote{In mathematical terminology, $\rho$ is called a Radon-Nikodym derivative.}. In other words, every state can be viewed as a probability density function $\rho_\nu$ on $X$, with expectation values of an observable $f$ in this state captured by integrals on $X$: 
+% \begin{align}
+% \braket{f}_\nu=\int_{x\in X}f(x) d\nu(x)=\int_{x\in X} \rho_\nu(x) f(x) d\mu(x)\ .
+% \end{align}
+
+% \paragraph{GNS Hilbert space:} Observables in $X$ act on $\mu$ by multiplication, creating excited states on the vacuum that span the GNS Hilbert space 
+% \[
+%   \cH=L^2(X,\Sigma,\mu),
+%   \qquad
+%   \mA=L^\infty(X,\Sigma,\Omega),
+% \]
+% The state $\mu$ is represented by the unit vector
+% \[
+%   \ket{\sqrt{\rho}}\in\cH,
+%   \qquad
+%   \|\ket{\sqrt{\rho}}\|_2^2=\int_X\rho\,\dd\mu=1.
+% \]
+% The GNS construction builds a connection between observables and states.
+
+
+% \paragraph{Dynamics:} Dynamics will be described as a measure-preserving autmorphism $\sigma$ of $X$. General dynamics can be discontinuous or wild. In physics, we are often interested in smooth flows described by one-parameter family of volume-preserving diffeomorphisms $\Phi_t:X\to X$. Taking a $t$-derivative of how a point $x\in X$ moves under this flow defines a vector field, which preserves the volume-measure if and only if $\mathcal{L}_V\mu=0$; i.e. it is divergence-free with respect to $\mu$. 
+
+
+% % \paragraph{Coarse-graining:} Let $\Sigma_0\subseteq\Sigma$ be the sub-$\sigma$-algebra of macroscopically resolved events. We define a coarse-graining as 
+% % \[
+% %   Pf:=\E_\mu[f\mid\Sigma_0].
+% % \]
+% % On the Hilbert space $\mH$, $P$ is represented by the orthogonal projection onto $L^2(X,\Sigma_0,\mu)$ \footnote{Note that $P$ acts on functions and not measurable sets.}. Coarse-graining by construction preserves the volume measure $\mu$; however, general states are coarse-grained as $\rho_0=P \rho$. A coarse-graining can be viewed as a conditional expectation $E:L^\infty(X,\Sigma,\mu)\to L^\infty(X,\Sigma_0,\mu\mid \Sigma_0)$ that projects to the algebra of coarse-grained observables.
+% % It is a defining property of this projection that the fine-grained and coarse-grained states are observationally indistinguishable on the macroscopic algebra, even though they may differ on the full $\sigma$-algebra.
+
+
+% % \paragraph{Net of subregion (subspace) coarse-grainings:} In our measure-theoretic setting above, there is an important class (net) of coarse-grainings that are provided geometrically by restricting to subregions $O\subset X$. For a measurable subregion $O \subset X$, we wish to associate a true unital von Neumann subalgebra $\mathcal{A}_O \subset \mathcal{A}=L^\infty(X,\Sigma,\mu)$ that captures the observables strictly localized to $O$. 
+
+% % To ensure that $\mathcal{A}_O$ shares the global identity element $\mathbf{1}_X$, this subalgebra is the space of essentially bounded functions that are arbitrarily measurable within $O$ but strictly constant almost everywhere outside of $O$:
+% % \[
+% % \mathcal{A}_O = \{ f \in L^\infty(X, \Sigma, \mu) \mid f = \chi_O f + c \chi_{O^c} \text{ for some } c \in \mathbb{C} \}
+% % \]
+% % where $\chi_O$ and $\chi_{O^c}$ are the indicator functions of the region and its complement, respectively. Similarly, there is a subalgebra associated to the complement $\mA_{O^c}$ \footnote{Note that in this construction, the regions $O$ have the same dimension as the phase space $X$.}
+
+% % The projections from the global algebra $\mathcal{A}$ into the local subalgebra $\mathcal{A}_O$ are normal conditional expectation $E: \mathcal{A} \to \mathcal{A}_O$ \footnote{A conditional expectation is a unit-preserving, positive, ultraweakly continuous linear map satisfying the module property $E(f_1 g f_2) = f_1 E(g) f_2$ for all $f_1, f_2 \in \mathcal{A}_O$ and $g \in \mathcal{A}$.}. Given a state $\omega_{O^c}$ on $\mA_{O^c}$, these projections (normal conditional expectations) are defined as
+% % \[
+% % E_\omega(f)(x) = \chi_O(x) f(x) + \chi_{O^c}(1) \left( \frac{1}{\omega_{O^c}(1)} \int_{O^c} f(y) \rho_\omega(y) \, d\mu(y) \right)\ .
+% % \]
+% % In fact, there is a one-to-one correspondence between the states of $\mA_{O^c}$ and the normal-condition expectations for $\mA_O$. It is straightforward to see that this conditional expectation preserves any state for which the probability density $\rho$ restricted to $O^c$ is proportional to $\rho_\omega$. However, if the volume measure of $O^c$ is infinite, there does not exist any volume-preserving conditional expectation.
+
+
+% % \paragraph{Subspace algebras versus subsystem algebras:} Note that, in this construction, we have a direct sum $\mA_O\oplus \mA_{O^c}$ as opposed to a subsystem where we expect a tensor product structure. For a measurable partition \(X=O\sqcup O^c\),
+% % \[
+% % L^\infty(X)
+% % \simeq L^\infty(O)\oplus L^\infty(O^c).
+% % \]These summands represent mutually exclusive alternatives: the microstate belongs to one region or the other. Their units are \(\chi_O\) and \(\chi_{O^c}\), and their products vanish.
+% % However, your unital region algebras are
+% % \[
+% % \mathcal A(O)=L^\infty(O)\oplus\mathbb C\chi_{O^c},
+% % \qquad
+% % \mathcal A(O^c)=\mathbb C\chi_O\oplus L^\infty(O^c).
+% % \]They are not themselves the two direct summands. They overlap:
+% % \[
+% % \mathcal A(O)\cap\mathcal A(O^c)
+% % =\operatorname{span}\{\chi_O,\chi_{O^c}\}.
+% % \]The direct summands are the supported algebras \(\chi_OL^\infty(X)\) and \(\chi_{O^c}L^\infty(X)\).
+% % For a global product \(X=Y\times Z\), equipped with a product measure,
+% % \[
+% % L^\infty(X)
+% % \simeq L^\infty(Y)\,\bar\otimes\,L^\infty(Z).
+% % \]The base and hidden-variable algebras are
+% % \[
+% % \mathcal N=L^\infty(Y)\otimes1,
+% % \qquad
+% % \mathcal R=1\otimes L^\infty(Z).
+% % \]They represent simultaneously existing degrees of freedom: a microstate specifies both \(y\) and \(z\). Their intersection is \(\mathbb C1\), and together they generate the full algebra.
+% % For the Hamiltonian interpretation, require a product Poisson structure as well:
+% % \[
+% % \{f(y),g(z)\}=0.
+% % \]
+% % This factorization does not require the state to factorize; \(\rho(y,z)\) may contain correlations.
+% % The second qualification is that a general Poisson fibration \(X\to Y\) need not admit such a global product decomposition or a globally defined complementary fiber algebra.
+% % A precise formulation for the paper would be:
+% % A partition of phase space gives a direct-sum decomposition into mutually exclusive sectors. A product decomposition of phase space gives a tensor-product decomposition into simultaneous subsystems. General Poisson coarse-grainings extend the subsystem picture without necessarily admitting a global tensor-product factorization.
+
+
+
+
+% \paragraph{Coarse-grainings:} Classical coarse-graining retains a subalgebra of observables and discards the information needed to distinguish states that agree on this subalgebra. Two useful constructions arise from a subregion of the space of microstates and from a subsystem of observed variables. Both can be formulated in measure theory, before introducing a Hamiltonian or a Poisson bracket. We first describe these constructions and then ask when the retained observables evolve autonomously.
+
+% Let $(X,\Sigma,\mu)$ be a standard probability space, with the observable algebra
+% \begin{align}
+%     \mA=L^\infty(X,\Sigma,\mu)\ .
+% \end{align}
+% All measurable functions and sets are understood modulo $\mu$-null sets. A coarse description is specified by a sub-$\sigma$-algebra $\Sigma_0\subseteq\Sigma$, with associated unital von Neumann subalgebra
+% \begin{align}
+%     \mB=L^\infty(X,\Sigma_0,\mu)\subseteq\mA\ .
+% \end{align}
+% The reference measure $\mu$ determines the coarse-graining map
+% \begin{align}
+%     E_{\mB}(f)=\mathbb E_\mu[f\mid\Sigma_0]\ .
+% \end{align}
+% This is the unique $\mu$-preserving normal conditional expectation onto $\mB$. On $L^2(X,\mu)$ it acts as the orthogonal projection onto $L^2(X,\Sigma_0,\mu)$. A general normal state $\omega_\rho(f)=\int_X\rho f\,d\mu$ is coarse-grained to $\omega_0=\omega_\rho\circ E_{\mB}$, whose density is $\rho_0=E_{\mB}(\rho)$, using the $L^1$ extension of conditional expectation. The two states agree on $\mB$. Thus the subalgebra specifies the retained information, while the chosen expectation specifies how a state on this subalgebra is extended back to the full algebra.
+
+
+% \paragraph{Entropy of a coarse-graining:} Consider a coarse-graining $E$, a state $\rho$, and its coarse-grained version $\rho_0=\rho\circ E$. Then, the relative entropy (KL-divergence) of these two states associates an entropy to this coarse-graining:
+% \begin{align}
+%     S(\rho\|\rho_0)=\int_X \rho \log(\rho/\rho_0)d\mu=H(\rho_0)-H(\rho)
+% \end{align}
+% where $H(\rho)$ is the continuous version of Shannon entropy associated to state $\rho$ (sometimes called differential entropy). The positivity of relative entropy implies that the entropy created by coarse-graining is positive.
+
+% \paragraph{Generating function for entropy:} The multiplcative relative phase 
+% \[
+% u_t
+% =
+% \left(\frac{\rho}{\rho_0}\right)^{it}
+% \]
+% is the generating function for coarse-graining entropy because 
+% \begin{align}
+% &-i\left.\frac{\dd}{\dd t}u_t\right|_{t=0}
+% =
+% \log\frac{\rho}{\rho_0},\nn\\
+% &S(\rho\|\rho_0)=-i \int_X \rho (\partial_t u_t\big|_{t=0})d\mu\ .
+% \end{align}
+% More generally, for every state $\rho$ we can define the strongly continuous unitary multiplication group
+% \[
+%   U_t^\rho:=\Mop_{\rho^{it}}
+%   =\exp\!\bigl(it\Mop_{\log\rho}\bigr),
+%   \qquad
+%   (U_t^\rho\psi)(x)=e^{it\log\rho(x)}\psi(x).
+% \]
+% Similarly, the coarse-grained density defines
+% \[
+%   U_t^{\rho_0}:=\Mop_{\rho_0^{it}}.
+% \]
+% The parameter $t$ is an auxiliary modular or phase parameter.  Nothing in this construction identifies it with laboratory time.  In particular, $U_t^\rho$ does not transport points of $X$; it only rotates the phase of a Hilbert space vector pointwise \footnote{For readers familiar to modular theory, it might be tempting to interpret the relative phase $u_t$ as the classical (commutative) analog of the cocycle of modular theory $\Delta_\rho^{it}\Delta_{\rho|\rho_0}^{-it}$. However, this interpretation is problematic because in the classical (commutative) theory, there are no clear analogs of modular flow or relative modular flow.}.
+
+% \subsection{Subregion (subspace) and subsystem coarse-grainings}
+% \label{subsec:classical-region-subsystem}
+
+% Subregion and subsystem coarse-grainings organize incomplete information differently. A subregion coarse-graining resolves microstates within a selected region and identifies those outside it, whereas a subsystem coarse-graining identifies microstates that share the same observed variables. Evolution transports the resolved region in the first case and the fibers of indistinguishable microstates in the second. Their invariance has correspondingly different meanings: an invariant region defines a conserved event, while an invariant subsystem defines an autonomous factor dynamics. Ergodicity excludes nontrivial conserved events but permits nontrivial autonomous factors.
+
+% \paragraph{Subregion coarse-grainings:}
+% For a measurable region $O\subset X$, define
+% \begin{align}
+%     \mA_O=\{f\in\mA:\ f=\chi_O f+c\chi_{O^c}\text{ for some }c\in\mathbb C\}\ .
+% \end{align}
+% This algebra resolves the microstate completely within $O$ and retains only the event ``outside $O$'' on its complement. Assuming $0<\mu(O)<1$, its conditional expectation is
+% \begin{align}
+%     E_O(f)=\chi_O f+
+%     \chi_{O^c}\frac{1}{\mu(O^c)}\int_{O^c}f\,d\mu\ .
+% \end{align}
+% For $O_1\subseteq O_2$, we have $\mA_{O_1}\subseteq\mA_{O_2}$, so this construction gives a net of coarse observable algebras.
+
+% The partition $X=O\sqcup O^c$ gives the direct-sum decomposition
+% \begin{align}
+%     \mA=\chi_O\mA\oplus\chi_{O^c}\mA
+%     \simeq L^\infty(O,\mu|_O)\oplus L^\infty(O^c,\mu|_{O^c})\ .
+% \end{align}
+% The two summands describe mutually exclusive locations of the microstate. Their identities are $\chi_O$ and $\chi_{O^c}$. Our unital region algebra instead has the form $\mA_O=\chi_O\mA\oplus\mathbb C\chi_{O^c}$, so $\mA_O$ and $\mA_{O^c}$ are not themselves the two direct summands. In fact,
+% \begin{align}
+%     \mA_O\cap\mA_{O^c}=\operatorname{span}\{\chi_O,\chi_{O^c}\}\ .
+% \end{align}
+
+% \paragraph{Subsystem coarse-grainings:}
+% Suppose instead that the probability space has a product decomposition
+% \begin{align}
+%     (X,\Sigma,\mu)=(Y\times Z,\Sigma_Y\otimes\Sigma_Z,\mu_Y\otimes\mu_Z)\ .
+% \end{align}
+% A microstate now specifies both an observed variable $y$ and a hidden variable $z$. The observable algebra factorizes as
+% \begin{align}
+%     \mA\simeq\mA_Y\,\bar\otimes\,\mA_Z,
+%     \qquad \mA_Y=L^\infty(Y,\mu_Y),\quad
+%     \mA_Z=L^\infty(Z,\mu_Z)\ .
+% \end{align}
+% Retaining the subsystem $Y$ means retaining $\mB_Y=\mA_Y\otimes 1$. The corresponding conditional expectation averages over the hidden variables:
+% \begin{align}
+%     (E_Y f)(y,z)=\int_Z f(y,z')\,d\mu_Z(z')\ .
+% \end{align}
+% This operation forgets the hidden variables at every microstate. The tensor factors describe simultaneously specified degrees of freedom. Although the reference measure is a product, a general state with density $\rho(y,z)$ can have correlations between them.
+
+% More generally, a measurable map $\pi:X\to Y$ specifies coarse observables through
+% \begin{align}
+%     \mB_\pi=\pi^*L^\infty(Y,\mu_Y),
+%     \qquad \mu_Y=\pi_*\mu\ .
+% \end{align}
+% Under the standard Borel assumptions, disintegration gives conditional probability measures $\mu_y$ concentrated on the fibers $\pi^{-1}(y)$, for $\mu_Y$-almost every $y$. The conditional expectation is
+% \begin{align}
+%     (E_\pi f)(x)=\int_{\pi^{-1}(\pi(x))}f(x')\,d\mu_{\pi(x)}(x')\ .
+% \end{align}
+% The fiber measures may depend on $y$, and no global product decomposition is required. The subregion construction also fits this language: its quotient resolves each point in $O$ and collapses $O^c$ to one coarse state. The two constructions are therefore special cases of a common measure-theoretic notion of coarse-graining.
+
+% \paragraph{Dynamics and invariant coarse-grainings:}
+% Let $\Phi_t:X\to X$ be a measurable one-parameter group of invertible, measure-preserving transformations. It induces the Heisenberg evolution
+% \begin{align}
+%     \alpha_t(f)=f\circ\Phi_{-t}\ .
+% \end{align}
+% For any coarse algebra $\mB\subseteq\mA$, we can follow the family $\mB_t=\alpha_t(\mB)$. We call the coarse description dynamically closed when
+% \begin{align}\label{eq:classical-coarse-invariance}
+%     \alpha_t(\mB)=\mB,\qquad t\in\mathbb R\ .
+% \end{align}
+% For a coarse-graining specified by $\pi$, this means that there is a measure-preserving evolution $\Psi_t$ on the coarse space such that
+% \begin{align}\label{eq:classical-factor-intertwining}
+%     \pi\circ\Phi_t=\Psi_t\circ\pi\ ,
+% \end{align}
+% understood modulo null sets. Evolving the microstate and then retaining its coarse variables gives the same result as evolving the coarse variables themselves. Such a coarse description is called a {\it factor system} in ergodic theory.
+
+% For a subregion, evolution transports its associated algebra:
+% \begin{align}
+%     \alpha_t(\mA_O)=\mA_{\Phi_t(O)}\ .
+% \end{align}
+% An invariant region therefore defines an invariant coarse algebra. For nonatomic $\mu$ and $0<\mu(O)<1$, the converse holds as well: the single atom representing the unresolved complement identifies $O^c$ from $\mA_O$. Ergodicity excludes nontrivial invariant regions, but it does not exclude nontrivial factor systems. Invariance of a subalgebra permits its observables to evolve into one another; they need not be individually fixed.
+
+% For the subsystem $Y$ in a product space, dynamical closure means that the $Y$-component of $\Phi_t(y,z)$ depends only on $y$. This does not follow from preservation of the product measure. For example, on the two-torus with uniform product measure, the flow
+% \begin{align}
+%     \Phi_t(y,z)=\bigl(y+t\sin(2\pi z)\!\!\pmod 1,\ z\bigr)
+% \end{align}
+% preserves the measure, but the future observed coordinate depends on the hidden coordinate. Hence $\mB_Y$ is not invariant. An autonomous observed subsystem is also weaker than a product dynamics: the hidden variables may evolve in a way that depends on the observed variables.
+
+% \paragraph{Compatibility of coarse-graining and evolution:}
+% For the measure-preserving dynamics above, invariance of $\mB$ is equivalent to
+% \begin{align}\label{eq:classical-expectation-equivariance}
+%     E_{\mB}\circ\alpha_t=\alpha_t\circ E_{\mB},
+%     \qquad t\in\mathbb R\ .
+% \end{align}
+% Indeed, when $\mB$ is invariant, $\alpha_t\circ E_{\mB}\circ\alpha_{-t}$ is another $\mu$-preserving conditional expectation onto $\mB$, so uniqueness gives the equality. Conversely, this equality ensures that $\alpha_t$ maps the range of $E_{\mB}$ onto itself.
+
+% The existence of $E_{\mB}$ does not require dynamical closure. Conditional expectation exists for every coarse sub-$\sigma$-algebra in this probability setting; compatibility with the chosen dynamics is the additional condition \eqref{eq:classical-expectation-equivariance}. These constructions require no Poisson structure. A Poisson bracket will enter when we restrict to Hamiltonian dynamics and seek a distinguished evolution generated by the state itself.
+
+% \subsection{Classical ergodic theory} 
+
+% We take the crossed product $\mM=L^\infty(X,\Sigma,\mu)\rtimes G$ where $G$ is the group generated by the action of the dynamics that we take to be locally compact, such as $G=\mathbb{R}$ and \textit{non-singular}, meaning it preserves sets of measure zero ($\mu(gE) = 0 \iff \mu(E) = 0$ for all $g \in G$). 
+
+% Assuming the action is both \textbf{ergodic} (every $G$-invariant measurable set has either measure zero or full measure) and \textbf{essentially free} (the set of fixed points for any non-identity group element has measure zero), the center of $\mathcal{M}$ is trivial, guaranteeing that $\mathcal{M}$ is a \textbf{factor}. The Murray-von Neumann classification of the resulting factor $\mathcal{M}$ is entirely determined by the geometric and dynamical properties of the measure space under the group action.
+
+% \paragraph{Type I: Atomic Phase Space (Transitive Dynamics):}
+% The algebra $\mathcal{M}$ is a Type I factor if and only if the underlying measure space $X$ is \textbf{atomic} (consisting of discrete points with strictly positive measure) and the group $G$ acts transitively on it. 
+
+% In this regime, classical phase space is completely discrete, and the dynamical flow simply permutes these discrete states. The resulting crossed product algebra is isomorphic to the algebra of all bounded operators on a Hilbert space, $\mathcal{M} \cong \mathcal{B}(\mathcal{H})$. For classical continuous systems where $X$ is a smooth symplectic manifold, the phase space is inherently \textit{diffuse} (no single point carries positive volume), making Type I algebras physically unrealizable.
+
+% \paragraph{Type II: Volume Preservation (Conservative Dynamics):}
+% The algebra $\mathcal{M}$ is a Type II factor if $X$ is diffuse (continuous) and the flow is structurally conservative. Mathematically, this occurs if and only if there exists a $\sigma$-finite measure $\nu$ that is equivalent to the background measure $\mu$ (meaning they share the same null sets) such that $\nu$ is strictly \textbf{$G$-invariant}: $\nu(gE) = \nu(E)$. The existence of this invariant measure guarantees the existence of a normal, semi-finite, faithful tracial weight on the algebra. 
+% \begin{itemize}
+%     \item \textbf{Type II$_1$ (Finite Volume):} If the invariant measure is finite ($\nu(X) < \infty$), it can be normalized to a probability measure. This corresponds to a classical system confined to a compact phase space or a closed energy surface (e.g., a chaotic pendulum or gas in a rigid box). The trace of the identity is finite, $\tau(\mathbf{1}) = 1$.
+%     \item \textbf{Type II$_\infty$ (Infinite Volume):} If the invariant measure is infinite ($\nu(X) = \infty$), the system explores an unbounded phase space. This represents scattering processes or unconfined Hamiltonian flows where trajectories can escape to infinity. The trace exists, but $\tau(\mathbf{1}) = \infty$.
+% \end{itemize}
+
+% \paragraph{Type III: Quasi-Invariance (Dissipative Dynamics):}
+% The algebra $\mathcal{M}$ is a Type III factor if $X$ is diffuse, the action is non-singular, but \textbf{no equivalent invariant measure exists}. In this regime, the flow is purely quasi-invariant. The classical dynamics preserve the topology of the space (impossible events remain impossible), but the vector field inherently stretches, compresses, or folds the phase space volume. No smooth change of coordinates (via a Radon-Nikodym derivative) can eliminate this divergence. 
+
+% Physically, a Type III factor perfectly encodes \textbf{dissipative chaotic systems}, strange attractors, or Anosov diffeomorphisms with non-zero entropy production. Because the classical volume is perpetually destroyed or created, the resulting non-commutative algebra admits no trace ($\tau(AB) \neq \tau(BA)$). Instead, it possesses a non-trivial Tomita-Takesaki modular automorphism group, which acts as a purely algebraic clock tracking the exact rate of classical volume dissipation over time.
+
+% \paragraph{Correlation functions and ergodic hierarchy:}
+% The net of subregion algebras allows to define correlation functions which are the building blocks of the classical ergodic hierarchy...
+ 
+% \subsection{Classical avatar of modular flow in Hamiltonian dynamics}
+
+% In modular theory, we define a flow starting from a state. 
+% We have already since that there is a correspondence between states $\omega$ and observables $\rho_\omega^{1/2}$. We saw that continuous dynamics is generated using vector fields on $X$. Given a smooth real $f$ on $X$, we can define the 1-form $df$. To connect observables to vector fields, we need a $(0,2)$-tensor $\sigma$: 
+% \begin{align}
+%     X_f(\cdot)=\sigma(\cdot,df)\ .
+% \end{align}
+% This defines the Poisson bracket
+% \begin{align}
+%     \{f,g\}=\sigma(df,dg)=X_f(dg)\ .
+% \end{align}
+% This implies that $f$ is conserved along the flows generated by $X_f$ \footnote{This principle underlies Noether theorem that associates conserved charges to symmetries.}. We need the $(0,2)$-tensor to be closed $d\sigma=0$ so that the Lie-algebra of vector fields $X_f$ matches the Poisson algebra of functions 
+% \begin{align}
+%     [X_f,X_g]=X_{\{f,g\}}\ .
+% \end{align}
+
+
+
+% Poisson brackets generate Hamitlonian flows $f\to \alpha^g_t(f)$ defined by 
+% \begin{align}
+%     \partial_t\alpha_t^g(f)=-\{f,g\}\ .
+% \end{align}
+% If $X$ is a Poisson manifold, it is equipped with such a Poisson bracket, and the subspace of smooth real functions on $X$ forms a Poisson algebra. However, a general choice of volume measure on $X$ is not invariant under Hamiltonian flows above. The condition for invariance is 
+% \begin{align}\label{statepreserve}
+%     \int \{f,H\} d\mu=0\ .
+% \end{align}
+% We will see below that every Poisson manifold splits into {\it symplectic submanifolds (leaves)} that come naturally with a symplectic volume measure that automatically satisfies the invariance condition above. To see this splitting, we need to introduce the notion of central observables.
+
+% \paragraph{Central observables:} On a general Poisson manifold, the Poisson bracket can be degenerate, meaning that there can exists non-trivial functions $z$ such that 
+% \begin{align}
+%     \forall f:\qquad \{z,f\}=0\ .
+% \end{align}
+% They form the non-commutative analog of the center of the algebra of observables. In ergodic theory, these observables are called Casimir functions, and they have the interpretation of observables that are constant under all Hamiltonian evolutions.
+
+% \paragraph{Superselection sectors and factor algebras:} Start from a point, and evolving with all possible Hamiltonian evolutions, we trace a submanifold of $X$ called a {\it symplectic leaf}. Since Casimirs are constant along all such paths, every Casimir function must be constant on any given symplectic leaf.  If a Poisson manifold has enough globally defined, independent Casimir functions $z_1, z_2, \dots, z_k$, the symplectic leaves are simply the connected components of the common level sets of these functions. You specify a leaf by fixing the values of all the central elements:
+% \begin{align}
+%     L_{z_1, \dots, z_k} = \{ x \in X \mid z_1(x) = z_1, \dots, z_k(x) = z_k \}\ .
+% \end{align}
+% Since all possible Hamiltonian (physical) dynamics preserve the leaf, we can interpret a symplectic leaf as a superselection sector. The restriction of the Poisson bracket to a symplectic leaf is non-degenerate, and hence provides a symplectic structure, and a canonical volume measure $\Omega=\omega^n/n!$ that is preserved under all Hamiltonian dynamics. Therefore, \ref{statepreserve} is automatically satisfies. Choosing this volume measure we find the observable algebra $L^\infty(L,\Sigma,\Omega)$ which is the classical avator of a factor in the quantum theory. 
+
+
+% \paragraph{Symplectic coarse-graining (classical avatar of inclusion of subfactors)} Consider a coarse-graining we consider $Y$ (a coarse phase space or a sub $\sigma$-algebra) and a projection $\pi:\mL\to Y$. Then, $Y$ inherits a Poisson structure if for all $f,g\in \mL$, the Poisson bracket ${f,g}\in\mL$ is closed. 
+
+% So the semi-classical avatar of inclusion of vN algebras is a Poisson coarse-graining. The analog of inclusion of factors is a surjective Poisson coarse-graining $\pi:\mL\to Y$ such that $\mL$ and $Y$ are connected symplectic leaves. 
+
+% \paragraph{Hidden Poisson sector (semi-classical avatar of relative commutant):} Then the relative commutant is the hidden Poisson sector, the observables whose flows do not change coarse-grained ones.
+
+% \paragraph{No subregion nets:} Sub-symplectic manifolds live in lower dimensions that $X$. That is why there is no natural notion of a net of coarse-graining flows associated to subregions on $X$. In cases where on can quantize the phase space and obtain a one-particle Hilbert space, the structure that replaces the net of subregion algebras is the net of standard subspaces. There is a canonical notion of subspace modular flow here that we review in Appendix \ref{}. The connection between this and the quantum ergodic theory we discuss in the next section (inclusion of algebras) is based on the second quantization.
+
+% \paragraph{Classical avatar of KMS condition:}
+
+% Any state described by a probability density that is a function of $h$ alone is invariant under this flow. Among such states, the Gibbs state $\omega_\beta$ stands out as the unique state with the distinguished property that it satisfies the KMS condition that any pair of observables $f$ and $g$ \footnote{In this context, it is sometimes called the Gallavotti-Verboven condition.}:
+% \begin{equation}\label{KMSclassical}
+%     \omega_\beta(\{f, g\}) = \beta\: \omega_\beta(f \{g, H\})=-\beta \omega_\beta(f \partial_t g)\ .
+% \end{equation}
+% The condition above serves the same purpose in classical algebraic statistical mechanics as the standard KMS condition does in the quantum domain: it provides an algebraic characterization of equilibrium states without needing to explicitly define a partition function or a global Hamiltonian. Below, we provide more intuition as why (\ref{KMSclassical}) is the classical avator of the KMS condition.
+
+% To see this, first consider a finite-dimensional systems where the Liouville measure $\mu$ is well-defined, this condition follows directly from integration by parts. Assuming $f$ and $g$ vanish at the boundaries of phase space, the integral of any Poisson bracket with respect to the Liouville measure is zero: $\int \{f, g\} \, d\mu = 0$. If we assume $\omega_\beta$ is the standard Gibbs state $\omega_\beta(f) = \frac{1}{Z} \int f e^{-\beta H} \, d\mu$, we can evaluate the vanishing integral for the specific functions $f$ and $g e^{-\beta H}$:
+% \begin{equation}
+%     0 = \int \{f, g e^{-\beta H}\} \, d\mu
+% \end{equation}
+% Using the Leibniz rule for Poisson brackets, we expand the integrand:
+% \begin{equation}
+%     \{f, g e^{-\beta H}\} = \{f, g\} e^{-\beta H} + g \{f, e^{-\beta H}\}
+% \end{equation}
+% Applying the chain rule to the second term gives:
+% \begin{equation}
+%     \{f, e^{-\beta H}\} = -\beta e^{-\beta H} \{f, H\}
+% \end{equation}
+% Substituting this back into the integral:
+% \begin{equation}
+%     \int \left( \{f, g\} - \beta g \{f, H\} \right) e^{-\beta H} \, d\mu = 0
+% \end{equation}
+% Dividing by the partition function $Z$ gives the condition in (\ref{KMSclassical}).
+
+% Furthermore, the classical condition in (\ref{KMSclassical}) can be derived as the $\hbar \to 0$ limit of the quantum KMS condition. The quantum KMS condition states that for a thermal state $\omega_\beta$ and time evolution $\alpha_t$:
+% \begin{equation}
+%     \omega_\beta(A \alpha_{i\hbar\beta}(B)) = \omega_\beta(B A)
+% \end{equation}
+% If we expand the time-evolved observable $\alpha_{i\hbar\beta}(B)$ for small $\hbar$ around $t=0$, we get:
+% \begin{equation}
+%     \alpha_{i\hbar\beta}(B) \approx B + i\hbar\beta \partial_t B
+% \end{equation}
+% Substituting this into the quantum condition:
+% \begin{equation}
+%     \omega_\beta(A B) + i\hbar\beta \omega_\beta(A \partial_t B) \approx \omega_\beta(B A)
+% \end{equation}
+% Rearranging to isolate the commutator:
+% \begin{equation}
+%     \omega_\beta([A, B]) \approx -i\hbar\beta \omega_\beta(A \partial_t B)
+% \end{equation}
+% By applying Dirac's prescription, the commutator transitions to the Poisson bracket as $\hbar \to 0$, mapping $\frac{1}{i\hbar}[A, B] \to \{A, B\}$. Dividing both sides by $i\hbar$ and taking the limit recovers the classical KMS condition exactly the condition in (\ref{KMSclassical}). 
+
+% In the quantum setting, modular flow of a state $\rho$ can be uniquely defined as the state preserving one-parameter unitary flow that satisfies the KMS condition. This implies that the flow defined by 
+% \begin{align}
+%     \partial_t f=\{f,\log\rho\}
+% \end{align}
+% is the (semi)-classical avatar of modular flow. Here, we the word semi-classical is used since we have used the intuition of $\hbar\to 0$, and the mapping $\frac{1}{i\hbar}[A,B]\to \{A,B\}$.
+
+% \paragraph{Infinite Systems:} Just as the quantum KMS condition is essential for characterizing thermal states on $C^*$-algebras in the thermodynamic limit, the classical KMS condition is crucial for infinite classical systems. In the thermodynamic limit (infinite volume), the total energy $H \to \infty$ and the partition function $Z \to \infty$, making the standard Gibbs measure $\frac{1}{Z} e^{-\beta H} \, d\mu$ mathematically ill-defined. However, the Poisson algebra of local observables and the local derivations $\{ \cdot, H \}$ remain perfectly well-defined. The classical KMS condition replaces the explicit probability measure with an algebraic constraint, allowing one to rigorously define and study classical equilibrium states (often called KMS states or DLR states) in infinite-volume limits.
+
+% % \paragraph{Algebra of observables:} Algebra of observables on a Poisson manifold $\mM$
+
+% % \paragraph{Hamiltonian flows (semiclassical avatar of commutators):}
+
+% % \paragraph{Central observables:} Poisson center (Casimirs) $C\in Z_{pos}: \{C,f\}=0$ for all $f$
+
+% % \paragraph{Superselection sectors (semi-classical avator of factor algebras):} a leaf (submanifold $\mL\subset \mM$) is an irreducible sector under all Hamiltonian motion.
+
+% % \paragraph{Semi-classical avatar of modular flow:} Inside a leaf, there is a one-to-one correspondence between normalized states $\rho$ and Hamiltonian flows by vector $X_H$ for which which $e^{-H}$ is normalizable: $\int_\mathcal{L} e^{-H}\Omega_\mL<\infty$.
+
+
+% \paragraph{Coarse-graining flow and entropy generation}
+
+% Build towards an inclusion that is "not expected" (has no normal conditional expectation), and equivalently there exists no flow in $\mL$ such that sends $Y\to Y$. If there is a trace (finite volume setup), this should always exist, so we need the infinite-volume case.
+
+% \paragraph{Expectation:} there is a one-to-one correspondence between states of this relative commutant (hidden Poisson sector) and the equivariant conditional expecations from $\mL\to Y$.
+
+% Then, then it is possible that a Hamiltonian flow preserves $Y$. It means that if $\pi\circ \Phi_t^\rho=\Phi_t^Y\circ \pi$?
+
+
+
+
+
+%  In the {\it Heisenberg picture} the evolution super-operator \(\phi_t\) acts on observables\footnote{This is often called by the Koopman automorphism.}
+% \[
+% \alpha_t(f)=f\circ \phi_{-t}.
+% \]
+% Thus, a classical measure-preserving dynamical system can be written as
+% \[
+% (M,\mu,\alpha_t).
+% \]
+% This is the commutative prototype of a von Neumann dynamical system. The noncommutative version replaces \(L^\infty(X,\mu)\) by a possibly nonabelian von Neumann algebra \(M\), replaces the probability measure by a faithful normal state \(\varphi\), and replaces the Koopman flow by a one-parameter automorphism group \(\alpha_t\) or, more specifically, by the modular flow \(\sigma_t^\varphi\).
+
+% Since the multiplication of observables is defined point-by-point on the phase space $(f_1\circ f_2)(x)=f_1(x)f_2(x)$, there are two types of subalgebras of $M$ that one can associate to every subregion $O\subset X$. First is the subalgebra of functions with support inside $O$, $M_O$. There is a conditional expectation super-operators that projects $1_O:M\to M_O$:
+% \begin{align}
+%     (1_O(f))(x)=1_O(x) f(x)
+% \end{align}
+% where $1_O(x)$ is the characteristic function of $O$: $1_O(x)=1$ if $x\in O$, otherwise it is zero.
+% Another choice is a {\it coarse-graining} subalgebra associated with $O$. If we only observe whether the system lies inside or outside \(O\), then we retain only the two-valued observable \(\chi_O\). This algebra is generated by this observable
+% \[
+% N_O=\{\lambda \chi_O+\lambda' \chi_{O^c}:\lambda,\lambda'\in\mathbb C\}.
+% \]
+% This algebra remembers only the partition
+% \[
+% X=O\sqcup O^c.
+% \]
+% The full algebra \(M=L^\infty(X,\mu)\) contains all bounded observables, while \(N_O\) contains only the observables that are constant on \(O\) and on \(O^c\). Thus \(N_O\subset M\) is a very simple example of a coarse observable algebra. The conditional expectation onto \(N_O\) is
+% \[
+% E_{N_O}(f)
+% =
+% \frac{1}{\mu(O)}\int f\,d\mu\, 1_O
+% +
+% \frac{1}{\mu(O^c)}\int_{O^c} f\,d\mu\, 1_{O^c}.
+% \]
+% This is the operation of replacing \(f\) by its average on each coarse cell. It forgets all microscopic variation inside \(O\) and inside \(O^c\), retaining only two macroscopic numbers.
+
+% The flow preserves this coarse-graining exactly when
+% \[
+% \alpha_t(N_O)=N_O,\qquad t\in\mathbb R.
+% \]
+% Equivalently,
+% \[
+% \phi_t^{-1}(O)=O
+% \quad \text{mod } \mu
+% \]
+% for every \(t\). Thus the algebraic condition that a subalgebra be invariant under the dynamics is, in this example, the ordinary ergodic-theoretic condition that the corresponding partition be dynamically invariant.
+
+% A flow is {\it ergodic} if the only invariant measurable sets are the empty set and the entire $X$. 
+
+% More generally, a classical coarse-graining is described by a sub-\(\sigma\)-algebra
+% \[
+% \mathcal G\subset \mathcal F.
+% \]
+% The corresponding von Neumann subalgebra is
+% \[
+% N=L^\infty(X,\mathcal G,\mu)\subset M=L^\infty(X,\mathcal F,\mu).
+% \]
+% The observables in \(N\) are precisely those depending only on the information encoded by \(\mathcal G\). If the coarse-graining is given by a measurable map
+% \[
+% \pi:X\to Y,
+% \]
+% then
+% \[
+% \mathcal G=\pi^{-1}\mathcal B(Y),
+% \]
+% and the coarse observables are exactly the functions of the form
+% \[
+% f(x)=g(\pi(x)).
+% \]
+% In this language, \(\pi\) is the map that forgets microscopic information and remembers only the macroscopic state \(y=\pi(x)\).
+
+% The associated conditional expectation is the ordinary probabilistic conditional expectation
+% \[
+% E_{\mathcal G}:L^\infty(X,\mathcal F,\mu)\to L^\infty(X,\mathcal G,\mu),
+% \qquad
+% E_{\mathcal G}(f)=\mathbb E[f\mid \mathcal G].
+% \]
+% It is characterized by
+% \[
+% \int_X h\,E_{\mathcal G}(f)\,d\mu
+% =
+% \int_X h f\,d\mu
+% \]
+% for all bounded \(\mathcal G\)-measurable functions \(h\). It is a positive unital projection
+% \[
+% E_{\mathcal G}^2=E_{\mathcal G},
+% \qquad
+% E_{\mathcal G}|_N=\mathrm{id}_N,
+% \]
+% and it satisfies the bimodule property
+% \[
+% E_{\mathcal G}(n_1 f n_2)=n_1E_{\mathcal G}(f)n_2,
+% \qquad n_1,n_2\in N.
+% \]
+% This is exactly the commutative model for a normal conditional expectation \(E:M\to N\) between von Neumann algebras.
+
+% Now suppose the flow \(\phi_t\) preserves \(\mu\). The condition that the dynamics preserve the coarse-graining is
+% \[
+% \alpha_t(N)=N,
+% \qquad t\in\mathbb R,
+% \]
+% or equivalently,
+% \[
+% \phi_t^{-1}\mathcal G=\mathcal G,
+% \qquad t\in\mathbb R.
+% \]
+% In quotient language, this says that the microscopic dynamics descends to a well-defined dynamics on the coarse space \(Y\). Namely, there exists a flow \(\psi_t:Y\to Y\) such that
+% \[
+% \pi\circ \phi_t=\psi_t\circ \pi.
+% \]
+% This equation says that evolving first and then coarse-graining gives the same coarse result as coarse-graining first and then evolving the coarse variables. Thus an invariant sub-\(\sigma\)-algebra is precisely a dynamically closed coarse-graining, or equivalently a factor system in the sense of ergodic theory.
+
+% For example, let
+% \[
+% X=Y\times Z
+% \]
+% and suppose the coarse-graining forgets \(Z\). Then
+% \[
+% \pi(y,z)=y,
+% \]
+% and the coarse observables are functions depending only on \(y\). Write the microscopic flow as
+% \[
+% \phi_t(y,z)=(Y_t(y,z),Z_t(y,z)).
+% \]
+% The coarse algebra is invariant exactly when \(Y_t(y,z)\) depends only on \(y\), not on \(z\). In that case there is an induced flow \(\psi_t\) on \(Y\) such that
+% \[
+% Y_t(y,z)=\psi_t(y).
+% \]
+% If \(Y_t\) depends on the hidden variable \(z\), then the \(Y\)-variables do not evolve autonomously. The coarse-graining loses information that is needed to predict the future coarse state.
+
+% When the coarse-graining is invariant, conditional expectation commutes with the dynamics:
+% \[
+% E_{\mathcal G}\circ \alpha_t
+% =
+% \alpha_t\circ E_{\mathcal G}.
+% \]
+% This is the classical dynamical statement that ``coarse-graining and time evolution commute.'' It is the commutative analog of saying that a von Neumann subalgebra \(N\subset M\) is globally invariant under a one-parameter automorphism group \(\alpha_t\).
+
+% The noncommutative version keeps the same formal structure, but the existence of conditional expectations becomes much more subtle. Let \(M\) be a von Neumann algebra with faithful normal state \(\varphi\), and let
+% \[
+% N\subset M
+% \]
+% be a von Neumann subalgebra. A normal conditional expectation
+% \[
+% E:M\to N
+% \]
+% is a normal positive unital projection satisfying
+% \[
+% E(n_1 x n_2)=n_1E(x)n_2,
+% \qquad n_1,n_2\in N.
+% \]
+% If, in addition,
+% \[
+% \varphi\circ E=\varphi,
+% \]
+% then \(E\) is a \(\varphi\)-preserving coarse-graining from \(M\) onto \(N\).
+
+% Takesaki's theorem gives the precise criterion for the existence of such a state-preserving expectation. In the state case, it says:
+% \[
+% \boxed{
+% \sigma_t^\varphi(N)=N\ \forall t\in\mathbb R
+% \quad\Longleftrightarrow\quad
+% \exists!\ E_\varphi:M\to N
+% \text{ normal conditional expectation with }
+% \varphi\circ E_\varphi=\varphi.
+% }
+% \]
+% Moreover, when this holds, the modular flow of \(\varphi|_N\) is just the restriction of the modular flow of \(\varphi\):
+% \[
+% \sigma_t^{\varphi|_N}(n)=\sigma_t^\varphi(n),
+% \qquad n\in N.
+% \]
+% Thus Takesaki's theorem is the noncommutative analog of the classical relation between invariant coarse-grainings and conditional expectation, but with a crucial difference: in the noncommutative case, the state itself has a nontrivial modular dynamics.
+
+% In finite dimensions this is especially transparent. Let
+% \[
+% M=B(\mathcal H),
+% \qquad
+% \varphi(x)=\operatorname{Tr}(\rho x),
+% \]
+% where \(\rho>0\). Then the modular flow is
+% \[
+% \sigma_t^\varphi(x)=\rho^{it}x\rho^{-it}.
+% \]
+% A subalgebra \(N\subset B(\mathcal H)\) admits a \(\varphi\)-preserving conditional expectation exactly when
+% \[
+% \rho^{it}N\rho^{-it}=N
+% \]
+% for every \(t\). Equivalently, \(N\) is dynamically closed under the modular Hamiltonian
+% \[
+% K=-\log\rho.
+% \]
+% In this case the conditional expectation is the projection of the full observable algebra onto the coarse algebra that preserves the state \(\varphi\). This is the finite-dimensional shadow of Takesaki's theorem.
+
+% The commutative case is special. If
+% \[
+% M=L^\infty(X,\mathcal F,\mu)
+% \]
+% and
+% \[
+% \varphi(f)=\int_X f(x)\rho(x)\,d\mu(x)
+% \]
+% with \(\rho>0\), then \(M\) is abelian. Therefore the modular automorphism group is trivial:
+% \[
+% \sigma_t^\varphi(f)=f.
+% \]
+% Hence every subalgebra
+% \[
+% N=L^\infty(X,\mathcal G,\mu)
+% \]
+% is automatically invariant under \(\sigma_t^\varphi\). Takesaki's theorem then reduces to the classical fact that conditional expectation onto any sub-\(\sigma\)-algebra exists and preserves the probability measure defined by \(\varphi\):
+% \[
+% E_{\mathcal G}(f)=\mathbb E_\varphi[f\mid \mathcal G].
+% \]
+% Thus the theorem is nontrivial precisely because \(M\) is noncommutative. In the classical case modular dynamics is invisible; in the noncommutative case it detects whether a coarse algebra is compatible with the state.
+
+% This gives a useful dictionary:
+% \[
+% \begin{array}{c|c}
+% \text{Classical probability} & \text{Operator algebra} \\
+% \hline
+% (X,\mathcal F,\mu) & (M,\varphi) \\
+% L^\infty(X,\mathcal F,\mu) & M \\
+% \mathcal G\subset\mathcal F & N\subset M \\
+% L^\infty(X,\mathcal G,\mu) & N \\
+% \mathbb E[\cdot\mid \mathcal G] & E:M\to N \\
+% \phi_t:X\to X & \alpha_t\in\operatorname{Aut}(M) \\
+% \phi_t^{-1}\mathcal G=\mathcal G & \alpha_t(N)=N \\
+% \text{factor system }X\to Y & \text{invariant subalgebra }N\subset M
+% \end{array}
+% \]
+
+% For a general chosen dynamics \(\alpha_t\), the condition
+% \[
+% \alpha_t(N)=N
+% \]
+% means that \(N\) is a dynamically closed subsystem of observables. For the special choice
+% \[
+% \alpha_t=\sigma_t^\varphi,
+% \]
+% this condition means that \(N\) is compatible with the intrinsic modular dynamics of the state \(\varphi\). Takesaki's theorem says that this compatibility is exactly what is needed for a \(\varphi\)-preserving conditional expectation.
+
+% This also clarifies the relation to ergodic theory. In classical dynamics, a measure-preserving flow is ergodic if the only invariant measurable sets have measure \(0\) or \(1\). Algebraically,
+% \[
+% M^\alpha
+% =
+% \{f\in M:\alpha_t(f)=f\ \forall t\}
+% =
+% \mathbb C1.
+% \]
+% Thus ergodicity says that the fixed-point algebra is trivial. A stronger condition would say that there are no nontrivial invariant sub-\(\sigma\)-algebras at all, i.e. no nontrivial factor systems. The first condition rules out invariant observables; the second rules out invariant coarse-grainings.
+
+% Similarly, in noncommutative dynamics one can ask whether
+% \[
+% M^\alpha=\mathbb C1,
+% \]
+% or one can ask whether there exist nontrivial subalgebras
+% \[
+% N\subset M
+% \]
+% such that
+% \[
+% \alpha_t(N)=N.
+% \]
+% The latter question is closer to the theory of subsystems, coarse-grainings, and conditional expectations.
+
+% In Hamiltonian classical mechanics, there is an infinitesimal version. Suppose \(X\) is a Poisson manifold and the flow is generated by a Hamiltonian \(H\). Then
+% \[
+% \frac{d}{dt}f_t=\{H,f_t\}.
+% \]
+% A smooth subalgebra \(N\) of observables is invariant if
+% \[
+% f\in N
+% \quad\Longrightarrow\quad
+% \{H,f\}\in N.
+% \]
+% That is, the Hamiltonian evolution of a coarse observable remains coarse. In noncommutative quantum mechanics, the analogous condition for a Hamiltonian \(K\) is
+% \[
+% x\in N
+% \quad\Longrightarrow\quad
+% i[K,x]\in N.
+% \]
+% For modular dynamics in finite dimensions, \(K=-\log\rho\), so the condition becomes
+% \[
+% x\in N
+% \quad\Longrightarrow\quad
+% i[-\log\rho,x]\in N.
+% \]
+% Thus the modular Hamiltonian plays the role of a distinguished generator of the state-dependent intrinsic dynamics.
+
+% Finally, this perspective explains why state-preserving expectations are special in quantum field theory and type III von Neumann algebras. If \(N\subset M\) is an inclusion of local algebras and \(\Omega\) is a common cyclic and separating vector, then an \(\Omega\)-preserving conditional expectation \(E:M\to N\) would require
+% \[
+% \sigma_t^{M,\Omega}(N)=N
+% \]
+% by Takesaki's theorem. For ordinary nested spacetime regions this modular invariance usually fails. Hence one should not expect a vacuum-preserving conditional expectation. Other conditional expectations may exist, but they preserve different states. The Takesaki expectation is the one compatible with the chosen state and its modular flow.
+
+% In summary, the classical theory says that a coarse-graining is a sub-\(\sigma\)-algebra \(\mathcal G\), the corresponding projection is conditional expectation, and dynamical compatibility means \(\phi_t^{-1}\mathcal G=\mathcal G\). The operator-algebraic theory replaces \(\mathcal G\) by a von Neumann subalgebra \(N\subset M\), replaces ordinary conditional expectation by a normal conditional expectation \(E:M\to N\), and replaces classical dynamical invariance by
+% \[
+% \alpha_t(N)=N.
+% \]
+% Takesaki's theorem identifies the special case where the dynamics is the modular flow of a state: a subalgebra is invariant under the modular flow exactly when there is a unique conditional expectation onto it preserving that state.
+
+
+% \subsection{Subalgebra Hamiltonian flows}
+
+% Standard inclusions are unique in that the action of the characteristic flow on the relative commutant generates all of the larger algebra?
 \section{Subalgebra flows in classical ergodic theory}
 
 %\subsection{Coarse-gainings and Classical net of subregion algebras}
 
-The passage from a reversible microscopic description to an apparently irreversible macroscopic one is often attributed to information loss during coarse-graining. As we review below, this information loss can be quantified by associating an entropy to a coarse-graining. The generating functional for the coarse-graining entropy is a classical avatar of a coarse-graining flow. However, since the classical algebra is commutative, it does not generate any flows on the phase space; instead, it adds a phase to every observable, with a value that depends on the microstate (position on the phase space) and the flow parameter ``time".
+The passage from a reversible microscopic description to an apparently irreversible macroscopic one is often attributed to information loss during coarse-graining. As we review below, this information loss can be quantified by associating an entropy to a coarse-graining. A relative phase constructed from the fine-grained and coarse-grained densities generates this entropy and provides a first classical avatar of a coarse-graining flow. This phase acts on Hilbert space vectors by multiplication, with a value that depends on the microstate and the flow parameter. Its conjugation action on the commutative observable algebra is trivial. To obtain a state-dependent flow on phase space, we will later introduce a Poisson bracket.
 
 % We will see that it is the failure of conditional expectation to intertwine the microscopic phase action with its coarse-grained counterpart that is of interest to us.  The same relative density that measures this failure generates a cocycle whose expectation is exactly the Kullback--Leibler divergence, and this divergence is exactly the entropy increase produced by coarse-graining.  These results provide a rigorous kinematic account of information loss, but they do not by themselves derive an irreversible physical time evolution.
 
 \paragraph{Algebra of observables:} In classical mechanics, one often begins with a phase space that we take to be an orientable smooth manifold \(X\) that admits a strictly positive volume measure. Points \(x\in X\) represent microstates of the system. But from the algebraic viewpoint, the primary object is not the set of points but the commutative von Neumann algebra of observables (complex measurable functions)
 \[
-M=L^\infty(X,\Sigma,\mu),
+\mA=L^\infty(X,\Sigma,\mu),
 \]
-where \((X,\Sigma,\mu)\) is a probability space, and $\mu$ is a volume measure on $X$ \footnote{$\Sigma$ is the completion of the Borel $\sigma$-algebra of the open sets of $X$'s topology with respect to the measure $\mu$. If $\mu$ is a general measure, to generate the algebra, we need to take the equivalence classes of functions that agree $\mu$-almost everywhere.}.
+where \((X,\Sigma,\mu)\) is a standard probability space. When $X$ is a smooth phase space of finite volume, we take $\mu$ to be the normalized volume measure\footnote{$\Sigma$ is the completion of the Borel $\sigma$-algebra with respect to $\mu$. Elements of $L^\infty(X,\Sigma,\mu)$ are equivalence classes of essentially bounded measurable functions that agree $\mu$-almost everywhere.}.
 
 
-\paragraph{States:} If the volume measure $\mu$ above is finite, it is interpreted as a distinguished state (vacuum)\footnote{If the volume measure $\mu$ is not finite, it still acts as a distinguished weight (unnormalized state). We come back to this in later sections.}. General states correspond to measures $\nu$ on $X$ that are absolutely continuous with respect to the volume measure $\mu$ (denoted $\nu\ll \mu$), meaning that for every measurable set $E\in X$, if $\mu(E)=0$ then $\nu(E)=0$.
-There exists a $\mu$-measurable function $\rho_\nu:X\to [0,\infty)$ such that $\nu(E)=\int_E \rho_\nu d\mu$ \footnote{In mathematical terminology, $\rho$ is called a Radon-Nikodym derivative.}. In other words, every state can be viewed as a probability density function $\rho_\nu$ on $X$, with expectation values of an observable $f$ in this state captured by integrals on $X$: 
+\paragraph{States:} The normalized measure $\mu$ above is interpreted as a distinguished reference state\footnote{A $\sigma$-finite volume measure of infinite total volume instead defines a distinguished weight. We return to this extension in later sections.}. General normal states correspond to probability measures $\nu$ on $X$ that are absolutely continuous with respect to $\mu$ (denoted $\nu\ll \mu$), meaning that for every measurable set $E\subseteq X$, if $\mu(E)=0$ then $\nu(E)=0$.
+There exists a $\mu$-measurable function $\rho_\nu:X\to [0,\infty)$ such that $\nu(E)=\int_E \rho_\nu d\mu$ \footnote{In mathematical terminology, $\rho_\nu$ is called a Radon-Nikodym derivative.}. In other words, every normal state can be viewed as a probability density function $\rho_\nu$ on $X$, with expectation values of an observable $f$ in this state captured by integrals on $X$: 
 \begin{align}
 \braket{f}_\nu=\int_{x\in X}f(x) d\nu(x)=\int_{x\in X} \rho_\nu(x) f(x) d\mu(x)\ .
 \end{align}
 
-\paragraph{GNS Hilbert space:} Observables in $X$ act on $\mu$ by multiplication, creating excited states on the vacuum that span the GNS Hilbert space 
+\paragraph{GNS Hilbert space:} The GNS Hilbert space of the reference state $\mu$ is
 \[
   \cH=L^2(X,\Sigma,\mu),
   \qquad
-  \mA=L^\infty(X,\Sigma,\Omega),
+  \mA=L^\infty(X,\Sigma,\mu).
 \]
-The state $\mu$ is represented by the unit vector
+Observables act by multiplication, and the reference state $\mu$ is represented by the constant unit vector $\ket{1}$. A general normal state with density $\rho$ is represented by
 \[
   \ket{\sqrt{\rho}}\in\cH,
   \qquad
@@ -179,7 +869,7 @@ The state $\mu$ is represented by the unit vector
 The GNS construction builds a connection between observables and states.
 
 
-\paragraph{Dynamics:} Dynamics will be described as a measure-preserving autmorphism $\sigma$ of $X$. General dynamics can be discontinuous or wild. In physics, we are often interested in smooth flows described by one-parameter family of volume-preserving diffeomorphisms $\Phi_t:X\to X$. Taking a $t$-derivative of how a point $x\in X$ moves under this flow defines a vector field, which preserves the volume-measure if and only if $\mathcal{L}_V\mu=0$; i.e. it is divergence-free with respect to $\mu$. 
+\paragraph{Dynamics:} Dynamics will be described by a measurable one-parameter group of invertible, measure-preserving transformations $\Phi_t:X\to X$. General dynamics need not be smooth. In physics, we are often interested in smooth flows described by a one-parameter family of volume-preserving diffeomorphisms. Taking a $t$-derivative of how a point $x\in X$ moves under this flow defines a vector field $V$, which preserves the volume measure if and only if $\mathcal{L}_V\mu=0$; i.e. it is divergence-free with respect to $\mu$. 
 
 
 % \paragraph{Coarse-graining:} Let $\Sigma_0\subseteq\Sigma$ be the sub-$\sigma$-algebra of macroscopically resolved events. We define a coarse-graining as 
@@ -244,11 +934,7 @@ The GNS construction builds a connection between observables and states.
 
 \paragraph{Coarse-grainings:} Classical coarse-graining retains a subalgebra of observables and discards the information needed to distinguish states that agree on this subalgebra. Two useful constructions arise from a subregion of the space of microstates and from a subsystem of observed variables. Both can be formulated in measure theory, before introducing a Hamiltonian or a Poisson bracket. We first describe these constructions and then ask when the retained observables evolve autonomously.
 
-Let $(X,\Sigma,\mu)$ be a standard probability space, with the observable algebra
-\begin{align}
-    \mA=L^\infty(X,\Sigma,\mu)\ .
-\end{align}
-All measurable functions and sets are understood modulo $\mu$-null sets. A coarse description is specified by a sub-$\sigma$-algebra $\Sigma_0\subseteq\Sigma$, with associated unital von Neumann subalgebra
+In the measure-theoretic setting above, a coarse description is specified by a sub-$\sigma$-algebra $\Sigma_0\subseteq\Sigma$, with associated unital von Neumann subalgebra
 \begin{align}
     \mB=L^\infty(X,\Sigma_0,\mu)\subseteq\mA\ .
 \end{align}
@@ -259,13 +945,13 @@ The reference measure $\mu$ determines the coarse-graining map
 This is the unique $\mu$-preserving normal conditional expectation onto $\mB$. On $L^2(X,\mu)$ it acts as the orthogonal projection onto $L^2(X,\Sigma_0,\mu)$. A general normal state $\omega_\rho(f)=\int_X\rho f\,d\mu$ is coarse-grained to $\omega_0=\omega_\rho\circ E_{\mB}$, whose density is $\rho_0=E_{\mB}(\rho)$, using the $L^1$ extension of conditional expectation. The two states agree on $\mB$. Thus the subalgebra specifies the retained information, while the chosen expectation specifies how a state on this subalgebra is extended back to the full algebra.
 
 
-\paragraph{Entropy of a coarse-graining:} Consider a coarse-graining $E$, a state $\rho$, and its coarse-grained version $\rho_0=\rho\circ E$. Then, the relative entropy (KL-divergence) of these two states associates an entropy to this coarse-graining:
+\paragraph{Entropy of a coarse-graining:} Consider a $\mu$-preserving coarse-graining $E$, a normal state with density $\rho$, and its coarse-grained density $\rho_0=E(\rho)$. Then, the relative entropy (KL-divergence) of these two states associates an entropy to this coarse-graining:
 \begin{align}
     S(\rho\|\rho_0)=\int_X \rho \log(\rho/\rho_0)d\mu=H(\rho_0)-H(\rho)
 \end{align}
-where $H(\rho)$ is the continuous version of Shannon entropy associated to state $\rho$ (sometimes called differential entropy). The positivity of relative entropy implies that the entropy created by coarse-graining is positive.
+where $H(\rho)=-\int_X\rho\log\rho\,d\mu$ is the entropy relative to the chosen reference measure, and the equality assumes that the two entropies are finite. The nonnegativity of relative entropy implies that coarse-graining cannot decrease this entropy. This compares a state with its coarse-grained version; it does not by itself imply monotonic entropy growth under time evolution.
 
-\paragraph{Generating function for entropy:} The multiplcative relative phase 
+\paragraph{Generating function for entropy:} For faithful densities $\rho,\rho_0>0$ almost everywhere, the multiplicative relative phase 
 \[
 u_t
 =
@@ -278,7 +964,7 @@ is the generating function for coarse-graining entropy because
 \log\frac{\rho}{\rho_0},\nn\\
 &S(\rho\|\rho_0)=-i \int_X \rho (\partial_t u_t\big|_{t=0})d\mu\ .
 \end{align}
-More generally, for every state $\rho$ we can define the strongly continuous unitary multiplication group
+Here the differentiation under the integral is justified when $\rho\log(\rho/\rho_0)$ is integrable. More generally, for every faithful density $\rho$ we can define the strongly continuous unitary multiplication group
 \[
   U_t^\rho:=\Mop_{\rho^{it}}
   =\exp\!\bigl(it\Mop_{\log\rho}\bigr),
@@ -289,7 +975,7 @@ Similarly, the coarse-grained density defines
 \[
   U_t^{\rho_0}:=\Mop_{\rho_0^{it}}.
 \]
-The parameter $t$ is an auxiliary modular or phase parameter.  Nothing in this construction identifies it with laboratory time.  In particular, $U_t^\rho$ does not transport points of $X$; it only rotates the phase of a Hilbert space vector pointwise \footnote{For readers familiar to modular theory, it might be tempting to interpret the relative phase $u_t$ as the classical (commutative) analog of the cocycle of modular theory $\Delta_\rho^{it}\Delta_{\rho|\rho_0}^{-it}$. However, this interpretation is problematic because in the classical (commutative) theory, there are no clear analogs of modular flow or relative modular flow.}.
+The parameter $t$ is an auxiliary modular or phase parameter. Nothing in this construction identifies it with laboratory time. In particular, $U_t^\rho$ does not transport points of $X$; it only rotates the phase of a Hilbert space vector pointwise\footnote{For faithful normal states on the same abelian algebra, $u_t=(\rho/\rho_0)^{it}$ is the Connes Radon-Nikodym cocycle. Relative modular operators remain nontrivial, even though the modular automorphism group of each state is trivial.}.
 
 \subsection{Subregion (subspace) and subsystem coarse-grainings}
 \label{subsec:classical-region-subsystem}
@@ -383,459 +1069,307 @@ Indeed, when $\mB$ is invariant, $\alpha_t\circ E_{\mB}\circ\alpha_{-t}$ is anot
 
 The existence of $E_{\mB}$ does not require dynamical closure. Conditional expectation exists for every coarse sub-$\sigma$-algebra in this probability setting; compatibility with the chosen dynamics is the additional condition \eqref{eq:classical-expectation-equivariance}. These constructions require no Poisson structure. A Poisson bracket will enter when we restrict to Hamiltonian dynamics and seek a distinguished evolution generated by the state itself.
 
-\subsection{Classical ergodic theory} 
+\subsection{Ergodic hierarchy and subalgebra flows}
+\label{subsec:classical-ergodic-hierarchy}
 
-We take the crossed product $\mM=L^\infty(X,\Sigma,\mu)\rtimes G$ where $G$ is the group generated by the action of the dynamics that we take to be locally compact, such as $G=\mathbb{R}$ and \textit{non-singular}, meaning it preserves sets of measure zero ($\mu(gE) = 0 \iff \mu(E) = 0$ for all $g \in G$). 
+The ergodic hierarchy describes how much information about a state remains accessible at late times. In the algebraic language, it can be studied both through correlations of observables and through the evolution of coarse observable algebras. For our purposes, the relevant distinction is between conserved events, autonomous subsystems, and subalgebras that are preserved only in one time direction.
 
-Assuming the action is both \textbf{ergodic} (every $G$-invariant measurable set has either measure zero or full measure) and \textbf{essentially free} (the set of fixed points for any non-identity group element has measure zero), the center of $\mathcal{M}$ is trivial, guaranteeing that $\mathcal{M}$ is a \textbf{factor}. The Murray-von Neumann classification of the resulting factor $\mathcal{M}$ is entirely determined by the geometric and dynamical properties of the measure space under the group action.
+\paragraph{Ergodicity and conserved events:}
+Let $(\mA,\mu,\alpha_t)$ be the measure-preserving dynamical system introduced above. The flow is {\it ergodic} if every measurable set invariant under all $\Phi_t$ has measure zero or one. Equivalently, its fixed-point algebra is trivial:
+\begin{align}
+    \mA^\alpha
+    :=\{f\in\mA:\alpha_t(f)=f\text{ for all }t\in\mathbb R\}
+    =\mathbb C1\ .
+\end{align}
+An invariant event $O$ gives a conserved projection $\chi_O$. Thus ergodicity excludes a decomposition into two invariant subregions of positive measure. It does not exclude an invariant subsystem $\mB\subset\mA$: the condition $\alpha_t(\mB)=\mB$ permits observables in $\mB$ to evolve into one another. Such a subsystem is an autonomous factor of the dynamics, and its own dynamics is ergodic whenever the full system is ergodic.
 
-\paragraph{Type I: Atomic Phase Space (Transitive Dynamics):}
-The algebra $\mathcal{M}$ is a Type I factor if and only if the underlying measure space $X$ is \textbf{atomic} (consisting of discrete points with strictly positive measure) and the group $G$ acts transitively on it. 
+\paragraph{Correlation functions and mixing:}
+For $f,g\in\mA$, define the connected correlation function
+\begin{align}
+    C_{f,g}(t)
+    :=\mu\bigl(f^*\alpha_t(g)\bigr)-\mu(f^*)\mu(g),
+    \qquad \mu(f)=\int_X f\,d\mu\ .
+\end{align}
+For indicator functions, this becomes
+\begin{align}
+    C_{\chi_O,\chi_V}(t)
+    =\mu\bigl(O\cap\Phi_t(V)\bigr)-\mu(O)\mu(V)\ .
+\end{align}
+It measures the statistical dependence between an event and a transported event. Ergodicity is equivalent to the vanishing of the time-averaged connected correlation for every pair of observables:
+\begin{align}
+    \lim_{T\to\infty}\frac{1}{T}\int_0^T C_{f,g}(t)\,dt=0\ .
+\end{align}
+A stronger condition, {\it weak mixing}, requires
+\begin{align}
+    \lim_{T\to\infty}\frac{1}{T}\int_0^T |C_{f,g}(t)|^2\,dt=0\ .
+\end{align}
+The flow is {\it mixing} if $C_{f,g}(t)\to0$ as $t\to+\infty$. These conditions distinguish cancellation after time averaging from actual loss of correlation at late times. Mixing does not specify a decay rate and does not imply that there are no autonomous subsystems.
 
-In this regime, classical phase space is completely discrete, and the dynamical flow simply permutes these discrete states. The resulting crossed product algebra is isomorphic to the algebra of all bounded operators on a Hilbert space, $\mathcal{M} \cong \mathcal{B}(\mathcal{H})$. For classical continuous systems where $X$ is a smooth symplectic manifold, the phase space is inherently \textit{diffuse} (no single point carries positive volume), making Type I algebras physically unrealizable.
+\paragraph{Information recovered by subalgebra evolution:}
+Given a coarse algebra $\mB$, the family $\mB_t=\alpha_t(\mB)$ describes the observables accessible as this coarse description is transported by the dynamics. If $\mB_t=\mB$, evolution remains within the original description. Otherwise, the transported observables can depend on variables that were initially hidden. The algebra
+\begin{align}
+    \mA_{\mB}:=\bigvee_{t\in\mathbb R}\alpha_t(\mB)
+\end{align}
+contains the information accessible from all time translates of the coarse observables. Here $\bigvee$ denotes the generated von Neumann algebra. The condition $\mA_{\mB}=\mA$ says that these translates generate the full observable algebra. This is a property of the chosen coarse description, distinct from ergodicity of the dynamics.
 
-\paragraph{Type II: Volume Preservation (Conservative Dynamics):}
-The algebra $\mathcal{M}$ is a Type II factor if $X$ is diffuse (continuous) and the flow is structurally conservative. Mathematically, this occurs if and only if there exists a $\sigma$-finite measure $\nu$ that is equivalent to the background measure $\mu$ (meaning they share the same null sets) such that $\nu$ is strictly \textbf{$G$-invariant}: $\nu(gE) = \nu(E)$. The existence of this invariant measure guarantees the existence of a normal, semi-finite, faithful tracial weight on the algebra. 
-\begin{itemize}
-    \item \textbf{Type II$_1$ (Finite Volume):} If the invariant measure is finite ($\nu(X) < \infty$), it can be normalized to a probability measure. This corresponds to a classical system confined to a compact phase space or a closed energy surface (e.g., a chaotic pendulum or gas in a rigid box). The trace of the identity is finite, $\tau(\mathbf{1}) = 1$.
-    \item \textbf{Type II$_\infty$ (Infinite Volume):} If the invariant measure is infinite ($\nu(X) = \infty$), the system explores an unbounded phase space. This represents scattering processes or unconfined Hamiltonian flows where trajectories can escape to infinity. The trace exists, but $\tau(\mathbf{1}) = \infty$.
-\end{itemize}
+\paragraph{One-sided subalgebra flows and the Kolmogorov property:}
+Of particular interest are subalgebras satisfying
+\begin{align}\label{eq:classical-one-sided-inclusion}
+    \alpha_t(\mB_+)\subseteq\mB_+,\qquad t\geq0\ .
+\end{align}
+The family $\mB_t=\alpha_t(\mB_+)$ is then decreasing: $\mB_{t+s}\subseteq\mB_t$ for $s\geq0$. To interpret this inclusion, one can take $\mB_+$ to be generated by observations on a half-infinite time interval, with the orientation chosen so that positive $t$ removes the earliest part of the record.
 
-\paragraph{Type III: Quasi-Invariance (Dissipative Dynamics):}
-The algebra $\mathcal{M}$ is a Type III factor if $X$ is diffuse, the action is non-singular, but \textbf{no equivalent invariant measure exists}. In this regime, the flow is purely quasi-invariant. The classical dynamics preserve the topology of the space (impossible events remain impossible), but the vector field inherently stretches, compresses, or folds the phase space volume. No smooth change of coordinates (via a Radon-Nikodym derivative) can eliminate this divergence. 
+The Kolmogorov, or $K$, property can be formulated through the existence of such a one-sided algebra whose translates generate the full algebra and whose tail is trivial:
+\begin{align}\label{eq:classical-K-algebra}
+    \bigvee_{t\in\mathbb R}\mB_t=\mA,
+    \qquad
+    \bigcap_{t\geq0}\mB_t=\mathbb C1\ .
+\end{align}
+The first condition says that the complete record resolves all observables. The second says that no nonconstant observable remains accessible arbitrarily far into the retained half of the record. The analogous conditions with integer time describe a $K$-automorphism. They provide an inclusion-based formulation of loss of memory and motivate the future and past algebras used in quantum ergodic theory~\cite{ouseph2024local}.
 
-Physically, a Type III factor perfectly encodes \textbf{dissipative chaotic systems}, strange attractors, or Anosov diffeomorphisms with non-zero entropy production. Because the classical volume is perpetually destroyed or created, the resulting non-commutative algebra admits no trace ($\tau(AB) \neq \tau(BA)$). Instead, it possesses a non-trivial Tomita-Takesaki modular automorphism group, which acts as a purely algebraic clock tracking the exact rate of classical volume dissipation over time.
+\paragraph{Example: a Bernoulli shift:}
+Consider independent binary variables $x_n$, indexed by $n\in\mathbb Z$, with the uniform product measure on $X=\{0,1\}^{\mathbb Z}$. Let $\alpha(x_n)=x_{n+1}$, and let $\mB_+$ be the von Neumann algebra generated by $x_n$ with $n\geq0$. Then
+\begin{align}
+    \alpha^k(\mB_+)
+    =\operatorname{vN}\{x_n:n\geq k\},
+    \qquad
+    \alpha(\mB_+)\subsetneq\mB_+\ .
+\end{align}
+All integer translates generate $\mA$, and the tail algebra is trivial by the independence of the coordinates and the Kolmogorov zero-one law. At each step the retained description forgets one more coordinate, although the shift on the full system is invertible and preserves the measure. This is a subsystem coarse-graining: the retained and discarded coordinates give tensor factors of the observable algebra.
 
-\paragraph{Correlation functions and ergodic hierarchy:}
-The net of subregion algebras allows to define correlation functions which are the building blocks of the classical ergodic hierarchy...
- 
+This example also distinguishes one-sided subsystem inclusions from shrinking phase-space regions. In a finite measure space, $\Phi_t(O)\subseteq O$ and measure preservation imply $\mu(O\setminus\Phi_t(O))=0$. Thus a region cannot shrink strictly modulo null sets under a measure-preserving flow. In the nonatomic setting of Section~\ref{subsec:classical-region-subsystem}, the same obstruction applies to proper one-sided inclusions of the algebras $\mA_O$. It does not apply to the subsystem algebras of the Bernoulli example.
+
+\paragraph{Coarse-graining along a decreasing family:}
+Each $\mB_t$ has a $\mu$-preserving conditional expectation $E_t:\mA\to\mB_t$. For $s\geq t$, the tower property gives
+\begin{align}
+    E_sE_t=E_s\ .
+\end{align}
+For a fixed state with density $\rho$, its coarse-grained densities $\rho_t=E_t(\rho)$ therefore satisfy
+\begin{align}
+    H(\rho_s)\geq H(\rho_t),
+    \qquad
+    S(\rho\|\rho_s)\geq S(\rho\|\rho_t),
+    \qquad s\geq t,
+\end{align}
+whenever the entropies are finite. Here the loss of information follows from the nesting of the retained algebras. It does not require irreversible microscopic dynamics. For a trivial tail, the reverse martingale theorem further gives $E_t(f)\to\mu(f)1$ in $L^2$ for every $f\in L^2(X,\mu)$.
+
+\paragraph{Towards state-dependent subalgebra flows:}
+The structures above depend on a specified dynamics $\alpha_t$. Measure theory alone does not assign a nontrivial flow to a state, and all the coarse algebras considered here admit $\mu$-preserving conditional expectations. In the quantum setting, modular theory supplies a distinguished dynamics, and compatibility with that dynamics controls the existence of state-preserving expectations. The one-sided relation \eqref{eq:classical-one-sided-inclusion} anticipates the inclusion structure of a half-sided modular flow, without by itself supplying its quantum modular properties.
+
+To make a classical comparison with state-generated modular evolution, we next introduce a Poisson bracket and the Hamiltonian associated with $-\log\rho$. The ergodic properties of this dynamics must be assessed on its appropriate invariant sectors: on a symplectic phase space it conserves $\rho$ pointwise, so a nonconstant smooth density already supplies nontrivial conserved events on the full phase space.
+
 \subsection{Classical avatar of modular flow in Hamiltonian dynamics}
+\label{subsec:classical-state-flow}
 
-In modular theory, we define a flow starting from a state. 
-We have already since that there is a correspondence between states $\omega$ and observables $\rho_\omega^{1/2}$. We saw that continuous dynamics is generated using vector fields on $X$. Given a smooth real $f$ on $X$, we can define the 1-form $df$. To connect observables to vector fields, we need a $(0,2)$-tensor $\sigma$: 
-\begin{align}
-    X_f(\cdot)=\sigma(\cdot,df)\ .
-\end{align}
-This defines the Poisson bracket
-\begin{align}
-    \{f,g\}=\sigma(df,dg)=X_f(dg)\ .
-\end{align}
-This implies that $f$ is conserved along the flows generated by $X_f$ \footnote{This principle underlies Noether theorem that associates conserved charges to symmetries.}. We need the $(0,2)$-tensor to be closed $d\sigma=0$ so that the Lie-algebra of vector fields $X_f$ matches the Poisson algebra of functions 
-\begin{align}
-    [X_f,X_g]=X_{\{f,g\}}\ .
-\end{align}
+So far, the state and the dynamics have been independent inputs. A probability density assigns weights to microstates, but measure theory alone does not turn these weights into a motion of the microstates. A Poisson bracket supplies the missing structure: it converts a function into a Hamiltonian vector field. Applied to the logarithm of a density, it gives a distinguished state-dependent dynamics. This construction will let us compare the dynamics associated with a state and with its coarse description.
 
-
-
-Poisson brackets generate Hamitlonian flows $f\to \alpha^g_t(f)$ defined by 
+\paragraph{Poisson brackets and Hamiltonian motion:}
+A Poisson structure on a smooth manifold $X$ is an antisymmetric bivector $\Pi$ whose bracket
 \begin{align}
-    \partial_t\alpha_t^g(f)=-\{f,g\}\ .
+    \{f,g\}=\Pi(df,dg),\qquad f,g\in C^\infty(X),
 \end{align}
-If $X$ is a Poisson manifold, it is equipped with such a Poisson bracket, and the subspace of smooth real functions on $X$ forms a Poisson algebra. However, a general choice of volume measure on $X$ is not invariant under Hamiltonian flows above. The condition for invariance is 
+satisfies the Jacobi identity. The bracket obeys the Leibniz rule in each argument, so fixing a smooth real Hamiltonian $H$ defines a vector field. We use the convention
+\begin{align}\label{eq:classical-Hamiltonian-convention}
+    X_H(f)&=\{f,H\},\qquad
+    \alpha_t^H(f)=f\circ\Phi_{-t}^H,\nn\\
+    \delta_H(f)&:=\left.\partial_t\alpha_t^H(f)\right|_{t=0}=\{H,f\},
+\end{align}
+where $\Phi_t^H$ is the flow of $X_H$. Thus the generator on observables has the opposite sign from the vector field transporting points. The Jacobi identity ensures that Hamiltonian evolution preserves the Poisson bracket. In canonical coordinates, $\{q_i,p_j\}=\delta_{ij}$ and the point trajectories satisfy the usual Hamilton equations.
+
+\paragraph{Casimirs and symplectic leaves:}
+A Casimir is a function $c$ with $\{c,f\}=0$ for every smooth $f$. It is conserved by every Hamiltonian, rather than by one chosen dynamics. The points accessible from a given microstate by successive Hamiltonian motions form a symplectic leaf. Every Casimir is constant on each leaf, although global Casimirs need not distinguish all leaves. A leaf is therefore a classical analogue of an irreducible sector for Hamiltonian motion. This analogy concerns the Poisson bracket: the pointwise algebra $L^\infty(X,\mu)$ remains abelian, and restricting it to a leaf does not turn it into a nonabelian factor.
+
+\paragraph{Liouville measure and the state Hamiltonian:}
+For the explicit constructions below, take $X$ to be a connected compact symplectic manifold without boundary, with symplectic form $\omega$ and normalized Liouville measure
+\begin{align}
+    d\mu=\frac{\omega^n/n!}{\int_X\omega^n/n!},\qquad \dim X=2n.
+\end{align}
+Hamiltonian flows preserve this measure. Equivalently,
 \begin{align}\label{statepreserve}
-    \int \{f,H\} d\mu=0\ .
+    \int_X\{f,g\}\,d\mu=0
 \end{align}
-We will see below that every Poisson manifold splits into {\it symplectic submanifolds (leaves)} that come naturally with a symplectic volume measure that automatically satisfies the invariance condition above. To see this splitting, we need to introduce the notion of central observables.
+for smooth $f,g$. Compactness makes smooth Hamiltonian flows complete and avoids boundary terms. On a noncompact phase space these properties, together with the required integrability, must be checked separately.
 
-\paragraph{Central observables:} On a general Poisson manifold, the Poisson bracket can be degenerate, meaning that there can exists non-trivial functions $z$ such that 
+Let $\rho$ be a smooth strictly positive probability density relative to $\mu$. Define its {\it state Hamiltonian} and the associated evolution by
+\begin{align}\label{eq:classical-state-Hamiltonian}
+    K_\rho=-\log\rho,\qquad
+    \Phi_t^\rho:=\Phi_t^{K_\rho},\qquad
+    \alpha_t^\rho:=\alpha_t^{K_\rho}.
+\end{align}
+The infinitesimal evolution of an observable is
+\begin{align}\label{eq:classical-state-derivation}
+    \delta_\rho(f)=\{K_\rho,f\}=\{f,\log\rho\}.
+\end{align}
+The flow moves along level sets of the density, since $X_{K_\rho}(\rho)=0$. It preserves both $\mu$ and the state $\omega_\rho(f)=\int_X\rho f\,d\mu$. For a Gibbs density $\rho=Z^{-1}e^{-\beta H}$, we have $K_\rho=\beta H+\log Z$ and $\Phi_t^\rho=\Phi_{\beta t}^H$. Thus the state recovers the Hamiltonian motion, with a rescaled parameter; for a general density there is no prior identification of this parameter with physical time.
+
+\paragraph{The classical KMS identity:}
+The logarithm is distinguished by an integration-by-parts identity. Using \eqref{statepreserve},
 \begin{align}
-    \forall f:\qquad \{z,f\}=0\ .
+    0=\int_X\{g,f\rho\}\,d\mu
+    =-\omega_\rho(\{f,g\})+
+    \omega_\rho\bigl(f\{g,\log\rho\}\bigr).
 \end{align}
-They form the non-commutative analog of the center of the algebra of observables. In ergodic theory, these observables are called Casimir functions, and they have the interpretation of observables that are constant under all Hamiltonian evolutions.
+Consequently,
+\begin{align}\label{KMSclassical}
+    \omega_\rho(\{f,g\})=\omega_\rho(f\delta_\rho(g)).
+\end{align}
+For a Gibbs state this reads $\omega_\beta(\{f,g\})=\beta\omega_\beta(f\delta_H(g))$. This is the classical, or static, KMS condition, written with the time orientation in \eqref{eq:classical-Hamiltonian-convention}~\cite{vanDeVen2022}. It is stronger than stationarity: for a given smooth positive density, testing against all smooth $f$ determines $\delta_\rho(g)$ for every $g$. Conversely, on a connected symplectic manifold, imposing this identity for a specified Hamiltonian dynamics determines a smooth positive density to be Gibbs, up to normalization. The identity also motivates formulations on algebras of local observables in infinite systems, where existence of the dynamics and equilibrium states requires additional hypotheses; a global Gibbs density need not exist.
 
-\paragraph{Superselection sectors and factor algebras:} Start from a point, and evolving with all possible Hamiltonian evolutions, we trace a submanifold of $X$ called a {\it symplectic leaf}. Since Casimirs are constant along all such paths, every Casimir function must be constant on any given symplectic leaf.  If a Poisson manifold has enough globally defined, independent Casimir functions $z_1, z_2, \dots, z_k$, the symplectic leaves are simply the connected components of the common level sets of these functions. You specify a leaf by fixing the values of all the central elements:
+\paragraph{Poisson modular flow:}
+There is a geometric formulation of the same construction. For a smooth positive measure $\nu$, define its Poisson modular vector field by
 \begin{align}
-    L_{z_1, \dots, z_k} = \{ x \in X \mid z_1(x) = z_1, \dots, z_k(x) = z_k \}\ .
+    \mathcal M_\nu(f):=\operatorname{div}_\nu X_f.
 \end{align}
-Since all possible Hamiltonian (physical) dynamics preserve the leaf, we can interpret a symplectic leaf as a superselection sector. The restriction of the Poisson bracket to a symplectic leaf is non-degenerate, and hence provides a symplectic structure, and a canonical volume measure $\Omega=\omega^n/n!$ that is preserved under all Hamiltonian dynamics. Therefore, \ref{statepreserve} is automatically satisfies. Choosing this volume measure we find the observable algebra $L^\infty(L,\Sigma,\Omega)$ which is the classical avator of a factor in the quantum theory. 
-
-
-\paragraph{Symplectic coarse-graining (classical avatar of inclusion of subfactors)} Consider a coarse-graining we consider $Y$ (a coarse phase space or a sub $\sigma$-algebra) and a projection $\pi:\mL\to Y$. Then, $Y$ inherits a Poisson structure if for all $f,g\in \mL$, the Poisson bracket ${f,g}\in\mL$ is closed. 
-
-So the semi-classical avatar of inclusion of vN algebras is a Poisson coarse-graining. The analog of inclusion of factors is a surjective Poisson coarse-graining $\pi:\mL\to Y$ such that $\mL$ and $Y$ are connected symplectic leaves. 
-
-\paragraph{Hidden Poisson sector (semi-classical avatar of relative commutant):} Then the relative commutant is the hidden Poisson sector, the observables whose flows do not change coarse-grained ones.
-
-\paragraph{No subregion nets:} Sub-symplectic manifolds live in lower dimensions that $X$. That is why there is no natural notion of a net of coarse-graining flows associated to subregions on $X$. In cases where on can quantize the phase space and obtain a one-particle Hilbert space, the structure that replaces the net of subregion algebras is the net of standard subspaces. There is a canonical notion of subspace modular flow here that we review in Appendix \ref{}. The connection between this and the quantum ergodic theory we discuss in the next section (inclusion of algebras) is based on the second quantization.
-
-\paragraph{Classical avatar of KMS condition:}
-
-Any state described by a probability density that is a function of $h$ alone is invariant under this flow. Among such states, the Gibbs state $\omega_\beta$ stands out as the unique state with the distinguished property that it satisfies the KMS condition that any pair of observables $f$ and $g$ \footnote{In this context, it is sometimes called the Gallavotti-Verboven condition.}:
-\begin{equation}\label{KMSclassical}
-    \omega_\beta(\{f, g\}) = \beta\: \omega_\beta(f \{g, H\})=-\beta \omega_\beta(f \partial_t g)\ .
-\end{equation}
-The condition above serves the same purpose in classical algebraic statistical mechanics as the standard KMS condition does in the quantum domain: it provides an algebraic characterization of equilibrium states without needing to explicitly define a partition function or a global Hamiltonian. Below, we provide more intuition as why (\ref{KMSclassical}) is the classical avator of the KMS condition.
-
-To see this, first consider a finite-dimensional systems where the Liouville measure $\mu$ is well-defined, this condition follows directly from integration by parts. Assuming $f$ and $g$ vanish at the boundaries of phase space, the integral of any Poisson bracket with respect to the Liouville measure is zero: $\int \{f, g\} \, d\mu = 0$. If we assume $\omega_\beta$ is the standard Gibbs state $\omega_\beta(f) = \frac{1}{Z} \int f e^{-\beta H} \, d\mu$, we can evaluate the vanishing integral for the specific functions $f$ and $g e^{-\beta H}$:
-\begin{equation}
-    0 = \int \{f, g e^{-\beta H}\} \, d\mu
-\end{equation}
-Using the Leibniz rule for Poisson brackets, we expand the integrand:
-\begin{equation}
-    \{f, g e^{-\beta H}\} = \{f, g\} e^{-\beta H} + g \{f, e^{-\beta H}\}
-\end{equation}
-Applying the chain rule to the second term gives:
-\begin{equation}
-    \{f, e^{-\beta H}\} = -\beta e^{-\beta H} \{f, H\}
-\end{equation}
-Substituting this back into the integral:
-\begin{equation}
-    \int \left( \{f, g\} - \beta g \{f, H\} \right) e^{-\beta H} \, d\mu = 0
-\end{equation}
-Dividing by the partition function $Z$ gives the condition in (\ref{KMSclassical}).
-
-Furthermore, the classical condition in (\ref{KMSclassical}) can be derived as the $\hbar \to 0$ limit of the quantum KMS condition. The quantum KMS condition states that for a thermal state $\omega_\beta$ and time evolution $\alpha_t$:
-\begin{equation}
-    \omega_\beta(A \alpha_{i\hbar\beta}(B)) = \omega_\beta(B A)
-\end{equation}
-If we expand the time-evolved observable $\alpha_{i\hbar\beta}(B)$ for small $\hbar$ around $t=0$, we get:
-\begin{equation}
-    \alpha_{i\hbar\beta}(B) \approx B + i\hbar\beta \partial_t B
-\end{equation}
-Substituting this into the quantum condition:
-\begin{equation}
-    \omega_\beta(A B) + i\hbar\beta \omega_\beta(A \partial_t B) \approx \omega_\beta(B A)
-\end{equation}
-Rearranging to isolate the commutator:
-\begin{equation}
-    \omega_\beta([A, B]) \approx -i\hbar\beta \omega_\beta(A \partial_t B)
-\end{equation}
-By applying Dirac's prescription, the commutator transitions to the Poisson bracket as $\hbar \to 0$, mapping $\frac{1}{i\hbar}[A, B] \to \{A, B\}$. Dividing both sides by $i\hbar$ and taking the limit recovers the classical KMS condition exactly the condition in (\ref{KMSclassical}). 
-
-In the quantum setting, modular flow of a state $\rho$ can be uniquely defined as the state preserving one-parameter unitary flow that satisfies the KMS condition. This implies that the flow defined by 
+This measures the failure of Hamiltonian motions to preserve $\nu$~\cite{Weinstein1997}. For $d\nu=\rho\,d\mu$ and Liouville $\mu$, the divergence formula gives
 \begin{align}
-    \partial_t f=\{f,\log\rho\}
+    \mathcal M_\nu(f)=X_f(\log\rho)
+    =\{f,-\log\rho\}=X_{K_\rho}(f).
 \end{align}
-is the (semi)-classical avatar of modular flow. Here, we the word semi-classical is used since we have used the intuition of $\hbar\to 0$, and the mapping $\frac{1}{i\hbar}[A,B]\to \{A,B\}$.
+Thus $\Phi_t^\rho$ is precisely this Poisson modular flow; its action on observables uses the inverse pullback, so $\delta_\rho=-\mathcal M_\nu$. On a general Poisson manifold and for an arbitrary smooth reference measure, the formula instead reads $\mathcal M_{\rho\mu}=\mathcal M_\mu+X_{-\log\rho}$. A reference measure invariant under every Hamiltonian need not exist. Our symplectic setting removes this additional obstruction.
 
-\paragraph{Infinite Systems:} Just as the quantum KMS condition is essential for characterizing thermal states on $C^*$-algebras in the thermodynamic limit, the classical KMS condition is crucial for infinite classical systems. In the thermodynamic limit (infinite volume), the total energy $H \to \infty$ and the partition function $Z \to \infty$, making the standard Gibbs measure $\frac{1}{Z} e^{-\beta H} \, d\mu$ mathematically ill-defined. However, the Poisson algebra of local observables and the local derivations $\{ \cdot, H \}$ remain perfectly well-defined. The classical KMS condition replaces the explicit probability measure with an algebraic constraint, allowing one to rigorously define and study classical equilibrium states (often called KMS states or DLR states) in infinite-volume limits.
-
-% \paragraph{Algebra of observables:} Algebra of observables on a Poisson manifold $\mM$
-
-% \paragraph{Hamiltonian flows (semiclassical avatar of commutators):}
-
-% \paragraph{Central observables:} Poisson center (Casimirs) $C\in Z_{pos}: \{C,f\}=0$ for all $f$
-
-% \paragraph{Superselection sectors (semi-classical avator of factor algebras):} a leaf (submanifold $\mL\subset \mM$) is an irreducible sector under all Hamiltonian motion.
-
-% \paragraph{Semi-classical avatar of modular flow:} Inside a leaf, there is a one-to-one correspondence between normalized states $\rho$ and Hamiltonian flows by vector $X_H$ for which which $e^{-H}$ is normalizable: $\int_\mathcal{L} e^{-H}\Omega_\mL<\infty$.
-
-
-\paragraph{Coarse-graining flow and entropy generation}
-
-Build towards an inclusion that is "not expected" (has no normal conditional expectation), and equivalently there exists no flow in $\mL$ such that sends $Y\to Y$. If there is a trace (finite volume setup), this should always exist, so we need the infinite-volume case.
-
-\paragraph{Expectation:} there is a one-to-one correspondence between states of this relative commutant (hidden Poisson sector) and the equivariant conditional expecations from $\mL\to Y$.
-
-Then, then it is possible that a Hamiltonian flow preserves $Y$. It means that if $\pi\circ \Phi_t^\rho=\Phi_t^Y\circ \pi$?
-
-
-
-
-
- In the {\it Heisenberg picture} the evolution super-operator \(\phi_t\) acts on observables\footnote{This is often called by the Koopman automorphism.}
-\[
-\alpha_t(f)=f\circ \phi_{-t}.
-\]
-Thus, a classical measure-preserving dynamical system can be written as
-\[
-(M,\mu,\alpha_t).
-\]
-This is the commutative prototype of a von Neumann dynamical system. The noncommutative version replaces \(L^\infty(X,\mu)\) by a possibly nonabelian von Neumann algebra \(M\), replaces the probability measure by a faithful normal state \(\varphi\), and replaces the Koopman flow by a one-parameter automorphism group \(\alpha_t\) or, more specifically, by the modular flow \(\sigma_t^\varphi\).
-
-Since the multiplication of observables is defined point-by-point on the phase space $(f_1\circ f_2)(x)=f_1(x)f_2(x)$, there are two types of subalgebras of $M$ that one can associate to every subregion $O\subset X$. First is the subalgebra of functions with support inside $O$, $M_O$. There is a conditional expectation super-operators that projects $1_O:M\to M_O$:
-\begin{align}
-    (1_O(f))(x)=1_O(x) f(x)
-\end{align}
-where $1_O(x)$ is the characteristic function of $O$: $1_O(x)=1$ if $x\in O$, otherwise it is zero.
-Another choice is a {\it coarse-graining} subalgebra associated with $O$. If we only observe whether the system lies inside or outside \(O\), then we retain only the two-valued observable \(\chi_O\). This algebra is generated by this observable
-\[
-N_O=\{\lambda \chi_O+\lambda' \chi_{O^c}:\lambda,\lambda'\in\mathbb C\}.
-\]
-This algebra remembers only the partition
-\[
-X=O\sqcup O^c.
-\]
-The full algebra \(M=L^\infty(X,\mu)\) contains all bounded observables, while \(N_O\) contains only the observables that are constant on \(O\) and on \(O^c\). Thus \(N_O\subset M\) is a very simple example of a coarse observable algebra. The conditional expectation onto \(N_O\) is
-\[
-E_{N_O}(f)
-=
-\frac{1}{\mu(O)}\int f\,d\mu\, 1_O
-+
-\frac{1}{\mu(O^c)}\int_{O^c} f\,d\mu\, 1_{O^c}.
-\]
-This is the operation of replacing \(f\) by its average on each coarse cell. It forgets all microscopic variation inside \(O\) and inside \(O^c\), retaining only two macroscopic numbers.
-
-The flow preserves this coarse-graining exactly when
-\[
-\alpha_t(N_O)=N_O,\qquad t\in\mathbb R.
-\]
-Equivalently,
-\[
-\phi_t^{-1}(O)=O
-\quad \text{mod } \mu
-\]
-for every \(t\). Thus the algebraic condition that a subalgebra be invariant under the dynamics is, in this example, the ordinary ergodic-theoretic condition that the corresponding partition be dynamically invariant.
-
-A flow is {\it ergodic} if the only invariant measurable sets are the empty set and the entire $X$. 
-
-More generally, a classical coarse-graining is described by a sub-\(\sigma\)-algebra
-\[
-\mathcal G\subset \mathcal F.
-\]
-The corresponding von Neumann subalgebra is
-\[
-N=L^\infty(X,\mathcal G,\mu)\subset M=L^\infty(X,\mathcal F,\mu).
-\]
-The observables in \(N\) are precisely those depending only on the information encoded by \(\mathcal G\). If the coarse-graining is given by a measurable map
-\[
-\pi:X\to Y,
-\]
-then
-\[
-\mathcal G=\pi^{-1}\mathcal B(Y),
-\]
-and the coarse observables are exactly the functions of the form
-\[
-f(x)=g(\pi(x)).
-\]
-In this language, \(\pi\) is the map that forgets microscopic information and remembers only the macroscopic state \(y=\pi(x)\).
-
-The associated conditional expectation is the ordinary probabilistic conditional expectation
-\[
-E_{\mathcal G}:L^\infty(X,\mathcal F,\mu)\to L^\infty(X,\mathcal G,\mu),
-\qquad
-E_{\mathcal G}(f)=\mathbb E[f\mid \mathcal G].
-\]
-It is characterized by
-\[
-\int_X h\,E_{\mathcal G}(f)\,d\mu
-=
-\int_X h f\,d\mu
-\]
-for all bounded \(\mathcal G\)-measurable functions \(h\). It is a positive unital projection
-\[
-E_{\mathcal G}^2=E_{\mathcal G},
-\qquad
-E_{\mathcal G}|_N=\mathrm{id}_N,
-\]
-and it satisfies the bimodule property
-\[
-E_{\mathcal G}(n_1 f n_2)=n_1E_{\mathcal G}(f)n_2,
-\qquad n_1,n_2\in N.
-\]
-This is exactly the commutative model for a normal conditional expectation \(E:M\to N\) between von Neumann algebras.
-
-Now suppose the flow \(\phi_t\) preserves \(\mu\). The condition that the dynamics preserve the coarse-graining is
-\[
-\alpha_t(N)=N,
-\qquad t\in\mathbb R,
-\]
-or equivalently,
-\[
-\phi_t^{-1}\mathcal G=\mathcal G,
-\qquad t\in\mathbb R.
-\]
-In quotient language, this says that the microscopic dynamics descends to a well-defined dynamics on the coarse space \(Y\). Namely, there exists a flow \(\psi_t:Y\to Y\) such that
-\[
-\pi\circ \phi_t=\psi_t\circ \pi.
-\]
-This equation says that evolving first and then coarse-graining gives the same coarse result as coarse-graining first and then evolving the coarse variables. Thus an invariant sub-\(\sigma\)-algebra is precisely a dynamically closed coarse-graining, or equivalently a factor system in the sense of ergodic theory.
-
-For example, let
-\[
-X=Y\times Z
-\]
-and suppose the coarse-graining forgets \(Z\). Then
-\[
-\pi(y,z)=y,
-\]
-and the coarse observables are functions depending only on \(y\). Write the microscopic flow as
-\[
-\phi_t(y,z)=(Y_t(y,z),Z_t(y,z)).
-\]
-The coarse algebra is invariant exactly when \(Y_t(y,z)\) depends only on \(y\), not on \(z\). In that case there is an induced flow \(\psi_t\) on \(Y\) such that
-\[
-Y_t(y,z)=\psi_t(y).
-\]
-If \(Y_t\) depends on the hidden variable \(z\), then the \(Y\)-variables do not evolve autonomously. The coarse-graining loses information that is needed to predict the future coarse state.
-
-When the coarse-graining is invariant, conditional expectation commutes with the dynamics:
-\[
-E_{\mathcal G}\circ \alpha_t
-=
-\alpha_t\circ E_{\mathcal G}.
-\]
-This is the classical dynamical statement that ``coarse-graining and time evolution commute.'' It is the commutative analog of saying that a von Neumann subalgebra \(N\subset M\) is globally invariant under a one-parameter automorphism group \(\alpha_t\).
-
-The noncommutative version keeps the same formal structure, but the existence of conditional expectations becomes much more subtle. Let \(M\) be a von Neumann algebra with faithful normal state \(\varphi\), and let
-\[
-N\subset M
-\]
-be a von Neumann subalgebra. A normal conditional expectation
-\[
-E:M\to N
-\]
-is a normal positive unital projection satisfying
-\[
-E(n_1 x n_2)=n_1E(x)n_2,
-\qquad n_1,n_2\in N.
-\]
-If, in addition,
-\[
-\varphi\circ E=\varphi,
-\]
-then \(E\) is a \(\varphi\)-preserving coarse-graining from \(M\) onto \(N\).
-
-Takesaki's theorem gives the precise criterion for the existence of such a state-preserving expectation. In the state case, it says:
-\[
-\boxed{
-\sigma_t^\varphi(N)=N\ \forall t\in\mathbb R
-\quad\Longleftrightarrow\quad
-\exists!\ E_\varphi:M\to N
-\text{ normal conditional expectation with }
-\varphi\circ E_\varphi=\varphi.
-}
-\]
-Moreover, when this holds, the modular flow of \(\varphi|_N\) is just the restriction of the modular flow of \(\varphi\):
-\[
-\sigma_t^{\varphi|_N}(n)=\sigma_t^\varphi(n),
-\qquad n\in N.
-\]
-Thus Takesaki's theorem is the noncommutative analog of the classical relation between invariant coarse-grainings and conditional expectation, but with a crucial difference: in the noncommutative case, the state itself has a nontrivial modular dynamics.
-
-In finite dimensions this is especially transparent. Let
-\[
-M=B(\mathcal H),
-\qquad
-\varphi(x)=\operatorname{Tr}(\rho x),
-\]
-where \(\rho>0\). Then the modular flow is
-\[
-\sigma_t^\varphi(x)=\rho^{it}x\rho^{-it}.
-\]
-A subalgebra \(N\subset B(\mathcal H)\) admits a \(\varphi\)-preserving conditional expectation exactly when
-\[
-\rho^{it}N\rho^{-it}=N
-\]
-for every \(t\). Equivalently, \(N\) is dynamically closed under the modular Hamiltonian
-\[
-K=-\log\rho.
-\]
-In this case the conditional expectation is the projection of the full observable algebra onto the coarse algebra that preserves the state \(\varphi\). This is the finite-dimensional shadow of Takesaki's theorem.
-
-The commutative case is special. If
-\[
-M=L^\infty(X,\mathcal F,\mu)
-\]
-and
-\[
-\varphi(f)=\int_X f(x)\rho(x)\,d\mu(x)
-\]
-with \(\rho>0\), then \(M\) is abelian. Therefore the modular automorphism group is trivial:
-\[
-\sigma_t^\varphi(f)=f.
-\]
-Hence every subalgebra
-\[
-N=L^\infty(X,\mathcal G,\mu)
-\]
-is automatically invariant under \(\sigma_t^\varphi\). Takesaki's theorem then reduces to the classical fact that conditional expectation onto any sub-\(\sigma\)-algebra exists and preserves the probability measure defined by \(\varphi\):
-\[
-E_{\mathcal G}(f)=\mathbb E_\varphi[f\mid \mathcal G].
-\]
-Thus the theorem is nontrivial precisely because \(M\) is noncommutative. In the classical case modular dynamics is invisible; in the noncommutative case it detects whether a coarse algebra is compatible with the state.
-
-This gives a useful dictionary:
-\[
-\begin{array}{c|c}
-\text{Classical probability} & \text{Operator algebra} \\
-\hline
-(X,\mathcal F,\mu) & (M,\varphi) \\
-L^\infty(X,\mathcal F,\mu) & M \\
-\mathcal G\subset\mathcal F & N\subset M \\
-L^\infty(X,\mathcal G,\mu) & N \\
-\mathbb E[\cdot\mid \mathcal G] & E:M\to N \\
-\phi_t:X\to X & \alpha_t\in\operatorname{Aut}(M) \\
-\phi_t^{-1}\mathcal G=\mathcal G & \alpha_t(N)=N \\
-\text{factor system }X\to Y & \text{invariant subalgebra }N\subset M
-\end{array}
-\]
-
-For a general chosen dynamics \(\alpha_t\), the condition
-\[
-\alpha_t(N)=N
-\]
-means that \(N\) is a dynamically closed subsystem of observables. For the special choice
-\[
-\alpha_t=\sigma_t^\varphi,
-\]
-this condition means that \(N\) is compatible with the intrinsic modular dynamics of the state \(\varphi\). Takesaki's theorem says that this compatibility is exactly what is needed for a \(\varphi\)-preserving conditional expectation.
-
-This also clarifies the relation to ergodic theory. In classical dynamics, a measure-preserving flow is ergodic if the only invariant measurable sets have measure \(0\) or \(1\). Algebraically,
-\[
-M^\alpha
-=
-\{f\in M:\alpha_t(f)=f\ \forall t\}
-=
-\mathbb C1.
-\]
-Thus ergodicity says that the fixed-point algebra is trivial. A stronger condition would say that there are no nontrivial invariant sub-\(\sigma\)-algebras at all, i.e. no nontrivial factor systems. The first condition rules out invariant observables; the second rules out invariant coarse-grainings.
-
-Similarly, in noncommutative dynamics one can ask whether
-\[
-M^\alpha=\mathbb C1,
-\]
-or one can ask whether there exist nontrivial subalgebras
-\[
-N\subset M
-\]
-such that
-\[
-\alpha_t(N)=N.
-\]
-The latter question is closer to the theory of subsystems, coarse-grainings, and conditional expectations.
-
-In Hamiltonian classical mechanics, there is an infinitesimal version. Suppose \(X\) is a Poisson manifold and the flow is generated by a Hamiltonian \(H\). Then
-\[
-\frac{d}{dt}f_t=\{H,f_t\}.
-\]
-A smooth subalgebra \(N\) of observables is invariant if
-\[
-f\in N
-\quad\Longrightarrow\quad
-\{H,f\}\in N.
-\]
-That is, the Hamiltonian evolution of a coarse observable remains coarse. In noncommutative quantum mechanics, the analogous condition for a Hamiltonian \(K\) is
-\[
-x\in N
-\quad\Longrightarrow\quad
-i[K,x]\in N.
-\]
-For modular dynamics in finite dimensions, \(K=-\log\rho\), so the condition becomes
-\[
-x\in N
-\quad\Longrightarrow\quad
-i[-\log\rho,x]\in N.
-\]
-Thus the modular Hamiltonian plays the role of a distinguished generator of the state-dependent intrinsic dynamics.
-
-Finally, this perspective explains why state-preserving expectations are special in quantum field theory and type III von Neumann algebras. If \(N\subset M\) is an inclusion of local algebras and \(\Omega\) is a common cyclic and separating vector, then an \(\Omega\)-preserving conditional expectation \(E:M\to N\) would require
-\[
-\sigma_t^{M,\Omega}(N)=N
-\]
-by Takesaki's theorem. For ordinary nested spacetime regions this modular invariance usually fails. Hence one should not expect a vacuum-preserving conditional expectation. Other conditional expectations may exist, but they preserve different states. The Takesaki expectation is the one compatible with the chosen state and its modular flow.
-
-In summary, the classical theory says that a coarse-graining is a sub-\(\sigma\)-algebra \(\mathcal G\), the corresponding projection is conditional expectation, and dynamical compatibility means \(\phi_t^{-1}\mathcal G=\mathcal G\). The operator-algebraic theory replaces \(\mathcal G\) by a von Neumann subalgebra \(N\subset M\), replaces ordinary conditional expectation by a normal conditional expectation \(E:M\to N\), and replaces classical dynamical invariance by
-\[
-\alpha_t(N)=N.
-\]
-Takesaki's theorem identifies the special case where the dynamics is the modular flow of a state: a subalgebra is invariant under the modular flow exactly when there is a unique conditional expectation onto it preserving that state.
-
+The construction uses the Poisson structure in an essential way. It is distinct from the multiplication group $U_t^\rho$ introduced above and from the trivial modular automorphism group of the abelian von Neumann algebra. It also supplies no automatic ergodic or entropy-production property. A nonconstant $\rho$ is itself a conserved observable, so the flow cannot be ergodic on the full probability space. Questions about ergodicity and mixing must be posed on invariant sectors with suitable invariant measures. The comparison of full and coarse state Hamiltonians, however, is meaningful without assuming ergodicity.
 
 \subsection{Subalgebra Hamiltonian flows}
+\label{subsec:classical-subalgebra-Hamiltonian}
 
-Standard inclusions are unique in that the action of the characteristic flow on the relative commutant generates all of the larger algebra?
+A coarse description determines a reduced state and hence, when the coarse space is Poisson, its own state-generated dynamics. We can then ask whether the reduced dynamics agrees with what the full dynamics does to the observed variables. Comparing the two motions gives a classical model of the subalgebra flows studied in this paper. The comparison separates evolution already visible within the retained algebra from evolution involving the discarded variables.
+
+\paragraph{Poisson subsystems:}
+Let $\pi:X\to Y$ be a smooth surjective Poisson submersion:
+\begin{align}\label{eq:classical-Poisson-subsystem}
+    \{\pi^*f,\pi^*g\}_X=\pi^*\{f,g\}_Y,
+    \qquad f,g\in C^\infty(Y).
+\end{align}
+The smooth coarse observables $\mathcal B=\pi^*C^\infty(Y)$ are closed under the bracket. This condition allows us to speak of Hamiltonian dynamics within the coarse description. It does not imply that an arbitrary Hamiltonian on $X$ preserves $\mathcal B$.
+
+The simplest setting makes both the geometric and probabilistic structures explicit. Take a product $X=Y\times Z$ of connected compact symplectic manifolds, with product symplectic structure and normalized Liouville measure $\mu=\mu_Y\otimes\mu_Z$. The projection to $Y$ is Poisson, and the associated von Neumann subalgebra is $\mB_Y=L^\infty(Y,\mu_Y)\otimes1$. For a smooth positive density $\rho$, restriction of the state gives the marginal density
+\begin{align}\label{eq:classical-marginal-Hamiltonian}
+    \rho_Y(y)=\int_Z\rho(y,z)\,d\mu_Z(z),\qquad
+    K_Y=-\log\rho_Y.
+\end{align}
+The expectation $E_Y$ from Section~\ref{subsec:classical-region-subsystem} extends this marginal back to $X$ as $\rho_0(y,z)=\rho_Y(y)$. Its Hamiltonian is $K_0=\pi^*K_Y$, whose flow is
+\begin{align}
+    \Phi_t^0(y,z)=(\Phi_t^Y(y),z).
+\end{align}
+This provides a definite lift of the reduced motion to the full phase space. For a general Poisson submersion, a specified coarse Hamiltonian can likewise be pulled back, but the marginal measure need not be Liouville and a complementary subsystem need not exist. We use the product setting below to keep the marginal, its reference measure, and its lifted Hamiltonian unambiguous.
+
+\paragraph{When does the reduced dynamics agree with the full dynamics?}
+Agreement means that the observed trajectory is determined by its initial coarse state and follows the flow generated by $K_Y$:
+\begin{align}\label{eq:classical-state-intertwining}
+    \pi\circ\Phi_t^\rho=\Phi_t^Y\circ\pi.
+\end{align}
+For our complete smooth flows, this is equivalent to the infinitesimal condition
+\begin{align}\label{eq:classical-state-defect}
+    \{\pi^*g,K_\rho\}_X-\pi^*\{g,K_Y\}_Y
+    =\{\pi^*g,K_\rho-K_0\}_X=0,
+    \qquad g\in C^\infty(Y).
+\end{align}
+The left side measures the part of the observed velocity missed by the reduced state Hamiltonian. A Hamiltonian invisible to all coarse observables belongs to the Poisson centralizer
+\begin{align}
+    \mathcal B^{\mathrm c}_{\mathrm P}
+    :=\{h\in C^\infty(X):\{h,b\}=0\text{ for every }b\in\mathcal B\}.
+\end{align}
+Thus agreement is precisely the condition $K_\rho-K_0\in\mathcal B^{\mathrm c}_{\mathrm P}$. This is an analogue of a relative commutant defined using Poisson brackets. The ordinary operator commutant of a classical subalgebra contains the whole abelian observable algebra and cannot express this condition.
+
+In the product setting, nondegeneracy of the symplectic form and connectedness of $Y$ imply that this centralizer consists of functions of $z$ alone. Hence \eqref{eq:classical-state-intertwining} is equivalent to
+\begin{align}\label{eq:classical-product-state-closure}
+    K_\rho(y,z)=K_Y(y)+K_Z(z),
+    \qquad
+    \rho(y,z)=\rho_Y(y)\rho_Z(z).
+\end{align}
+Normalization of the marginal fixes $\int_Z\rho_Z\,d\mu_Z=1$. In fact, autonomy under any reduced smooth dynamics already forces this factorization: independence of the observed Hamiltonian velocity from $z$ makes $d_YK_\rho$ independent of $z$, and integration on connected $Y$ gives an additive Hamiltonian. This conclusion uses the product symplectic structure and the special choice $K_\rho=-\log\rho$; it is stronger than the condition for an autonomous subsystem under general measure-preserving dynamics.
+
+\paragraph{Comparing the two flows:}
+Define the relative transformation by first undoing the lifted coarse motion and then applying the full motion:
+\begin{align}\label{eq:classical-relative-transformation}
+    R_t=\Phi_t^\rho\circ\Phi_{-t}^0,
+    \qquad
+    \mathcal T_t(f):=f\circ R_t^{-1}
+    =\alpha_t^\rho\circ\alpha_{-t}^0(f).
+\end{align}
+For each $t$, this is a symplectic transformation and a measure-preserving automorphism, respectively. Since the lifted coarse flow preserves $\mB_Y$,
+\begin{align}\label{eq:classical-relative-algebra-flow}
+    \mathcal T_t(\mB_Y)=\alpha_t^\rho(\mB_Y).
+\end{align}
+The relative transformation therefore follows the same moving subalgebra as the full dynamics, while canceling the chosen internal coarse evolution. It fixes every coarse observable exactly when \eqref{eq:classical-state-intertwining} holds. For a product state it can still move hidden variables: $R_t(y,z)=(y,\Phi_t^Z(z))$.
+
+Its infinitesimal generator is the difference of the state Hamiltonians:
+\begin{align}\label{eq:classical-relative-Hamiltonian}
+    K_{\mathrm{rel}}&=K_\rho-K_0=-\log\frac{\rho}{\rho_0},\nn\\
+    \left.\partial_tR_t\right|_{t=0}&=X_{K_{\mathrm{rel}}},\qquad
+    \left.\partial_t\mathcal T_t(f)\right|_{t=0}=\{K_{\mathrm{rel}},f\}.
+\end{align}
+At finite time, $R_t$ need not be a one-parameter group: the two Hamiltonian flows need not commute. It reduces to the autonomous flow generated by $K_{\mathrm{rel}}$ when they do commute. The relative transformation and the autonomous flow of the difference Hamiltonian agree to first order, but should not be identified in general. This distinction also appears when composing the modular evolutions of two quantum algebras.
+
+\paragraph{Example: a uniform marginal with nonautonomous observables:}
+Take $Y$ and $Z$ to be two-dimensional tori with angular coordinates $(q,p)$ and $(Q,P)$, each of period $2\pi$, and the product symplectic form $dq\wedge dp+dQ\wedge dP$. Consider
+\begin{align}
+    \rho(q,p,Q,P)=\frac{e^{\epsilon\cos(q-Q)}}{\mathcal Z_\epsilon},
+    \qquad
+    \mathcal Z_\epsilon=\int_X e^{\epsilon\cos(q-Q)}\,d\mu,
+    \qquad \epsilon\ne0.
+\end{align}
+Translation invariance of the angular integral gives $\rho_Y=1$, so $K_0=0$ and the reduced state predicts no motion. The full state Hamiltonian is $K_\rho=-\epsilon\cos(q-Q)+\log\mathcal Z_\epsilon$, giving
+\begin{align}
+    \dot q=\dot Q=0,\qquad
+    \dot p=-\epsilon\sin(q-Q),\qquad
+    \dot P=\epsilon\sin(q-Q).
+\end{align}
+For example, the bounded coarse observable $e^{ip}$ evolves as
+\begin{align}
+    \alpha_t^\rho(e^{ip})
+    =\exp\bigl(i[p+\epsilon t\sin(q-Q)]\bigr).
+\end{align}
+Its future value depends on the hidden angle $Q$, so it leaves $\mB_Y$ for $t\ne0$. The full state and its uniform marginal are stationary, but the retained observables do not evolve autonomously. Here $R_t=\Phi_t^\rho$ directly displays the motion that the marginal state Hamiltonian misses.
+
+\paragraph{Relative entropy and the information discarded:}
+The same relative logarithm appeared in the phase construction at the beginning of this section. Here it generates a vector field, while its expectation gives
+\begin{align}\label{eq:classical-relative-entropy-Hamiltonian}
+    S(\rho\|\rho_0)=-\omega_\rho(K_{\mathrm{rel}})
+    =H(\rho_0)-H(\rho).
+\end{align}
+The vector field alone does not determine this number: on a connected symplectic manifold it determines its Hamiltonian only up to a constant. The normalized densities fix that constant. On a general Poisson manifold, Casimirs give a larger ambiguity.
+
+Information loss and failure of autonomous coarse dynamics are also distinct. For a product state, the relative transformation acts only on $Z$, yet
+\begin{align}
+    S(\rho_Y\rho_Z\|\rho_Y\otimes1)
+    =\int_Z\rho_Z\log\rho_Z\,d\mu_Z
+\end{align}
+can be positive. Coarse-graining has discarded the hidden distribution even without correlations. More generally,
+\begin{align}
+    S(\rho\|\rho_Y\otimes1)
+    =S(\rho\|\rho_Y\rho_Z)+S(\rho_Z\|1),
+\end{align}
+where $\rho_Z$ is the other marginal. The first term is the mutual information and the second measures the hidden marginal relative to the chosen reference. Neither this entropy nor the relative transformation supplies a monotone entropy-production law without an additional coarse-graining or dynamical assumption.
+
+\paragraph{Subregions and the passage to QFT:}
+The measurable region algebras $\mA_O$ remain valid coarse descriptions. What can fail is the smoothness needed to assign their coarse densities a Hamiltonian flow. For the region expectation $E_O$,
+\begin{align}
+    \rho_0=E_O(\rho)=\chi_O\rho+c_O\chi_{O^c},\qquad
+    c_O=\frac{1}{\mu(O^c)}\int_{O^c}\rho\,d\mu.
+\end{align}
+For an open region with smooth boundary this density is generally discontinuous there. In the interior of $O$, $K_0=K_\rho$; in the interior of the complement, $K_0$ is constant. These local statements do not specify a smooth global Hamiltonian flow across the boundary. Additional regularization or boundary conditions are needed. This is a limitation of the Hamiltonian construction, not of the measure-theoretic net.
+
+Finally, every classical coarse algebra still admits a state-preserving conditional expectation for a faithful probability state, even when its Poisson state flow fails to preserve that algebra. In the product example this expectation is explicitly
+\begin{align}
+    E_{\rho,Y}(f)(y)=\int_Z f(y,z)\frac{\rho(y,z)}{\rho_Y(y)}\,d\mu_Z(z).
+\end{align}
+Its existence does not imply \eqref{eq:classical-state-intertwining}. In quantum modular theory the relation changes: for a faithful normal state $\varphi$ on $\mA$, Takesaki's theorem identifies invariance of a unital von Neumann subalgebra $\mB$ under $\sigma_t^\varphi$ with the existence of a $\varphi$-preserving normal conditional expectation onto $\mB$~\cite{Takesaki1972}. Failure of invariance rules out an expectation preserving this state; it does not by itself rule out expectations preserving other states. This is the additional structure that the quantum theory contributes to the comparison of full and coarse dynamics.
+
+The classical construction thus motivates studying how relative state evolutions transport retained observables. In QFT a spacetime region selects local field observables, whereas a region $O\subset X$ above selects possible microstates. The connection developed in the next section is through the inclusions of observable algebras and their state-dependent flows; it does not identify these two notions of region.
+
+% Bibliography addition for the new citation key (insert into modularscattering.bib):
+% @misc{vanDeVen2022,
+%   author = {van de Ven, Christiaan J. F.},
+%   title = {Gibbs states and their classical limit},
+%   year = {2022},
+%   eprint = {2211.01755},
+%   archivePrefix = {arXiv},
+%   primaryClass = {math-ph},
+%   url = {https://arxiv.org/abs/2211.01755}
+% }
+
+
 
 \section{Subalgebra flows in quantum ergodic theory}\label{section:basics}
 
