@@ -94,7 +94,7 @@
 \begin{document}
 
 % Title
-\title{Subalgebra Flows in Ergodic Theory and QFT}
+\title{Subsystem flows, Ergodic theory and QFT}
 
 \author{Yidong Chen$^1$,}
 \affiliation{$^1$Department of Mathematics, University of Illinois at Urbana-Champaign, Illinois, IL 61801, USA}
@@ -109,7 +109,7 @@
 %\date{\today}
 
 % Abstract
-\abstract{Recent developments in the algebraic approach to bulk reconstruction in holography have highlighted the role of half-sided modular inclusions and modular intersections in reconstructing spacetime symmetry transformations. A key ingredient in these algebraic reconstructions is the concept of subalgebra flow which composes modular evolutions associated with an algebra and a subalgebra. In the first part of this work, we motivate the notion of coarse-grainings (subalgebras) in the classical Hamiltonian ergodic hierarchy, distinguishing two cases: subspace and subsystem subalgebras. To associate flows to these subalgebras, we use the Poisson bracket on phase space to identify a classical avatar of the modular flow. We discuss the generalization to the quantum ergodic hierarchy, focusing on ergodic classes that correspond to {\it non-expected} and {\it split} subalgebras that arise in the net of subalgebras of QFT. In the second part of this work, we compute subregion flows corresponding to causal developments of balls in vacuum CFT and study their analytic properties. For inclusion of wedges in QFT and inclusion of ball-shaped regions in CFTs, the subregion flow is, up to a reparametrization, the same as time evolution with the global Hamiltonian. We compute the subregion flows in conformal perturbation theory and prove bounds on the comparison of subregion flows of balls with global time evolution in the vacuum of a general QFT.}
+\abstract{Recent developments in the algebraic approach to bulk reconstruction in holography have highlighted the role of half-sided modular inclusions and modular intersections in reconstructing spacetime symmetry transformations. A key ingredient in these algebraic reconstructions is the concept of subsystem flow, which composes modular evolutions associated with an algebra and that of its subsystem. In the first part of this work, we motivate the notion of coarse-grainings in the classical Hamiltonian ergodic hierarchy, distinguishing two cases: subspace and subsystem subalgebras. To identify a classical avatar of modular flow, we associate flows to states, using the Poisson bracket on phase space. We discuss the generalization to the quantum ergodic theory, and in particular to the net of subsystems associated to subregions in many-body quantum systems. We focus on quantum ergodic classes that correspond to {\it non-expected} and {\it split} subsystems that arise in QFT. In the second part of this work, we compute subsystem flows corresponding to causal developments of balls in vacuum CFT and QFT and study their analytic properties. For inclusion of wedges in QFT and inclusion of ball-shaped regions in CFTs, the subregion flow is, up to a reparameterization, the same as time evolution with the global Hamiltonian. We compute the subregion flows in conformal perturbation theory and prove bounds on the comparison of subregion flows of balls with global time evolution in vacuum QFT.}
 
 
 
@@ -833,11 +833,17 @@ Standard+ ergodic (cyclic-separating)
 % \subsection{Subalgebra Hamiltonian flows}
 
 % Standard inclusions are unique in that the action of the characteristic flow on the relative commutant generates all of the larger algebra?
-\section{Subalgebra flows in classical ergodic theory}
+\section{Subsystem flows in classical ergodic theory}
 
 %\subsection{Coarse-gainings and Classical net of subregion algebras}
 
-The passage from a reversible microscopic description to an apparently irreversible macroscopic one is often attributed to information loss during coarse-graining. As we review below, this information loss can be quantified by associating an entropy to a coarse-graining. A relative phase constructed from the fine-grained and coarse-grained densities generates this entropy and provides a first classical avatar of a coarse-graining flow. This phase acts on Hilbert space vectors by multiplication, with a value that depends on the microstate and the flow parameter. Its conjugation action on the commutative observable algebra is trivial. To obtain a state-dependent flow on phase space, we will later introduce a Poisson bracket.
+The passage from a reversible microscopic description to an apparently irreversible macroscopic one is often attributed to information loss during coarse-graining. We start with a measure-theoretic definition of the algebra of observables, states, and dynamics of a classical system on some configuration space $X$ (space of microstates). In subsection \ref{}, we describe two types of coarse-grainings that we call subspace and subalgebra coarse-grainings. This work is primarily concerned with the latter case. Subsection \ref{} contains a review of classical ergodic theory.
+
+In subsection \ref{}, we argue that if $X$ is endowed with a Poisson bracket, we say we have a Hamiltonian system that associates flows (dynamics) to (conserved) observables and (invariant) states, providing a classical avatar of modular flow. Finally, in subsection \ref{}, we discuss the subsystem flow in Hamiltonian systems.
+
+
+
+This information loss can be quantified by associating an entropy to a coarse-graining. A relative phase constructed from the fine-grained and coarse-grained densities generates this entropy and provides a first classical avatar of a coarse-graining flow. 
 
 % We will see that it is the failure of conditional expectation to intertwine the microscopic phase action with its coarse-grained counterpart that is of interest to us.  The same relative density that measures this failure generates a cocycle whose expectation is exactly the Kullback--Leibler divergence, and this divergence is exactly the entropy increase produced by coarse-graining.  These results provide a rigorous kinematic account of information loss, but they do not by themselves derive an irreversible physical time evolution.
 
@@ -977,7 +983,7 @@ Similarly, the coarse-grained density defines
 \]
 The parameter $t$ is an auxiliary modular or phase parameter. Nothing in this construction identifies it with laboratory time. In particular, $U_t^\rho$ does not transport points of $X$; it only rotates the phase of a Hilbert space vector pointwise\footnote{For faithful normal states on the same abelian algebra, $u_t=(\rho/\rho_0)^{it}$ is the Connes Radon-Nikodym cocycle. Relative modular operators remain nontrivial, even though the modular automorphism group of each state is trivial.}.
 
-\subsection{Subregion (subspace) and subsystem coarse-grainings}
+\subsection{Subspace and subsystem classical coarse-grainings}
 \label{subsec:classical-region-subsystem}
 
 Subregion and subsystem coarse-grainings organize incomplete information differently. A subregion coarse-graining resolves microstates within a selected region and identifies those outside it, whereas a subsystem coarse-graining identifies microstates that share the same observed variables. Evolution transports the resolved region in the first case and the fibers of indistinguishable microstates in the second. Their invariance has correspondingly different meanings: an invariant region defines a conserved event, while an invariant subsystem defines an autonomous factor dynamics. Ergodicity excludes nontrivial conserved events but permits nontrivial autonomous factors.
@@ -1158,7 +1164,7 @@ The structures above depend on a specified dynamics $\alpha_t$. Measure theory a
 
 To make a classical comparison with state-generated modular evolution, we next introduce a Poisson bracket and the Hamiltonian associated with $-\log\rho$. The ergodic properties of this dynamics must be assessed on its appropriate invariant sectors: on a symplectic phase space it conserves $\rho$ pointwise, so a nonconstant smooth density already supplies nontrivial conserved events on the full phase space.
 
-\subsection{Classical avatar of modular flow in Hamiltonian dynamics}
+\subsection{Classical avatar of modular flow in Hamiltonian systems}
 \label{subsec:classical-state-flow}
 
 So far, the state and the dynamics have been independent inputs. A probability density assigns weights to microstates, but measure theory alone does not turn these weights into a motion of the microstates. A Poisson bracket supplies the missing structure: it converts a function into a Hamiltonian vector field. Applied to the logarithm of a density, it gives a distinguished state-dependent dynamics. This construction will let us compare the dynamics associated with a state and with its coarse description.
@@ -1229,7 +1235,7 @@ Thus $\Phi_t^\rho$ is precisely this Poisson modular flow; its action on observa
 
 The construction uses the Poisson structure in an essential way. It is distinct from the multiplication group $U_t^\rho$ introduced above and from the trivial modular automorphism group of the abelian von Neumann algebra. It also supplies no automatic ergodic or entropy-production property. A nonconstant $\rho$ is itself a conserved observable, so the flow cannot be ergodic on the full probability space. Questions about ergodicity and mixing must be posed on invariant sectors with suitable invariant measures. The comparison of full and coarse state Hamiltonians, however, is meaningful without assuming ergodicity.
 
-\subsection{Subalgebra Hamiltonian flows}
+\subsection{Subsystem flows in Hamiltonian systems}
 \label{subsec:classical-subalgebra-Hamiltonian}
 
 A coarse description determines a reduced state and hence, when the coarse space is Poisson, its own state-generated dynamics. We can then ask whether the reduced dynamics agrees with what the full dynamics does to the observed variables. Comparing the two motions gives a classical model of the subalgebra flows studied in this paper. The comparison separates evolution already visible within the retained algebra from evolution involving the discarded variables.
@@ -1373,7 +1379,7 @@ The classical construction thus motivates studying how relative state evolutions
 
 \section{Subalgebra flows in quantum ergodic theory}\label{section:basics}
 
-\subsection{Quantum coarse-grainings}
+\subsection{Subspace and Subsystem Quantum coarse-grainings}
 
 \paragraph{Algebra of quantum observables:}
 
