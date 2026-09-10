@@ -5706,7 +5706,1864 @@ vacuum-preserving proof above: one must identify an additional mechanism, such
 as conormal adjacent-region localization, that rules out expectations
 preserving other faithful states.
 
+\section{A Review of Geometric Quantization}
+\label{app:geometric_quantization}
 
+Geometric quantization is a collection of geometric and analytic procedures for
+constructing quantum Hilbert spaces and quantum observables from classical
+symplectic data.  Its basic starting point is a symplectic manifold
+$(M,\omega)$, interpreted as a classical phase space, together with an
+integrality condition on the symplectic form.  The first stage,
+\emph{prequantization}, associates to $(M,\omega)$ a Hermitian line bundle
+equipped with a connection whose curvature reproduces the symplectic form.
+A polarization is then imposed in order to reduce the excessively large
+prequantum Hilbert space to the physical quantum space.  For a K\"ahler
+manifold the complex structure supplies a canonical complex polarization, and
+the resulting quantum states are holomorphic sections of a positive line
+bundle.
+
+For compact K\"ahler manifolds, geometric quantization is closely related to
+Berezin--Toeplitz quantization.  In this formulation, classical observables are
+compressed to the finite-dimensional spaces of holomorphic sections by the
+Bergman projection.  The large tensor-power limit of the quantum line bundle
+provides a mathematically precise semiclassical limit.  The same construction
+admits an equivalent contact and CR formulation: after passing to the unit
+circle bundle of the dual quantum line bundle, the direct sum of the
+quantization spaces at all tensor powers is realized as a Hardy space, and
+the Bergman projections become Fourier components of the Szeg\H{o}
+projection.  This Hardy--Szeg\H{o} realization is particularly useful for
+microlocal analysis and the spectral theory of Toeplitz operators.
+
+The purpose of this appendix is to review these constructions and to fix
+notation and conventions.  Standard references include
+Kostant's formulation of prequantization, Souriau's symplectic approach,
+Woodhouse's textbook treatment, the work of Guillemin and Sternberg on
+geometric quantization and symplectic reduction, the theory of Toeplitz
+operators of Boutet de Monvel and Guillemin, and modern treatments of
+Berezin--Toeplitz quantization and Bergman-kernel asymptotics
+\cite{Kostant1970,Souriau1966,Woodhouse1992,GuilleminSternberg1977,
+BoutetGuillemin1981,Schlichenmaier2010,MaMarinescu2007}.
+
+\subsection{Classical symplectic data}
+\label{app:gq:symplectic}
+
+Let $M$ be a smooth manifold of real dimension $2n$.
+
+\begin{definition}
+A \emph{symplectic structure} on $M$ is a closed nondegenerate two-form
+\begin{equation}
+    \omega\in\Omega^2(M),
+    \qquad
+    \dd\omega=0,
+\end{equation}
+such that the map
+\begin{equation}
+    T_xM\ni v\longmapsto \iota_v\omega_x\in T_x^*M
+\end{equation}
+is an isomorphism for every $x\in M$.
+\end{definition}
+
+For a smooth real-valued function $f\in C^\infty(M,\mathbb R)$, its
+Hamiltonian vector field $X_f$ is defined, with the convention used here, by
+\begin{equation}
+    \iota_{X_f}\omega=-\dd f.
+    \label{eq:gq:Hamiltonian_vector_field}
+\end{equation}
+The Poisson bracket is then
+\begin{equation}
+    \{f,g\}
+    =
+    \omega(X_f,X_g)
+    =
+    X_f(g).
+\end{equation}
+Changing the sign convention in
+\eqref{eq:gq:Hamiltonian_vector_field} changes some of the signs below but
+does not affect the geometric content.
+
+The map
+\begin{equation}
+    f\longmapsto X_f
+\end{equation}
+intertwines the Poisson algebra of smooth functions with Hamiltonian vector
+fields:
+\begin{equation}
+    [X_f,X_g]=X_{\{f,g\}}.
+\end{equation}
+
+The Liouville volume form is
+\begin{equation}
+    \dd\mu_\omega
+    =
+    \frac{\omega^n}{n!}.
+\end{equation}
+
+The goal of quantization is, roughly speaking, to replace the commutative
+Poisson algebra of classical observables by a noncommutative algebra of
+operators on a Hilbert space in such a way that
+\begin{equation}
+    \frac{1}{i\hbar}
+    [\widehat f,\widehat g]
+    \sim
+    \widehat{\{f,g\}}
+\end{equation}
+in a suitable semiclassical regime.  An exact correspondence for all smooth
+observables is obstructed in general by the Groenewold--van Hove phenomenon;
+geometric and Berezin--Toeplitz quantization should therefore be understood
+as geometrically natural constructions satisfying appropriate exact
+relations on distinguished subalgebras and asymptotic relations more
+generally.
+
+\subsection{Prequantization}
+\label{app:gq:prequantization}
+
+The first step is the construction of a quantum line bundle.
+
+\begin{definition}
+A \emph{prequantum line bundle} over $(M,\omega)$ is a Hermitian complex line
+bundle
+\begin{equation}
+    L\longrightarrow M
+\end{equation}
+equipped with a Hermitian connection $\nabla$ such that
+\begin{equation}
+    F_\nabla
+    =
+    -\frac{i}{\hbar}\omega.
+    \label{eq:gq:prequantum_curvature}
+\end{equation}
+\end{definition}
+
+Here $F_\nabla=\nabla^2$ is an imaginary-valued two-form because $\nabla$ is
+unitary.
+
+By Chern--Weil theory, a necessary condition for such a line bundle to exist is
+\begin{equation}
+    c_1(L)
+    =
+    \left[
+       \frac{F_\nabla}{2\pi i}
+    \right]
+    =
+    -\left[
+       \frac{\omega}{2\pi\hbar}
+    \right].
+\end{equation}
+Depending on the sign convention in
+\eqref{eq:gq:prequantum_curvature}, one equivalently writes
+\begin{equation}
+    \boxed{
+    \left[
+    \frac{\omega}{2\pi\hbar}
+    \right]
+    \in H^2(M,\mathbb Z).
+    }
+    \label{eq:gq:integrality}
+\end{equation}
+
+Thus prequantization exists precisely when the cohomology class of the
+symplectic form satisfies the appropriate integrality condition.
+
+The prequantum Hilbert space is
+\begin{equation}
+    \cH_{\mathrm{pre}}
+    =
+    L^2(M,L;\dd\mu_\omega),
+\end{equation}
+or a suitable completion with respect to the chosen measure.
+
+For $f\in C^\infty(M,\mathbb R)$, the Kostant--Souriau prequantum operator is
+\begin{equation}
+    \widehat f_{\mathrm{pre}}
+    =
+    -i\hbar\nabla_{X_f}+f.
+    \label{eq:gq:KS_operator}
+\end{equation}
+Under the corresponding sign conventions, one obtains
+\begin{equation}
+    [
+       \widehat f_{\mathrm{pre}},
+       \widehat g_{\mathrm{pre}}
+    ]
+    =
+    -i\hbar
+    \widehat{\{f,g\}}_{\mathrm{pre}}.
+    \label{eq:gq:KS_commutator}
+\end{equation}
+
+Equation \eqref{eq:gq:KS_commutator} is one of the principal successes of
+prequantization: the Poisson Lie algebra is represented by differential
+operators.  However, the Hilbert space
+$L^2(M,L)$ is much larger than the physical quantum Hilbert spaces familiar
+from canonical quantization.  For instance, on a cotangent bundle
+$T^*Q$, it contains wavefunctions depending simultaneously on position and
+momentum.  A polarization is introduced to remove this redundancy.
+
+\subsection{Polarizations}
+\label{app:gq:polarizations}
+
+Let
+\begin{equation}
+    T_\mathbb C M
+    =
+    TM\otimes_\mathbb R\mathbb C
+\end{equation}
+denote the complexified tangent bundle.
+
+\begin{definition}
+A complex polarization $P$ is an involutive complex subbundle
+\begin{equation}
+    P\subset T_\mathbb C M
+\end{equation}
+of complex rank $n$ satisfying
+\begin{equation}
+    \omega|_{P\times P}=0
+\end{equation}
+and appropriate regularity conditions.
+\end{definition}
+
+A section $s$ of $L$ is polarized if
+\begin{equation}
+    \nabla_Xs=0,
+    \qquad
+    X\in\Gamma(P).
+    \label{eq:gq:polarized_section}
+\end{equation}
+
+The corresponding quantum space is constructed from polarized sections,
+possibly after an appropriate $L^2$ completion.
+
+Two important classes are real and complex polarizations.
+
+A real polarization is locally determined by a Lagrangian foliation of $M$.
+For example, on
+\begin{equation}
+    M=T^*Q
+\end{equation}
+with canonical coordinates $(q^j,p_j)$, the vertical polarization
+\begin{equation}
+    P_{\mathrm{vert}}
+    =
+    \operatorname{span}
+    \left\{
+       \frac{\partial}{\partial p_j}
+    \right\}
+\end{equation}
+reduces polarized wavefunctions essentially to functions of the configuration
+variables $q$.
+
+Real polarizations lead naturally to subtleties involving singular leaves,
+Bohr--Sommerfeld conditions, distributional polarized sections, and the
+dependence of the resulting quantization on the polarization.
+
+Complex polarizations are particularly well behaved when they arise from
+K\"ahler geometry.
+
+\subsection{K\"ahler quantization}
+\label{app:gq:kahler}
+
+Let $(M,\omega,J)$ be a K\"ahler manifold.  Thus $J$ is an integrable complex
+structure satisfying
+\begin{equation}
+    J^2=-1,
+\end{equation}
+\begin{equation}
+    \omega(JX,JY)=\omega(X,Y),
+\end{equation}
+and
+\begin{equation}
+    g(X,Y)
+    =
+    \omega(X,JY)
+\end{equation}
+defines a Riemannian metric.
+
+The complexified tangent bundle decomposes as
+\begin{equation}
+    T_\mathbb C M
+    =
+    T^{1,0}M
+    \oplus
+    T^{0,1}M.
+\end{equation}
+The K\"ahler polarization is
+\begin{equation}
+    P=T^{0,1}M.
+\end{equation}
+
+Suppose the prequantum curvature is of type $(1,1)$:
+\begin{equation}
+    F_\nabla^{0,2}=0.
+\end{equation}
+Then
+\begin{equation}
+    \bar\partial_L
+    =
+    \nabla^{0,1}
+\end{equation}
+satisfies
+\begin{equation}
+    \bar\partial_L^2=0
+\end{equation}
+and therefore defines a holomorphic structure on $L$.
+
+The polarization condition
+\eqref{eq:gq:polarized_section} becomes
+\begin{equation}
+    \bar\partial_Ls=0.
+\end{equation}
+Hence the quantum space is the space of holomorphic sections,
+\begin{equation}
+    \boxed{
+    \cH
+    =
+    H^0(M,L).
+    }
+\end{equation}
+
+More generally, introducing an integer quantization parameter $k\geq1$ gives
+\begin{equation}
+    L^k=L^{\otimes k}
+\end{equation}
+and
+\begin{equation}
+    \boxed{
+    \cH_k
+    =
+    H^0(M,L^k).
+    }
+    \label{eq:gq:Hk}
+\end{equation}
+The effective semiclassical parameter is then
+\begin{equation}
+    \hbar_k\sim k^{-1}.
+\end{equation}
+
+The natural inner product is
+\begin{equation}
+    \braket{s_1|s_2}_k
+    =
+    \int_M
+    h^k(s_1(x),s_2(x))
+    \frac{\omega^n}{n!}.
+    \label{eq:gq:Hilbert_inner_product}
+\end{equation}
+
+When $M$ is compact, $H^0(M,L^k)$ is finite dimensional.
+
+If $L$ is positive, then Kodaira theory implies strong control of these spaces.
+The Hirzebruch--Riemann--Roch theorem gives
+\begin{equation}
+    \chi(M,L^k)
+    =
+    \int_M
+    \operatorname{ch}(L^k)
+    \operatorname{Td}(TM).
+\end{equation}
+For sufficiently large $k$, positivity and Kodaira vanishing imply
+\begin{equation}
+    \chi(M,L^k)
+    =
+    \dim H^0(M,L^k),
+\end{equation}
+and therefore
+\begin{equation}
+    \dim \cH_k
+    =
+    \frac{k^n}{(2\pi)^n}
+    \int_M\frac{\omega^n}{n!}
+    +
+    O(k^{n-1}),
+    \label{eq:gq:dimension_asymptotic}
+\end{equation}
+with the precise factors depending on the normalization of the curvature.
+
+Equation \eqref{eq:gq:dimension_asymptotic} is the geometric form of the
+semiclassical statement that one quantum state occupies a phase-space volume
+of order $(2\pi\hbar)^n$.
+
+Naive polarized quantization does not always reproduce the expected spectral
+and representation-theoretic results.  A refinement is obtained by including
+half-forms.
+
+For a complex polarization $P$, define the canonical bundle associated with
+the polarization.  In the K\"ahler case this is the ordinary canonical bundle
+\begin{equation}
+    K_M
+    =
+    \Lambda^{n,0}T^*M.
+\end{equation}
+
+If there exists a square root
+\begin{equation}
+    \delta^2
+    \simeq
+    K_M,
+\end{equation}
+then $\delta$ is called a half-form bundle or metaplectic correction.
+
+The corrected quantum space becomes
+\begin{equation}
+    \cH_k^{\mathrm{corr}}
+    =
+    H^0(M,L^k\otimes\delta).
+    \label{eq:gq:corrected_quantization}
+\end{equation}
+
+The half-form correction has several roles.  It improves the behavior of
+quantization under changes of polarization, introduces the expected
+$\frac12$-shifts in many semiclassical spectra, and is closely related to
+metaplectic representations and the Maslov index.
+
+Globally, a half-form bundle need not exist.  Its existence is related to a
+metaplectic structure and divisibility properties of $c_1(K_M)$.
+
+\subsection{The unit circle bundle and contactification}
+\label{app:gq:circlebundle}
+
+We now describe the Hardy--Szeg\H{o} formulation of K\"ahler quantization.
+
+Let $(L,h)\to M$ be a positive Hermitian holomorphic line bundle and let
+$L^*$ denote the dual line bundle.  Define its unit circle bundle
+\begin{equation}
+    X
+    =
+    S(L^*)
+    =
+    \{
+       \lambda\in L^*:
+       |\lambda|_{h^*}=1
+    \}.
+    \label{eq:gq:circlebundle}
+\end{equation}
+
+The projection
+\begin{equation}
+    \pi:X\rightarrow M
+\end{equation}
+makes $X$ a principal $S^1$-bundle.  The Hermitian connection on $L$ defines
+a connection one-form
+\begin{equation}
+    \alpha\in\Omega^1(X)
+\end{equation}
+satisfying, with an appropriate normalization,
+\begin{equation}
+    \dd\alpha
+    =
+    \pi^*\omega.
+    \label{eq:gq:contact_curvature}
+\end{equation}
+
+Since
+\begin{equation}
+    \alpha\wedge(\dd\alpha)^n
+    \neq0,
+\end{equation}
+$\alpha$ is a contact form.
+
+Thus prequantization can be expressed equivalently as a contactification
+\begin{equation}
+    \boxed{
+    (M,\omega)
+    \longleftarrow
+    (X,\alpha),
+    \qquad
+    \dd\alpha=\pi^*\omega.
+    }
+\end{equation}
+
+The contact distribution
+\begin{equation}
+    \mathcal D=\ker\alpha
+\end{equation}
+is naturally identified with the horizontal lift of $TM$.  The complex
+structure on $M$ therefore induces a CR structure on $\mathcal D$,
+\begin{equation}
+    \mathcal D_\mathbb C
+    =
+    T^{1,0}X
+    \oplus
+    T^{0,1}X.
+\end{equation}
+Now consider the unit disc bundle
+\begin{equation}
+    D
+    =
+    \{
+       \lambda\in L^*:
+       |\lambda|_{h^*}<1
+    \}.
+\end{equation}
+Its boundary is
+\begin{equation}
+    \partial D=X.
+\end{equation}
+
+Under the standard positivity conventions, $X$ is a strictly pseudoconvex CR
+boundary.  Holomorphic functions on $D$ possessing suitable $L^2$ boundary
+behavior admit boundary values on $X$.
+
+\begin{definition}
+The Hardy space of $X$ is
+\begin{equation}
+    H^2(X)
+    =
+    \overline{
+       \{
+       \text{boundary values of holomorphic functions on }D
+       \}
+    }^{\,L^2(X)}.
+    \label{eq:gq:HardySpace}
+\end{equation}
+Equivalently, in the usual CR formulation,
+\begin{equation}
+    H^2(X)
+    =
+    \ker\bar\partial_b
+    \cap
+    L^2(X),
+\end{equation}
+with the standard qualifications concerning weak boundary values.
+\end{definition}
+
+Let
+\begin{equation}
+    \Pi:
+    L^2(X)\rightarrow H^2(X)
+    \label{eq:gq:SzegoProjection}
+\end{equation}
+denote the orthogonal Szeg\H{o} projection.
+
+This formulation is closely connected with holomorphic germs.  Locally, Hardy
+functions can be regarded as boundary values of holomorphic functions defined
+on the pseudoconvex side of $X$.  Thus
+\begin{equation}
+    H^2(X)
+\end{equation}
+may be interpreted as an $L^2$ completion of one-sided holomorphic boundary
+germs, while \eqref{eq:gq:HardySpace} gives the global Hilbert-space
+definition.
+
+\subsection{Real structures in K\"ahler quantization}
+\label{app:gq:realstructures}
+
+A further geometric structure that frequently appears is a real form of a
+complex or K\"ahler manifold.
+
+Let
+\begin{equation}
+    \tau:M\rightarrow M
+\end{equation}
+be an involution satisfying
+\begin{equation}
+    \tau^2=\operatorname{id}.
+\end{equation}
+
+A compatible real K\"ahler structure is typically required to satisfy
+\begin{equation}
+    \dd\tau\circ J
+    =
+    -J\circ\dd\tau,
+    \label{eq:gq:antiholomorphic}
+\end{equation}
+so that $\tau$ is antiholomorphic, and
+\begin{equation}
+    \tau^*\omega=-\omega.
+    \label{eq:gq:antisymplectic}
+\end{equation}
+
+Equations
+\eqref{eq:gq:antiholomorphic} and
+\eqref{eq:gq:antisymplectic} imply
+\begin{equation}
+    \tau^*g=g.
+\end{equation}
+
+Suppose further that the quantum line bundle carries an anti-linear lift
+\begin{equation}
+    \widetilde\tau:L\rightarrow L
+\end{equation}
+covering $\tau$, preserving the Hermitian metric, and satisfying
+\begin{equation}
+    \widetilde\tau^2=1.
+\end{equation}
+
+Compatibility with the connection means that parallel transport and the real
+structure intertwine in the natural anti-linear sense.  Such data define a
+Real Hermitian line bundle.
+
+At each tensor power, this produces an anti-linear transformation
+\begin{equation}
+    C_k:
+    H^0(M,L^k)
+    \rightarrow
+    H^0(M,L^k),
+\end{equation}
+given schematically by
+\begin{equation}
+    (C_ks)(x)
+    =
+    \widetilde\tau^{\otimes k}
+    \big(
+       s(\tau x)
+    \big).
+\end{equation}
+
+The combination of antiholomorphic pullback with anti-linearity preserves
+holomorphic sections.  Thus a compatible real structure acts naturally on
+the K\"ahler quantum Hilbert spaces.
+
+On the circle bundle it induces an involution
+\begin{equation}
+    r:X\rightarrow X
+\end{equation}
+and, correspondingly, an anti-linear isometry of $L^2(X)$ compatible with the
+Hardy decomposition.  This is the natural formulation of Real K\"ahler
+quantization in the Hardy--Szeg\H{o} picture.
+\section{Standard Subspaces from Geometric Quantization}
+\label{app:standard_subspaces_geometric_quantization}
+
+We explain in this appendix how a real standard subspace of a complex Hilbert
+space can arise naturally from geometric quantization.  The construction has
+two logically distinct layers.  The first is geometric: a quantizable
+K\"ahler manifold equipped with a compatible Real structure gives an
+antiunitary conjugation on the quantum Hilbert space.  The second is
+operator-theoretic: once a suitable positive self-adjoint operator, or
+equivalently a self-adjoint generator with the correct transformation
+property under the conjugation, is available, the usual Tomita construction
+produces a standard real subspace.  The Hardy--Szeg\H{o} realization of
+K\"ahler quantization is especially convenient because it packages all tensor
+powers of the quantization line bundle into a single infinite-dimensional
+Hilbert space.
+
+Let $\cH$ be a complex Hilbert space and let
+\begin{equation}
+    H\subset \cH
+\end{equation}
+be a closed real linear subspace.  We recall first the operator-theoretic
+notion that will eventually be matched with geometric data.  The subspace
+$H$ is called cyclic if
+\begin{equation}
+    \overline{H+iH}=\cH,
+\end{equation}
+and separating if
+\begin{equation}
+    H\cap iH=\{0\}.
+\end{equation}
+It is called standard if both properties hold.  Throughout this appendix, the
+symplectic form on $\cH$, viewed as a real Hilbert space, is taken to be
+\begin{equation}
+    \sigma(\xi,\eta)
+    =
+    \operatorname{Im}\braket{\xi|\eta},
+\end{equation}
+with the convention that the Hilbert space inner product is linear in the
+second variable.  The symplectic complement of $H$ is therefore
+\begin{equation}
+    H'
+    =
+    \left\{
+    \xi\in\cH:
+    \operatorname{Im}\braket{\xi|\eta}=0
+    \text{ for all }\eta\in H
+    \right\}.
+\end{equation}
+Equivalently,
+\begin{equation}
+    H'=(iH)^{\perp_{\mathbb R}},
+\end{equation}
+where the orthogonal complement is taken with respect to the real inner
+product
+\begin{equation}
+    (\xi,\eta)_{\mathbb R}
+    =
+    \operatorname{Re}\braket{\xi|\eta}.
+\end{equation}
+For every closed real subspace one has
+\begin{equation}
+    H''=H.
+\end{equation}
+If $H$ is standard, then $H'$ is standard as well.
+
+The crucial point is that standardness can be encoded by a closed anti-linear
+involution.  If $H$ is standard, every vector in
+\begin{equation}
+    H+iH
+\end{equation}
+has a unique decomposition
+\begin{equation}
+    \xi=h_1+ih_2,
+    \qquad
+    h_1,h_2\in H.
+\end{equation}
+One therefore defines
+\begin{equation}
+    S_H(h_1+ih_2)
+    =
+    h_1-ih_2.
+    \label{eq:ssgq:TomitaDefinition}
+\end{equation}
+The operator $S_H$ is anti-linear, densely defined, closed, and satisfies
+\begin{equation}
+    S_H^2=1
+\end{equation}
+on its domain.  Moreover,
+\begin{equation}
+    H
+    =
+    \operatorname{Fix}(S_H)
+    =
+    \left\{
+    \xi\in\Dom(S_H):
+    S_H\xi=\xi
+    \right\}.
+    \label{eq:ssgq:FixS}
+\end{equation}
+Its polar decomposition is
+\begin{equation}
+    S_H
+    =
+    J_H\Delta_H^{1/2},
+    \label{eq:ssgq:TomitaPolar}
+\end{equation}
+where $J_H$ is antiunitary and $\Delta_H$ is positive, self-adjoint, and
+injective.  These operators obey
+\begin{equation}
+    J_H^2=1,
+\end{equation}
+\begin{equation}
+    J_H\Delta_HJ_H
+    =
+    \Delta_H^{-1},
+    \label{eq:ssgq:JDelta}
+\end{equation}
+and
+\begin{equation}
+    \Delta_H^{it}H=H,
+    \qquad
+    t\in\mathbb R.
+\end{equation}
+Conversely, let $J$ be an antiunitary involution and let $\Delta$ be a
+positive, self-adjoint, injective operator satisfying
+\begin{equation}
+    J\Delta J
+    =
+    \Delta^{-1}.
+    \label{eq:ssgq:modularpair}
+\end{equation}
+Functional calculus gives
+\begin{equation}
+    J\Delta^{1/2}J
+    =
+    \Delta^{-1/2}.
+\end{equation}
+Hence
+\begin{equation}
+    S
+    =
+    J\Delta^{1/2},
+    \qquad
+    \Dom(S)=\Dom(\Delta^{1/2}),
+    \label{eq:ssgq:SfromJD}
+\end{equation}
+is a closed densely defined anti-linear operator, and
+\begin{equation}
+    S^2
+    =
+    J\Delta^{1/2}J\Delta^{1/2}
+    =
+    1
+\end{equation}
+on its natural domain.  Its fixed-point space
+\begin{equation}
+    H
+    =
+    \operatorname{Fix}(S)
+\end{equation}
+is a standard real subspace.  In this way, standard subspaces are in
+one-to-one correspondence with such modular pairs $(J,\Delta)$
+\cite{Longo2008,BrunettiGuidoLongo2002}.
+
+For geometric applications it is convenient to write
+\begin{equation}
+    \Delta=e^{-K},
+\end{equation}
+with $K=K^*$ self-adjoint.  Then
+\begin{equation}
+    J\Delta J=\Delta^{-1}
+\end{equation}
+is equivalent to
+\begin{equation}
+    JKJ=-K,
+    \label{eq:ssgq:JKJ}
+\end{equation}
+and the Tomita operator becomes
+\begin{equation}
+    S
+    =
+    Je^{-K/2}.
+    \label{eq:ssgq:SJK}
+\end{equation}
+This form separates naturally into an antiunitary part and a positive
+self-adjoint part, and this is precisely the decomposition that geometric
+quantization can supply.
+
+We now turn to the geometric input.  Let
+\begin{equation}
+    (M,\omega,J_M)
+\end{equation}
+be a quantizable K\"ahler manifold, where $J_M$ denotes the complex structure
+to avoid confusion with modular conjugations.  Let
+\begin{equation}
+    (L,h,\nabla)\longrightarrow M
+\end{equation}
+be a positive Hermitian prequantum line bundle satisfying
+\begin{equation}
+    F_\nabla=-i\omega
+\end{equation}
+in units where $\hbar=1$.  Suppose that $M$ is equipped with an involution
+\begin{equation}
+    \tau:M\rightarrow M,
+    \qquad
+    \tau^2=\operatorname{id},
+\end{equation}
+which is both antiholomorphic and anti-symplectic:
+\begin{equation}
+    \mathrm{d}\tau\circ J_M
+    =
+    -J_M\circ\mathrm{d}\tau,
+    \label{eq:ssgq:tauAntiholo}
+\end{equation}
+and
+\begin{equation}
+    \tau^*\omega=-\omega.
+    \label{eq:ssgq:tauAntisymp}
+\end{equation}
+Since the K\"ahler metric is given by
+\begin{equation}
+    g(X,Y)=\omega(X,J_MY),
+\end{equation}
+these conditions imply
+\begin{equation}
+    \tau^*g=g.
+\end{equation}
+
+We assume moreover that $\tau$ lifts to an anti-linear involution
+\begin{equation}
+    \widetilde\tau:L\rightarrow L
+\end{equation}
+covering $\tau$, preserving the Hermitian metric, compatible with the
+connection, and satisfying
+\begin{equation}
+    \widetilde\tau^2=1.
+\end{equation}
+At each tensor power this induces an anti-linear transformation
+\begin{equation}
+    C_k:
+    H^0(M,L^k)
+    \rightarrow
+    H^0(M,L^k),
+    \label{eq:ssgq:Ck}
+\end{equation}
+given schematically by
+\begin{equation}
+    (C_ks)(x)
+    =
+    \widetilde\tau^{\otimes k}
+    \big(
+       s(\tau x)
+    \big).
+\end{equation}
+The antiholomorphic character of $\tau$ and the anti-linearity of
+$\widetilde\tau$ combine so that holomorphic sections are mapped to
+holomorphic sections.  Under the compatible Hermitian structure,
+\begin{equation}
+    C_k^2=1,
+\end{equation}
+and each $C_k$ is antiunitary.
+
+Although this already yields a real structure at each quantization level, it
+is more useful for the present purpose to pass to the Hardy realization.  Let
+\begin{equation}
+    X=S(L^*)
+\end{equation}
+be the unit circle bundle of the dual line bundle.  Its Hardy space
+\begin{equation}
+    \cH
+    =
+    H^2(X)
+\end{equation}
+decomposes as
+\begin{equation}
+    H^2(X)
+    \simeq
+    \widehat{\bigoplus}_{k\geq0}
+    H^0(M,L^k).
+    \label{eq:ssgq:HardyFourier}
+\end{equation}
+The Real structure on $L$ induces an antiunitary involution
+\begin{equation}
+    C:\cH\rightarrow\cH
+    \label{eq:ssgq:C}
+\end{equation}
+whose restriction to the $k$-th Fourier component is $C_k$.  If
+\begin{equation}
+    \Pi:L^2(X)\rightarrow H^2(X)
+\end{equation}
+denotes the Szeg\H{o} projector, compatibility of the Real structure with the
+K\"ahler polarization gives
+\begin{equation}
+    C\Pi=\Pi C.
+    \label{eq:ssgq:CcommutesPi}
+\end{equation}
+Thus the Real structure acts internally on the quantum Hilbert space rather
+than mapping it to a different polarization.
+
+At this point one obtains the simplest standard subspace immediately.  Define
+\begin{equation}
+    H_0
+    =
+    \operatorname{Fix}(C)
+    =
+    \left\{
+    \psi\in\cH:
+    C\psi=\psi
+    \right\}.
+    \label{eq:ssgq:H0}
+\end{equation}
+For every $\psi\in\cH$,
+\begin{equation}
+    h_1
+    =
+    \frac{\psi+C\psi}{2},
+\end{equation}
+and
+\begin{equation}
+    h_2
+    =
+    \frac{\psi-C\psi}{2i}
+\end{equation}
+belong to $H_0$, and
+\begin{equation}
+    \psi=h_1+ih_2.
+\end{equation}
+Hence
+\begin{equation}
+    H_0+iH_0=\cH.
+\end{equation}
+If $h\in H_0\cap iH_0$, then $h=ik$ with $k\in H_0$, and applying $C$ gives
+\begin{equation}
+    h=Ch=C(ik)=-ik=-h.
+\end{equation}
+Therefore $h=0$.  It follows that $H_0$ is standard.  Its Tomita operator is
+simply
+\begin{equation}
+    S_{H_0}=C,
+\end{equation}
+so
+\begin{equation}
+    J_{H_0}=C,
+\end{equation}
+and
+\begin{equation}
+    \Delta_{H_0}=1.
+    \label{eq:ssgq:trivialDelta}
+\end{equation}
+
+This construction is fully canonical once the compatible Real structure has
+been chosen, but it contains no nontrivial modular dynamics.  The reason is
+clear from the polar decomposition: the Tomita operator is already
+antiunitary.  To obtain a genuinely nontrivial standard subspace one needs an
+additional positive operator.
+
+Before introducing this additional datum, it is worth noting why the total
+Hardy space is preferable to a fixed quantization level.  If $\cH$ is finite
+dimensional with
+\begin{equation}
+    \dim_{\mathbb C}\cH=N,
+\end{equation}
+then any standard real subspace $H\subset\cH$ has
+\begin{equation}
+    \dim_{\mathbb R}H=N.
+\end{equation}
+Indeed,
+\begin{equation}
+    \cH_{\mathbb R}
+    =
+    H\oplus iH,
+\end{equation}
+so
+\begin{equation}
+    2N
+    =
+    2\dim_{\mathbb R}H.
+\end{equation}
+Consequently, if
+\begin{equation}
+    H_1\subset H_2
+\end{equation}
+and both are standard, then
+\begin{equation}
+    H_1=H_2.
+\end{equation}
+For compact $M$, every fixed-level space $H^0(M,L^k)$ is finite dimensional,
+and therefore no nontrivial proper inclusion of standard subspaces can occur
+at fixed $k$.  The Hardy space
+\begin{equation}
+    H^2(X)
+    =
+    \widehat{\bigoplus}_{k\geq0}H^0(M,L^k)
+\end{equation}
+is instead infinite dimensional and does not suffer from this obstruction.
+
+We now introduce the additional datum required for nontrivial modular
+structure.  Let
+\begin{equation}
+    K=K^*
+\end{equation}
+be a self-adjoint operator on
+\begin{equation}
+    \cH=H^2(X)
+\end{equation}
+such that
+\begin{equation}
+    CKC=-K.
+    \label{eq:ssgq:CKC}
+\end{equation}
+Define
+\begin{equation}
+    \Delta=e^{-K}.
+    \label{eq:ssgq:Deltadef}
+\end{equation}
+Then $\Delta$ is positive, self-adjoint, and injective, and spectral calculus
+gives
+\begin{equation}
+    C\Delta C
+    =
+    Ce^{-K}C
+    =
+    e^{-CKC}
+    =
+    e^{K}
+    =
+    \left(e^{-K}\right)^{-1}.
+\end{equation}
+It follows from the general Tomita correspondence that
+\begin{equation}
+    S
+    =
+    Ce^{-K/2},
+    \qquad
+    \Dom(S)=\Dom(e^{-K/2}),
+    \label{eq:ssgq:Sgeometric}
+\end{equation}
+is a closed densely defined anti-linear involution.  Therefore
+\begin{equation}
+    H_K
+    =
+    \left\{
+    \psi\in\Dom(e^{-K/2}):
+    Ce^{-K/2}\psi=\psi
+    \right\}
+    \label{eq:ssgq:HK}
+\end{equation}
+is a standard real subspace.  Its modular data are
+\begin{equation}
+    J_{H_K}=C,
+\end{equation}
+and
+\begin{equation}
+    \Delta_{H_K}=e^{-K}.
+    \label{eq:ssgq:DeltaHK}
+\end{equation}
+
+This formula displays the division of labor between the geometry and the
+operator theory.  The compatible Real structure provides the antiunitary
+conjugation $C$, while the additional geometric dynamics must provide the
+self-adjoint generator $K$.  The modular structure is then obtained from the
+pair
+\begin{equation}
+    (C,K),
+    \qquad
+    CKC=-K.
+\end{equation}
+
+The condition
+\begin{equation}
+    CKC=-K
+\end{equation}
+has a useful spectral interpretation.  If $E_K$ denotes the spectral measure
+of $K$, then
+\begin{equation}
+    CE_K(B)C
+    =
+    E_K(-B)
+\end{equation}
+for every Borel set $B\subset\mathbb R$.  Thus the Real structure exchanges
+the positive and negative spectral sectors of $K$.  If
+\begin{equation}
+    \cH_+
+    =
+    E_K((0,\infty))\cH,
+\end{equation}
+\begin{equation}
+    \cH_-
+    =
+    E_K((-\infty,0))\cH,
+\end{equation}
+and
+\begin{equation}
+    \cH_0=\ker K,
+\end{equation}
+then
+\begin{equation}
+    C\cH_+=\cH_-,
+\end{equation}
+and
+\begin{equation}
+    C\cH_0=\cH_0.
+\end{equation}
+The operator
+\begin{equation}
+    e^{-K/2}
+\end{equation}
+weights these two sectors asymmetrically, and this nontrivial weighting is
+precisely what distinguishes $H_K$ from the elementary real form
+$\operatorname{Fix}(C)$.
+
+The next question is therefore how a self-adjoint operator $K$ satisfying
+\eqref{eq:ssgq:CKC} can arise from geometric quantization.  Suppose first that
+\begin{equation}
+    \Phi_t:M\rightarrow M
+\end{equation}
+is a one-parameter group of symplectic transformations preserving the chosen
+K\"ahler polarization and lifting to the prequantum line bundle.  Quantization
+then gives a unitary one-parameter group
+\begin{equation}
+    U(t)=e^{itK}
+\end{equation}
+on the quantum Hilbert space.  If the classical flow is generated by a
+Hamiltonian function $f$ and the polarization is preserved exactly, then $K$
+is related to the quantization of the Hamiltonian generator, including any
+necessary metaplectic correction.  If instead one works with a general
+Hamiltonian and Berezin--Toeplitz quantization, the operator
+\begin{equation}
+    T_{f,k}=P_k fP_k
+\end{equation}
+provides only a semiclassical quantization of the flow in general.  Thus the
+cleanest exact construction arises from genuine geometric symmetries
+preserving the polarization.
+
+The compatibility with the Real structure is encoded by the transformation
+property of the quantum generator.  At the classical level, a natural
+sufficient condition is an appropriate parity relation between the
+Hamiltonian and the Real involution.  Because the precise sign depends on the
+conventions used for Hamiltonian vector fields, the prequantum connection,
+and the anti-linear lift, the operator identity required for the construction
+should be stated directly as
+\begin{equation}
+    CKC=-K.
+\end{equation}
+In a concrete model this relation must be derived from the classical
+transformation law of the Hamiltonian and from equivariance of the
+quantization map.
+
+Because $C$ is antiunitary, one must be careful with the corresponding
+unitary group.  If
+\begin{equation}
+    CKC=-K
+\end{equation}
+and
+\begin{equation}
+    U(t)=e^{itK},
+\end{equation}
+then
+\begin{equation}
+    CU(t)C
+    =
+    Ce^{itK}C
+    =
+    e^{-itCKC}
+    =
+    e^{itK}
+    =
+    U(t).
+\end{equation}
+Thus the antiunitary $C$ commutes with the unitary group, even though it
+reverses the sign of its self-adjoint generator.  On the other hand, it
+inverts the positive operator:
+\begin{equation}
+    C e^{-K} C
+    =
+    e^{K}
+    =
+    \left(e^{-K}\right)^{-1}.
+\end{equation}
+This latter relation is the one directly required by modular theory.
+
+The Hardy realization gives a particularly natural geometric setting for
+such generators.  Let
+\begin{equation}
+    X=S(L^*)
+\end{equation}
+carry its contact form $\alpha$, and let
+\begin{equation}
+    \varphi_t:X\rightarrow X
+\end{equation}
+be a one-parameter family of contact transformations preserving the CR
+structure and the Hardy space.  Suppose its induced action on
+\begin{equation}
+    H^2(X)
+\end{equation}
+is the unitary group
+\begin{equation}
+    V(t)=e^{itK}.
+\end{equation}
+If the compatible Real structure induces an antiunitary $C$ satisfying
+\begin{equation}
+    CKC=-K,
+\end{equation}
+then the fixed-point space
+\begin{equation}
+    H_K
+    =
+    \operatorname{Fix}
+    \left(
+    Ce^{-K/2}
+    \right)
+\end{equation}
+is standard.  Thus one obtains the sequence
+\begin{center}
+\begin{tikzcd}[column sep=large,row sep=large]
+(M,\omega,J_M,L,\tau)
+\arrow[r]
+&
+(X,\alpha,\mathrm{CR},r)
+\arrow[r]
+&
+H^2(X)
+\\
+\text{geometric flow}
+\arrow[r]
+&
+\varphi_t
+\arrow[r]
+&
+e^{itK}
+\\
+\text{Real structure}
+\arrow[r]
+&
+r
+\arrow[r]
+&
+C
+\\
+&&
+Ce^{-K/2}
+\arrow[d]
+\\
+&&
+H_K=\operatorname{Fix}(Ce^{-K/2}).
+\end{tikzcd}
+\end{center}
+
+The factor
+\begin{equation}
+    e^{-K/2}
+\end{equation}
+also admits a natural interpretation in terms of analytic continuation.  If
+\begin{equation}
+    U(t)=e^{itK}
+\end{equation}
+and $\psi$ is an analytic vector for $K$, then
+\begin{equation}
+    z\longmapsto e^{izK}\psi
+\end{equation}
+admits holomorphic continuation into a strip determined by the exponential
+spectral integrability of $\psi$.  Evaluating at imaginary time gives
+\begin{equation}
+    e^{i(i/2)K}\psi
+    =
+    e^{-K/2}\psi.
+\end{equation}
+Thus the fixed-point relation
+\begin{equation}
+    Ce^{-K/2}\psi=\psi
+    \label{eq:ssgq:reflectioncondition}
+\end{equation}
+may be interpreted as a reflection condition connecting an analytically
+continued quantum vector with its image under the Real structure.
+
+More generally, for $\beta>0$ define
+\begin{equation}
+    \Delta_\beta=e^{-\beta K},
+\end{equation}
+and
+\begin{equation}
+    S_\beta
+    =
+    Ce^{-\beta K/2}.
+\end{equation}
+Since
+\begin{equation}
+    C\Delta_\beta C
+    =
+    \Delta_\beta^{-1},
+\end{equation}
+the fixed-point space
+\begin{equation}
+    H_\beta
+    =
+    \operatorname{Fix}(S_\beta)
+\end{equation}
+is standard for every $\beta>0$.  If the flow admits an actual geometric
+complexification, then $\beta/2$ can be interpreted as an imaginary-flow
+distance.
+
+This analytic-continuation interpretation is especially natural in the
+Hardy--Szeg\H{o} realization because vectors in $H^2(X)$ are themselves
+boundary values of holomorphic functions or sections.  One may therefore
+regard \eqref{eq:ssgq:reflectioncondition} as a condition on holomorphic
+boundary germs.  More precisely, if
+\begin{equation}
+    F_\psi(z)
+    =
+    e^{izK}\psi
+\end{equation}
+is defined on a strip containing
+\begin{equation}
+    0\leq\operatorname{Im}z\leq\frac{\beta}{2},
+\end{equation}
+then
+\begin{equation}
+    \psi\in H_\beta
+\end{equation}
+if and only if
+\begin{equation}
+    C F_\psi(i\beta/2)
+    =
+    F_\psi(0).
+    \label{eq:ssgq:stripboundary}
+\end{equation}
+Equation \eqref{eq:ssgq:stripboundary} is a precise Hilbert-space boundary
+condition.  The stronger statement that this Hilbert-space analytic
+continuation is realized by holomorphic continuation of geometric sections or
+CR germs requires an additional model-dependent theorem.
+
+The construction can also be phrased directly in the ambient space
+\begin{equation}
+    L^2(X).
+\end{equation}
+Let
+\begin{equation}
+    \Pi:L^2(X)\rightarrow H^2(X)
+\end{equation}
+be the Szeg\H{o} projector and suppose
+\begin{equation}
+    C\Pi=\Pi C.
+\end{equation}
+Let $A$ be a self-adjoint operator on $L^2(X)$ preserving the Hardy space.
+Then its Hardy compression
+\begin{equation}
+    K
+    =
+    \Pi A\Pi\big|_{H^2(X)}
+\end{equation}
+is a candidate geometric generator.  If $K$ is self-adjoint and satisfies
+\begin{equation}
+    CKC=-K,
+\end{equation}
+then
+\begin{equation}
+    H_K
+    =
+    \operatorname{Fix}
+    \left(
+    Ce^{-K/2}
+    \right)
+\end{equation}
+is standard.  Generalized Toeplitz operators
+\begin{equation}
+    T_A=\Pi A\Pi
+\end{equation}
+therefore form a natural source of possible generators, although
+self-adjointness, domain invariance, and the exact reflection identity must be
+verified separately.  A generic Toeplitz symbol produces such relations only
+semiclassically.
+
+At fixed quantization level one can make this semiclassical statement more
+explicit.  Suppose
+\begin{equation}
+    K_k=T_{f,k}+O(k^{-1})
+\end{equation}
+is a family of self-adjoint Toeplitz operators with principal symbol $f$.
+If the classical symbol transforms under the Real structure in such a way
+that the quantized generators satisfy
+\begin{equation}
+    C_kK_kC_k
+    =
+    -K_k+O(k^{-1}),
+\end{equation}
+then
+\begin{equation}
+    C_ke^{-K_k}C_k
+    =
+    e^{K_k}+O(k^{-1})
+\end{equation}
+in a suitable semiclassical operator topology.  This identifies the
+semiclassical analogue of the exact modular relation.  It does not, however,
+by itself define an exact standard subspace with modular operator $e^{-K_k}$,
+because exact standardness requires an exact anti-linear involution.
+
+The total Hardy space is therefore the natural setting for the exact
+construction.  It is infinite dimensional, it carries all quantization
+levels simultaneously, it supports exact actions of geometric symmetry groups
+when these exist, and it has a direct interpretation in terms of boundary
+values of holomorphic germs.  It also comes equipped with the Szeg\H{o}
+projector and with the symplectic cone
+\begin{equation}
+    \Sigma
+    =
+    \left\{
+    (x,r\alpha_x):
+    x\in X,\;
+    r>0
+    \right\}
+    \subset
+    T^*X.
+\end{equation}
+Thus the possible generators $K$ can be studied using the microlocal and
+Toeplitz calculus associated with $\Sigma$.
+
+One may now pass from a single standard subspace to a family.  Suppose a
+collection of geometric regions, parameters, or germ domains is denoted by
+$\mathcal O$, and suppose each
+\begin{equation}
+    O\in\mathcal O
+\end{equation}
+determines a self-adjoint operator
+\begin{equation}
+    K_O
+\end{equation}
+satisfying
+\begin{equation}
+    CK_OC=-K_O.
+\end{equation}
+Define
+\begin{equation}
+    \Delta_O=e^{-K_O},
+\end{equation}
+\begin{equation}
+    S_O=Ce^{-K_O/2},
+\end{equation}
+and
+\begin{equation}
+    H(O)
+    =
+    \operatorname{Fix}(S_O).
+    \label{eq:ssgq:HO}
+\end{equation}
+Then each $H(O)$ is standard.  Thus the construction of a family of standard
+subspaces is reduced to a geometric construction of a family of generators
+\begin{equation}
+    O\longmapsto K_O.
+\end{equation}
+
+If one additionally wants isotony,
+\begin{equation}
+    O_1\subset O_2
+    \quad\Longrightarrow\quad
+    H(O_1)\subset H(O_2),
+    \label{eq:ssgq:isotony}
+\end{equation}
+then this inclusion is an additional nontrivial condition.  It does not
+follow simply from an operator inequality such as
+\begin{equation}
+    K_{O_1}\leq K_{O_2}.
+\end{equation}
+A simple sufficient criterion can instead be stated directly in terms of the
+Tomita operators.  If
+\begin{equation}
+    \Dom(S_{O_1})\subset\Dom(S_{O_2})
+\end{equation}
+and
+\begin{equation}
+    S_{O_2}\xi
+    =
+    S_{O_1}\xi
+\end{equation}
+for every
+\begin{equation}
+    \xi\in\Dom(S_{O_1}),
+\end{equation}
+then
+\begin{equation}
+    H(O_1)\subset H(O_2).
+\end{equation}
+Indeed, if $\xi\in H(O_1)$, then
+\begin{equation}
+    S_{O_1}\xi=\xi,
+\end{equation}
+and therefore
+\begin{equation}
+    S_{O_2}\xi=\xi,
+\end{equation}
+so $\xi\in H(O_2)$.  Thus one possible geometric strategy is to construct
+local analytic-continuation domains for which inclusion of regions induces
+extension of the corresponding anti-linear operators.
+
+There is also a second natural mechanism for obtaining families.  Starting
+from a single standard subspace $H$, let
+\begin{equation}
+    U(a)=e^{iaP}
+\end{equation}
+be a unitary one-parameter group and define
+\begin{equation}
+    H_a=U(a)H.
+\end{equation}
+Every $H_a$ is standard because unitaries preserve cyclicity and
+separatingness.  If, in addition,
+\begin{equation}
+    U(a)H\subset H,
+    \qquad
+    a\geq0,
+\end{equation}
+then
+\begin{equation}
+    H_b\subset H_a,
+    \qquad
+    b\geq a,
+\end{equation}
+after choosing the orientation appropriately.  This provides a direct route
+from a quantized geometric semigroup to an isotone family.  When the
+generator satisfies suitable positivity conditions, Borchers-type relations
+constrain the interaction between the one-parameter group and the modular
+group \cite{BrunettiGuidoLongo2002,Longo2008}.
+
+The logical content of the construction can therefore be summarized as
+follows.  A positive quantizable K\"ahler manifold with compatible Real
+structure gives
+\begin{equation}
+    (M,\omega,J_M,L,\tau,\widetilde\tau)
+    \longrightarrow
+    H^2(X)
+\end{equation}
+together with an antiunitary involution
+\begin{equation}
+    C:H^2(X)\rightarrow H^2(X).
+\end{equation}
+This already gives the canonical standard real form
+\begin{equation}
+    H_0=\operatorname{Fix}(C),
+\end{equation}
+with
+\begin{equation}
+    J_{H_0}=C,
+    \qquad
+    \Delta_{H_0}=1.
+\end{equation}
+If the geometry supplies in addition a self-adjoint generator $K$ satisfying
+\begin{equation}
+    CKC=-K,
+\end{equation}
+then
+\begin{equation}
+    \Delta=e^{-K}
+\end{equation}
+and
+\begin{equation}
+    S=Ce^{-K/2}
+\end{equation}
+define a standard subspace
+\begin{equation}
+    H
+    =
+    \left\{
+    \psi\in\Dom(e^{-K/2}):
+    Ce^{-K/2}\psi=\psi
+    \right\}.
+\end{equation}
+Its modular conjugation and modular operator are
+\begin{equation}
+    J_H=C,
+\end{equation}
+and
+\begin{equation}
+    \Delta_H=e^{-K}.
+\end{equation}
+
+Accordingly, the geometric problem separates cleanly into two parts.  The
+Real K\"ahler structure determines the antiunitary reflection, while the
+reversible quantized dynamics determines the positive modular operator.
+When the latter is obtained from analytic continuation of a geometric flow,
+the defining fixed-point equation becomes a reflection relation on
+holomorphic Hardy germs.  If a family of such generators is constructed and
+their fixed-point spaces satisfy the desired inclusions, one obtains a family
+of standard subspaces directly from geometric quantization.
+
+The entire construction can be summarized by
+\begin{center}
+\begin{tikzcd}[column sep=large,row sep=large]
+(M,\omega,J_M,L,\tau)
+\arrow[r,"\text{contactification}"]
+&
+(X,\alpha,\mathrm{CR},r)
+\arrow[r,"\text{Hardy quantization}"]
+&
+H^2(X)
+\\
+\text{Real structure}
+\arrow[r]
+&
+r
+\arrow[r]
+&
+C
+\\
+\text{reversible geometric flow}
+\arrow[r]
+&
+\varphi_t
+\arrow[r]
+&
+K
+\\
+&&
+\Delta=e^{-K}
+\arrow[d]
+\\
+&&
+S=Ce^{-K/2}
+\arrow[d]
+\\
+&&
+H=\operatorname{Fix}(S).
+\end{tikzcd}
+\end{center}
+In this form, the passage from geometric quantization to standard subspaces is
+completely rigorous once the exact symmetry, self-adjointness, domain, and
+reflection conditions stated above have been verified in the geometric model
+under consideration.
+\section{Nets of Standard Subspaces from Geometric Quantization}
+\label{app:net_standard_subspaces_gq}
+
+We describe a concise mechanism by which geometric quantization can produce
+a net of standard real subspaces.  Let
+\begin{equation}
+    (M,\omega,J_M,L,\tau,\widetilde\tau)
+\end{equation}
+be a positive quantizable K\"ahler manifold equipped with a compatible Real
+structure.  Passing to the unit circle bundle
+\begin{equation}
+    X=S(L^*)
+\end{equation}
+of the dual prequantum line bundle gives the Hardy quantization space
+\begin{equation}
+    \cH
+    =
+    H^2(X)
+    \simeq
+    \widehat{\bigoplus}_{k\geq0}H^0(M,L^k),
+\end{equation}
+together with an antiunitary involution
+\begin{equation}
+    C:\cH\rightarrow\cH,
+    \qquad
+    C^2=1,
+\end{equation}
+induced by the Real structure.  Compatibility with the K\"ahler
+polarization implies
+\begin{equation}
+    C\Pi=\Pi C,
+\end{equation}
+where
+\begin{equation}
+    \Pi:L^2(X)\rightarrow H^2(X)
+\end{equation}
+is the Szeg\H{o} projection.
+
+To construct a family of standard subspaces, let $\mathcal O$ be a partially
+ordered family of geometric regions or analytic domains.  Suppose that each
+$O\in\mathcal O$ determines a self-adjoint operator
+\begin{equation}
+    K_O=K_O^*
+\end{equation}
+on $\cH$ satisfying the reflection relation
+\begin{equation}
+    CK_OC=-K_O.
+    \label{eq:netgq:reflection}
+\end{equation}
+Define
+\begin{equation}
+    \Delta_O=e^{-K_O}
+\end{equation}
+and
+\begin{equation}
+    S_O
+    =
+    Ce^{-K_O/2},
+    \qquad
+    \Dom(S_O)=\Dom(e^{-K_O/2}).
+\end{equation}
+By functional calculus,
+\begin{equation}
+    C\Delta_OC
+    =
+    \Delta_O^{-1},
+\end{equation}
+and therefore $S_O$ is a closed densely defined anti-linear involution.
+Its fixed-point space
+\begin{equation}
+    \boxed{
+    H(O)
+    =
+    \left\{
+    \psi\in\Dom(e^{-K_O/2}):
+    Ce^{-K_O/2}\psi=\psi
+    \right\}
+    }
+    \label{eq:netgq:HO}
+\end{equation}
+is a standard real subspace of $\cH$.  Its modular conjugation and modular
+operator are
+\begin{equation}
+    J_{H(O)}=C,
+    \qquad
+    \Delta_{H(O)}=e^{-K_O}.
+\end{equation}
+
+Thus the geometric problem of constructing a net is reduced to producing a
+family
+\begin{equation}
+    O\longmapsto K_O
+\end{equation}
+with appropriate compatibility properties.  The first requirement,
+\eqref{eq:netgq:reflection}, guarantees standardness of each individual
+subspace.  Isotony,
+\begin{equation}
+    O_1\subset O_2
+    \quad\Longrightarrow\quad
+    H(O_1)\subset H(O_2),
+    \label{eq:netgq:isotony}
+\end{equation}
+is an additional condition and does not follow merely from an operator
+inequality between $K_{O_1}$ and $K_{O_2}$.  A simple sufficient condition is
+that the associated Tomita operators satisfy
+\begin{equation}
+    \Dom(S_{O_1})
+    \subset
+    \Dom(S_{O_2}),
+\end{equation}
+and
+\begin{equation}
+    S_{O_2}\psi
+    =
+    S_{O_1}\psi,
+    \qquad
+    \psi\in\Dom(S_{O_1}).
+    \label{eq:netgq:TomitaExtension}
+\end{equation}
+Indeed, if $\psi\in H(O_1)$, then
+\begin{equation}
+    S_{O_1}\psi=\psi,
+\end{equation}
+and \eqref{eq:netgq:TomitaExtension} implies
+\begin{equation}
+    S_{O_2}\psi=\psi,
+\end{equation}
+hence $\psi\in H(O_2)$.
+
+A natural geometric realization of $K_O$ arises from quantized symplectic or
+contact flows.  Suppose a region $O$ determines a one-parameter geometric
+flow
+\begin{equation}
+    \varphi_O(t)
+\end{equation}
+on the contact manifold $X$ which preserves the CR structure and the Hardy
+space.  If its quantization is
+\begin{equation}
+    U_O(t)
+    =
+    e^{itK_O},
+\end{equation}
+and the Real structure acts on the generator according to
+\begin{equation}
+    CK_OC=-K_O,
+\end{equation}
+then \eqref{eq:netgq:HO} gives a standard subspace associated with $O$.
+Whenever the flow admits analytic continuation in its parameter, the factor
+\begin{equation}
+    e^{-K_O/2}
+\end{equation}
+may be interpreted as imaginary-time evolution.  The defining relation
+\begin{equation}
+    Ce^{-K_O/2}\psi=\psi
+\end{equation}
+then becomes a reflection condition between analytically continued Hardy
+boundary values and the Real involution.
+
+There is also a useful alternative construction.  Starting from one standard
+subspace $H$ and a unitary representation
+\begin{equation}
+    U(a)=e^{iaP},
+\end{equation}
+one may define
+\begin{equation}
+    H_a=U(a)H.
+\end{equation}
+Every $H_a$ is standard.  If the quantized geometric flow satisfies the
+one-sided inclusion
+\begin{equation}
+    U(a)H\subset H,
+    \qquad
+    a\geq0,
+\end{equation}
+then
+\begin{equation}
+    H_b\subset H_a,
+    \qquad
+    b\geq a,
+\end{equation}
+after fixing the orientation of the parameter.  This produces an isotone
+family directly from a quantized semigroup and connects the construction with
+the usual theory of modular inclusions and Borchers-type relations
+\cite{BrunettiGuidoLongo2002,Longo2008}.
+
+The resulting scheme may be summarized as
+\begin{center}
+\begin{tikzcd}[column sep=large,row sep=large]
+(M,\omega,J_M,L,\tau)
+\arrow[r]
+&
+(X,\alpha,\mathrm{CR},r)
+\arrow[r]
+&
+H^2(X)
+\\
+O
+\arrow[r]
+&
+\varphi_O(t)
+\arrow[r]
+&
+K_O
+\\
+&&
+S_O=Ce^{-K_O/2}
+\arrow[d]
+\\
+&&
+H(O)=\operatorname{Fix}(S_O).
+\end{tikzcd}
+\end{center}
+
+Hence geometric quantization provides the Hilbert space, the Real structure
+provides the antiunitary component of the Tomita operator, and quantized
+geometric dynamics provide the positive component.  A net of standard
+subspaces is obtained once the family $O\mapsto K_O$ is chosen so that the
+reflection relation guarantees standardness and the corresponding Tomita
+operators satisfy the desired isotony relations.
 % \section{Extras (old stuff)}
 
 % \subsection{Two states and two algebras: IR regulated S-matrix}
